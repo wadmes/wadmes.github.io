@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noto Serif SC:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|EB Garamond:300,300italic,400,400italic,700,700italic|Source Code Pro:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"wadmes.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"buttons","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"./public/search.xml"};
+  </script>
+
+  <meta name="description" content="Hey Neway。这里是2020国庆刚刚过去的秋天。 现在的我刚刚在十四天隔离里赶完了ICLR21的paper，坐在回家的高铁上。本来应该是要休息下的，毕竟这一星期实在是太累了。但是高铁上终究还是没有床上舒服，干脆先写完一些碎碎念吧。 这篇target ICLR的paper是我第一次做GNN的理论尝试，其实也只是做了一些微小贡献。。（emmm。。真的是很trivial的东西）。大概就是forma">
+<meta property="og:type" content="article">
+<meta property="og:title" content="After ICLR 2021">
+<meta property="og:url" content="http://wadmes.github.io/2020/10/03/after-ICLR/index.html">
+<meta property="og:site_name" content="NEWAY">
+<meta property="og:description" content="Hey Neway。这里是2020国庆刚刚过去的秋天。 现在的我刚刚在十四天隔离里赶完了ICLR21的paper，坐在回家的高铁上。本来应该是要休息下的，毕竟这一星期实在是太累了。但是高铁上终究还是没有床上舒服，干脆先写完一些碎碎念吧。 这篇target ICLR的paper是我第一次做GNN的理论尝试，其实也只是做了一些微小贡献。。（emmm。。真的是很trivial的东西）。大概就是forma">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-10-04T00:17:18.000Z">
+<meta property="article:modified_time" content="2021-12-30T02:34:53.000Z">
+<meta property="article:author" content="Li Wei">
+<meta property="article:tag" content="memo">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://wadmes.github.io/2020/10/03/after-ICLR/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>After ICLR 2021 | NEWAY</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">NEWAY</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">愿识乾坤大，仍怜草木青</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+        <li class="menu-item menu-item-reading-notes">
+
+    <a href="/notes" rel="section"><i class="fas fa-book-reader fa-fw"></i>Reading notes</a>
+
+  </li>
+        <li class="menu-item menu-item-about-me">
+
+    <a href="/about" rel="section"><i class="fas fa-user fa-fw"></i>About me</a>
+
+  </li>
+        <li class="menu-item menu-item-official-about-me">
+
+    <a href="/cv" rel="section"><i class="fas fa-user-secret fa-fw"></i>Official About me</a>
+
+  </li>
+        <li class="menu-item menu-item-resume">
+
+    <a href="/cv/cv_liwei/cv.pdf" rel="section"><i class="fas fa-file fa-fw"></i>Resume</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2020/10/03/after-ICLR/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/liwei3.jpg">
+      <meta itemprop="name" content="Li Wei">
+      <meta itemprop="description" content="人生注定是一个人的旅行，但就算孤独也要做一直前行的人啊">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="NEWAY">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          After ICLR 2021
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-10-03 20:17:18" itemprop="dateCreated datePublished" datetime="2020-10-03T20:17:18-04:00">2020-10-03</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-12-29 21:34:53" itemprop="dateModified" datetime="2021-12-29T21:34:53-05:00">2021-12-29</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/life/" itemprop="url" rel="index"><span itemprop="name">life</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2020/10/03/after-ICLR/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/10/03/after-ICLR/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>Hey Neway。这里是2020国庆刚刚过去的秋天。</p>
+<p>现在的我刚刚在十四天隔离里赶完了ICLR21的paper，坐在回家的高铁上。本来应该是要休息下的，毕竟这一星期实在是太累了。但是高铁上终究还是没有床上舒服，干脆先写完一些碎碎念吧。</p>
+<p>这篇target ICLR的paper是我第一次做GNN的理论尝试，其实也只是做了一些微小贡献。。（emmm。。真的是很trivial的东西）。大概就是formalize 了GNN for graph coloring的power 然后给出了一些power下降的情况。其实最后投出去那么几十分钟还是很开心的，对自己也是比较满意的：起初以为是自己对paper的满意，后面深究一下才觉着其实是对自己的满意：满意自己没有半途而废 最后还是把论文投出去了。关于论文、科研，我还没有一个成型的philosophy，只是有个大概的感觉，我做的东西只是把它当作自己的孩子，我重视、爱惜、不放弃就够了，至于真的能让人类知识圈往外扩一点点么，就不得而知了，我目前也没有很关心这个东西，我好像还是很功利性的考虑自己的paper，i.e., 我指望自己的paper能中就行，而又因为paper总是可以中的，所以无需指望自己的paper能做什么。。。这个思想。。其实有点奇怪。。就好比，一个父母自诩我只是单纯的对孩子好，只指望他能找到工作就行，而我们生活在就业率百分百的国家，所以无需指望我们的孩子要达到什么要求。但找到工作本身就是要求了，万一就业率不是百分百了呢。类似的，能中paper本身就是要求了，万一以后没有recycle了呢。</p>
+<p>不过也不能太苛责自己了吧。毕竟我处在一个很需要“中了”的paper的关键阶段。但是要发一篇当之无愧能中的paper真的好难啊。这是我这段时间别搞研究别学托福总结的残酷事实：相比起学习，科研难太多了。不论是学英语、学数学、学编程，走任何前人趟过的、在走不过的地方还标着此处绕道的泥泞，比起走一条黑不溜秋充满未知的路，简单太多他多太多了。我都不知道有多少个夜晚，我埋在枕头里冥思苦想，在ipad上划来划去，也没有任何有益结论了。每每这时，就有一种书到用时方恨晚，有时间了一定要好好重学微积分、组合优化、概率论、矩阵运算等。</p>
+<p>其实这一两年给自己留了很多有时间了一定要xxx的坑。直接放个前几天大晚上赶ICLR神经兴奋睡不着写的备忘录吧：</p>
+<blockquote>
+<h1 id=""><a href="#" class="headerlink" title=""></a></h1><p>失眠夜的一点想法，</p>
+<p>等托福考完，陶瓷搞完，文书写好，申请结束之后：</p>
+<p>一定要做好多现在因为ddl做不了的事</p>
+<p>譬如把线代微积分这些基础知识再好好的过一遍；</p>
+<p>譬如认真像学习一样的的尝试上一次英雄联盟钻石；</p>
+<p>譬如把你不要担心的吉他谱学会；</p>
+<p>譬如化身林克把公主救了；</p>
+<p>譬如把买了一直没玩的奇异人生大镖客gta5通关一次顺便再写点感想；</p>
+<p>倘若还有点时间，试着做点视频。</p>
+<p>除了申请结束后的那几个月，真正属于我自己的，自由的时间，不多了啊。</p>
+</blockquote>
+<p>时间呐时间，就是这样匆匆不等人。永远在催着你上路。几个月后，我就要知道我PhD会去哪了。这种对未来未知但又饱含希望的感情，就是我很喜欢hey kong这首歌的原因:</p>
+<blockquote>
+<p>kong 这种日子到底还有多久，我到底能不能成为说唱歌手。</p>
+</blockquote>
+<p>neway啊，这种日子到底还有多久，我到底能不能成为一个问心无愧的大学教授。我未来到底会去哪个国家，去哪所大学，做什么方向，成为什么样的人。这些我都不知道，但也都想知道。</p>
+<p>好了最后再说说结婚这件事吧。五月份找她和好之后，虽然和好了，但也能明显感觉到其实她不爱自己了。比如香港到深圳隔离没理她，她生气，我解释安慰她说中间事情很多，然后提到我还哭了。但是她也像没听到一样没有在意。再然后基本上是我找她，她回得也比较少。</p>
+<p>还是挺难过的。因为很早时候父母的离婚和童年寄人篱下的颠沛流离的回忆，感觉自己还是一个很需要情感支持的人。不过也许，至少我现在一直抱着这样的希望，人的交往或多或少是像镜子一样，我持续的像wuli崔泽一样，先好好爱一个人，也许她会报之以琼瑶？</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/memo/" rel="tag"># memo</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/07/20/Hey-Kong%EF%BC%8CJuly%EF%BC%8C2020/" rel="prev" title="Hey Kong，July，2020">
+      <i class="fa fa-chevron-left"></i> Hey Kong，July，2020
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/10/13/%E8%AE%B0%E9%AB%98%E6%AD%A6/" rel="next" title="记高武">
+      记高武 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text"></span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Li Wei"
+      src="/images/liwei3.jpg">
+  <p class="site-author-name" itemprop="name">Li Wei</p>
+  <div class="site-description" itemprop="description">人生注定是一个人的旅行，但就算孤独也要做一直前行的人啊</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">132</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">28</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/wadmes" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;wadmes" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:werry715@gmail.com" title="E-Mail → mailto:werry715@gmail.com" rel="noopener" target="_blank"><i class="fas fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://music.163.com/#/playlist?id=49000450" title="Music → https:&#x2F;&#x2F;music.163.com&#x2F;#&#x2F;playlist?id&#x3D;49000450" rel="noopener" target="_blank"><i class="fas fa-music fa-fw"></i>Music</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://steamcommunity.com/id/wadmes/" title="Steam → https:&#x2F;&#x2F;steamcommunity.com&#x2F;id&#x2F;wadmes&#x2F;" rel="noopener" target="_blank"><i class="fab fa-steam fa-fw"></i>Steam</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="link fa-fw"></i>
+      Interesting links!
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://wadmes.github.io/2019/12/11/EDA-family-tree/" title="https:&#x2F;&#x2F;wadmes.github.io&#x2F;2019&#x2F;12&#x2F;11&#x2F;EDA-family-tree&#x2F;">EDA family tree</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://wenku.baidu.com/view/f5cdb37aeff9aef8951e0673" title="https:&#x2F;&#x2F;wenku.baidu.com&#x2F;view&#x2F;f5cdb37aeff9aef8951e0673" rel="noopener" target="_blank">小爷当年的高考满分作文</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Li Wei</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='50' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : true,
+      appId      : 'NmNqnbed4p8koRJWwGm6SdrW-gzGzoHsz',
+      appKey     : 'ECnYjjxnwouXPYlJjrjLJhv9',
+      placeholder: "Just go go",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>

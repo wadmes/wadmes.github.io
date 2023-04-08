@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noto Serif SC:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|EB Garamond:300,300italic,400,400italic,700,700italic|Source Code Pro:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"wadmes.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"buttons","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"./public/search.xml"};
+  </script>
+
+  <meta name="description" content="PAC learning try to study the generalization ability for a learning model (given a set of training data, its ability to carry over to new test data) I recommend for reading this blog post (by the orig">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Probably Approximately Correct (PAC) Learning and VC bound">
+<meta property="og:url" content="http://wadmes.github.io/2022/03/31/PAC%20learning/index.html">
+<meta property="og:site_name" content="NEWAY">
+<meta property="og:description" content="PAC learning try to study the generalization ability for a learning model (given a set of training data, its ability to carry over to new test data) I recommend for reading this blog post (by the orig">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://wadmes.github.io/figures/latex-20220401011725923.php">
+<meta property="og:image" content="http://wadmes.github.io/figures/latex-20220401011726016.php">
+<meta property="og:image" content="https://s0.wp.com/latex.php?latex=X&bg=ffffff&fg=36312d&s=0&c=20201002">
+<meta property="og:image" content="https://s0.wp.com/latex.php?latex=%5Cmathsf%7BC%7D&bg=ffffff&fg=36312d&s=0&c=20201002">
+<meta property="og:image" content="https://s0.wp.com/latex.php?latex=%5Cmathsf%7BC%7D&bg=ffffff&fg=36312d&s=0&c=20201002">
+<meta property="og:image" content="http://wadmes.github.io/figures/latex-20220401011726029.php">
+<meta property="og:image" content="http://wadmes.github.io/figures/latex-20220401011726010.php">
+<meta property="og:image" content="http://wadmes.github.io/figures/latex-20220401011915773.php">
+<meta property="og:image" content="http://wadmes.github.io/figures/latex-20220401011726036.php">
+<meta property="og:image" content="http://wadmes.github.io/figures/latex-20220401011726040.php">
+<meta property="og:image" content="https://s0.wp.com/latex.php?latex=h&bg=ffffff&fg=36312d&s=0&c=20201002">
+<meta property="og:image" content="http://wadmes.github.io/figures/latex-20220401011726063.php">
+<meta property="og:image" content="http://wadmes.github.io/figures/latex-20220401011726071.php">
+<meta property="og:image" content="http://wadmes.github.io/figures/latex-20220401194537590.php">
+<meta property="og:image" content="http://wadmes.github.io/figures/latex-20220401194537809.php">
+<meta property="og:image" content="http://wadmes.github.io/figures/image-20220402131238691.png">
+<meta property="og:image" content="http://wadmes.github.io/figures/image-20220402131254790.png">
+<meta property="og:image" content="http://wadmes.github.io/figures/image-20220403000015185.png">
+<meta property="og:image" content="http://wadmes.github.io/figures/image-20220403011338282.png">
+<meta property="og:image" content="http://wadmes.github.io/figures/image-20220403011717814.png">
+<meta property="og:image" content="http://wadmes.github.io/figures/image-20220403011757356.png">
+<meta property="og:image" content="http://wadmes.github.io/figures/image-20220425114624651.png">
+<meta property="og:image" content="http://wadmes.github.io/figures/image-20220425162541501.png">
+<meta property="article:published_time" content="2022-03-31T17:03:57.000Z">
+<meta property="article:modified_time" content="2022-04-27T01:52:47.000Z">
+<meta property="article:author" content="Li Wei">
+<meta property="article:tag" content="ML">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://wadmes.github.io/figures/latex-20220401011725923.php">
+
+<link rel="canonical" href="http://wadmes.github.io/2022/03/31/PAC%20learning/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>Probably Approximately Correct (PAC) Learning and VC bound | NEWAY</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">NEWAY</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">愿识乾坤大，仍怜草木青</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+        <li class="menu-item menu-item-reading-notes">
+
+    <a href="/notes" rel="section"><i class="fas fa-book-reader fa-fw"></i>Reading notes</a>
+
+  </li>
+        <li class="menu-item menu-item-about-me">
+
+    <a href="/about" rel="section"><i class="fas fa-user fa-fw"></i>About me</a>
+
+  </li>
+        <li class="menu-item menu-item-official-about-me">
+
+    <a href="/cv" rel="section"><i class="fas fa-user-secret fa-fw"></i>Official About me</a>
+
+  </li>
+        <li class="menu-item menu-item-resume">
+
+    <a href="/cv/cv_liwei/cv.pdf" rel="section"><i class="fas fa-file fa-fw"></i>Resume</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2022/03/31/PAC%20learning/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/liwei3.jpg">
+      <meta itemprop="name" content="Li Wei">
+      <meta itemprop="description" content="人生注定是一个人的旅行，但就算孤独也要做一直前行的人啊">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="NEWAY">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Probably Approximately Correct (PAC) Learning and VC bound
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-03-31 13:03:57" itemprop="dateCreated datePublished" datetime="2022-03-31T13:03:57-04:00">2022-03-31</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-04-26 21:52:47" itemprop="dateModified" datetime="2022-04-26T21:52:47-04:00">2022-04-26</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/study/" itemprop="url" rel="index"><span itemprop="name">study</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2022/03/31/PAC%20learning/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2022/03/31/PAC%20learning/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>PAC learning try to study the <strong>generalization ability</strong> for a learning model (given a set of training data, its ability to carry over to new test data)</p>
+<p>I recommend for reading this blog post (by the original author)</p>
+<p><a target="_blank" rel="noopener" href="https://jeremykun.com/2014/01/02/probably-approximately-correct-a-formal-theory-of-learning/">https://jeremykun.com/2014/01/02/probably-approximately-correct-a-formal-theory-of-learning/</a></p>
+<blockquote>
+<p><strong>Approximately correct</strong> means the error will be small on new samples,</p>
+<p> <strong>Probably</strong> means that if we play the game over and over we’ll usually be able to get a good approximation.</p>
+</blockquote>
+<h2 id="Some-Definitions-informal-just-for-easier-understanding"><a href="#Some-Definitions-informal-just-for-easier-understanding" class="headerlink" title="Some Definitions (informal, just for easier understanding)"></a>Some Definitions (informal, just for easier understanding)</h2><ul>
+<li><p><strong>Error of hypothesis $h$</strong> (with respect to the concept (our target, the “golden” solution) $c$ and the distribution $D$ ) is the <strong>probability</strong> over $X$ drawn via $D$ that <strong>$h(X)$ and $c(X)$ differs.</strong></p>
+</li>
+<li><p><strong>concept class</strong>: a collection of concepts (functions) over $X$</p>
+</li>
+<li><p><strong>PAC Learnable</strong>: A problem is PAC-learnable  if there is an algorithm $A$ which will likely generate a hypothesis whose error is small  for all distributions $D$ over $X$.</p>
+<ul>
+<li><p>More formal one: small error -&gt; error probablity &#x3D; $\epsilon \in [0,0.5]$; high probability -&gt; $1 - \delta$ : $\delta \in [0,0.5]$. Then, we limit the algorithm to run in time and space polynomial in $1&#x2F;\epsilon $ and $1&#x2F;\delta$</p>
+<blockquote>
+<p>Let <img src="/figures/latex-20220401011725923.php" alt="X"> be a set, and <img src="/figures/latex-20220401011726016.php" alt="\mathsf{C}"> be a concept class over <img src="https://s0.wp.com/latex.php?latex=X&bg=ffffff&fg=36312d&s=0&c=20201002" alt="X">. We say that <img src="https://s0.wp.com/latex.php?latex=%5Cmathsf%7BC%7D&bg=ffffff&fg=36312d&s=0&c=20201002" alt="\mathsf{C}"> is <em>PAC-learnable</em> if there is an algorithm $A(\varepsilon, \delta)$ with access to a query function for <img src="https://s0.wp.com/latex.php?latex=%5Cmathsf%7BC%7D&bg=ffffff&fg=36312d&s=0&c=20201002" alt="\mathsf{C}"> and runtime $O(\textup{poly}(\frac{1}{\varepsilon}, \frac{1}{\delta}))$, such that for all <img src="/figures/latex-20220401011726029.php" alt="c \in \mathsf{C}">, all distributions <img src="/figures/latex-20220401011726010.php" alt="D"> over <img src="/figures/latex-20220401011915773.php" alt="X">, and all inputs $\varepsilon, \delta$ between 0 and <img src="/figures/latex-20220401011726036.php" alt="1/2">, the probability that <img src="/figures/latex-20220401011726040.php" alt="A"> produces a hypothesis <img src="https://s0.wp.com/latex.php?latex=h&bg=ffffff&fg=36312d&s=0&c=20201002" alt="h"> with error at most <img src="/figures/latex-20220401011726063.php" alt="\varepsilon"> is at least <img src="/figures/latex-20220401011726071.php" alt="1- \delta">. In symbols:</p>
+<p>$\displaystyle \textup{P}<em>{D}(\textup{P}</em>{x \sim D}(h(x) \neq c(x)) \leq \varepsilon) \geq 1-\delta$</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="How-to-prove-a-problem-x2F-a-concept-class-is-PAC-learnable"><a href="#How-to-prove-a-problem-x2F-a-concept-class-is-PAC-learnable" class="headerlink" title="How to prove a problem&#x2F; a concept class is PAC learnable?"></a>How to prove a problem&#x2F; a concept class is PAC learnable?</h2><p>big idea:</p>
+<ol>
+<li>Propose $A$ with time complexity $O(m)$</li>
+<li>Show that $A \propto 1&#x2F;\epsilon, 1&#x2F;\delta$  , easy right? :)</li>
+</ol>
+<h3 id="Example-1-Interval-Problem"><a href="#Example-1-Interval-Problem" class="headerlink" title="Example 1 Interval Problem"></a>Example 1 Interval Problem</h3><p>The target is an interval $[a_0,b_0]$, each query (unit time cost) will randomly pick up a value $x \in [a_0,b_0]$. </p>
+<p>We propose A: pick up $m$ samples, (therefore $O(m)$ time), and pick up the smallest one $a_1$ and the largest one $b_1$ as the predicted interval (hypothesis) $[a_1,b_1]$</p>
+<p>We should consider $P(h(x)\neq c(x))$ (this one must be a formulation related with $m$, say $g(m)$), that is, show that if $P_D(g(m) \leq \epsilon) \geq 1- \delta$ , then $m \propto 1&#x2F;\epsilon, 1&#x2F;\delta$</p>
+<p>$P(h(x)\neq c(x)) &#x3D; g(m) &#x3D; \textup{P}<em>{x \sim D}(x \in A) + \textup{P}</em>{x \sim D}(x \in B)$, where $A &#x3D; [a_0,a_1], B &#x3D; [b_1,b_0]$</p>
+<p>then, by symmetry, if we can prove that $\textup{P}_{x \sim D}(x \in A) \leq 2&#x2F;\epsilon$ is very probabilitic ($\geq 1-\delta$), then, we are done.</p>
+<p>but, how to find the correlation between  $\epsilon$ and $m$? The solution here is to define a interval $A’$, where $A’ &#x3D; [a_0,a’]$ and $P(x\in A’) &#x3D; 2&#x2F;\epsilon$. </p>
+<p>if $a’ \geq a_1$, we already finish the proof.</p>
+<p>Othersiwe, the probability that the sample does not belong to $A$ (remeber that we are considering $\textup{P}<em>{x \sim D}(x \in A) \leq 2&#x2F;\epsilon$) is smaller than $1- 2&#x2F;\epsilon$, i.e., $\textup{P}</em>{x \sim D}(x \ not \in A) \leq 1 - 2&#x2F;\epsilon$</p>
+<p>then <strong>the probability that all $m$ samples does not locate in $A$</strong> Is: $\leq (1 - 2&#x2F;\epsilon)^m$ </p>
+<p>Note that this probability equals to <strong>the probability that the error ($h(x) \neq c(x)$) due to the $A$ region is larger than $2&#x2F;\epsilon$</strong> (the probability that our chosen <img src="/figures/latex-20220401194537590.php" alt="A"> contributes error greater than <img src="/figures/latex-20220401194537809.php" alt="\varepsilon / 2">)</p>
+<p>Such a proof holds for B region. Since A and B are not intersected, we can conclude that </p>
+<p>The probabity that the error is larger than $\epsilon$ is less than $2((1 - 2&#x2F;\epsilon)^m)$</p>
+<p>it means, The probabity that the error is less or equal than $\epsilon$ is larger than $1 - 2((1 - 2&#x2F;\epsilon)^m)$</p>
+<p>We want the probability of a small error is larger than $1-\delta$, that is:</p>
+<p>$\displaystyle 2(1 - \varepsilon &#x2F; 2)^m \leq \delta$</p>
+<p>therefore, $m \geq (2 &#x2F; \varepsilon \log (2 &#x2F; \delta))$</p>
+<p>(which is polynomial in $1&#x2F;\epsilon, 1&#x2F;\delta$)Therefore, we finish the proof</p>
+<h3 id="Example-2-hypotheses-x2F-concepts-in-a-finite-hypothesis-space"><a href="#Example-2-hypotheses-x2F-concepts-in-a-finite-hypothesis-space" class="headerlink" title="Example 2 hypotheses&#x2F;concepts in a finite hypothesis space"></a>Example 2 hypotheses&#x2F;concepts in a finite hypothesis space</h3><p>The theorem is:</p>
+<blockquote>
+<p>Let H be a finite hypothesis space. Let D be an arbitrary, fixed unknown probability distribution over X and let c ∗ be an arbitrary unknown target function. For any , δ &gt; 0, if we draw a sample from D of size ![Screen Shot 2022-04-01 at 10.36.58 PM](&#x2F;figures&#x2F;Screen Shot 2022-04-01 at 10.36.58 PM.png)</p>
+<p>then with probability at least 1 − δ, all hypotheses&#x2F;concepts in H with error ≥ $\epsilon$ are inconsistent with the sampled data </p>
+<p>(with probability at least 1−δ any hypothesis consistent with the sampled data will have error at most $\epsilon$)</p>
+</blockquote>
+<p>Proof:</p>
+<ol>
+<li>Consider some specific “bad” hypothesis $h$ whose error is at least $\epsilon$, then the probability that $h$ is consistent with the sampled data is at most $(1-\epsilon)^m$</li>
+<li>There is at most $|H|$ bad hypothesis.</li>
+<li>the probabilty that there <em>exists</em> a bad hypothesis that is consistent with all sampled data is at most $|H|(1-\epsilon)^m$ (<strong>union</strong>)</li>
+<li>the probabilty at the third step should also be at most $\delta$ by definition</li>
+<li>That is, $|H|(1-\epsilon)^m &lt; \delta$</li>
+<li>Using the inequality 1 − x ≤$e^{-x}$, we get the equation in the theorem</li>
+</ol>
+<h2 id="Relationship-between-observed-error-rate-and-true-error-rate"><a href="#Relationship-between-observed-error-rate-and-true-error-rate" class="headerlink" title="Relationship between observed error rate and true error rate"></a>Relationship between observed error rate and true error rate</h2><p>In Non-realizable case (more general case), there may not be a “golden solution”, we can only compete with the best function (the function of smallest true error rate) in some concept class H. A natural hope is that picking a concept c with a small observed error rate gives us small true error rate. It is therefore useful to find a relationship between observed error rate for a sample and the true error rate.</p>
+<h3 id="Hoeffding-Bound"><a href="#Hoeffding-Bound" class="headerlink" title="Hoeffding Bound"></a>Hoeffding Bound</h3><p>Consider a hypothesis with true error rate p (for example, a coin of bias p) observed on $m$ examples (the coin is flipped m times). Let S be the number of observed errors (the number of heads seen) so S&#x2F;m is the observed error rate.</p>
+<p>Hoeffding bounds state that for any  $\epsilon$ ∈ [0, 1]</p>
+<p>![Screen Shot 2022-04-01 at 11.22.38 PM](&#x2F;figures&#x2F;Screen Shot 2022-04-01 at 11.22.38 PM.png)</p>
+<h3 id="The-relationship-result-by-hoeffding-bound"><a href="#The-relationship-result-by-hoeffding-bound" class="headerlink" title="The relationship result by hoeffding bound"></a>The relationship result by hoeffding bound</h3><blockquote>
+<p>Let H be a finite hypothesis space. Let D be an arbitrary, fixed unknown probability distribution over X and let c ∗ be an arbitrary unknown target function. For any $\epsilon$, δ &gt; 0, if we draw a sample S from D of size</p>
+<p><img src="/figures/image-20220402131238691.png" alt="image-20220402131238691"></p>
+<p>then probability at least (1 − δ), all hypotheses h in H have</p>
+<p><img src="/figures/image-20220402131254790.png" alt="image-20220402131254790"></p>
+</blockquote>
+<p>Proof: given a hypothesis h,  by hoeffding boundinhg, we get that the probability that its observed error outside $\epsilon$ of its true error is at most</p>
+<p>![Screen Shot 2022-04-02 at 3.54.11 PM](&#x2F;figures&#x2F;Screen Shot 2022-04-02 at 3.54.11 PM.png)</p>
+<p>(based on hoeffding boudning, and the definition of $m$)</p>
+<p>By <strong>union bound</strong> over all all h in H, we then get the desired result.</p>
+<h2 id="Infinite-hophothesis-set"><a href="#Infinite-hophothesis-set" class="headerlink" title="Infinite hophothesis set?"></a>Infinite hophothesis set?</h2><p>union bound is too loose! There may be many overlap between two hypothesises. That is, two hypothesises may label most data points the same.</p>
+<h3 id="Some-definitions"><a href="#Some-definitions" class="headerlink" title="Some definitions"></a>Some definitions</h3><ul>
+<li><p>The <strong>growth function</strong> of $H$ $g_H(m)$ is the <strong>maximum</strong> number of distinct labelling $H$  (a labelling for a $h \in H$ is just the results induced by $h$ for the given samples) can induce on any set $S$ of $m$ data points. (对于m个sample，最多能产生多少种label)</p>
+<ul>
+<li><p>we say $H$ <strong>shatters(打碎)</strong> $S$ if $|H(S)| &#x3D; 2^m$  , we assume this is a binary classification problem, i.e., the label is in {-1,1} (有这样一个m个sample，给任意一种label，都存在一个h可以产生这个label)</p>
+</li>
+<li><p>$g_H(m) &#x3D; 2^m$ if exist S that H shatters it.</p>
+<p>![Screen Shot 2022-04-02 at 11.54.20 PM](&#x2F;figures&#x2F;Screen Shot 2022-04-02 at 11.54.20 PM.png)</p>
+</li>
+<li><p>2D linear seperator cannot shatter 4 points </p>
+</li>
+<li><p>D dimentional linear seperator can shatter D+1 points but cannot shatter D + 2 points</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="VC-bound-relationship-between-data-size-and-errors"><a href="#VC-bound-relationship-between-data-size-and-errors" class="headerlink" title="VC bound (relationship between data size and errors)"></a>VC bound (relationship between data size and errors)</h3><p><img src="/figures/image-20220403000015185.png" alt="image-20220403000015185"></p>
+<p>If no golden target: </p>
+<p><img src="/figures/image-20220403011338282.png" alt="image-20220403011338282"></p>
+<h3 id="VC-dimension-the-complexity-of-the-hyphothesis-set"><a href="#VC-dimension-the-complexity-of-the-hyphothesis-set" class="headerlink" title="VC dimension (the complexity of the hyphothesis set)"></a>VC dimension (the complexity of the hyphothesis set)</h3><p>$d_{VC}(H) &#x3D; $ the largest value of $m$ s.t. $g_H(m) &#x3D; 2^m$, i.e., the greatest number of data points that can be shattered by $H$</p>
+<p>For example, for a N-dimensional linear seperator, its VC dimension is $D+1$</p>
+<h3 id="Statistical-Learning-Style-bounds-fixed-data-size-relationships-between-the-true-error-and-the-data-error"><a href="#Statistical-Learning-Style-bounds-fixed-data-size-relationships-between-the-true-error-and-the-data-error" class="headerlink" title="Statistical Learning Style bounds, (fixed data size,relationships between the true error and the data error)"></a>Statistical Learning Style bounds, (fixed data size,relationships between the true error and the data error)</h3><p><img src="/figures/image-20220403011717814.png" alt="image-20220403011717814"></p>
+<p><img src="/figures/image-20220403011757356.png" alt="image-20220403011757356"></p>
+<p>Agnostic case: trainning error is not zero</p>
+<p>traning error decreases as VC dim increases (easier to )</p>
+<p>the bound increases as VC dim increases (harder to generalize)</p>
+<p><img src="/figures/image-20220425114624651.png" alt="image-20220425114624651"></p>
+<p>Two analysis illustration (VC analysis and bias-variance)</p>
+<p><img src="/figures/image-20220425162541501.png" alt="image-20220425162541501"></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/ML/" rel="tag"># ML</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/03/27/Security/" rel="prev" title="Paper summary: ML (especially GNNs) and anti-ML in Logic Locking">
+      <i class="fa fa-chevron-left"></i> Paper summary: ML (especially GNNs) and anti-ML in Logic Locking
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/04/15/Ranking/" rel="next" title="">
+       <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Some-Definitions-informal-just-for-easier-understanding"><span class="nav-number">1.</span> <span class="nav-text">Some Definitions (informal, just for easier understanding)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#How-to-prove-a-problem-x2F-a-concept-class-is-PAC-learnable"><span class="nav-number">2.</span> <span class="nav-text">How to prove a problem&#x2F; a concept class is PAC learnable?</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Example-1-Interval-Problem"><span class="nav-number">2.1.</span> <span class="nav-text">Example 1 Interval Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Example-2-hypotheses-x2F-concepts-in-a-finite-hypothesis-space"><span class="nav-number">2.2.</span> <span class="nav-text">Example 2 hypotheses&#x2F;concepts in a finite hypothesis space</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Relationship-between-observed-error-rate-and-true-error-rate"><span class="nav-number">3.</span> <span class="nav-text">Relationship between observed error rate and true error rate</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Hoeffding-Bound"><span class="nav-number">3.1.</span> <span class="nav-text">Hoeffding Bound</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#The-relationship-result-by-hoeffding-bound"><span class="nav-number">3.2.</span> <span class="nav-text">The relationship result by hoeffding bound</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Infinite-hophothesis-set"><span class="nav-number">4.</span> <span class="nav-text">Infinite hophothesis set?</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Some-definitions"><span class="nav-number">4.1.</span> <span class="nav-text">Some definitions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#VC-bound-relationship-between-data-size-and-errors"><span class="nav-number">4.2.</span> <span class="nav-text">VC bound (relationship between data size and errors)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#VC-dimension-the-complexity-of-the-hyphothesis-set"><span class="nav-number">4.3.</span> <span class="nav-text">VC dimension (the complexity of the hyphothesis set)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Statistical-Learning-Style-bounds-fixed-data-size-relationships-between-the-true-error-and-the-data-error"><span class="nav-number">4.4.</span> <span class="nav-text">Statistical Learning Style bounds, (fixed data size,relationships between the true error and the data error)</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Li Wei"
+      src="/images/liwei3.jpg">
+  <p class="site-author-name" itemprop="name">Li Wei</p>
+  <div class="site-description" itemprop="description">人生注定是一个人的旅行，但就算孤独也要做一直前行的人啊</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">132</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">28</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/wadmes" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;wadmes" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:werry715@gmail.com" title="E-Mail → mailto:werry715@gmail.com" rel="noopener" target="_blank"><i class="fas fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://music.163.com/#/playlist?id=49000450" title="Music → https:&#x2F;&#x2F;music.163.com&#x2F;#&#x2F;playlist?id&#x3D;49000450" rel="noopener" target="_blank"><i class="fas fa-music fa-fw"></i>Music</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://steamcommunity.com/id/wadmes/" title="Steam → https:&#x2F;&#x2F;steamcommunity.com&#x2F;id&#x2F;wadmes&#x2F;" rel="noopener" target="_blank"><i class="fab fa-steam fa-fw"></i>Steam</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="link fa-fw"></i>
+      Interesting links!
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://wadmes.github.io/2019/12/11/EDA-family-tree/" title="https:&#x2F;&#x2F;wadmes.github.io&#x2F;2019&#x2F;12&#x2F;11&#x2F;EDA-family-tree&#x2F;">EDA family tree</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://wenku.baidu.com/view/f5cdb37aeff9aef8951e0673" title="https:&#x2F;&#x2F;wenku.baidu.com&#x2F;view&#x2F;f5cdb37aeff9aef8951e0673" rel="noopener" target="_blank">小爷当年的高考满分作文</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Li Wei</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='50' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : true,
+      appId      : 'NmNqnbed4p8koRJWwGm6SdrW-gzGzoHsz',
+      appKey     : 'ECnYjjxnwouXPYlJjrjLJhv9',
+      placeholder: "Just go go",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>

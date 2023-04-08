@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noto Serif SC:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|EB Garamond:300,300italic,400,400italic,700,700italic|Source Code Pro:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"wadmes.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"buttons","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"./public/search.xml"};
+  </script>
+
+  <meta name="description" content="Introductionproblemdifficult to simultaneously buffer the input feature maps, the output feature maps, and the filter weights in limited internal accelerator memory. Previous methoduse large SRAM buff">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Optimally Scheduling CNN Convolutions for Efficient Memory Access">
+<meta property="og:url" content="http://wadmes.github.io/2019/03/11/Optimally-Scheduling-CNN-Convolutions-forEfficient-Memory-Access/index.html">
+<meta property="og:site_name" content="NEWAY">
+<meta property="og:description" content="Introductionproblemdifficult to simultaneously buffer the input feature maps, the output feature maps, and the filter weights in limited internal accelerator memory. Previous methoduse large SRAM buff">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://wadmes.github.io/images/1552309141092.png">
+<meta property="og:image" content="http://wadmes.github.io/images/1552309773395.png">
+<meta property="og:image" content="http://wadmes.github.io/images/1552309887178.png">
+<meta property="article:published_time" content="2019-03-11T17:03:57.000Z">
+<meta property="article:modified_time" content="2019-03-23T04:11:07.000Z">
+<meta property="article:author" content="Li Wei">
+<meta property="article:tag" content="DNN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://wadmes.github.io/images/1552309141092.png">
+
+<link rel="canonical" href="http://wadmes.github.io/2019/03/11/Optimally-Scheduling-CNN-Convolutions-forEfficient-Memory-Access/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>Optimally Scheduling CNN Convolutions for Efficient Memory Access | NEWAY</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">NEWAY</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">愿识乾坤大，仍怜草木青</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+        <li class="menu-item menu-item-reading-notes">
+
+    <a href="/notes" rel="section"><i class="fas fa-book-reader fa-fw"></i>Reading notes</a>
+
+  </li>
+        <li class="menu-item menu-item-about-me">
+
+    <a href="/about" rel="section"><i class="fas fa-user fa-fw"></i>About me</a>
+
+  </li>
+        <li class="menu-item menu-item-official-about-me">
+
+    <a href="/cv" rel="section"><i class="fas fa-user-secret fa-fw"></i>Official About me</a>
+
+  </li>
+        <li class="menu-item menu-item-resume">
+
+    <a href="/cv/cv_liwei/cv.pdf" rel="section"><i class="fas fa-file fa-fw"></i>Resume</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2019/03/11/Optimally-Scheduling-CNN-Convolutions-forEfficient-Memory-Access/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/liwei3.jpg">
+      <meta itemprop="name" content="Li Wei">
+      <meta itemprop="description" content="人生注定是一个人的旅行，但就算孤独也要做一直前行的人啊">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="NEWAY">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Optimally Scheduling CNN Convolutions for Efficient Memory Access
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-03-11 13:03:57" itemprop="dateCreated datePublished" datetime="2019-03-11T13:03:57-04:00">2019-03-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-03-23 00:11:07" itemprop="dateModified" datetime="2019-03-23T00:11:07-04:00">2019-03-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/paper/" itemprop="url" rel="index"><span itemprop="name">paper</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2019/03/11/Optimally-Scheduling-CNN-Convolutions-forEfficient-Memory-Access/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/03/11/Optimally-Scheduling-CNN-Convolutions-forEfficient-Memory-Access/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><h3 id="problem"><a href="#problem" class="headerlink" title="problem"></a><strong>problem</strong></h3><p>difficult to simultaneously buffer the input feature maps, the output feature maps, and the filter weights in limited internal accelerator memory.</p>
+<h3 id="Previous-method"><a href="#Previous-method" class="headerlink" title="Previous method"></a>Previous method</h3><p>use large SRAM buffers (up to a few MBytes may be used). <strong>drawback</strong>: large amounts of memory are not affordable.</p>
+<h3 id="Another-point-x2F-direction"><a href="#Another-point-x2F-direction" class="headerlink" title="Another point&#x2F;direction:"></a><strong>Another point&#x2F;direction</strong>:</h3><ul>
+<li><p>data <strong>reuse</strong> , is determined by the <strong>dataflow schedule</strong> of computatio</p>
+<ul>
+<li><p><strong>Previous work</strong>: the working set of these innermost loops fits the available internal storage</p>
+<p><strong>drawback</strong>: existing models have not been adapted to explicitly <strong>application managed buffers,</strong> which constitute by far the most common memory architecture template for CNN accelerators, therefore, overestimate internal storage requirements</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="Contribution-of-this-work"><a href="#Contribution-of-this-work" class="headerlink" title="Contribution of this work:"></a>Contribution of this work:</h3><ul>
+<li>new analytical memory performance model to evaluate dataflow schedules</li>
+<li>best dataflow schedules </li>
+<li>applied it on the case study of the design of a flexible CNN accelerator for deeply embedded Systems-on-Chip.</li>
+</ul>
+<h2 id="Background"><a href="#Background" class="headerlink" title="Background"></a>Background</h2><h3 id="Convolution-loop-nest"><a href="#Convolution-loop-nest" class="headerlink" title="Convolution loop-nest"></a>Convolution loop-nest</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// M output fmaps loop</span></span><br><span class="line">LOF: <span class="keyword">for</span> (m = <span class="number">0</span>; m &lt; M; m++)</span><br><span class="line"><span class="comment">// C input fmaps loop</span></span><br><span class="line">	LIF: <span class="keyword">for</span> (c = <span class="number">0</span>; c &lt; C; c++)</span><br><span class="line"><span class="comment">// spatial loops (ExE)</span></span><br><span class="line">		LSY: <span class="keyword">for</span> (y = <span class="number">0</span>; y &lt; E; y++)</span><br><span class="line">			LSX: <span class="keyword">for</span> (x = <span class="number">0</span>; x &lt; E; x++)</span><br><span class="line"><span class="comment">// filter loops (RxR, stride S)</span></span><br><span class="line">				LFY: <span class="keyword">for</span> (k = <span class="number">0</span>; k &lt; R; k++)</span><br><span class="line">                    LFX: <span class="keyword">for</span> (l = <span class="number">0</span>; l &lt; R; l++)</span><br><span class="line">                    &#123;</span><br><span class="line">                    p = I[c][y*S+k][x*S+l];</span><br><span class="line">                    w = W[m][c][k][l];</span><br><span class="line">                    O[m][y][x] += p*w;</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="Goal"><a href="#Goal" class="headerlink" title="Goal"></a>Goal</h3><p>The problem consists in <strong>minimizing the number of memory accesses to the off-accelerator memory</strong> given a limited local buffer capacity.</p>
+<h3 id="Reuse-in-convolution"><a href="#Reuse-in-convolution" class="headerlink" title="Reuse in convolution"></a>Reuse in convolution</h3><ul>
+<li>Input feature maps</li>
+<li>Output feature maps</li>
+<li>Weight</li>
+</ul>
+<p>the reuse of a reference is <strong>carried</strong> by a loop if the same memory location is used by different iterations of that loop</p>
+<p>However, unless the entire working set fits the local buffer, this reuse cannot be taken full advantage of.</p>
+<h3 id="Reuse-buffer"><a href="#Reuse-buffer" class="headerlink" title="Reuse buffer"></a>Reuse buffer</h3><ul>
+<li><p>Data cache</p>
+</li>
+<li><p>Application-managed scratchpad memories</p>
+<p><strong>partitioning</strong> the local reuse buffer in a set of application-managed buffers,</p>
+</li>
+</ul>
+<h3 id="Data-Locality-Optimization"><a href="#Data-Locality-Optimization" class="headerlink" title="Data Locality Optimization"></a>Data Locality Optimization</h3><ul>
+<li><p>reordring</p>
+</li>
+<li><p>titling</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// output fmaps -- loop on tiles</span></span><br><span class="line">LTOF: <span class="keyword">for</span> (mm = <span class="number">0</span>; mm &lt; M; mm += mss)</span><br><span class="line">    <span class="comment">// input fmaps -- loop on tiles</span></span><br><span class="line">    LTIF: <span class="keyword">for</span> (cc = <span class="number">0</span>; cc &lt; C; cc += css)</span><br><span class="line">    <span class="comment">// spatial -- loops on tiles</span></span><br><span class="line">        LTSY: <span class="keyword">for</span> (yy = <span class="number">0</span>; yy &lt; E; yy += iss)</span><br><span class="line">            LTSX: <span class="keyword">for</span> (xx = <span class="number">0</span>; xx &lt; E; xx += jss)</span><br><span class="line">            <span class="comment">// output fmaps -- tile loop</span></span><br><span class="line">                LOF: <span class="keyword">for</span> (m=mm; m&lt;min(mm+mss,M); m++)</span><br><span class="line">                <span class="comment">// input fmaps -- tile loop</span></span><br><span class="line">                    LIF: <span class="keyword">for</span> (c=cc; c&lt;min(cc+css,C); c++)</span><br><span class="line">                    <span class="comment">// spatial -- tile loops</span></span><br><span class="line">                        LSY: <span class="keyword">for</span> (y=yy; y&lt;min(yy+iss,E); y++)</span><br><span class="line">                            LSX: <span class="keyword">for</span> (x=xx; x&lt;min(xx+jss,E); x++)</span><br><span class="line">                            <span class="comment">// kernel -- tile loops</span></span><br><span class="line">                                LFY: <span class="keyword">for</span> (k=<span class="number">0</span>; k&lt;R; k++)</span><br><span class="line">                                    LFX: <span class="keyword">for</span> (l=<span class="number">0</span>; l&lt;R; l++)</span><br><span class="line">                                    &#123;</span><br><span class="line">                                    p = I[c][y*S+k][x*S+l];</span><br><span class="line">                                    w = W[m][c][k][l];</span><br><span class="line">                                    O[m][y][x] += p*w;</span><br><span class="line">                                    &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h2><h3 id="Analytical-model-for-evaluating-the-dataflow-schedules"><a href="#Analytical-model-for-evaluating-the-dataflow-schedules" class="headerlink" title="Analytical model for evaluating the dataflow schedules"></a>Analytical model for evaluating the dataflow schedules</h3><h4 id="Distance-d-X-L"><a href="#Distance-d-X-L" class="headerlink" title="Distance $d_X(L)$"></a>Distance $d_X(L)$</h4><p>The number of loop iterations in the loop L , that separates two consecutive accesses to the same data element X</p>
+<p>(d次iteration后，再也不会access到这次access的data element)</p>
+<h4 id="footprint-F-X-L-i"><a href="#footprint-F-X-L-i" class="headerlink" title="footprint $F_X(L_i)$"></a>footprint $F_X(L_i)$</h4><p>the footprint of array X in loop L measures <strong>the number of distinct elements of X</strong> used inside L. </p>
+<p><img src="/images/1552309141092.png" alt="1552309141092"></p>
+<p>n(L) : loop L 的interation数目， L0 代表最里面的inner loop</p>
+<p>the actual required size for the application-managed buffer is computed as follows:</p>
+<p><img src="/images/1552309773395.png" alt="1552309773395"></p>
+<h4 id="memory-traffic-T-X"><a href="#memory-traffic-T-X" class="headerlink" title="memory traffic $T_X$"></a>memory traffic $T_X$</h4><p>number of bytes accessed in off-accelerator memory for array X</p>
+<p><img src="/images/1552309887178.png" alt="1552309887178"></p>
+<p>PX the numerical precision (in bytes) used for its storage.</p>
+<p>It should be noticed that i here is actually defined on maximal B(Li) that fits the size of buffer</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/DNN/" rel="tag"># DNN</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/02/28/c-predicate/" rel="prev" title="c++:predicate">
+      <i class="fa fa-chevron-left"></i> c++:predicate
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/03/21/WAE-to-do-DNN-acceleration/" rel="next" title="WAE to do DNN acceleration">
+      WAE to do DNN acceleration <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#problem"><span class="nav-number">1.1.</span> <span class="nav-text">problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Previous-method"><span class="nav-number">1.2.</span> <span class="nav-text">Previous method</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Another-point-x2F-direction"><span class="nav-number">1.3.</span> <span class="nav-text">Another point&#x2F;direction:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Contribution-of-this-work"><span class="nav-number">1.4.</span> <span class="nav-text">Contribution of this work:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Background"><span class="nav-number">2.</span> <span class="nav-text">Background</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Convolution-loop-nest"><span class="nav-number">2.1.</span> <span class="nav-text">Convolution loop-nest</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Goal"><span class="nav-number">2.2.</span> <span class="nav-text">Goal</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Reuse-in-convolution"><span class="nav-number">2.3.</span> <span class="nav-text">Reuse in convolution</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Reuse-buffer"><span class="nav-number">2.4.</span> <span class="nav-text">Reuse buffer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Data-Locality-Optimization"><span class="nav-number">2.5.</span> <span class="nav-text">Data Locality Optimization</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Method"><span class="nav-number">3.</span> <span class="nav-text">Method</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Analytical-model-for-evaluating-the-dataflow-schedules"><span class="nav-number">3.1.</span> <span class="nav-text">Analytical model for evaluating the dataflow schedules</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Distance-d-X-L"><span class="nav-number">3.1.1.</span> <span class="nav-text">Distance $d_X(L)$</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#footprint-F-X-L-i"><span class="nav-number">3.1.2.</span> <span class="nav-text">footprint $F_X(L_i)$</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#memory-traffic-T-X"><span class="nav-number">3.1.3.</span> <span class="nav-text">memory traffic $T_X$</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Li Wei"
+      src="/images/liwei3.jpg">
+  <p class="site-author-name" itemprop="name">Li Wei</p>
+  <div class="site-description" itemprop="description">人生注定是一个人的旅行，但就算孤独也要做一直前行的人啊</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">132</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">28</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/wadmes" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;wadmes" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:werry715@gmail.com" title="E-Mail → mailto:werry715@gmail.com" rel="noopener" target="_blank"><i class="fas fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://music.163.com/#/playlist?id=49000450" title="Music → https:&#x2F;&#x2F;music.163.com&#x2F;#&#x2F;playlist?id&#x3D;49000450" rel="noopener" target="_blank"><i class="fas fa-music fa-fw"></i>Music</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://steamcommunity.com/id/wadmes/" title="Steam → https:&#x2F;&#x2F;steamcommunity.com&#x2F;id&#x2F;wadmes&#x2F;" rel="noopener" target="_blank"><i class="fab fa-steam fa-fw"></i>Steam</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="link fa-fw"></i>
+      Interesting links!
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://wadmes.github.io/2019/12/11/EDA-family-tree/" title="https:&#x2F;&#x2F;wadmes.github.io&#x2F;2019&#x2F;12&#x2F;11&#x2F;EDA-family-tree&#x2F;">EDA family tree</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://wenku.baidu.com/view/f5cdb37aeff9aef8951e0673" title="https:&#x2F;&#x2F;wenku.baidu.com&#x2F;view&#x2F;f5cdb37aeff9aef8951e0673" rel="noopener" target="_blank">小爷当年的高考满分作文</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Li Wei</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='50' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : true,
+      appId      : 'NmNqnbed4p8koRJWwGm6SdrW-gzGzoHsz',
+      appKey     : 'ECnYjjxnwouXPYlJjrjLJhv9',
+      placeholder: "Just go go",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>

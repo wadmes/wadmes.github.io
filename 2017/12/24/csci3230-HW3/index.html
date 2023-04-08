@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noto Serif SC:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|EB Garamond:300,300italic,400,400italic,700,700italic|Source Code Pro:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"wadmes.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"buttons","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"./public/search.xml"};
+  </script>
+
+  <meta name="description" content="CSCI3230 HW3 Li Wei  1155062148 test! 1. Information Theory and Logica.define $P_{front}$ and $P_{back}$ as the possibilities of front and back respectively. And we have: $P_{front}+P_{back} &#x3D; 1$">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSCI3230 HW3">
+<meta property="og:url" content="http://wadmes.github.io/2017/12/24/csci3230-HW3/index.html">
+<meta property="og:site_name" content="NEWAY">
+<meta property="og:description" content="CSCI3230 HW3 Li Wei  1155062148 test! 1. Information Theory and Logica.define $P_{front}$ and $P_{back}$ as the possibilities of front and back respectively. And we have: $P_{front}+P_{back} &#x3D; 1$">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://wadmes.github.io/images%5Chw3_1.jpg">
+<meta property="article:published_time" content="2017-12-24T21:10:25.000Z">
+<meta property="article:modified_time" content="2019-12-12T04:14:01.000Z">
+<meta property="article:author" content="Li Wei">
+<meta property="article:tag" content="DNN">
+<meta property="article:tag" content="latex">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://wadmes.github.io/images%5Chw3_1.jpg">
+
+<link rel="canonical" href="http://wadmes.github.io/2017/12/24/csci3230-HW3/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>CSCI3230 HW3 | NEWAY</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">NEWAY</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">愿识乾坤大，仍怜草木青</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+        <li class="menu-item menu-item-reading-notes">
+
+    <a href="/notes" rel="section"><i class="fas fa-book-reader fa-fw"></i>Reading notes</a>
+
+  </li>
+        <li class="menu-item menu-item-about-me">
+
+    <a href="/about" rel="section"><i class="fas fa-user fa-fw"></i>About me</a>
+
+  </li>
+        <li class="menu-item menu-item-official-about-me">
+
+    <a href="/cv" rel="section"><i class="fas fa-user-secret fa-fw"></i>Official About me</a>
+
+  </li>
+        <li class="menu-item menu-item-resume">
+
+    <a href="/cv/cv_liwei/cv.pdf" rel="section"><i class="fas fa-file fa-fw"></i>Resume</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2017/12/24/csci3230-HW3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/liwei3.jpg">
+      <meta itemprop="name" content="Li Wei">
+      <meta itemprop="description" content="人生注定是一个人的旅行，但就算孤独也要做一直前行的人啊">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="NEWAY">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          CSCI3230 HW3
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2017-12-24 16:10:25" itemprop="dateCreated datePublished" datetime="2017-12-24T16:10:25-05:00">2017-12-24</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-12-11 23:14:01" itemprop="dateModified" datetime="2019-12-11T23:14:01-05:00">2019-12-11</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/study/" itemprop="url" rel="index"><span itemprop="name">study</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2017/12/24/csci3230-HW3/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2017/12/24/csci3230-HW3/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>CSCI3230 HW3 Li Wei  1155062148</p>
+<p>test!</p>
+<h4 id="1-Information-Theory-and-Logic"><a href="#1-Information-Theory-and-Logic" class="headerlink" title="1. Information Theory and Logic"></a>1. Information Theory and Logic</h4><h5 id="a"><a href="#a" class="headerlink" title="a."></a>a.</h5><p>define $P_{front}$ and $P_{back}$ as the possibilities of front and back respectively. And we have:</p>
+<p>$P_{front}+P_{back} &#x3D; 1$</p>
+<p>$I(V) &#x3D; 0$: The coin flipping result must be front&#x2F; back, which means its possibility is 1. $P_{front} \ or \ P_{back} &#x3D;1$ so that $I(V) &#x3D; - 0\times log_2 0  - 1\times log_21 &#x3D; 0$ </p>
+<p>$I(V) &#x3D; log_2n$: The possibility of front and back are same, which is 0.5 respectively. $P_{front}  &#x3D;P_{back} &#x3D;0.5$  so that $I(V) &#x3D; - 0.5\times log_2 0.5  - 0.5\times log_20.5 &#x3D; log_22&#x3D;1$</p>
+<h5 id="b"><a href="#b" class="headerlink" title="b."></a>b.</h5><p>R1:</p>
+<p> $Pass(x,computer) \wedge Win(x,prize)\rightarrow Happy(x)\Rightarrow $</p>
+<p>$\neg(Pass(x,computer) \wedge Win(x,prize)) \vee Happy(x) \Rightarrow$</p>
+<p>$\neg Pass(x,computer) \vee \neg Win(x,prize) \vee Happy(x) $</p>
+<p>R2:</p>
+<p>$Study(y) \vee Lucky(y) \rightarrow Pass(y,z) \Rightarrow$</p>
+<p>$\neg(Study(y) \vee Lucky(y)) \vee Pass(y,z) \Rightarrow$</p>
+<p>$(\neg Study(y) \wedge \neg Lucky(y)) \vee Pass(y,z) \Rightarrow$</p>
+<p>$(\neg Study(y) \vee Pass(y,z)) \wedge(\neg Lucky(y)\vee Pass(y,z))$</p>
+<p>R3:</p>
+<p>$Lucky(w) \rightarrow Win(w,prize) \Rightarrow$</p>
+<p>$\neg Lucky(w) \vee Win(w,prize) $</p>
+<p><img src="/images%5Chw3_1.jpg" alt="hw3_1"></p>
+<h4 id="2-Neural-Network"><a href="#2-Neural-Network" class="headerlink" title="2. Neural Network"></a>2. Neural Network</h4><h5 id="a-1"><a href="#a-1" class="headerlink" title="a."></a>a.</h5><p>$O &#x3D; f(\sum_{j&#x3D;1}^{n} (w_jI_j)+ w_o)$</p>
+<h5 id="b-1"><a href="#b-1" class="headerlink" title="b."></a>b.</h5><p>$h_{i,k} &#x3D; f(\sum_{j &#x3D; 1}^{H_{i-1}}(w_{i-1,j,k}h_{i-1,j}))$</p>
+<p>$O_m &#x3D;f(\sum_{j &#x3D; 1}^{H_{K}}(w_{K,j,m}h_{K,j})) $</p>
+<h5 id="c"><a href="#c" class="headerlink" title="c."></a>c.</h5><p>$f’(z) &#x3D; (\frac{1}{1+e^{-z}})’ &#x3D; \frac{e^{-z}}{(1+e^{-z})^2} &#x3D; \frac{1}{1+e^{-z}}\times \frac{e^{-z}}{1+e^{-z}}&#x3D; f(z)(1-f(z))$</p>
+<h5 id="d"><a href="#d" class="headerlink" title="d."></a>d.</h5><p>Learning rate represents the <strong>impact of the correction</strong> applied following a training step. The bigger the learning rate, the more drastic the changes at each step. And if we set learning rate  as 1, which means no learning rate, we’ll mostly likely start diverging away from the minimum. Therefore, we need a learning rate to control the changing velocity of weights and it is better to use a smaller learning rate.</p>
+<h5 id="e"><a href="#e" class="headerlink" title="e."></a>e.</h5><ol>
+<li><p>$\frac{\delta E}{\delta w_{K,j,k}} &#x3D; \frac{\delta E}{\delta O_k}\cdot \frac{\delta O_k}{\delta w_{K,j,k}}&#x3D; (O_k - T_k)\cdot O_k\cdot(1-O_k)\cdot h_{K,j}​$ (because $E &#x3D; 0.5\sum_{m&#x3D;1}^{H_{K+1}}(O_m - T_m)^2 \ and\ O_ k&#x3D;f(\sum_{j &#x3D; 1}^{H_{K}}(w_{K,j,k}h_{K,j}) ) ​$)</p>
+</li>
+<li><p>considering $E&#x3D;F(h_{i+2,1}+ …+ h_{i+2,H_{i-2}})$ and $h_{i+2,j} &#x3D; G(h_{i+1,k})$, according to the multivariate chain rule:</p>
+<p>$\frac{\delta E}{\delta h_{i+1,k}} &#x3D; \sum_{j&#x3D;1}^{H_{i+2}}(\frac{\delta E}{\delta h_{i+2,j}} \cdot \frac{\delta h_{i+2,j}}{\delta h_{i+1},k})$</p>
+<p>$&#x3D;\sum_{j&#x3D;1}^{H_{i+2}}(\frac{\delta E}{\delta h_{i+2,j}}\cdot h_{i+2,k}\cdot (1-h_{i+2,k})\cdot w_{i+1,k,j}) &#x3D; \sum_{j&#x3D;1}^{H_{i+2}}\Delta_{i+2,j} \cdot w_{i+1,k,j}$</p>
+</li>
+<li><p>According to chain rule, we have</p>
+<p>$\frac{\delta E}{\delta w_{i,j,k}} &#x3D; \frac{\delta E}{\delta h_{i+1},k} \cdot \frac{\delta h_{i+1},k}{w_{i,j,k}}$</p>
+<p>And $\frac{\delta h_{i+1,k}}{w_{i,j,k}} &#x3D; f’(\sum_{j &#x3D; 1}^{H_{i}}(w_{i,j,k}h_{i,j}))\cdot h_{i,j}&#x3D; h_{i+1,k}\cdot (1-h_{i+1,k})\cdot h_{i,j}​$</p>
+<p>Therefore, the result is:</p>
+<p>$\frac{\delta E}{\delta w_{i,j,k}} &#x3D; (\sum_{j&#x3D;1}^{H_{i+2}}\Delta_{i+2,j} \cdot w_{i+1,k,j})\cdot h_{i+1,k}\cdot (1-h_{i+1,k})\cdot h_{i,j} $ </p>
+<hr>
+</li>
+<li><p>def <strong>BP</strong>(<em>network,examples,a</em>) return a modified network:<br><strong>INPUTS</strong>:<br>  network, a multilayer network<br>  examples, a set of data&#x2F;label pairs<br>  a, learning rate</p>
+<p><strong>Repeat:</strong></p>
+<p><strong>for each</strong> e <strong>in</strong> examples:<br>  $O \leftarrow Run(Network, e)$<br>  <strong>for each</strong> neuron <strong>in</strong> network:</p>
+<pre><code> $\Delta_&#123;K+1,k&#125; \leftarrow (O_k - T_k)\cdot O_k\cdot(1-O_k)\cdot h_&#123;K,j&#125;$
+</code></pre>
+<p>​	<strong>for each</strong> weight <strong>connected to</strong> corresponding neuron:</p>
+<p>​		$W_{K,j,k} \leftarrow W_{K,j,k} - a\cdot \Delta_{K+1,k} \cdot h_{K,j}$</p>
+<p>  <strong>for each</strong> sub-layer <strong>except the first layer</strong>:</p>
+<p>​	**for each ** neuron <strong>in</strong> sub layer:</p>
+<p>​		$\Delta_{i,k}&#x3D; (\sum_{j&#x3D;1}^{H_{i+1}}\Delta_{i+1,j} \cdot w_{i,k,j})\cdot h_{i,k}\cdot (1-h_{i,k})\cdot $</p>
+<p>​		<strong>for each</strong> weight <strong>connected to</strong> corresponding neuron <strong>in</strong> current sublayer:</p>
+<p>​			$W_{i,j,k} \leftarrow W_{i,j,k} - a\cdot \Delta_{i+1,k} \cdot h_{i,j}$</p>
+<p><strong>Until</strong> network <strong>has converged</strong></p>
+<p><strong>return</strong> network</p>
+<hr>
+</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/DNN/" rel="tag"># DNN</a>
+              <a href="/tags/latex/" rel="tag"># latex</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2017/12/18/ESTR%203108%20Review/" rel="prev" title="ESTR 3108 review">
+      <i class="fa fa-chevron-left"></i> ESTR 3108 review
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2017/12/24/latex-math-notation/" rel="next" title="Latex math notation">
+      Latex math notation <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Information-Theory-and-Logic"><span class="nav-number">1.</span> <span class="nav-text">1. Information Theory and Logic</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#a"><span class="nav-number">1.1.</span> <span class="nav-text">a.</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#b"><span class="nav-number">1.2.</span> <span class="nav-text">b.</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-Neural-Network"><span class="nav-number">2.</span> <span class="nav-text">2. Neural Network</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#a-1"><span class="nav-number">2.1.</span> <span class="nav-text">a.</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#b-1"><span class="nav-number">2.2.</span> <span class="nav-text">b.</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#c"><span class="nav-number">2.3.</span> <span class="nav-text">c.</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#d"><span class="nav-number">2.4.</span> <span class="nav-text">d.</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#e"><span class="nav-number">2.5.</span> <span class="nav-text">e.</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Li Wei"
+      src="/images/liwei3.jpg">
+  <p class="site-author-name" itemprop="name">Li Wei</p>
+  <div class="site-description" itemprop="description">人生注定是一个人的旅行，但就算孤独也要做一直前行的人啊</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">132</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">28</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/wadmes" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;wadmes" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:werry715@gmail.com" title="E-Mail → mailto:werry715@gmail.com" rel="noopener" target="_blank"><i class="fas fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://music.163.com/#/playlist?id=49000450" title="Music → https:&#x2F;&#x2F;music.163.com&#x2F;#&#x2F;playlist?id&#x3D;49000450" rel="noopener" target="_blank"><i class="fas fa-music fa-fw"></i>Music</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://steamcommunity.com/id/wadmes/" title="Steam → https:&#x2F;&#x2F;steamcommunity.com&#x2F;id&#x2F;wadmes&#x2F;" rel="noopener" target="_blank"><i class="fab fa-steam fa-fw"></i>Steam</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="link fa-fw"></i>
+      Interesting links!
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://wadmes.github.io/2019/12/11/EDA-family-tree/" title="https:&#x2F;&#x2F;wadmes.github.io&#x2F;2019&#x2F;12&#x2F;11&#x2F;EDA-family-tree&#x2F;">EDA family tree</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://wenku.baidu.com/view/f5cdb37aeff9aef8951e0673" title="https:&#x2F;&#x2F;wenku.baidu.com&#x2F;view&#x2F;f5cdb37aeff9aef8951e0673" rel="noopener" target="_blank">小爷当年的高考满分作文</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Li Wei</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='50' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : true,
+      appId      : 'NmNqnbed4p8koRJWwGm6SdrW-gzGzoHsz',
+      appKey     : 'ECnYjjxnwouXPYlJjrjLJhv9',
+      placeholder: "Just go go",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>
