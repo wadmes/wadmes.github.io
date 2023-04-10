@@ -213,6 +213,123 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2020/06/01/PyTorch-Study/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/liwei3.jpg">
+      <meta itemprop="name" content="Li Wei">
+      <meta itemprop="description" content="人生注定是一个人的旅行，但就算孤独也要做一直前行的人啊">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="NEWAY">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/06/01/PyTorch-Study/" class="post-title-link" itemprop="url">ICCAD Proj 总结</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-06-01 14:33:06 / Modified: 05:02:31" itemprop="dateCreated datePublished" datetime="2020-06-01T14:33:06-04:00">2020-06-01</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/study/" itemprop="url" rel="index"><span itemprop="name">study</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2020/06/01/PyTorch-Study/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/06/01/PyTorch-Study/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>离ICCAD还有三星期的时候和老板说想放弃投ICCAD，最后在他的“威逼利诱”下，再加之自己的年轻气盛还是答应了并全力以赴的完成了。想想也是蛮了不起的，不过最后一两个星期实在是太累了点，希望以后还是少点这么肝的时候吧。</p>
+<p>这大概一个月，一边做proj一边就有新的感触，每有一个感触，都会自己先记一笔，然后不知不觉的备忘录上就塞满了感触。。。现在一次性都记下来当作以后的吸取教训吧。</p>
+<h2 id="Idea-amp-Paper-Review"><a href="#Idea-amp-Paper-Review" class="headerlink" title="Idea &amp; Paper Review"></a>Idea &amp; Paper Review</h2><p>前面两个proj 都分成了c++ 和python&#x2F;pytorch两个板块，因为比较尊重本科生的意见，所以都让他们先选负责的板块（所以都是选的python）。但是有个严重问题：pytorch部分往往和整个proj的idea相关，所以让本科生看paper 找idea实在是好刚没用在刀刃上。因此 两个proj都耽误了比较长的时间。好在自己看paper 总结idea的水平还是比较高了，后面都很快的调整好了方向。</p>
+<p>以后在我看来本科生的帮助应该是：</p>
+<ul>
+<li>跑实验这种大家都需要时间成本，而且学习成本较低的work</li>
+<li>画图，implementation就取决于本科生的学习能力和是否有过类似经验了。倘若我和ta都没学过，那让ta来学一下画图也可以（学习成本一个人花费就可以了）</li>
+<li>整个idea方向，除非是比较厉害的本科生（这么看我当年其实还是蛮厉害的，在南科大work都是我来看paper想idea），否则应该是我来看paper 总结，想idea，同时简单的传达意思给ta。毕竟确实我看paper的经验，水平肯定高过大部分本科生的。</li>
+</ul>
+<p>最后再吐槽下吧，好羡慕南科大有那么多本科生帮忙，然后本科生也有各种1&#x2F;2&#x2F;3作paper，实在是双赢。CU的本科教育就花在了倾庄、人文教育上了（当然有research，但是比起内地学校有组织的research还是差远了）。</p>
+<h2 id="Coding-style"><a href="#Coding-style" class="headerlink" title="Coding style"></a>Coding style</h2><p>这是看了DGCNN的mit学长的code发出的感慨。感觉任何语言，尤其python，必须要有一套自己习惯的coding style，包括但不限于：</p>
+<ul>
+<li>argments</li>
+<li>i&#x2F;o</li>
+<li>error exception handling</li>
+<li>model architecture</li>
+</ul>
+<p>这样的话，自己implementation的时候会方便很多，同时本科小朋友帮忙跑实验也会简单很多（改参数就可以）。哦对了，还有一个要习惯用git。。</p>
+<h2 id="Torch-Tensor-Operation"><a href="#Torch-Tensor-Operation" class="headerlink" title="Torch Tensor Operation"></a>Torch Tensor Operation</h2><p>这算是implementation时候的一个点吧。之前习惯了for loop，这次用多了pytorch tensor后发现实在是太爽了。不仅是速度提升（1000x），整个code 也elegant很多。说下从for loop 转成tensor operation的大概idea吧：</p>
+<ul>
+<li>如果index 不影响operation的话，可以直接用tensor[:]操作</li>
+<li>如果影响就需要 生成一个index tensor <ul>
+<li>灵活利用torch gather（有一串index 和一个index对应的value， 想通过index取出所有对应value）</li>
+<li>利用torch where 来代替 if else</li>
+</ul>
+</li>
+</ul>
+<p>晒一下自己生成kbbox（对于每个点，return k个最近的且两点bbox间没有第三个点的所有neighbors）的elegant code吧（对比for loop):</p>
+<p>For loop version:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> size <span class="keyword">in</span> <span class="built_in">range</span>(SIZE_OF_NET):</span><br><span class="line">    num_of_sample = <span class="built_in">int</span>(size)</span><br><span class="line">    data = train_data[size].cpu()</span><br><span class="line">    <span class="comment"># data = train_data[size]</span></span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">len</span>(data) == <span class="number">0</span>):</span><br><span class="line">        <span class="keyword">continue</span></span><br><span class="line">    index = torch.zeros([data.size(<span class="number">0</span>),data.size(<span class="number">1</span>),num_of_sample]) <span class="comment">#B,N,K</span></span><br><span class="line">    <span class="keyword">for</span> N <span class="keyword">in</span> <span class="built_in">range</span>(data.size(<span class="number">1</span>)):</span><br><span class="line">        <span class="comment">#initialize all value as current node index N</span></span><br><span class="line">        index[:,N,:] = N</span><br><span class="line">    <span class="comment">#for each batch B</span></span><br><span class="line">    max_sample = <span class="number">0</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;PROCESS &quot;</span>,size)</span><br><span class="line">    <span class="keyword">for</span> B <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(data)): </span><br><span class="line">        <span class="comment">#for each node N</span></span><br><span class="line">        <span class="keyword">if</span>(B % <span class="number">1000</span> == <span class="number">0</span>):</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;PROCESS &quot;</span>,size,B)</span><br><span class="line">        <span class="keyword">for</span> N <span class="keyword">in</span> <span class="built_in">range</span>(data.size(<span class="number">1</span>)):</span><br><span class="line">            sample = <span class="number">0</span></span><br><span class="line">            <span class="comment">#We then check each point Q: whether the bounding box between Q and K has no other points, if yes, we add Q in index[B,N,:]</span></span><br><span class="line">            <span class="keyword">for</span> Q <span class="keyword">in</span> <span class="built_in">range</span>(data.size(<span class="number">1</span>)):</span><br><span class="line">                <span class="keyword">if</span>(Q == N):</span><br><span class="line">                    <span class="keyword">continue</span></span><br><span class="line">                <span class="comment">#Coordinate of Q related to N</span></span><br><span class="line">                C_QN = data[B,Q,:] - data[B,N,:]</span><br><span class="line">                is_index = <span class="literal">True</span></span><br><span class="line">                <span class="keyword">for</span> J <span class="keyword">in</span> <span class="built_in">range</span>(data.size(<span class="number">1</span>)):</span><br><span class="line">                    <span class="keyword">if</span>(J == Q <span class="keyword">or</span> J == N):</span><br><span class="line">                        <span class="keyword">continue</span></span><br><span class="line">                    C_JN = data[B,J,:] - data[B,N,:]</span><br><span class="line">                    <span class="keyword">if</span> ((C_JN*C_QN) &gt; (C_JN * C_JN)).<span class="built_in">min</span>():</span><br><span class="line">                        <span class="comment"># print(&quot;Q cannot be index of N due to J&quot;,C_QN,C_JN)</span></span><br><span class="line">                        is_index = <span class="literal">False</span></span><br><span class="line">                        <span class="keyword">break</span></span><br><span class="line">                <span class="keyword">if</span>(is_index):</span><br><span class="line">                    sample += <span class="number">1</span></span><br><span class="line">                    index[B,N,sample] = Q</span><br><span class="line">            <span class="keyword">if</span>(sample &gt; max_sample):</span><br><span class="line">                max_sample = sample</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;PROCESS &quot;</span>,size, <span class="string">&quot;max_sample: &quot;</span>,max_sample)</span><br><span class="line">    torch.save(index[:,:,:max_sample+<span class="number">1</span>],<span class="string">&quot;../../data/tree/&quot;</span>+<span class="built_in">str</span>(size))</span><br></pre></td></tr></table></figure>
+
+<p>Tensor operation version:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#data : raw distance data (B,N,2)</span></span><br><span class="line">data = tensor</span><br><span class="line"><span class="keyword">if</span>(<span class="built_in">len</span>(data) == <span class="number">0</span>):</span><br><span class="line">    <span class="keyword">continue</span></span><br><span class="line"><span class="comment"># print(tensor.size())</span></span><br><span class="line">B,N,_ = data.size()</span><br><span class="line"><span class="comment"># data = train_data[size]</span></span><br><span class="line"><span class="comment"># print(tensor[0])</span></span><br><span class="line"><span class="comment">#inner : (B,N,2) * (B,2,N) = (B,N,N )</span></span><br><span class="line">inner = -<span class="number">2</span> * torch.matmul(data,data.transpose(<span class="number">2</span>, <span class="number">1</span>))</span><br><span class="line">xx = torch.<span class="built_in">sum</span>(data ** <span class="number">2</span>, dim=<span class="number">2</span>, keepdim=<span class="literal">True</span>)</span><br><span class="line"><span class="comment">#pairwise_distance: relative distance between N1 &amp; N2 (B,N1,N2) </span></span><br><span class="line">pairwise_distance = -xx - inner - xx.transpose(<span class="number">2</span>, <span class="number">1</span>)</span><br><span class="line"><span class="comment"># print(&quot;pairwise_distance&quot;,pairwise_distance[0])</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># BNN2 = data.view(B,N,1,2).repeat(1,1,N,1)</span></span><br><span class="line"><span class="comment"># BQQ2 = data.view(B,1,N,2).repeat(1,N,1,1)</span></span><br><span class="line"><span class="comment"># print(&quot;BNN2&quot;,BNN2[0][0])</span></span><br><span class="line"><span class="comment"># print(&quot;BQQ2&quot;,BQQ2[0][0])</span></span><br><span class="line"><span class="comment">#BNQ2: value in (b,n,q) is the relative coordinates between node n and node q at b_th batch.</span></span><br><span class="line"><span class="comment"># BNQ2 = BNN2 - BQQ2</span></span><br><span class="line">BNQ2 = data.view(B,N,<span class="number">1</span>,<span class="number">2</span>) - data.view(B,<span class="number">1</span>,N,<span class="number">2</span>)</span><br><span class="line"><span class="comment"># print(&quot;BNQ2&quot;,BNQ2[0][0])</span></span><br><span class="line"><span class="comment">#CQN: value in (b,n,q,j) is the relative coordinates between node n and node q at b_th batch.</span></span><br><span class="line"><span class="comment">#CJN: value in (b,n,q,j) is the relative coordinates between node n and node j at b_th batch.</span></span><br><span class="line"><span class="comment">#UPDATE: The view step here is not neccesary since pytorch will automatically scale the tensor shape</span></span><br><span class="line">CQN = BNQ2.view(B,N,N,<span class="number">1</span>,<span class="number">2</span>)</span><br><span class="line">CJN = BNQ2.view(B,N,<span class="number">1</span>,N,<span class="number">2</span>)</span><br><span class="line"><span class="comment"># print(&quot;CQN&quot;,CQN[0][0])</span></span><br><span class="line"><span class="comment"># print(&quot;CJN&quot;,CJN[0][0])</span></span><br><span class="line"><span class="comment">#BNQJ: value in (b,n,q,j) indicates that when n is the centroid, whether j is in the bounding box of q and n (and such makes q not connected to j)</span></span><br><span class="line"><span class="comment">#True means the j influences q</span></span><br><span class="line">BNQJ = (CQN*CJN &gt; CJN*CJN).<span class="built_in">min</span>(-<span class="number">1</span>)[<span class="number">0</span>]</span><br><span class="line"><span class="comment"># print(&quot;BNQJ&quot;,BNQJ[0][0])</span></span><br><span class="line"><span class="comment">#BNQJ: value in (b,n,q) indicates that when n is the centroid, whether q cannot connect to n</span></span><br><span class="line"><span class="comment">#True mans q cannot conncet n</span></span><br><span class="line">BNQ = BNQJ.<span class="built_in">max</span>(-<span class="number">1</span>)[<span class="number">0</span>]</span><br><span class="line"><span class="comment"># print(&quot;BNQ&quot;,BNQ[0])</span></span><br><span class="line"><span class="comment">#For those q who cannot connect to n (which is exactly True in BNQ), we assign a large distance value(10000)</span></span><br><span class="line">_,index = ((pairwise_distance - (BNQ.long() * <span class="number">10000</span>))).topk(k=<span class="number">4</span>,dim = <span class="number">2</span>)</span><br><span class="line"><span class="comment"># print(&quot;index&quot;,index[0])</span></span><br><span class="line"><span class="comment"># exit()</span></span><br><span class="line">torch.save(index,<span class="string">&quot;../../data/tree/kbbox_&quot;</span>+<span class="built_in">str</span>(i)+<span class="string">&#x27;_&#x27;</span>+<span class="built_in">str</span>(j))</span><br></pre></td></tr></table></figure>
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>这个work应该是自己这么多work里面最满意的一个了？虽然比较仓促，但是整个story是连贯的，对应方法也不是和一般dl-based work一样讲究一个玄学，基本都是有规律有原因能解释的。最后的结果也是比较满意（最后两三天的时候加上了FLUTE的结果实在是不太行，临时把FLUTE remove了，最后一天才算出结果。。也是没谁了）</p>
+<p>这个要是结果ICCAD没中可就滑稽了。投paper这个东西就真的可以叫做玄学了。ß</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2020/05/20/ICCAD%E5%89%8D%E7%9A%84%E5%81%B7%E6%87%92%E6%9C%88%E8%AE%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1169,130 +1286,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2020/02/10/%E5%B9%B3%E5%87%A1%E7%9A%84%E4%BD%A0%E4%BC%9A%E5%90%8E%E6%82%94%E5%90%97/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/liwei3.jpg">
-      <meta itemprop="name" content="Li Wei">
-      <meta itemprop="description" content="人生注定是一个人的旅行，但就算孤独也要做一直前行的人啊">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="NEWAY">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/02/10/%E5%B9%B3%E5%87%A1%E7%9A%84%E4%BD%A0%E4%BC%9A%E5%90%8E%E6%82%94%E5%90%97/" class="post-title-link" itemprop="url">终其一生仍旧平凡的你会后悔吗</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-02-10 21:51:20" itemprop="dateCreated datePublished" datetime="2020-02-10T21:51:20-05:00">2020-02-10</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-02-22 03:15:24" itemprop="dateModified" datetime="2020-02-22T03:15:24-05:00">2020-02-22</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/life/" itemprop="url" rel="index"><span itemprop="name">life</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine: </span>
-    
-    <a title="valine" href="/2020/02/10/%E5%B9%B3%E5%87%A1%E7%9A%84%E4%BD%A0%E4%BC%9A%E5%90%8E%E6%82%94%E5%90%97/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2020/02/10/%E5%B9%B3%E5%87%A1%E7%9A%84%E4%BD%A0%E4%BC%9A%E5%90%8E%E6%82%94%E5%90%97/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="1辩"><a href="#1辩" class="headerlink" title="1辩"></a>1辩</h2><h3 id="反方（不后悔）"><a href="#反方（不后悔）" class="headerlink" title="反方（不后悔）"></a>反方（不后悔）</h3><ul>
-<li>我拼尽全力才过完平凡的一生，既然这么努力为什么还要后悔。</li>
-</ul>
-<h3 id="正方"><a href="#正方" class="headerlink" title="正方"></a>正方</h3><ul>
-<li>每天都会后悔，后悔是个很正常的事。后悔是个没成本的事，没那么大不了。</li>
-<li>努力过就不平凡，畏手畏脚才是开始变得平凡。我表现不好不会后悔，但我如果放弃这个机会我才会后悔。</li>
-</ul>
-<h3 id="Battle"><a href="#Battle" class="headerlink" title="Battle"></a>Battle</h3><ul>
-<li>两个人都是一样的意思。。努力了追梦了就不平凡。</li>
-</ul>
-<h2 id="2辩"><a href="#2辩" class="headerlink" title="2辩"></a>2辩</h2><h3 id="反方"><a href="#反方" class="headerlink" title="反方"></a>反方</h3><ul>
-<li>终其一生了，还考虑这个？还后悔这个？既然改变不了 不如潇洒看开。</li>
-<li>后悔和遗憾不一样，后悔是个很重的词。不是笑笑就可以过去的。</li>
-<li>平凡又怎么样了，这个过程我们努力了，回家妈妈还是会给我们热饭菜，为什么要后悔呢？</li>
-</ul>
-<h3 id="正方-1"><a href="#正方-1" class="headerlink" title="正方"></a>正方</h3><ul>
-<li>不做自己就是平凡。很多人终其一生活成了他人期望的样子。</li>
-<li>没有follow heart，肯定会后悔。（我不怕千万人阻挡，只怕自己投降）</li>
-</ul>
-<h3 id="Battle-1"><a href="#Battle-1" class="headerlink" title="Battle"></a>Battle</h3><ul>
-<li>argue的点就是 做了很多不凡的事 还算不算平凡人。</li>
-</ul>
-<h2 id="3辩"><a href="#3辩" class="headerlink" title="3辩"></a>3辩</h2><h3 id="反方-1"><a href="#反方-1" class="headerlink" title="反方"></a>反方</h3><ul>
-<li>平凡挺好的，这个太平盛世的目的不就是希望我们平凡吗。我们终于平凡不就是我们爱的人希望的吗</li>
-</ul>
-<h3 id="正方-2"><a href="#正方-2" class="headerlink" title="正方"></a>正方</h3><ul>
-<li>后悔为什么是负面情绪？背后是在意，是期待，是热情。不后悔背后没准是绝望，麻木。</li>
-<li>如果你没有不平凡过，你怎么知道平凡才是唯一的答案？说这种话的人都是大起大落后的。</li>
-</ul>
-<h3 id=""><a href="#" class="headerlink" title=""></a></h3><h2 id="反方-2"><a href="#反方-2" class="headerlink" title="反方"></a>反方</h2><ul>
-<li>降低期望是最好的，（不要考虑什么平不平凡，多幸福啊!）</li>
-<li>平凡的人拥有太多财富了：有目标（想要不平凡（哈哈哈和第一个冲突了）），国泰民安（终其一生），死前还有心思想这个（不是暴毙）</li>
-<li><strong>平凡1分，不平凡10分，但是这中间有个基础分。是我们做了一个人，这个基础分是1W</strong>（啊，爱死这句话了）</li>
-</ul>
-<p>关于这个问题，我想我还是会坚持不后悔。</p>
-<p>发现不论是正反方，有一个点是一致认可的：人年轻时候要追梦，要活成自己的样子。但发现有些许把努力、追梦等价于做自己的意思。但我还是比较反感把向上努力当作政治正确的，在我看来，做自己的意思是从心，是惟愿此心无怨尤，而不是因为peer pressure而“被迫”的努力。譬如做研究这个事，同样也有peer pressure，而努力的意义若是为了和他人比较，我们就终有郁郁寡欢的时候，因此自己努力的唯一原因，是自己内心想要做某些事，而这些事需要自己努力，比如自己真心想要做教授，真心喜欢research，只有这样才能做到此心无怨尤。</p>
-<p>另外关于人生选择的锥形，听到别人说到中年人，他们的责任太大，以至于选择更窄了，不禁感叹，我总是在想着自己选择比之高考少了太多，殊不知十年后、二十年后自己连选择深造还是就业，在哪里发展的权力都没了呢！</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1363,7 +1356,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">132</span>
+          <span class="site-state-item-count">133</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
