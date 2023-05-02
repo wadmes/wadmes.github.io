@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta name="generator" content="jemdoc, see http://jemdoc.jaboc.net/" />
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<link rel="stylesheet" href="jemdoc.css" type="text/css" />
+<link rel="stylesheet" href="css/jemdoc.css" type="text/css" />
+<link rel="stylesheet" href="css/myMiddle.css" type="text/css" />
+<title>Q & A - CENG3420 Lab2 & Lab3 - The Chinese University of Hong Kong</title>
+</head>
+<body>
+<div id="layout-content">
+<h1>Q & A - CENG3420 Lab2 & Lab3 - The Chinese University of Hong Kong</h1>
+The website lists all questions of lab2 & lab3 from students. You may find similar solutions here.
+<b>Basically, for Windows users, I suggest you implement and test lab codes in Linux server of department.</b>
+</br></br>
+If you have further questions, feel free to ask 
+ <a href="wli@cse.cuhk.edu.hk">TA Wei Li</a>.
+<h2>Questions on Implementation</h2>
+<ol><li>Q: I wanna ask where can I find the definition of function "blockSR2MUX"? This time I cannot find any matched item in the .c file, 
+  and I can only find this sentence in .h file "int blockSR2MUX(int lIR_5, int lSR2, int lImm);". Also you didn't mention about what is lIR5, lSR2 and lImm. So I am not clear about what to pass to this function as parameter. Also, I would like to ask where is "SR1MUX" locate in the graph on P7 of Lab3-2? I seems that could not find this block on graph, but I see that the function is called quite a lot of times. Thanks~
+</br></br>A: You may refer to http://www.cse.cuhk.edu.hk/~byu/CENG3420/2019Spring/doc/LC-3b-datapath.pdf for further information.
+For example, SR1MUX is shown in Figure C.6.(b) and SR2MUX is shown in Figure C.3
+
+</li></br></br>
+<li>Q: Sorry, but I still don't quite understand. By reading the figure C.3, I still have no idea on how the SR2MUX should be implemented. I thought that you mentioned that we can use that function directly by using correct parameters... Anyway, we have to write the SR2MUX ourselves? If so, I still don't understand the detail about SR2MUX. Also, do we have to implement the PCMUX in order to implement the PC driver? Because I think that the PC driver just pass the output of PCMUX without editing? 
+</br></br>A: You needn't implement BlcokSR2MUX, the implementation is already completed in the '.a' library file. 
+BlockPCMUX should be implemented in lab3-3.
+If you check the figure C.3 carefully. You can see that the PC driver will simply write PC of current latches to bus... (whether the write is permitted is decided by GatePC)
+</li></br></br>
+<li>Q: I would like to ask some questions about Lab3-1. Can we just directly use the functions in notes P.14 (e.g. those GetCOND and GetIRD functions). If we can use them directly, where can we find it and what should I pass as parameter when using these functions? If we cannot use them directly, where should we implement those function and what should be those parameters?
+</br></br>A: Yes you can directly use the functions.
+The functions and corresponding input can be found in the '.h' file.
+</li></br></br>
+<li>Q: When I was doing the lab 3-1, I just replace all '#' in ucode3 by '0'. And the "PC", "IR", "MDR", "MAR", "BUS" are all different from the golden results. Only the State_number and the display after "run x" matches. Is this normal or I have to check my code in .c?
+</br></br>A: You need to replace # by correct 1/0 to obtain the golden solution
+</li></br></br>
+<li>Q: after I finish the logic in "eval_micro_sequencer()", how can i update the address of next state and what should be set as next latch state number?
+  Is that next latch state number = address of next state = the result of the multiplexer?
+</br></br>A: Yes, next latch state number = address of next state = the result of the multiplexer and you can set the microinstruction of next latch by the following command:
+memcpy(NEXT_LATCHES.MICROINSTRUCTION, CONTROL_STORE[NEXT_LATCHES.STATE_NUMBER], sizeof(int)*CONTROL_STORE_BITS);
+</li></br></br>
+<li>Q: When I was doing the lab 3-1, I just replace all '#' in ucode3 by '0'. And the "PC", "IR", "MDR", "MAR", "BUS" are all different from the golden results. Only the State_number and the display after "run x" matches. Is this normal or I have to check my code in .c?
+</br></br>A: You need to replace # by correct 1/0 to obtain the golden solution
+</li></br></br>
+
+
+</ol>
+</li></br></br>
+<h2>Questions on rules and submission</h2>
+<ol>
+<li>Q: May I ask if error detection required in the lab exercise? (eg. If high bit < low bit, then printf invalid and exit)
+  Or can I assume the test cases are all valid?
+</br></br>A: The test cases are all valid. But I still suggest you add an error detection code for a good habit.
+
+</li></br></br>
+<li>Q: I want to ask in lab report it said"Describe the outline of how to update NEXT_LATCHES in process_instruction() here:'
+  Do we need to describe everything that related to NEXT_LATCHES such as NEXT_LATCHES.PC.etc , or just NEXT_LATCHES itself?
+</br></br>A: No, you can just mention the change of program counter which you implemented.
+</li></br></br>
+<li>Q: In the report, we need to show the result of 'run 5' executing different files.
+  For task 1 result, is it generated from the complete code containing both task1 and 2 functions?
+</br></br>A: This is a good question and sorry that I missed specifying this point in the tutorial.
+In principle, the results of task 1 shouldn't contain task2 codes. However, due to my ignorance, the correct results of both cases are acceptable and no points will be deducted.
+</li></br></br>
+<li>Q: In Task2(3) of lab2, what is mean by "resolve it". Does it mean how to solve the issue faced after the instruction change due to sid or it mean how to implement the change.
+</br></br>A: how to solve the issue faced after the instruction change due to sid.
+</li></br></br>
+<li>Q: do we submit the lab report and c file in a zip or by 2 separate files.
+  I got confused and submitted a zip last time got 1 mark deducted lol.
+</br></br>A: separate files are preferable.
+</li></br></br>
+</ol>
+</div>
+</body>
+</html>
