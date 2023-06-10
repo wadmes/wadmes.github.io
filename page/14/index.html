@@ -213,6 +213,832 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2017/12/26/DNN/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/liwei3.jpg">
+      <meta itemprop="name" content="Li Wei">
+      <meta itemprop="description" content="人生注定是一个人的旅行，但就算孤独也要做一直前行的人啊">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="NEWAY">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2017/12/26/DNN/" class="post-title-link" itemprop="url">DNN study notes</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2017-12-26 23:00:00" itemprop="dateCreated datePublished" datetime="2017-12-26T23:00:00-06:00">2017-12-26</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-03-21 08:30:32" itemprop="dateModified" datetime="2019-03-21T08:30:32-05:00">2019-03-21</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/study/" itemprop="url" rel="index"><span itemprop="name">study</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2017/12/26/DNN/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2017/12/26/DNN/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="Why-deeper-not-fatter"><a href="#Why-deeper-not-fatter" class="headerlink" title="Why deeper? not fatter?"></a>Why deeper? not fatter?</h3><ul>
+<li><p><strong>Analogy</strong>: Using multiple layers of neurons <em>(logic gates)</em> to represent some functions are much simpler</p>
+</li>
+<li><p>deeper layer -&gt;Modularization (More kinds of module with less training data)</p>
+<p>low layer &#x3D; basic module &#x3D; enough training data</p>
+</li>
+</ul>
+<h3 id="Bad-training-results"><a href="#Bad-training-results" class="headerlink" title="Bad training results?"></a>Bad training results?</h3><ul>
+<li><p><strong>choosing proper loss</strong></p>
+<p>softmax output layer -&gt; cross entropy</p>
+<p>And its partial derivation by W is:</p>
+<p>$\begin{eqnarray} \frac{\partial C}{\partial w_j} &amp; &#x3D; &amp; \frac{1}{n} \sum_x \frac{\sigma’(z) x_j}{\sigma(z) (1-\sigma(z))} (\sigma(z)-y). \tag{60}\end{eqnarray}$</p>
+<p>Because the final activation function is usually softmax, therefore,</p>
+<p>$\begin{eqnarray} \frac{\partial C}{\partial w_j} &#x3D; \frac{1}{n} \sum_x x_j(\sigma(z)-y). \tag{61}\end{eqnarray}$</p>
+</li>
+<li><p><strong>mini-batch</strong></p>
+<ul>
+<li>for each batch(n&#x3D;1000), update parameters by picking mini-batches. ( the total loss is not the whole batch loss, but a mini-part). </li>
+<li>If there are 20 batches, update 20 times in one epoch. ( Shuffle the training examples for each epoch)</li>
+</ul>
+</li>
+<li><p><strong>Vanishing Gradient Problem</strong></p>
+<p>lower layer &#x3D; smaller gradients &#x3D; slow learning &#x3D; almost random</p>
+<p>deeper layer &#x3D; larger gradients &#x3D; fast learning &#x3D; already converge</p>
+<ul>
+<li><p><em><strong>ReLU</strong></em></p>
+<ol>
+<li>Fast to computer</li>
+<li>Biological reason</li>
+<li>Infinite sigmoid with different biases</li>
+<li>Vanishing gradient problem</li>
+</ol>
+<p>$\dfrac{\partial{C}}{\partial{b_{1}}}&#x3D;\sigma^{\prime}(z_{1})\omega_{2}\sigma^{\prime}(z_{2})\omega_{3}\sigma^{\prime}(z_{3})\omega_{4}\sigma^{\prime}(z_{4})\dfrac{\partial{C}}{\partial{a_{4}}}$</p>
+<p>where $\sigma^{\prime}(z)$ is the activation function respectively. Therefore, ReLU  &#x3D; 1</p>
+</li>
+</ul>
+</li>
+<li><p><strong>Adaptive Learning Rate</strong></p>
+<p>If learning rate is too large, Total loss may not decrease after each update</p>
+<p>If learning rate is too small, Training would be too slow</p>
+<p>Reduce the learning rate by some factor every few epochs:</p>
+<ul>
+<li><p><em><strong>Adagrad</strong></em></p>
+<p>Learning rate is smaller and smaller for all parameters</p>
+<p>Smaller derivatives, larger learning rate, and vice versa</p>
+</li>
+</ul>
+</li>
+<li><p><strong>Momentum</strong></p>
+</li>
+</ul>
+<h3 id="Bad-test-result-overfittting"><a href="#Bad-test-result-overfittting" class="headerlink" title="Bad test result? overfittting?"></a>Bad test result? overfittting?</h3><ul>
+<li><p><strong>Early Stopping</strong></p>
+</li>
+<li><p>L2 regu</p>
+<p>我们拿 L2正则化来探讨一下, 机器学习的过程是一个 通过修改参数 theta 来减小误差的过程, 可是在减小误差的时候非线性越强的参数, 比如在 x^3 旁边的 theta 4 就会被修改得越多, 因为如果使用非线性强的参数就能使方程更加曲折, 也就能更好的拟合上那些分布的数据点. Theta 4 说, 瞧我本事多大, 就让我来改变模型, 来拟合所有的数据吧, 可是它这种态度招到了误差方程的强烈反击, 误差方程就说: no no no no, 我们是一个团队, 虽然你厉害, 但也不能仅仅靠你一个人, 万一你错了, 我们整个团队的效率就突然降低了, 我得 hold 住那些在 team 里独出风头的人. 这就是整套正规化算法的核心思想. 那 L1, L2 正则化又有什么不同呢?</p>
+<p>l1: </p>
+<p>尽量稀疏  和dropout 类似</p>
+</li>
+<li><p><strong>Weight Decay</strong></p>
+<p>$w &#x3D; 0.99 w - learning~rate * gradient$</p>
+</li>
+<li><p><strong>Dropout</strong></p>
+<ul>
+<li><p>Each time before updating the parameters: Each neuron has p% to dropout</p>
+</li>
+<li><p>The structure of the network is changed</p>
+</li>
+<li><p>Using the new network for training</p>
+</li>
+<li><p>For each mini-batch, we resample the dropout neurons</p>
+</li>
+<li><p>If the dropout rate at training is p%, all the weights when testing times (1-p)%</p>
+</li>
+<li><p><em><strong>Reason</strong></em></p>
+<ul>
+<li><p>When teams up, if everyone expect the partner will do the work, nothing will be done finally</p>
+<p>However, if you know your partner will dropout, you will do better.</p>
+<p>When testing, no one dropout actually, so obtaining good results eventually.</p>
+</li>
+<li><p>Dropout is a kind of ensemble</p>
+<p>Train a bunch of networks with different structures</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2017/12/24/latex-math-notation/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/liwei3.jpg">
+      <meta itemprop="name" content="Li Wei">
+      <meta itemprop="description" content="人生注定是一个人的旅行，但就算孤独也要做一直前行的人啊">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="NEWAY">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2017/12/24/latex-math-notation/" class="post-title-link" itemprop="url">Latex math notation</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2017-12-24 16:11:19" itemprop="dateCreated datePublished" datetime="2017-12-24T16:11:19-06:00">2017-12-24</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-03-21 08:33:41" itemprop="dateModified" datetime="2019-03-21T08:33:41-05:00">2019-03-21</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/code/" itemprop="url" rel="index"><span itemprop="name">code</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2017/12/24/latex-math-notation/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2017/12/24/latex-math-notation/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <ul>
+<li>$\Delta$ : \Delta</li>
+<li>$\leftrightarrow$ : \leftrightarrow</li>
+<li>$\Rightarrow$: \Rightarrow</li>
+<li>$\neg$: \neg</li>
+<li>$\wedge$: \wedge</li>
+<li>$\vee$: \bee</li>
+<li>$\sum_{n &#x3D; 0}^{\infty}$: \sum_{n &#x3D; 0}^{\infty}</li>
+<li>$\lambda$: \lambda</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2017/12/24/csci3230-HW3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/liwei3.jpg">
+      <meta itemprop="name" content="Li Wei">
+      <meta itemprop="description" content="人生注定是一个人的旅行，但就算孤独也要做一直前行的人啊">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="NEWAY">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2017/12/24/csci3230-HW3/" class="post-title-link" itemprop="url">CSCI3230 HW3</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2017-12-24 15:10:25" itemprop="dateCreated datePublished" datetime="2017-12-24T15:10:25-06:00">2017-12-24</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-12-11 22:14:01" itemprop="dateModified" datetime="2019-12-11T22:14:01-06:00">2019-12-11</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/study/" itemprop="url" rel="index"><span itemprop="name">study</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2017/12/24/csci3230-HW3/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2017/12/24/csci3230-HW3/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>CSCI3230 HW3 Li Wei  1155062148</p>
+<p>test!</p>
+<h4 id="1-Information-Theory-and-Logic"><a href="#1-Information-Theory-and-Logic" class="headerlink" title="1. Information Theory and Logic"></a>1. Information Theory and Logic</h4><h5 id="a"><a href="#a" class="headerlink" title="a."></a>a.</h5><p>define $P_{front}$ and $P_{back}$ as the possibilities of front and back respectively. And we have:</p>
+<p>$P_{front}+P_{back} &#x3D; 1$</p>
+<p>$I(V) &#x3D; 0$: The coin flipping result must be front&#x2F; back, which means its possibility is 1. $P_{front} \ or \ P_{back} &#x3D;1$ so that $I(V) &#x3D; - 0\times log_2 0  - 1\times log_21 &#x3D; 0$ </p>
+<p>$I(V) &#x3D; log_2n$: The possibility of front and back are same, which is 0.5 respectively. $P_{front}  &#x3D;P_{back} &#x3D;0.5$  so that $I(V) &#x3D; - 0.5\times log_2 0.5  - 0.5\times log_20.5 &#x3D; log_22&#x3D;1$</p>
+<h5 id="b"><a href="#b" class="headerlink" title="b."></a>b.</h5><p>R1:</p>
+<p> $Pass(x,computer) \wedge Win(x,prize)\rightarrow Happy(x)\Rightarrow $</p>
+<p>$\neg(Pass(x,computer) \wedge Win(x,prize)) \vee Happy(x) \Rightarrow$</p>
+<p>$\neg Pass(x,computer) \vee \neg Win(x,prize) \vee Happy(x) $</p>
+<p>R2:</p>
+<p>$Study(y) \vee Lucky(y) \rightarrow Pass(y,z) \Rightarrow$</p>
+<p>$\neg(Study(y) \vee Lucky(y)) \vee Pass(y,z) \Rightarrow$</p>
+<p>$(\neg Study(y) \wedge \neg Lucky(y)) \vee Pass(y,z) \Rightarrow$</p>
+<p>$(\neg Study(y) \vee Pass(y,z)) \wedge(\neg Lucky(y)\vee Pass(y,z))$</p>
+<p>R3:</p>
+<p>$Lucky(w) \rightarrow Win(w,prize) \Rightarrow$</p>
+<p>$\neg Lucky(w) \vee Win(w,prize) $</p>
+<p><img src="/images%5Chw3_1.jpg" alt="hw3_1"></p>
+<h4 id="2-Neural-Network"><a href="#2-Neural-Network" class="headerlink" title="2. Neural Network"></a>2. Neural Network</h4><h5 id="a-1"><a href="#a-1" class="headerlink" title="a."></a>a.</h5><p>$O &#x3D; f(\sum_{j&#x3D;1}^{n} (w_jI_j)+ w_o)$</p>
+<h5 id="b-1"><a href="#b-1" class="headerlink" title="b."></a>b.</h5><p>$h_{i,k} &#x3D; f(\sum_{j &#x3D; 1}^{H_{i-1}}(w_{i-1,j,k}h_{i-1,j}))$</p>
+<p>$O_m &#x3D;f(\sum_{j &#x3D; 1}^{H_{K}}(w_{K,j,m}h_{K,j})) $</p>
+<h5 id="c"><a href="#c" class="headerlink" title="c."></a>c.</h5><p>$f’(z) &#x3D; (\frac{1}{1+e^{-z}})’ &#x3D; \frac{e^{-z}}{(1+e^{-z})^2} &#x3D; \frac{1}{1+e^{-z}}\times \frac{e^{-z}}{1+e^{-z}}&#x3D; f(z)(1-f(z))$</p>
+<h5 id="d"><a href="#d" class="headerlink" title="d."></a>d.</h5><p>Learning rate represents the <strong>impact of the correction</strong> applied following a training step. The bigger the learning rate, the more drastic the changes at each step. And if we set learning rate  as 1, which means no learning rate, we’ll mostly likely start diverging away from the minimum. Therefore, we need a learning rate to control the changing velocity of weights and it is better to use a smaller learning rate.</p>
+<h5 id="e"><a href="#e" class="headerlink" title="e."></a>e.</h5><ol>
+<li><p>$\frac{\delta E}{\delta w_{K,j,k}} &#x3D; \frac{\delta E}{\delta O_k}\cdot \frac{\delta O_k}{\delta w_{K,j,k}}&#x3D; (O_k - T_k)\cdot O_k\cdot(1-O_k)\cdot h_{K,j}​$ (because $E &#x3D; 0.5\sum_{m&#x3D;1}^{H_{K+1}}(O_m - T_m)^2 \ and\ O_ k&#x3D;f(\sum_{j &#x3D; 1}^{H_{K}}(w_{K,j,k}h_{K,j}) ) ​$)</p>
+</li>
+<li><p>considering $E&#x3D;F(h_{i+2,1}+ …+ h_{i+2,H_{i-2}})$ and $h_{i+2,j} &#x3D; G(h_{i+1,k})$, according to the multivariate chain rule:</p>
+<p>$\frac{\delta E}{\delta h_{i+1,k}} &#x3D; \sum_{j&#x3D;1}^{H_{i+2}}(\frac{\delta E}{\delta h_{i+2,j}} \cdot \frac{\delta h_{i+2,j}}{\delta h_{i+1},k})$</p>
+<p>$&#x3D;\sum_{j&#x3D;1}^{H_{i+2}}(\frac{\delta E}{\delta h_{i+2,j}}\cdot h_{i+2,k}\cdot (1-h_{i+2,k})\cdot w_{i+1,k,j}) &#x3D; \sum_{j&#x3D;1}^{H_{i+2}}\Delta_{i+2,j} \cdot w_{i+1,k,j}$</p>
+</li>
+<li><p>According to chain rule, we have</p>
+<p>$\frac{\delta E}{\delta w_{i,j,k}} &#x3D; \frac{\delta E}{\delta h_{i+1},k} \cdot \frac{\delta h_{i+1},k}{w_{i,j,k}}$</p>
+<p>And $\frac{\delta h_{i+1,k}}{w_{i,j,k}} &#x3D; f’(\sum_{j &#x3D; 1}^{H_{i}}(w_{i,j,k}h_{i,j}))\cdot h_{i,j}&#x3D; h_{i+1,k}\cdot (1-h_{i+1,k})\cdot h_{i,j}​$</p>
+<p>Therefore, the result is:</p>
+<p>$\frac{\delta E}{\delta w_{i,j,k}} &#x3D; (\sum_{j&#x3D;1}^{H_{i+2}}\Delta_{i+2,j} \cdot w_{i+1,k,j})\cdot h_{i+1,k}\cdot (1-h_{i+1,k})\cdot h_{i,j} $ </p>
+<hr>
+</li>
+<li><p>def <strong>BP</strong>(<em>network,examples,a</em>) return a modified network:<br><strong>INPUTS</strong>:<br>  network, a multilayer network<br>  examples, a set of data&#x2F;label pairs<br>  a, learning rate</p>
+<p><strong>Repeat:</strong></p>
+<p><strong>for each</strong> e <strong>in</strong> examples:<br>  $O \leftarrow Run(Network, e)$<br>  <strong>for each</strong> neuron <strong>in</strong> network:</p>
+<pre><code> $\Delta_&#123;K+1,k&#125; \leftarrow (O_k - T_k)\cdot O_k\cdot(1-O_k)\cdot h_&#123;K,j&#125;$
+</code></pre>
+<p>​	<strong>for each</strong> weight <strong>connected to</strong> corresponding neuron:</p>
+<p>​		$W_{K,j,k} \leftarrow W_{K,j,k} - a\cdot \Delta_{K+1,k} \cdot h_{K,j}$</p>
+<p>  <strong>for each</strong> sub-layer <strong>except the first layer</strong>:</p>
+<p>​	**for each ** neuron <strong>in</strong> sub layer:</p>
+<p>​		$\Delta_{i,k}&#x3D; (\sum_{j&#x3D;1}^{H_{i+1}}\Delta_{i+1,j} \cdot w_{i,k,j})\cdot h_{i,k}\cdot (1-h_{i,k})\cdot $</p>
+<p>​		<strong>for each</strong> weight <strong>connected to</strong> corresponding neuron <strong>in</strong> current sublayer:</p>
+<p>​			$W_{i,j,k} \leftarrow W_{i,j,k} - a\cdot \Delta_{i+1,k} \cdot h_{i,j}$</p>
+<p><strong>Until</strong> network <strong>has converged</strong></p>
+<p><strong>return</strong> network</p>
+<hr>
+</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2017/12/17/ESTR%203108%20Review/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/liwei3.jpg">
+      <meta itemprop="name" content="Li Wei">
+      <meta itemprop="description" content="人生注定是一个人的旅行，但就算孤独也要做一直前行的人啊">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="NEWAY">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2017/12/17/ESTR%203108%20Review/" class="post-title-link" itemprop="url">ESTR 3108 review</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2017-12-17 23:00:00" itemprop="dateCreated datePublished" datetime="2017-12-17T23:00:00-06:00">2017-12-17</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-03-21 08:31:29" itemprop="dateModified" datetime="2019-03-21T08:31:29-05:00">2019-03-21</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/study/" itemprop="url" rel="index"><span itemprop="name">study</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2017/12/17/ESTR%203108%20Review/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2017/12/17/ESTR%203108%20Review/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="ESTR-3108-Review"><a href="#ESTR-3108-Review" class="headerlink" title="ESTR 3108 Review"></a>ESTR 3108 Review</h1><h2 id="Agents"><a href="#Agents" class="headerlink" title="Agents"></a>Agents</h2><p><em><strong>Agents</strong></em> include humans,robots, softbots, thermostats, etc.</p>
+<p>The <em><strong>agent function</strong></em> maps from percept histories(sequences) to actions $P-&gt;A$</p>
+<p><em><strong>agent program</strong></em> runs on the physical architecture to produce f. (prescode)</p>
+<ul>
+<li><strong>Percepts</strong> :sensor reading</li>
+<li><strong>Actions</strong> : output</li>
+<li><strong>Goals</strong> : performance measure ( to achieve the goal )</li>
+<li><strong>Environment</strong> : external world</li>
+</ul>
+<p><em><strong>Rational agent</strong></em>: For each possible percept sequence, a rational agent should choose an action<br>that is expected to <em><strong>maximize its performance measure</strong></em>, given the evidence provided by the <em><strong>percept sequence</strong></em> and whatever <em><strong>built-in knowledge (environment) (capabilities(actions))</strong></em> it has</p>
+<p>Basic types of agents in order of <em><strong>increasing</strong></em> generality:</p>
+<h3 id="Simple-reflex-agents"><a href="#Simple-reflex-agents" class="headerlink" title="Simple reflex agents"></a>Simple reflex agents</h3><p>Agents with <em><strong>condition-action rules</strong></em> </p>
+<h3 id="Model-based-Reflex-agents-with-state"><a href="#Model-based-Reflex-agents-with-state" class="headerlink" title="Model based Reflex agents with state"></a>Model based Reflex agents with state</h3><p>Simple agents that maintain some sort of <em><strong>internal state</strong></em>(arg: state,action,percept,model) of the world (and a model) in order to choose an action.</p>
+<h3 id="Model-based-Goal-based-agents"><a href="#Model-based-Goal-based-agents" class="headerlink" title="Model-based, Goal-based agents"></a>Model-based, Goal-based agents</h3><p>Knowing about the current state of the environment is not always enough to decide what to do.The agent need a GOAL describing the desirable situations. </p>
+<h3 id="Model-based-Utility-based-agents"><a href="#Model-based-Utility-based-agents" class="headerlink" title="Model-based, Utility-based agents"></a>Model-based, Utility-based agents</h3><p>Goals alone are not really enough to generate high-quality behavior. (eg: quicker? safer? cheaper?) }We<br>can only achieve some utilities, or have a compromise action.</p>
+<h3 id="Learning-Agents"><a href="#Learning-Agents" class="headerlink" title="Learning Agents"></a>Learning Agents</h3><p>The <em><strong>learning element</strong></em> responsible for making improvements to the performance element.</p>
+<p>The <em><strong>performance element</strong></em> &#x3D; previously entire agent: it takes in percepts and decides on actions.</p>
+<p>The <em><strong>critic</strong></em> tells the learning element how well the agent is doing w.r.t. a fixed standard of performance. Necessary because the percepts themselves provide no indication of agent’s success.</p>
+<p>The <em><strong>problem generator</strong></em> - responsible for suggesting problems &amp; actions for new and informative experiences.</p>
+<h3 id="Problem-solving-agents"><a href="#Problem-solving-agents" class="headerlink" title="Problem-solving agents"></a>Problem-solving agents</h3><ol>
+<li>Goal Formation</li>
+<li>Problem formulation: to decide what <em>actions</em> and <em>states</em> to consider</li>
+<li>Search</li>
+<li>Execution</li>
+</ol>
+<h3 id="4-problem-types"><a href="#4-problem-types" class="headerlink" title="4 problem types"></a>4 problem types</h3><h4 id="single-state-problems"><a href="#single-state-problems" class="headerlink" title="single-state problems"></a>single-state problems</h4><p>deterministic, fully observable: consider a single state at a time</p>
+<h4 id="Multiple-state-problems"><a href="#Multiple-state-problems" class="headerlink" title="Multiple state problems"></a>Multiple state problems</h4><p>non-observable: reason about sets of states that it might get to.</p>
+<h4 id="Contingency（偶然性）-problems"><a href="#Contingency（偶然性）-problems" class="headerlink" title="Contingency（偶然性） problems"></a>Contingency（偶然性） problems</h4><p>nondeterministic and&#x2F;or partially observable: calculates a whole tree of actions rather than a single action sequence</p>
+<h4 id="Exploration-problems"><a href="#Exploration-problems" class="headerlink" title="Exploration problems"></a>Exploration problems</h4><p>unknown state space: agent must experiment, discovering the actions and states.</p>
+<p><em><strong>state space</strong></em> : The set of all states reachable from the initial state by any sequence of actions</p>
+<h2 id="Tree-Search-alg"><a href="#Tree-Search-alg" class="headerlink" title="Tree Search alg"></a>Tree Search alg</h2><p>Basic idea: </p>
+<p>Current state - generate a new set of states (expanding the state) - choose one (expanding state) by a search strategy to expand - search tree with search nodes</p>
+<h3 id="Evaluation-methods"><a href="#Evaluation-methods" class="headerlink" title="Evaluation methods"></a>Evaluation methods</h3><ul>
+<li>completeness. Always find a solution if exists?</li>
+<li>time complexity: number of nodes</li>
+<li>space complexity: maximum number of nodes in memory</li>
+<li>optimality: always find a least-cost solution?</li>
+</ul>
+<h3 id="BFS"><a href="#BFS" class="headerlink" title="BFS"></a>BFS</h3><ul>
+<li>FIFO queue</li>
+<li>complete</li>
+<li>time and space: O($b^{d+1}$) b: branching factor, d:depth of optimal solution</li>
+<li>optimal(if cost &#x3D; 1 per step)</li>
+</ul>
+<h3 id="Uniform-cost-search"><a href="#Uniform-cost-search" class="headerlink" title="Uniform cost search"></a>Uniform cost search</h3><ul>
+<li>expand the lowerst-cost node rather than lowest-depth node.</li>
+<li>complete </li>
+<li>time: number of nodes with g &lt;&#x3D; cost of optimal solution. g: path cost</li>
+<li>space: number of nodes with g &lt;&#x3D; cost of optimal solution</li>
+<li>optimal</li>
+</ul>
+<h3 id="DFS"><a href="#DFS" class="headerlink" title="DFS"></a>DFS</h3><ul>
+<li>LIFO queue</li>
+<li>not complete, fail in infinite depth spaces</li>
+<li>O($b^m$) m: max depth of search tree, b: branching factor</li>
+<li>space: O(bm)</li>
+<li>optimal if cost same per step</li>
+</ul>
+<h3 id="Depth-limited-search"><a href="#Depth-limited-search" class="headerlink" title="Depth limited search"></a>Depth limited search</h3><p>depth first search with depth limit L</p>
+<h3 id="Iterative-deepening-search"><a href="#Iterative-deepening-search" class="headerlink" title="Iterative deepening search"></a>Iterative deepening search</h3><p>iterate limit L from 0 to infinite</p>
+<ul>
+<li>complete</li>
+<li>time: O($b^d$)</li>
+<li>space: O(bd)</li>
+<li>optimal if cost same per step</li>
+</ul>
+<h3 id="Best-first-search"><a href="#Best-first-search" class="headerlink" title="Best first search"></a>Best first search</h3><p>Nodes are <em><strong>ordered</strong></em> so that the best evaluation is <em><strong>expanded first</strong></em>. </p>
+<h4 id="Greedy-search"><a href="#Greedy-search" class="headerlink" title="Greedy search"></a>Greedy search</h4><ul>
+<li>Evaluation function &#x3D; estimation of cost from node n to the closest goal, h(n)</li>
+<li>h can be any function as long as h(n) &#x3D; 0 when n &#x3D; goal such as 直线距离</li>
+<li>greedy search: best first search that uses h to select the next node to expand</li>
+<li>not complete(stuck in loop)</li>
+<li>time, space: O($b^m$), m: max depth of search tree ( keep all node in memory )</li>
+<li>not optimal</li>
+</ul>
+<h4 id="A-search"><a href="#A-search" class="headerlink" title="A search"></a>A search</h4><ul>
+<li>evaluation function  f &#x3D; g(n) + h(n) g:cost so far to reach n</li>
+<li>0&lt;&#x3D;h(n)&lt;&#x3D; true cost from n to goal</li>
+<li>complete, unless inifinity nodes with f&lt;&#x3D; f(Goal)</li>
+<li>time, exponential in [error in h * length of solution]</li>
+<li>space. keep all nodes</li>
+<li>optimal </li>
+<li>no other optimal alg is is guaranteed to expand fewer nodes than A (没expand all f 小于goal的 node， 就有可能miss optimal solution)</li>
+</ul>
+<h5 id="Dominance"><a href="#Dominance" class="headerlink" title="Dominance"></a>Dominance</h5><p>if h2 &gt; h1 for all n, then h2 dominates h1 and is better</p>
+<p>$N &#x3D; 1 + b^1 + b^2 + … + b^d $</p>
+<p>N:total number of expanded nodes, b: effective branching factor d: solution depth. use b to determine the h’s overall usefulness.</p>
+<h3 id="Recursive-Best-First-Search-RBFS"><a href="#Recursive-Best-First-Search-RBFS" class="headerlink" title="Recursive Best First Search RBFS"></a>Recursive Best First Search RBFS</h3><pre><code>          1.Deterministic2.Stochastic
+</code></pre>
+<p>Single point    Hill-climbing     Simulator A</p>
+<p>Multiple poi  Multi-start     GA</p>
+<p>Mul: Send whole class to search </p>
+<h3 id="Hill-climbing"><a href="#Hill-climbing" class="headerlink" title="Hill climbing"></a>Hill climbing</h3><p>如果邻居最大值 &lt; current -&gt; return</p>
+<p>else current &#x3D; 邻居最大值</p>
+<p>problem: stuck on local max</p>
+<h3 id="Simulated-annealing"><a href="#Simulated-annealing" class="headerlink" title="Simulated annealing"></a>Simulated annealing</h3><ul>
+<li>escape local max by allowing some “ bad “ moves ( next &#x3D; randomly selected) but gradually decrease their size and frequency</li>
+<li>if next &#x3D; better, always excuted</li>
+<li>$p &#x3D; e^{\Delta E&#x2F;T}$</li>
+</ul>
+<h3 id="Genetic-algorithms"><a href="#Genetic-algorithms" class="headerlink" title="Genetic algorithms"></a>Genetic algorithms</h3><p>选择初始生命种群(initial population)</p>
+<p>​	评价种群中的个体适应度(fitness function)</p>
+<p>​	以比例原则（分数高的挑中机率也较高）选择产生下一个种群。不仅仅挑分数最高的的原因是这么做可能收敛到局部的最佳点，而非整体的。</p>
+<p>​	改变该种群（交叉和变异）(crossover mutation)</p>
+<p>直到停止循环的条件满足</p>
+<h2 id="Game-play"><a href="#Game-play" class="headerlink" title="Game play"></a>Game play</h2><h3 id="Minimax"><a href="#Minimax" class="headerlink" title="Minimax"></a>Minimax</h3><ul>
+<li>complete if tree is finite</li>
+<li>optimal if opponent is optimal</li>
+<li>time ：$O(b^m)$</li>
+<li>space: O(bm) depth first</li>
+</ul>
+<p>Resource limits: cutoff test: depth limit ; evaluation function:&#x3D; estimated desirability of position</p>
+<h4 id="Evaluation-function"><a href="#Evaluation-function" class="headerlink" title="Evaluation function"></a>Evaluation function</h4><ul>
+<li>agree with the utility function on terminal states</li>
+<li>not too long</li>
+<li>accurately reflect the actual chances of winning</li>
+</ul>
+<h3 id="Qui’escence-search"><a href="#Qui’escence-search" class="headerlink" title="Qui’escence search"></a>Qui’escence search</h3><p>Expand non-quiescent(静) positions until quiescent positions are reached.</p>
+<h4 id="Alpha-Beta-pruning"><a href="#Alpha-Beta-pruning" class="headerlink" title="Alpha-Beta pruning"></a>Alpha-Beta pruning</h4><p>compute the correct minimax decision without looking at every node in the search tree.</p>
+<p>perfect order: time &#x3D; $O(b^{m&#x2F;2})$</p>
+<h2 id="Logic"><a href="#Logic" class="headerlink" title="Logic"></a>Logic</h2><p><em><strong>Syntax</strong></em> defines the sentences in the language</p>
+<p><em><strong>Semantics</strong></em> define the meaning of sentences </p>
+<p>m is a  <em><strong>model</strong></em> of a sentence s if s in true in m</p>
+<p>M(s) &#x3D; set of all models of s</p>
+<p>KB entails s  iff M(KB) belongs to M(s)</p>
+<ul>
+<li>Soundness: i is sound if whenever KB entails(i) s, then KB entails s</li>
+<li>Completeness: i is complete if whenever KB entails s, then Kb entails(i) s. Derivations can produce all entailed sentences</li>
+</ul>
+<p>Valid: true in all models</p>
+<p>Satisfiable: true in some models</p>
+<p>Unsatisfiable: true in no models</p>
+<h3 id="Horn-Form"><a href="#Horn-Form" class="headerlink" title="Horn Form"></a>Horn Form</h3><p>conjunction of Horn clauses</p>
+<p><em><strong>Horn clauses</strong></em></p>
+<p>proposition symbol || conjucton of symbols -&gt; symbol</p>
+<h3 id="Backward-chaining"><a href="#Backward-chaining" class="headerlink" title="Backward chaining"></a>Backward chaining</h3><p>1.check if q is known already </p>
+<p>2.prove by BC all premises of some rules concluding q</p>
+<ul>
+<li><strong>Forward chaining</strong><ul>
+<li>data-driven</li>
+<li>may do lots of works that is irrelevant to the goal</li>
+</ul>
+</li>
+<li><strong>Backward chaining</strong><ul>
+<li>goal-driven</li>
+<li>complexity of BC can be much less than linear in size of KB</li>
+</ul>
+</li>
+</ul>
+<h3 id="Resolution"><a href="#Resolution" class="headerlink" title="Resolution"></a>Resolution</h3><h4 id="CNF-universal"><a href="#CNF-universal" class="headerlink" title="CNF-universal"></a>CNF-universal</h4><p>conjunction of “disjunctions of literals”</p>
+<ul>
+<li>$ a\leftrightarrow b\Rightarrow(a\rightarrow b) \wedge(b\rightarrow a)$</li>
+<li>$a\rightarrow b\Rightarrow \neg a \vee b$</li>
+<li>$ \neg( a \vee b)\Rightarrow \neg a \wedge \neg b$</li>
+<li>$(a \wedge b) \vee c \Rightarrow (a \vee c) \wedge ( b \vee c)$</li>
+</ul>
+<h4 id="Resolution-inference-rule"><a href="#Resolution-inference-rule" class="headerlink" title="Resolution inference rule"></a>Resolution inference rule</h4><p>sound and complete</p>
+<p>To proof Kb entails a , by contradiction, show that Kb and not a unsatisfiable</p>
+<h2 id="First-Order-Logic"><a href="#First-Order-Logic" class="headerlink" title="First Order Logic"></a>First Order Logic</h2><ul>
+<li>Terms: Function(Term,…) | constant | variable</li>
+<li>atomic sentences: a predicate symbol followed by a parenthesized list of terms.(also an equality)</li>
+<li>complex sentences: logical connectives (and or) </li>
+<li>Quantifier, for all, exist one</li>
+</ul>
+<p><strong>well formed formula&#x2F;wff</strong>: for sentences that have all their variables properly introduced.</p>
+<p>FOL: one can quantify over objects but not over relations or functions on these object</p>
+<p>Higher order logic : quantify over relations and functions</p>
+<p>$(\lambda x,y\ x^2-y^2)(25,24) &#x3D; 25^2 - 24^2 &#x3D; 49$</p>
+<p>E! &#x3D; unique</p>
+<h3 id="Universal-instantiation-x2F-Existential-instantiation"><a href="#Universal-instantiation-x2F-Existential-instantiation" class="headerlink" title="Universal instantiation &#x2F; Existential instantiation"></a>Universal instantiation &#x2F; Existential instantiation</h3><p>UI can be applied several times to <strong>add</strong> new sentences, the new KB is <strong>logically equivalent</strong></p>
+<p>to the old</p>
+<p>EI can be applied <strong>once</strong> to <strong>replace</strong> the existential sentence, the new KB is <strong>not</strong> equivalent to the old.</p>
+<h3 id="Unification"><a href="#Unification" class="headerlink" title="Unification"></a>Unification</h3><p>UNIFY(p,q) &#x3D; theta where SUBST(theta,p) &#x3D; SUBST(theta, q)</p>
+<h3 id="Backward-channing-and-FC"><a href="#Backward-channing-and-FC" class="headerlink" title="Backward channing and FC"></a>Backward channing and FC</h3><ul>
+<li>BWC<ul>
+<li>space is linear in size of proof</li>
+<li>incomplete due to infinite loops(checking current goal against every goal on stack)</li>
+<li>inefficient due to repeated sub goals ( caching previous results)</li>
+</ul>
+</li>
+<li>FWC<ul>
+<li>sound and complete</li>
+<li>may not terminate in general if alpha is not entailed</li>
+<li>entailment with definite clauses is semi-decidable</li>
+</ul>
+</li>
+</ul>
+<h2 id="Learning-From-Examples"><a href="#Learning-From-Examples" class="headerlink" title="Learning From Examples"></a>Learning From Examples</h2><p><strong>Decision Tree</strong> not a good way to represent the function because the truth table is exponentially large in the number of attributes</p>
+<ul>
+<li>If there are no examples left, it means that no such example has been observed, and we return the majority classification of the node’s parent.</li>
+<li>If there are no attributes left, but both +ve and -ve examples, which means that these examples have exactly the same description, but different classifications. This happens when <ul>
+<li>noise</li>
+<li>not fully describe</li>
+<li>the domain is non-deterministic</li>
+</ul>
+</li>
+</ul>
+<p>**Ockham’s razor.**The most likely hypothesis is the simplest one that is consistent with all observations.</p>
+<p><strong>Information content I</strong></p>
+<p>$I(P(v_1),…,P(v_n)) &#x3D; \sum-P(v_i)log_2P(v_i)$</p>
+<p>P is smaller, then -log P is bigger</p>
+<p>$Gain(A) &#x3D; I(p&#x2F;(p+n), n&#x2F;(n+p)) - Reminder(A)$</p>
+<p>$Reminder(A) &#x3D; \sum\frac{p_i+n_i}{p+n}I(p_i&#x2F;{p_i+n_i},n_i&#x2F;p_i+n_i)$</p>
+<p>We select features with largest Gain.</p>
+<ul>
+<li>Fasle negative: the hypothesis must generalization: C2(x) implies C1(x). C2 is to be generalized</li>
+<li>Dropping conditions || add OR conditions</li>
+<li>False positive: specialization. special &#x3D; contradiction</li>
+</ul>
+<p><strong>Sample Size</strong>: $m &gt;&#x3D; 1&#x2F;e ( ln 1&#x2F;o + ln|H|)$</p>
+<p>e &#x3D; max error o &#x3D; error’s probablity H&#x3D; number of possible hypothesis</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2017/09/08/%E6%B8%AF%E7%8B%AC%E8%80%8C%E8%AE%BA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/liwei3.jpg">
+      <meta itemprop="name" content="Li Wei">
+      <meta itemprop="description" content="人生注定是一个人的旅行，但就算孤独也要做一直前行的人啊">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="NEWAY">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2017/09/08/%E6%B8%AF%E7%8B%AC%E8%80%8C%E8%AE%BA/" class="post-title-link" itemprop="url">致楼上港独言论</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2017-09-08 16:50:29" itemprop="dateCreated datePublished" datetime="2017-09-08T16:50:29-05:00">2017-09-08</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-03-21 08:37:33" itemprop="dateModified" datetime="2019-03-21T08:37:33-05:00">2019-03-21</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/life/" itemprop="url" rel="index"><span itemprop="name">life</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2017/09/08/%E6%B8%AF%E7%8B%AC%E8%80%8C%E8%AE%BA/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2017/09/08/%E6%B8%AF%E7%8B%AC%E8%80%8C%E8%AE%BA/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>楼上同学，</p>
+<p>你好。我很高兴阁下是有理性对话，而不仅仅是张贴一大堆重复而又扎眼的港独宣言。但是其中许多观点我无法苟同，在此提出。</p>
+<ol>
+<li><pre><code> 我不是法律专业学生，自小也被教导不懂就不要故作诳语，但是关于 ”煽动罪“是否无效，我也查询了有关资料。有学者如阁下所说，但也有另外一批法律专家认为《香港人權法䅁條例》、《基本法》及《國際政治權利公約》都容許以”保障國家安全或公共秩序”或誹謗等理由對言論自由作出限制。[[1\]](#_ftn1)如果阁下恰好是法律专业同学，希望可以多加解释，以免误会，如果不是，也希望阁下同我一样，不懂就不要故作诳语，还是多查多听的好。
+</code></pre>
+</li>
+<li><pre><code> 我原以为民主墙上，阁下会有高论，谁知竟是如此粗鄙之语？！中华文化绵延千年，每逢危急存亡之秋，皆有仁人志士挺身而出，从岳武穆怒发冲冠为雪靖康之耻，到于少保坚守北京挽狂澜于既倒，正是因为他们，如今我们才能畅谈千年不断的中华文化，才能称我们自己为千年不倒的中华民族。而也只有这样的人，才称得上是国家脊梁，精神图腾。
+</code></pre>
+</li>
+</ol>
+<p>八十年前，中华民族危在旦夕，我的家乡曾经也惨遭沦陷，日本军队对我家乡人民的摧残我也从爷爷口中听闻一二，但就是在祖国摇摇欲坠之时，尚有无数爱国志士，或战死沙场，或为国家崛起而读书科研，他们做到了真正的岂因祸福避趋之。烈士如今仍尸骨未寒，而阁下生来也二十有几，碌碌无为，竟在此狺狺狂吠，叫嚣中华人民共和国不是祖国，将建国前一百年无数英豪的牺牲熟视无睹?将几千年来祖国脊梁的精神踩于脚下？公道自在人心，阁下如此蚍蜉撼大树，便好似称香港只有20年历史一般，只能被人民耻笑，掉在历史的粪堆里。</p>
+<p>阁下也许不了解何为家国情怀?我想告诉你一些我的看法。如果阁下多读点中国历史，会发现这世上总会有人没那么”高明”。 鞠躬尽瘁死而后已的诸葛孔明，死亡面前毫无畏惧的方孝孺，我自横刀向天笑的谭嗣同，每个人的故事都是那么荡气回肠，让人久久不能释怀。也正是这些人，让我相信我们中国从来不缺这样的人，让我为我的民族和国家深深自豪。这样的人，远比拿着绿卡牺牲同学的柴玲高尚的多，也比阁下在此哗众取宠妄图分裂祖国来的高尚的多！</p>
+<p>在我小时候的课本中，老师告诉我们香港是东方之珠，那里的人民也都热情好客，大家也都是中华民族，都是一家人，而小时候香港电影，香港歌曲，香港金庸先生的小说，也都让我对香港心向往之，阁下也许对当前经济不满，对当前政府不满，但因此便打出独立口号，真是其心可诛。侠之大者，为国为民，阁下所作所为，为了国家，为了香港，为了香港民众，真的是大侠所为？还是小人之心？我不得而知。但我只知道，你贵为中华人民共和国香港特别行政区的人民，享港胞之优待，行汉奸之作为，怎敢在民主墙下胡言乱语？人终有一死，日后九泉之下有何面目见中华民族列祖列宗？</p>
+<ol start="3">
+<li><pre><code>阁下并未在大陆生活甚至投票，未曾了解，有何脸面在此口出狂言？我现在告诉你，我外公一介匹夫，耕田为生，但也组织选出了我们村的村委会，投票公告等皆贴于显眼位置。我成年后于香港读书，未曾投票选举人大代表，但也时常听闻内地同学以及家中父母要投票选举，这就是你所说的各级选集毫不公开透明？至于你所说的非共党人士往往不能参选，更是无稽之谈！阁下如果动点脑子，去维基百科查一查，便知道全国人民代表大会主席团里非共产党员究竟有几人了。所以还是那句话，不懂就不要故作诳语，还是多查多听的好。
+</code></pre>
+</li>
+</ol>
+<p>阁下道听途说至极，行污蔑诽谤之事，是为不智。</p>
+<p>阁下不顾国家民众利益，妄图港独，是为不忠。</p>
+<p>阁下享港胞之优待，行汉奸之所为，是为不仁。</p>
+<p>阁下背弃祖先之精神，嘴脸让人痛心，是为不孝。</p>
+<p>当然，此篇也是我胡言乱语，也有不周全之说法，阁下如有异议，欢迎反驳，碍于学业，我也不想回应。只求阁下日后所作所为能做到问心无愧，真正有自己思想。如同最不希望病人死亡的是医生，最不希望香港动荡的是国家，希望所有香港同胞认清到底是谁在毁了香港，合理发出诉求，一起为了更好的香港而奋斗。</p>
+<p>李巍</p>
+<p>8&#x2F;9&#x2F;2017</p>
+<hr>
+<p>[<a href="#_ftnref1">1]</a> 陳澤銘：香港的「叛逆罪」及「煽動罪」(下). (n.d.). Retrieved September 08, 2017, from <a target="_blank" rel="noopener" href="http://www.hkpri.org.hk/commentary/%E9%99%B3%E6%BE%A4%E9%8A%98%EF%BC%9A%E9%A6%99%E6%B8%AF%E7%9A%84%E3%80%8C%E5%8F%9B%E9%80%86%E7%BD%AA%E3%80%8D%E5%8F%8A%E3%80%8C%E7%85%BD%E5%8B%95%E7%BD%AA%E3%80%8D%E4%B8%8B/">http://www.hkpri.org.hk/commentary/%E9%99%B3%E6%BE%A4%E9%8A%98%EF%BC%9A%E9%A6%99%E6%B8%AF%E7%9A%84%E3%80%8C%E5%8F%9B%E9%80%86%E7%BD%AA%E3%80%8D%E5%8F%8A%E3%80%8C%E7%85%BD%E5%8B%95%E7%BD%AA%E3%80%8D%E4%B8%8B/</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2014/09/19/%E4%BD%A0%E4%BB%AC%E8%A2%AB%E5%86%99%E5%9C%A8%E6%88%91%E7%9A%84%E5%BF%83%E9%87%8C/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -237,14 +1063,14 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2014-09-19 16:58:19" itemprop="dateCreated datePublished" datetime="2014-09-19T16:58:19-04:00">2014-09-19</time>
+              <time title="Created: 2014-09-19 15:58:19" itemprop="dateCreated datePublished" datetime="2014-09-19T15:58:19-05:00">2014-09-19</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-03-21 09:37:00" itemprop="dateModified" datetime="2019-03-21T09:37:00-04:00">2019-03-21</time>
+                <time title="Modified: 2019-03-21 08:37:00" itemprop="dateModified" datetime="2019-03-21T08:37:00-05:00">2019-03-21</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -507,14 +1333,14 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2014-08-01 17:02:25" itemprop="dateCreated datePublished" datetime="2014-08-01T17:02:25-04:00">2014-08-01</time>
+              <time title="Created: 2014-08-01 16:02:25" itemprop="dateCreated datePublished" datetime="2014-08-01T16:02:25-05:00">2014-08-01</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-03-21 09:37:24" itemprop="dateModified" datetime="2019-03-21T09:37:24-04:00">2019-03-21</time>
+                <time title="Modified: 2019-03-21 08:37:24" itemprop="dateModified" datetime="2019-03-21T08:37:24-05:00">2019-03-21</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -604,14 +1430,14 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2014-06-14 17:05:40" itemprop="dateCreated datePublished" datetime="2014-06-14T17:05:40-04:00">2014-06-14</time>
+              <time title="Created: 2014-06-14 16:05:40" itemprop="dateCreated datePublished" datetime="2014-06-14T16:05:40-05:00">2014-06-14</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-03-21 09:37:28" itemprop="dateModified" datetime="2019-03-21T09:37:28-04:00">2019-03-21</time>
+                <time title="Modified: 2019-03-21 08:37:28" itemprop="dateModified" datetime="2019-03-21T08:37:28-05:00">2019-03-21</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -779,7 +1605,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">133</span>
+          <span class="site-state-item-count">138</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

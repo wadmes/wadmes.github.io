@@ -213,6 +213,521 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2019/03/11/Optimally-Scheduling-CNN-Convolutions-forEfficient-Memory-Access/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/liwei3.jpg">
+      <meta itemprop="name" content="Li Wei">
+      <meta itemprop="description" content="人生注定是一个人的旅行，但就算孤独也要做一直前行的人啊">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="NEWAY">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/03/11/Optimally-Scheduling-CNN-Convolutions-forEfficient-Memory-Access/" class="post-title-link" itemprop="url">Optimally Scheduling CNN Convolutions for Efficient Memory Access</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-03-11 12:03:57" itemprop="dateCreated datePublished" datetime="2019-03-11T12:03:57-05:00">2019-03-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-03-22 23:11:07" itemprop="dateModified" datetime="2019-03-22T23:11:07-05:00">2019-03-22</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/paper/" itemprop="url" rel="index"><span itemprop="name">paper</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2019/03/11/Optimally-Scheduling-CNN-Convolutions-forEfficient-Memory-Access/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/03/11/Optimally-Scheduling-CNN-Convolutions-forEfficient-Memory-Access/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><h3 id="problem"><a href="#problem" class="headerlink" title="problem"></a><strong>problem</strong></h3><p>difficult to simultaneously buffer the input feature maps, the output feature maps, and the filter weights in limited internal accelerator memory.</p>
+<h3 id="Previous-method"><a href="#Previous-method" class="headerlink" title="Previous method"></a>Previous method</h3><p>use large SRAM buffers (up to a few MBytes may be used). <strong>drawback</strong>: large amounts of memory are not affordable.</p>
+<h3 id="Another-point-x2F-direction"><a href="#Another-point-x2F-direction" class="headerlink" title="Another point&#x2F;direction:"></a><strong>Another point&#x2F;direction</strong>:</h3><ul>
+<li><p>data <strong>reuse</strong> , is determined by the <strong>dataflow schedule</strong> of computatio</p>
+<ul>
+<li><p><strong>Previous work</strong>: the working set of these innermost loops fits the available internal storage</p>
+<p><strong>drawback</strong>: existing models have not been adapted to explicitly <strong>application managed buffers,</strong> which constitute by far the most common memory architecture template for CNN accelerators, therefore, overestimate internal storage requirements</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="Contribution-of-this-work"><a href="#Contribution-of-this-work" class="headerlink" title="Contribution of this work:"></a>Contribution of this work:</h3><ul>
+<li>new analytical memory performance model to evaluate dataflow schedules</li>
+<li>best dataflow schedules </li>
+<li>applied it on the case study of the design of a flexible CNN accelerator for deeply embedded Systems-on-Chip.</li>
+</ul>
+<h2 id="Background"><a href="#Background" class="headerlink" title="Background"></a>Background</h2><h3 id="Convolution-loop-nest"><a href="#Convolution-loop-nest" class="headerlink" title="Convolution loop-nest"></a>Convolution loop-nest</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// M output fmaps loop</span></span><br><span class="line">LOF: <span class="keyword">for</span> (m = <span class="number">0</span>; m &lt; M; m++)</span><br><span class="line"><span class="comment">// C input fmaps loop</span></span><br><span class="line">	LIF: <span class="keyword">for</span> (c = <span class="number">0</span>; c &lt; C; c++)</span><br><span class="line"><span class="comment">// spatial loops (ExE)</span></span><br><span class="line">		LSY: <span class="keyword">for</span> (y = <span class="number">0</span>; y &lt; E; y++)</span><br><span class="line">			LSX: <span class="keyword">for</span> (x = <span class="number">0</span>; x &lt; E; x++)</span><br><span class="line"><span class="comment">// filter loops (RxR, stride S)</span></span><br><span class="line">				LFY: <span class="keyword">for</span> (k = <span class="number">0</span>; k &lt; R; k++)</span><br><span class="line">                    LFX: <span class="keyword">for</span> (l = <span class="number">0</span>; l &lt; R; l++)</span><br><span class="line">                    &#123;</span><br><span class="line">                    p = I[c][y*S+k][x*S+l];</span><br><span class="line">                    w = W[m][c][k][l];</span><br><span class="line">                    O[m][y][x] += p*w;</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="Goal"><a href="#Goal" class="headerlink" title="Goal"></a>Goal</h3><p>The problem consists in <strong>minimizing the number of memory accesses to the off-accelerator memory</strong> given a limited local buffer capacity.</p>
+<h3 id="Reuse-in-convolution"><a href="#Reuse-in-convolution" class="headerlink" title="Reuse in convolution"></a>Reuse in convolution</h3><ul>
+<li>Input feature maps</li>
+<li>Output feature maps</li>
+<li>Weight</li>
+</ul>
+<p>the reuse of a reference is <strong>carried</strong> by a loop if the same memory location is used by different iterations of that loop</p>
+<p>However, unless the entire working set fits the local buffer, this reuse cannot be taken full advantage of.</p>
+<h3 id="Reuse-buffer"><a href="#Reuse-buffer" class="headerlink" title="Reuse buffer"></a>Reuse buffer</h3><ul>
+<li><p>Data cache</p>
+</li>
+<li><p>Application-managed scratchpad memories</p>
+<p><strong>partitioning</strong> the local reuse buffer in a set of application-managed buffers,</p>
+</li>
+</ul>
+<h3 id="Data-Locality-Optimization"><a href="#Data-Locality-Optimization" class="headerlink" title="Data Locality Optimization"></a>Data Locality Optimization</h3><ul>
+<li><p>reordring</p>
+</li>
+<li><p>titling</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// output fmaps -- loop on tiles</span></span><br><span class="line">LTOF: <span class="keyword">for</span> (mm = <span class="number">0</span>; mm &lt; M; mm += mss)</span><br><span class="line">    <span class="comment">// input fmaps -- loop on tiles</span></span><br><span class="line">    LTIF: <span class="keyword">for</span> (cc = <span class="number">0</span>; cc &lt; C; cc += css)</span><br><span class="line">    <span class="comment">// spatial -- loops on tiles</span></span><br><span class="line">        LTSY: <span class="keyword">for</span> (yy = <span class="number">0</span>; yy &lt; E; yy += iss)</span><br><span class="line">            LTSX: <span class="keyword">for</span> (xx = <span class="number">0</span>; xx &lt; E; xx += jss)</span><br><span class="line">            <span class="comment">// output fmaps -- tile loop</span></span><br><span class="line">                LOF: <span class="keyword">for</span> (m=mm; m&lt;min(mm+mss,M); m++)</span><br><span class="line">                <span class="comment">// input fmaps -- tile loop</span></span><br><span class="line">                    LIF: <span class="keyword">for</span> (c=cc; c&lt;min(cc+css,C); c++)</span><br><span class="line">                    <span class="comment">// spatial -- tile loops</span></span><br><span class="line">                        LSY: <span class="keyword">for</span> (y=yy; y&lt;min(yy+iss,E); y++)</span><br><span class="line">                            LSX: <span class="keyword">for</span> (x=xx; x&lt;min(xx+jss,E); x++)</span><br><span class="line">                            <span class="comment">// kernel -- tile loops</span></span><br><span class="line">                                LFY: <span class="keyword">for</span> (k=<span class="number">0</span>; k&lt;R; k++)</span><br><span class="line">                                    LFX: <span class="keyword">for</span> (l=<span class="number">0</span>; l&lt;R; l++)</span><br><span class="line">                                    &#123;</span><br><span class="line">                                    p = I[c][y*S+k][x*S+l];</span><br><span class="line">                                    w = W[m][c][k][l];</span><br><span class="line">                                    O[m][y][x] += p*w;</span><br><span class="line">                                    &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h2><h3 id="Analytical-model-for-evaluating-the-dataflow-schedules"><a href="#Analytical-model-for-evaluating-the-dataflow-schedules" class="headerlink" title="Analytical model for evaluating the dataflow schedules"></a>Analytical model for evaluating the dataflow schedules</h3><h4 id="Distance-d-X-L"><a href="#Distance-d-X-L" class="headerlink" title="Distance $d_X(L)$"></a>Distance $d_X(L)$</h4><p>The number of loop iterations in the loop L , that separates two consecutive accesses to the same data element X</p>
+<p>(d次iteration后，再也不会access到这次access的data element)</p>
+<h4 id="footprint-F-X-L-i"><a href="#footprint-F-X-L-i" class="headerlink" title="footprint $F_X(L_i)$"></a>footprint $F_X(L_i)$</h4><p>the footprint of array X in loop L measures <strong>the number of distinct elements of X</strong> used inside L. </p>
+<p><img src="/images/1552309141092.png" alt="1552309141092"></p>
+<p>n(L) : loop L 的interation数目， L0 代表最里面的inner loop</p>
+<p>the actual required size for the application-managed buffer is computed as follows:</p>
+<p><img src="/images/1552309773395.png" alt="1552309773395"></p>
+<h4 id="memory-traffic-T-X"><a href="#memory-traffic-T-X" class="headerlink" title="memory traffic $T_X$"></a>memory traffic $T_X$</h4><p>number of bytes accessed in off-accelerator memory for array X</p>
+<p><img src="/images/1552309887178.png" alt="1552309887178"></p>
+<p>PX the numerical precision (in bytes) used for its storage.</p>
+<p>It should be noticed that i here is actually defined on maximal B(Li) that fits the size of buffer</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2019/02/28/c-predicate/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/liwei3.jpg">
+      <meta itemprop="name" content="Li Wei">
+      <meta itemprop="description" content="人生注定是一个人的旅行，但就算孤独也要做一直前行的人啊">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="NEWAY">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/02/28/c-predicate/" class="post-title-link" itemprop="url">c++:predicate</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-02-28 21:53:34" itemprop="dateCreated datePublished" datetime="2019-02-28T21:53:34-06:00">2019-02-28</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-03-21 08:19:01" itemprop="dateModified" datetime="2019-03-21T08:19:01-05:00">2019-03-21</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/code/" itemprop="url" rel="index"><span itemprop="name">code</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2019/02/28/c-predicate/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/02/28/c-predicate/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>个人也是初学根本就不了解谓词是什么意思，通过下面的例子大家自己体会吧。</p>
+<p> </p>
+<p>下面程序演示了count_if();</p>
+<p>该程序创建一个包含数字1-19的矢量，然后统计能够被3整除的元素个数。</p>
+<h2 id="为了达到这个目的，程序首先创建了一个称为dividesby3-的一元谓词，如果谓词的参数能够被3整除，该谓词返回ture"><a href="#为了达到这个目的，程序首先创建了一个称为dividesby3-的一元谓词，如果谓词的参数能够被3整除，该谓词返回ture" class="headerlink" title="为了达到这个目的，程序首先创建了一个称为dividesby3()的一元谓词，如果谓词的参数能够被3整除，该谓词返回ture"></a>为了达到这个目的，程序首先创建了一个称为dividesby3()的一元谓词，如果谓词的参数能够被3整除，该谓词返回ture</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">dividesby3</span><span class="params">(<span class="type">int</span> i)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">if</span>((i%<span class="number">3</span>)==<span class="number">0</span>)<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"> vector&lt;<span class="type">int</span>&gt; v;</span><br><span class="line"> <span class="type">int</span> i;</span><br><span class="line"> <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="number">20</span>;i++)v.<span class="built_in">push_back</span>(i);</span><br><span class="line"> cout &lt;&lt; <span class="string">&quot;Sequence:/n&quot;</span>;</span><br><span class="line"> <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;v.<span class="built_in">size</span>();i++)cout &lt;&lt; v[i] &lt;&lt;<span class="string">&quot; &quot;</span>;</span><br><span class="line"> cout &lt;&lt; endl;</span><br><span class="line"> i=<span class="built_in">cout_if</span>(v.<span class="built_in">begin</span>(),v.<span class="built_in">end</span>(),dividesby3);<span class="comment">//谓词就在这里被用到了</span></span><br><span class="line"> cout &lt;&lt;　ｉ　&lt;&lt;<span class="string">&quot; numbers are divisible by 3./n&quot;</span>;</span><br><span class="line"> <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2019/02/14/CUDA-analysis-tool/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/liwei3.jpg">
+      <meta itemprop="name" content="Li Wei">
+      <meta itemprop="description" content="人生注定是一个人的旅行，但就算孤独也要做一直前行的人啊">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="NEWAY">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/02/14/CUDA-analysis-tool/" class="post-title-link" itemprop="url">CUDA analysis tool</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-02-14 20:26:02" itemprop="dateCreated datePublished" datetime="2019-02-14T20:26:02-06:00">2019-02-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-04-30 03:41:54" itemprop="dateModified" datetime="2019-04-30T03:41:54-05:00">2019-04-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/code/" itemprop="url" rel="index"><span itemprop="name">code</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2019/02/14/CUDA-analysis-tool/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/02/14/CUDA-analysis-tool/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="NVIDIA-VISUAL-PROFILER"><a href="#NVIDIA-VISUAL-PROFILER" class="headerlink" title="NVIDIA VISUAL PROFILER"></a>NVIDIA VISUAL PROFILER</h2><p><em>linux</em>端路径：</p>
+<blockquote>
+<p>.&#x2F;PATH_OF_CUDA&#x2F;libnvvp&#x2F;nvvp</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./nvvp</span><br></pre></td></tr></table></figure>
+
+<p>also, when you create a NVVP project with name <code>*.nvvp</code> , you can simply run it by </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvvp *.nvvp</span><br></pre></td></tr></table></figure>
+
+<p>windows*端：</p>
+<ul>
+<li>open visual profiler directly</li>
+<li>new session</li>
+<li>select the .exe file of your CUDA file</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2019/02/02/%E7%99%BD%E9%B9%BF%E5%8E%9F%E8%AF%BB%E5%90%8E%E6%84%9F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/liwei3.jpg">
+      <meta itemprop="name" content="Li Wei">
+      <meta itemprop="description" content="人生注定是一个人的旅行，但就算孤独也要做一直前行的人啊">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="NEWAY">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/02/02/%E7%99%BD%E9%B9%BF%E5%8E%9F%E8%AF%BB%E5%90%8E%E6%84%9F/" class="post-title-link" itemprop="url">白鹿原读后感</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-02-02 16:39:02" itemprop="dateCreated datePublished" datetime="2019-02-02T16:39:02-06:00">2019-02-02</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-01-01 23:25:01" itemprop="dateModified" datetime="2022-01-01T23:25:01-06:00">2022-01-01</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/life/" itemprop="url" rel="index"><span itemprop="name">life</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2019/02/02/%E7%99%BD%E9%B9%BF%E5%8E%9F%E8%AF%BB%E5%90%8E%E6%84%9F/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/02/02/%E7%99%BD%E9%B9%BF%E5%8E%9F%E8%AF%BB%E5%90%8E%E6%84%9F/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>应该是18年的下半年，逐渐有个想法，读过的书，看过的电影，体验过的人生，倘若不在结束的时候记录几句，便好似火车上一闪而过的风景，过去了也就过去了。</p>
+<p>因此，希望能把自己的感触 想法统统记录下来。一来回顾往生的时候多了许多有意思的事，二来在一些重要的决定或者自己三观的培养上也能有指导作用。</p>
+<p>白鹿原描绘了从晚清到建国，在关中的小村白鹿原中发生的的几十年历史，短短的几十年，却发生了几千年自然演变都造不出的变革。家族体系面临着人权民主的冲击，封建社会遭到国民革命的洗礼，而资本主义也和共产主义进行着强烈的冲击。正是种种“主义”交织在一起，才使得故事一波三折，高潮迭起。</p>
+<h2 id="白嘉轩与白孝文"><a href="#白嘉轩与白孝文" class="headerlink" title="白嘉轩与白孝文"></a>白嘉轩与白孝文</h2><p>白嘉轩是一个典型的传统中国中家族族长的形象，威严，正义，洁身自好，有骨气。但是这么多好的词放在他身上却又没使得这个角色如诸葛亮那般人见人爱，顶多算个人见人静。我们不可谓这种家族体系不好，也不可谓白嘉轩是个坏人，至少在他的带领下，白鹿原也是一个远近闻名的文明之邦，但我们为什么对这种“父辈”会有一丝反感呢？究其缘由，可能是许多人在白嘉轩中看到了自己父辈的影子，那个扼杀了自己许多天性的父辈影子。传统中国的人际关系有何特征，按照人类简史的说法，世界范围内的大部分农业社会都是以家族为单位，家族中的族长往往有着无可比拟的个人影响力和家族权力，而中国的家族主导制还多了儒家思想的浸染，早期儒家思想其实并不是白嘉轩为代表的灭人欲，真正将纲常伦理摆在修身之首的是朱熹，这么说来朱熹也是个“带恶人”？现在在年轻人眼中家族体制似乎是落后封建的代表，带也有一部分原因是政府，或者说资本家们更希望将人分成独立而不互助的个体，这样更有利于自己的统治。于是政治家们开始宣传私有财产神圣不可侵犯，自身人格平等而独立，这些我们现在觉得天经地义的思想 在当时看来确是大逆不道。人们遇到纠纷，从最开始的找族长，变成了找警察，对家族的依赖性大大降低，而对政府的统治愈加习以为常。因此，当我真的要去评判白嘉轩时代的白鹿村时，以当代人的视角自然是有失公允的。如果换个问题，扪心自问我愿不愿意在白嘉轩时代的白鹿村生活，答案是明显的否。我承认我已经是人格自由的坚实拥护者，倘若连选择陪伴自己一生的伴侣都要受着伦理道德的束缚，我宁愿反抗这种看似灭人欲实则灭人性的道德。但不论如何，我是尊敬着白嘉轩的，他有着一个男子汉该有的所有性格，只是受限于当时的时代思想（其实是否他的思想就是受限呢？难道思想也有先进之分？），让他成了朱熹思想下的“完美男人”。</p>
+<p>相比于白嘉轩，白孝文是最让我内心波动并且“触目惊心”的。初读白鹿原时，我就有个想法 这彬彬有礼的白孝文，不就是我么？是啊，不论是否是真心想要那样，但孝文确实是我的样子，内敛而不自闭，矜持而不失礼，广受族人好评，也正是如此，看到那鹿子霖计谋他那卑鄙阴谋的时候，我是真的不忍卒读。但就像鹿子霖说的，他只是个钓鱼的，主动上钩的是白孝文自己，是的，白孝文和他爹不一样，他有着常人皆有的人欲，而也是这种人欲让他堕落，逐渐成为了第二个鹿子霖。在我看来，白孝文对小娥不仅仅只有荷尔蒙的欲望，还有两个被当时世俗唾弃的可怜人的互相怜惜，但让我遗憾的是，白孝文的沉沦，成了我最厌恶的那类人。这也是我为什么相信读书，相信冥想的力量，一个人只有真正想明白自己的幸福靠的是什么，才不会在花花世界中放弃自己的原则。于我而言，惟愿本心无怨尤有了新的定义，所谓的本心，初衷，并不是人的兽性一面的欲望，而是自己回首此生，不会觉得虚度，不会后悔，不会恍然发现自己陷在了无休止的竞争，钱财、权力、或是名望。只有知道自己真正的本心，也就是自己真正想要怎么度过的人生，才能做到没有怨尤。人生应该怎样过 没有明确的定义规划，但是我知道的是，由欲望主导的做事行为绝对带来不了真正的心安。佛说过，所有痛苦的来源都是欲望，其实大家都明白这个道理，对事物的欲求太多，得不到时的痛苦也就越多。而现代社会，往往不是因为缺乏必需的而痛苦难耐，而是因为缺乏太多额外的想要的。这个想要的不仅仅是物质，还有很多虚拟的期望，譬如望子成龙，譬如爱情，只有抛却到对这些的欲望但又为之努力，做到尽吾志也而不能至者，才称得上真正的无悔。</p>
+<h2 id="小娥"><a href="#小娥" class="headerlink" title="小娥"></a>小娥</h2><p>小娥是不幸的，是可怜的， 而可怜的人必定有他可恨的地方。但当我仔细想想，她的可恨，我会发现，所有我恨的，不是因为她本身，而是她遇到的这个表明和谐实则乌烟瘴气的社会。 她敢于追求自己的爱情，勇于试着拯救她的心上人。但因为旧社会的妻妾制度，女权的丧失和一些心术不正之人的威逼利诱，她走上了这条在她性格下注定了的道路。</p>
+<h2 id="姓国还是姓共"><a href="#姓国还是姓共" class="headerlink" title="姓国还是姓共"></a>姓国还是姓共</h2><p>这本书貌似是台湾的禁书。但其实对我而言，这书对我最大的政治上的启迪是，不论姓国还是姓共，对人民、对国家最好的才是好的党派，我这种说辞颇有点无党派人士的意味。放在以前，我会把国放在一个反派的位置，或者把共放在反派，但现在，越发觉得，这世上，哪有什么绝对的正反，国民党中有坏人，但也有为国捐躯的好男儿，共产党中有一些为人民的好人，但也有陷在阶级斗争或是政治斗争中的“政治家“。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2019/01/11/numpy-access-elements-trick/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/liwei3.jpg">
+      <meta itemprop="name" content="Li Wei">
+      <meta itemprop="description" content="人生注定是一个人的旅行，但就算孤独也要做一直前行的人啊">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="NEWAY">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/01/11/numpy-access-elements-trick/" class="post-title-link" itemprop="url">numpy access elements trick</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-01-11 13:48:12" itemprop="dateCreated datePublished" datetime="2019-01-11T13:48:12-06:00">2019-01-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-03-21 08:35:04" itemprop="dateModified" datetime="2019-03-21T08:35:04-05:00">2019-03-21</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/code/" itemprop="url" rel="index"><span itemprop="name">code</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2019/01/11/numpy-access-elements-trick/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/01/11/numpy-access-elements-trick/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">considering a numpy matrix mat <span class="keyword">with</span> shape[<span class="number">10</span>,<span class="number">7</span>,<span class="number">1</span>,<span class="number">2</span>]</span><br><span class="line"><span class="keyword">if</span> we want to access the FIRST column of mat, which has shape[<span class="number">10</span>]</span><br><span class="line">then we should use:</span><br><span class="line">    mat[:,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>]</span><br><span class="line">instead of:</span><br><span class="line">    mat[:][<span class="number">0</span>][<span class="number">0</span>][<span class="number">0</span>] (<span class="keyword">return</span> the shape of [<span class="number">5</span>])</span><br><span class="line">	cause mat = mat[:] actully.</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2018/12/21/CS221N-study-notes/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -237,14 +752,14 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2018-12-21 14:35:17" itemprop="dateCreated datePublished" datetime="2018-12-21T14:35:17-05:00">2018-12-21</time>
+              <time title="Created: 2018-12-21 13:35:17" itemprop="dateCreated datePublished" datetime="2018-12-21T13:35:17-06:00">2018-12-21</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-03-21 09:23:59" itemprop="dateModified" datetime="2019-03-21T09:23:59-04:00">2019-03-21</time>
+                <time title="Modified: 2019-03-21 08:23:59" itemprop="dateModified" datetime="2019-03-21T08:23:59-05:00">2019-03-21</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -350,14 +865,14 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2018-11-30 18:44:24" itemprop="dateCreated datePublished" datetime="2018-11-30T18:44:24-05:00">2018-11-30</time>
+              <time title="Created: 2018-11-30 17:44:24" itemprop="dateCreated datePublished" datetime="2018-11-30T17:44:24-06:00">2018-11-30</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-04-20 13:28:29" itemprop="dateModified" datetime="2021-04-20T13:28:29-04:00">2021-04-20</time>
+                <time title="Modified: 2021-04-20 12:28:29" itemprop="dateModified" datetime="2021-04-20T12:28:29-05:00">2021-04-20</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -452,14 +967,14 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2018-11-13 17:50:29" itemprop="dateCreated datePublished" datetime="2018-11-13T17:50:29-05:00">2018-11-13</time>
+              <time title="Created: 2018-11-13 16:50:29" itemprop="dateCreated datePublished" datetime="2018-11-13T16:50:29-06:00">2018-11-13</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-03-21 09:36:40" itemprop="dateModified" datetime="2019-03-21T09:36:40-04:00">2019-03-21</time>
+                <time title="Modified: 2019-03-21 08:36:40" itemprop="dateModified" datetime="2019-03-21T08:36:40-05:00">2019-03-21</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -542,14 +1057,14 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2018-10-26 17:50:29" itemprop="dateCreated datePublished" datetime="2018-10-26T17:50:29-04:00">2018-10-26</time>
+              <time title="Created: 2018-10-26 16:50:29" itemprop="dateCreated datePublished" datetime="2018-10-26T16:50:29-05:00">2018-10-26</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-03-21 09:30:10" itemprop="dateModified" datetime="2019-03-21T09:30:10-04:00">2019-03-21</time>
+                <time title="Modified: 2019-03-21 08:30:10" itemprop="dateModified" datetime="2019-03-21T08:30:10-05:00">2019-03-21</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -646,14 +1161,14 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2018-09-27 16:36:09" itemprop="dateCreated datePublished" datetime="2018-09-27T16:36:09-04:00">2018-09-27</time>
+              <time title="Created: 2018-09-27 15:36:09" itemprop="dateCreated datePublished" datetime="2018-09-27T15:36:09-05:00">2018-09-27</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-02-22 03:34:01" itemprop="dateModified" datetime="2020-02-22T03:34:01-05:00">2020-02-22</time>
+                <time title="Modified: 2020-02-22 02:34:01" itemprop="dateModified" datetime="2020-02-22T02:34:01-06:00">2020-02-22</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -694,518 +1209,6 @@
 <p>看完后浓浓的窒息感。</p>
 <p>第一想法就是觉得人生中有许多特别重要的抉择 当时我们可能不以为然 但往后就会陷入后悔。不过仔细想想他们的结局。其实没有谁特别糟糕。即便特别糟糕了 事情既然发生 也不能怎样了 接受天命很难 却是大部分人必须学会的。</p>
 <p>另外在争吵后，如何去调整关系，不管是伴侣，还是朋友，还是合作伙伴。也许他说的是有道理，也许我真的不适合，公司的未来发展，总之，不要盲目把自己就想成真理。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2018/08/28/SOSP2017DeepXplore/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/liwei3.jpg">
-      <meta itemprop="name" content="Li Wei">
-      <meta itemprop="description" content="人生注定是一个人的旅行，但就算孤独也要做一直前行的人啊">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="NEWAY">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/08/28/SOSP2017DeepXplore/" class="post-title-link" itemprop="url">DeepXplore</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2018-08-28 17:50:29" itemprop="dateCreated datePublished" datetime="2018-08-28T17:50:29-04:00">2018-08-28</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-03-21 09:36:06" itemprop="dateModified" datetime="2019-03-21T09:36:06-04:00">2019-03-21</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/paper/" itemprop="url" rel="index"><span itemprop="name">paper</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine: </span>
-    
-    <a title="valine" href="/2018/08/28/SOSP2017DeepXplore/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2018/08/28/SOSP2017DeepXplore/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="SOSP2017"><a href="#SOSP2017" class="headerlink" title="SOSP2017"></a>SOSP2017</h1><h2 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h2><p>automated and systematic <strong>testing</strong> of large-scale, real-world DL systems with thousands of neurons and millions of parameters for all corner cases is extremely challenging. </p>
-<p>如何准确评估一个DL系统的好坏？</p>
-<h3 id="Background"><a href="#Background" class="headerlink" title="Background"></a>Background</h3><ul>
-<li><strong>adversarial deep learning</strong> have demonstrated that carefully crafted synthetic images by adding <strong>minimal perturbations扰动</strong> to an existing image can fool state-of-the-art DL systems.（像素攻击）<ul>
-<li>limit: it must limit its perturbations to tiny invisible changes or require manual checks.</li>
-</ul>
-</li>
-<li>Challenges:<ul>
-<li>how to generate inputs that trigger different parts of a DL system’s logic and uncover different types of erroneous behaviors,  </li>
-<li>how to identify erroneous behaviors of a DL system w<strong>ithout manual labeling&#x2F;checking.</strong></li>
-</ul>
-</li>
-<li>This work<ul>
-<li>neuron coverage (the number of neurons activated)</li>
-<li>multiple DL systems finish same work. (traditional software engineering technical)</li>
-<li>how to use gradient to solve the problem(test more neuron coverage and as many differential behaviors as possible)</li>
-</ul>
-</li>
-</ul>
-<h3 id="Details"><a href="#Details" class="headerlink" title="Details"></a>Details</h3><p>input: unlabeled test inputs</p>
-<p>output:  new tests that cover a large number of neurons  </p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2018/08/28/superNeuron/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/liwei3.jpg">
-      <meta itemprop="name" content="Li Wei">
-      <meta itemprop="description" content="人生注定是一个人的旅行，但就算孤独也要做一直前行的人啊">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="NEWAY">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/08/28/superNeuron/" class="post-title-link" itemprop="url">DeepXplore</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2018-08-28 17:50:29" itemprop="dateCreated datePublished" datetime="2018-08-28T17:50:29-04:00">2018-08-28</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-03-21 09:36:34" itemprop="dateModified" datetime="2019-03-21T09:36:34-04:00">2019-03-21</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/paper/" itemprop="url" rel="index"><span itemprop="name">paper</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine: </span>
-    
-    <a title="valine" href="/2018/08/28/superNeuron/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2018/08/28/superNeuron/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="SuperNeurons-Dynamic-GPU-Memory-Management-for-Training-Deep-Neural-Networks"><a href="#SuperNeurons-Dynamic-GPU-Memory-Management-for-Training-Deep-Neural-Networks" class="headerlink" title="SuperNeurons: Dynamic GPU Memory Management for Training Deep Neural Networks"></a>SuperNeurons: Dynamic GPU Memory Management for Training Deep Neural Networks</h1><h2 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h2><p>Memory optimization of  <strong>single DNN</strong> <strong>training</strong> work in <strong>single GPU</strong></p>
-<h3 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h3><ul>
-<li><strong>Liveness Analysis</strong> 只保存未来会用到的tensors</li>
-<li><strong>Unified Tensor Pool</strong> communication tools for GPU-CPU memory using Least Recent Used tensor replacement policy and a Tensor cache. （只有conv 这种co mputation-intensive的才放到cpu去）</li>
-<li><strong>Cost-Aware Re-computation</strong>  只要不高于peak memory 都不recompute，否则除了conv 都recompute（pool,activation…）</li>
-<li><strong>Selective convolution algorithm</strong> 基于此刻与peak memory的差值选择convolution 方法（eg。 FFT需要额外的convolution space）</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2018/08/27/Advesarial%20study/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/liwei3.jpg">
-      <meta itemprop="name" content="Li Wei">
-      <meta itemprop="description" content="人生注定是一个人的旅行，但就算孤独也要做一直前行的人啊">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="NEWAY">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/08/27/Advesarial%20study/" class="post-title-link" itemprop="url">Adversarial attack</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2018-08-27 17:50:29" itemprop="dateCreated datePublished" datetime="2018-08-27T17:50:29-04:00">2018-08-27</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-03-21 09:18:19" itemprop="dateModified" datetime="2019-03-21T09:18:19-04:00">2019-03-21</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/study/" itemprop="url" rel="index"><span itemprop="name">study</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine: </span>
-    
-    <a title="valine" href="/2018/08/27/Advesarial%20study/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2018/08/27/Advesarial%20study/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="攻击神经网络"><a href="#攻击神经网络" class="headerlink" title="攻击神经网络"></a>攻击神经网络</h3><h4 id="Fast-Gradient-Method-Explaining-amp-Harnessing-Adversarial-Examples"><a href="#Fast-Gradient-Method-Explaining-amp-Harnessing-Adversarial-Examples" class="headerlink" title="Fast Gradient Method (Explaining &amp; Harnessing Adversarial Examples)"></a>Fast Gradient Method (Explaining &amp; Harnessing Adversarial Examples)</h4><h5 id="linear-model"><a href="#linear-model" class="headerlink" title="linear model:"></a>linear model:</h5><p>$$<br>y’&#x3D;w^Tx’ &#x3D; w^Tx+w^T\sigma<br>$$</p>
-<p>where $\sigma$ is the change of original input x, and we have:<br>$$<br>\sigma &#x3D; \varepsilon sign(w)<br>$$<br>理解： 在保持$|\sigma|$ 不变情况下，y’ 变化最大只可能 使 $w^T\sigma &#x3D; |w|_1$</p>
-<p>DNN<br>$$<br>\sigma &#x3D; \varepsilon sign (\triangledown_xJ(\theta,x,y_{true}))<br>$$</p>
-<p>where J is the loss function. In most cases (soft-max as classifier layer)</p>
-<p>理解： 要让y’变化最大，及 应向loss 变大的方向变化。 即若$(\triangledown_xJ(\theta,x,y))$ 为负数（loss 与 x 的gradient）则 x应变小 （$\sigma$需为负数）</p>
-<h4 id="Iterative-method"><a href="#Iterative-method" class="headerlink" title="Iterative method"></a>Iterative method</h4><h5 id="Basic-iterative-method"><a href="#Basic-iterative-method" class="headerlink" title="Basic iterative method"></a>Basic iterative method</h5><p>update equation (1) $x_2’ &#x3D; x_1’ + \sigma$</p>
-<h5 id="Targeted"><a href="#Targeted" class="headerlink" title="Targeted"></a>Targeted</h5><p>(3) becomes:<br>$$<br>\sigma &#x3D; -\varepsilon sign (\triangledown_xJ(\theta,x,y_{targeted}))<br>$$</p>
-<h4 id="Our-Method"><a href="#Our-Method" class="headerlink" title="Our Method"></a>Our Method</h4><h5 id="What-we-have-known-and-what-we-can-obtained-now"><a href="#What-we-have-known-and-what-we-can-obtained-now" class="headerlink" title="What we have known and what we can obtained now?"></a>What we have known and what we can obtained now?</h5><ul>
-<li><p>Printable image size:</p>
-<p>$P(i,j)$ as the indexed boxes with size: Black&#x2F;white box: $P_h\times P_w$</p>
-</li>
-<li><p>Actual image ($100\times 100$) per frame.  </p>
-<p>$S_I$: starting index of the billboard for each frame.</p>
-<p>$R_I$: range of the billboard for each frame.</p>
-<p>$G_I$: gradient of each pixel in the bill board&#x2F;</p>
-</li>
-</ul>
-<h5 id="What-we-need-to-calculate"><a href="#What-we-need-to-calculate" class="headerlink" title="What we need to calculate"></a>What we need to calculate</h5><p>$G_P$ :gradient of each box in P.</p>
-<h5 id="How"><a href="#How" class="headerlink" title="How?"></a>How?</h5><p>Transform:</p>
-<ul>
-<li><p>Nearest </p>
-</li>
-<li><p>SPP:   </p>
-</li>
-<li><p>Binary</p>
-</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2018/07/28/EIE/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/liwei3.jpg">
-      <meta itemprop="name" content="Li Wei">
-      <meta itemprop="description" content="人生注定是一个人的旅行，但就算孤独也要做一直前行的人啊">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="NEWAY">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/07/28/EIE/" class="post-title-link" itemprop="url">EIE, Efficient Inference Engine on Compressed Deep Neural Network</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2018-07-28 17:50:29" itemprop="dateCreated datePublished" datetime="2018-07-28T17:50:29-04:00">2018-07-28</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-12-11 05:22:17" itemprop="dateModified" datetime="2019-12-11T05:22:17-05:00">2019-12-11</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/paper/" itemprop="url" rel="index"><span itemprop="name">paper</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine: </span>
-    
-    <a title="valine" href="/2018/07/28/EIE/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2018/07/28/EIE/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="EIE-Efficient-Inference-Engine-on-Compressed-Deep-Neural-Network"><a href="#EIE-Efficient-Inference-Engine-on-Compressed-Deep-Neural-Network" class="headerlink" title="EIE: Efficient Inference Engine on Compressed Deep Neural Network"></a>EIE: Efficient Inference Engine on Compressed Deep Neural Network</h2><h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><ul>
-<li>DRAM access costs more energy than basic operations</li>
-<li>CNN has a lot of data reuse, which makes DRAM access not very important</li>
-<li>Deep compression makes the kernel sparse, able to exist on mobile</li>
-</ul>
-<h3 id="Contribution"><a href="#Contribution" class="headerlink" title="Contribution"></a>Contribution</h3><ul>
-<li>accelerator for sparse and weight sharing neural networks</li>
-<li>accelerator that exploits the dynamic sparsity of activations to save computation</li>
-<li>a method of both distributed storage and distributed computation to parallelize a sparsified layer across multiple PEs (processing elements)</li>
-</ul>
-<h3 id="Motivation"><a href="#Motivation" class="headerlink" title="Motivation"></a>Motivation</h3><ul>
-<li>FC is used widely, and memory access is usually the bottle-neck ( no reuse of the input matrix)</li>
-<li>network compression offers a solution of memory bottleneck</li>
-<li>previous SPMV accelerator can only exploit static weight sparsity. </li>
-<li>batching of FC is not suitable for latency reason</li>
-</ul>
-<h3 id="Model"><a href="#Model" class="headerlink" title="Model"></a>Model</h3><h4 id="Variation-of-CSC"><a href="#Variation-of-CSC" class="headerlink" title="Variation of CSC"></a>Variation of CSC</h4><p>v : value</p>
-<p>z : offset of last non-zero value (one column as a vector) or first element</p>
-<p>q: pointer to the fist non-zero element of each column</p>
-<p>combination between algorithm and hardware</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2018/07/26/Python%20function%20object%20reference%E5%AF%BC%E8%87%B4%E7%9A%84bug/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/liwei3.jpg">
-      <meta itemprop="name" content="Li Wei">
-      <meta itemprop="description" content="人生注定是一个人的旅行，但就算孤独也要做一直前行的人啊">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="NEWAY">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/07/26/Python%20function%20object%20reference%E5%AF%BC%E8%87%B4%E7%9A%84bug/" class="post-title-link" itemprop="url">python object reference</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2018-07-26 10:42:03" itemprop="dateCreated datePublished" datetime="2018-07-26T10:42:03-04:00">2018-07-26</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-03-21 09:35:45" itemprop="dateModified" datetime="2019-03-21T09:35:45-04:00">2019-03-21</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/code/" itemprop="url" rel="index"><span itemprop="name">code</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine: </span>
-    
-    <a title="valine" href="/2018/07/26/Python%20function%20object%20reference%E5%AF%BC%E8%87%B4%E7%9A%84bug/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2018/07/26/Python%20function%20object%20reference%E5%AF%BC%E8%87%B4%E7%9A%84bug/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="Python-function-object-reference导致的bug"><a href="#Python-function-object-reference导致的bug" class="headerlink" title="Python function object reference导致的bug"></a>Python function object reference导致的bug</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">imsave(<span class="string">&#x27;./generated_inputs/&#x27;</span> +<span class="built_in">str</span>(iters) +<span class="string">&#x27;_0&#x27;</span>+<span class="built_in">str</span>(i)+ <span class="string">&#x27;_two.png&#x27;</span>, deprocess_image(imgs[<span class="number">0</span>]))</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">deprocess_image</span>(<span class="params">x</span>):</span><br><span class="line">    tmp = x</span><br><span class="line">    tmp = tmp.reshape((<span class="number">100</span>, <span class="number">100</span>, <span class="number">3</span>))</span><br><span class="line">    <span class="comment"># Remove zero-center by mean pixel</span></span><br><span class="line">    tmp[:, :, <span class="number">0</span>] += <span class="number">103.939</span></span><br><span class="line">    tmp[:, :, <span class="number">1</span>] += <span class="number">116.779</span></span><br><span class="line">    tmp[:, :, <span class="number">2</span>] += <span class="number">123.68</span></span><br><span class="line">    <span class="comment"># &#x27;BGR&#x27;-&gt;&#x27;RGB&#x27;</span></span><br><span class="line">    tmp = tmp[:, :, ::-<span class="number">1</span>]</span><br><span class="line">    tmp = np.clip(tmp, <span class="number">0</span>, <span class="number">255</span>).astype(<span class="string">&#x27;uint8&#x27;</span>)</span><br><span class="line">    <span class="keyword">return</span> tmp</span><br><span class="line">// 如此添加tmp。x的值仍会一直改变。则重复调用deprocess无法得到相同结果。</span><br><span class="line">// 正确做法 使用x.copy()</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">deprocess_image</span>(<span class="params">x</span>):</span><br><span class="line">    tmp = x.copy()</span><br><span class="line">    tmp = tmp.reshape((<span class="number">100</span>, <span class="number">100</span>, <span class="number">3</span>))</span><br><span class="line">    <span class="comment"># Remove zero-center by mean pixel</span></span><br><span class="line">    tmp[:, :, <span class="number">0</span>] += <span class="number">103.939</span></span><br><span class="line">    tmp[:, :, <span class="number">1</span>] += <span class="number">116.779</span></span><br><span class="line">    tmp[:, :, <span class="number">2</span>] += <span class="number">123.68</span></span><br><span class="line">    <span class="comment"># &#x27;BGR&#x27;-&gt;&#x27;RGB&#x27;</span></span><br><span class="line">    tmp = tmp[:, :, ::-<span class="number">1</span>]</span><br><span class="line">    tmp = np.clip(tmp, <span class="number">0</span>, <span class="number">255</span>).astype(<span class="string">&#x27;uint8&#x27;</span>)</span><br><span class="line">    <span class="keyword">return</span> tmp</span><br></pre></td></tr></table></figure>
-
 
       
     </div>
@@ -1291,7 +1294,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">133</span>
+          <span class="site-state-item-count">138</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

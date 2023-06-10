@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noto Serif SC:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|EB Garamond:300,300italic,400,400italic,700,700italic|Source Code Pro:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"wadmes.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"buttons","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"./public/search.xml"};
+  </script>
+
+  <meta name="description" content="ESTR 3108 ReviewAgentsAgents include humans,robots, softbots, thermostats, etc. The agent function maps from percept histories(sequences) to actions $P-&gt;A$ agent program runs on the physical archit">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ESTR 3108 review">
+<meta property="og:url" content="http://wadmes.github.io/2017/12/17/ESTR%203108%20Review/index.html">
+<meta property="og:site_name" content="NEWAY">
+<meta property="og:description" content="ESTR 3108 ReviewAgentsAgents include humans,robots, softbots, thermostats, etc. The agent function maps from percept histories(sequences) to actions $P-&gt;A$ agent program runs on the physical archit">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2017-12-18T05:00:00.000Z">
+<meta property="article:modified_time" content="2019-03-21T13:31:29.000Z">
+<meta property="article:author" content="Li Wei">
+<meta property="article:tag" content="AI">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://wadmes.github.io/2017/12/17/ESTR%203108%20Review/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>ESTR 3108 review | NEWAY</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --></head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">NEWAY</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">愿识乾坤大，仍怜草木青</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+        <li class="menu-item menu-item-reading-notes">
+
+    <a href="/notes" rel="section"><i class="fas fa-book-reader fa-fw"></i>Reading notes</a>
+
+  </li>
+        <li class="menu-item menu-item-about-me">
+
+    <a href="/about" rel="section"><i class="fas fa-user fa-fw"></i>About me</a>
+
+  </li>
+        <li class="menu-item menu-item-official-about-me">
+
+    <a href="/cv" rel="section"><i class="fas fa-user-secret fa-fw"></i>Official About me</a>
+
+  </li>
+        <li class="menu-item menu-item-resume">
+
+    <a href="/cv/cv_liwei/cv.pdf" rel="section"><i class="fas fa-file fa-fw"></i>Resume</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2017/12/17/ESTR%203108%20Review/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/liwei3.jpg">
+      <meta itemprop="name" content="Li Wei">
+      <meta itemprop="description" content="人生注定是一个人的旅行，但就算孤独也要做一直前行的人啊">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="NEWAY">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          ESTR 3108 review
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2017-12-17 23:00:00" itemprop="dateCreated datePublished" datetime="2017-12-17T23:00:00-06:00">2017-12-17</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-03-21 08:31:29" itemprop="dateModified" datetime="2019-03-21T08:31:29-05:00">2019-03-21</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/study/" itemprop="url" rel="index"><span itemprop="name">study</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2017/12/17/ESTR%203108%20Review/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2017/12/17/ESTR%203108%20Review/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="ESTR-3108-Review"><a href="#ESTR-3108-Review" class="headerlink" title="ESTR 3108 Review"></a>ESTR 3108 Review</h1><h2 id="Agents"><a href="#Agents" class="headerlink" title="Agents"></a>Agents</h2><p><em><strong>Agents</strong></em> include humans,robots, softbots, thermostats, etc.</p>
+<p>The <em><strong>agent function</strong></em> maps from percept histories(sequences) to actions $P-&gt;A$</p>
+<p><em><strong>agent program</strong></em> runs on the physical architecture to produce f. (prescode)</p>
+<ul>
+<li><strong>Percepts</strong> :sensor reading</li>
+<li><strong>Actions</strong> : output</li>
+<li><strong>Goals</strong> : performance measure ( to achieve the goal )</li>
+<li><strong>Environment</strong> : external world</li>
+</ul>
+<p><em><strong>Rational agent</strong></em>: For each possible percept sequence, a rational agent should choose an action<br>that is expected to <em><strong>maximize its performance measure</strong></em>, given the evidence provided by the <em><strong>percept sequence</strong></em> and whatever <em><strong>built-in knowledge (environment) (capabilities(actions))</strong></em> it has</p>
+<p>Basic types of agents in order of <em><strong>increasing</strong></em> generality:</p>
+<h3 id="Simple-reflex-agents"><a href="#Simple-reflex-agents" class="headerlink" title="Simple reflex agents"></a>Simple reflex agents</h3><p>Agents with <em><strong>condition-action rules</strong></em> </p>
+<h3 id="Model-based-Reflex-agents-with-state"><a href="#Model-based-Reflex-agents-with-state" class="headerlink" title="Model based Reflex agents with state"></a>Model based Reflex agents with state</h3><p>Simple agents that maintain some sort of <em><strong>internal state</strong></em>(arg: state,action,percept,model) of the world (and a model) in order to choose an action.</p>
+<h3 id="Model-based-Goal-based-agents"><a href="#Model-based-Goal-based-agents" class="headerlink" title="Model-based, Goal-based agents"></a>Model-based, Goal-based agents</h3><p>Knowing about the current state of the environment is not always enough to decide what to do.The agent need a GOAL describing the desirable situations. </p>
+<h3 id="Model-based-Utility-based-agents"><a href="#Model-based-Utility-based-agents" class="headerlink" title="Model-based, Utility-based agents"></a>Model-based, Utility-based agents</h3><p>Goals alone are not really enough to generate high-quality behavior. (eg: quicker? safer? cheaper?) }We<br>can only achieve some utilities, or have a compromise action.</p>
+<h3 id="Learning-Agents"><a href="#Learning-Agents" class="headerlink" title="Learning Agents"></a>Learning Agents</h3><p>The <em><strong>learning element</strong></em> responsible for making improvements to the performance element.</p>
+<p>The <em><strong>performance element</strong></em> &#x3D; previously entire agent: it takes in percepts and decides on actions.</p>
+<p>The <em><strong>critic</strong></em> tells the learning element how well the agent is doing w.r.t. a fixed standard of performance. Necessary because the percepts themselves provide no indication of agent’s success.</p>
+<p>The <em><strong>problem generator</strong></em> - responsible for suggesting problems &amp; actions for new and informative experiences.</p>
+<h3 id="Problem-solving-agents"><a href="#Problem-solving-agents" class="headerlink" title="Problem-solving agents"></a>Problem-solving agents</h3><ol>
+<li>Goal Formation</li>
+<li>Problem formulation: to decide what <em>actions</em> and <em>states</em> to consider</li>
+<li>Search</li>
+<li>Execution</li>
+</ol>
+<h3 id="4-problem-types"><a href="#4-problem-types" class="headerlink" title="4 problem types"></a>4 problem types</h3><h4 id="single-state-problems"><a href="#single-state-problems" class="headerlink" title="single-state problems"></a>single-state problems</h4><p>deterministic, fully observable: consider a single state at a time</p>
+<h4 id="Multiple-state-problems"><a href="#Multiple-state-problems" class="headerlink" title="Multiple state problems"></a>Multiple state problems</h4><p>non-observable: reason about sets of states that it might get to.</p>
+<h4 id="Contingency（偶然性）-problems"><a href="#Contingency（偶然性）-problems" class="headerlink" title="Contingency（偶然性） problems"></a>Contingency（偶然性） problems</h4><p>nondeterministic and&#x2F;or partially observable: calculates a whole tree of actions rather than a single action sequence</p>
+<h4 id="Exploration-problems"><a href="#Exploration-problems" class="headerlink" title="Exploration problems"></a>Exploration problems</h4><p>unknown state space: agent must experiment, discovering the actions and states.</p>
+<p><em><strong>state space</strong></em> : The set of all states reachable from the initial state by any sequence of actions</p>
+<h2 id="Tree-Search-alg"><a href="#Tree-Search-alg" class="headerlink" title="Tree Search alg"></a>Tree Search alg</h2><p>Basic idea: </p>
+<p>Current state - generate a new set of states (expanding the state) - choose one (expanding state) by a search strategy to expand - search tree with search nodes</p>
+<h3 id="Evaluation-methods"><a href="#Evaluation-methods" class="headerlink" title="Evaluation methods"></a>Evaluation methods</h3><ul>
+<li>completeness. Always find a solution if exists?</li>
+<li>time complexity: number of nodes</li>
+<li>space complexity: maximum number of nodes in memory</li>
+<li>optimality: always find a least-cost solution?</li>
+</ul>
+<h3 id="BFS"><a href="#BFS" class="headerlink" title="BFS"></a>BFS</h3><ul>
+<li>FIFO queue</li>
+<li>complete</li>
+<li>time and space: O($b^{d+1}$) b: branching factor, d:depth of optimal solution</li>
+<li>optimal(if cost &#x3D; 1 per step)</li>
+</ul>
+<h3 id="Uniform-cost-search"><a href="#Uniform-cost-search" class="headerlink" title="Uniform cost search"></a>Uniform cost search</h3><ul>
+<li>expand the lowerst-cost node rather than lowest-depth node.</li>
+<li>complete </li>
+<li>time: number of nodes with g &lt;&#x3D; cost of optimal solution. g: path cost</li>
+<li>space: number of nodes with g &lt;&#x3D; cost of optimal solution</li>
+<li>optimal</li>
+</ul>
+<h3 id="DFS"><a href="#DFS" class="headerlink" title="DFS"></a>DFS</h3><ul>
+<li>LIFO queue</li>
+<li>not complete, fail in infinite depth spaces</li>
+<li>O($b^m$) m: max depth of search tree, b: branching factor</li>
+<li>space: O(bm)</li>
+<li>optimal if cost same per step</li>
+</ul>
+<h3 id="Depth-limited-search"><a href="#Depth-limited-search" class="headerlink" title="Depth limited search"></a>Depth limited search</h3><p>depth first search with depth limit L</p>
+<h3 id="Iterative-deepening-search"><a href="#Iterative-deepening-search" class="headerlink" title="Iterative deepening search"></a>Iterative deepening search</h3><p>iterate limit L from 0 to infinite</p>
+<ul>
+<li>complete</li>
+<li>time: O($b^d$)</li>
+<li>space: O(bd)</li>
+<li>optimal if cost same per step</li>
+</ul>
+<h3 id="Best-first-search"><a href="#Best-first-search" class="headerlink" title="Best first search"></a>Best first search</h3><p>Nodes are <em><strong>ordered</strong></em> so that the best evaluation is <em><strong>expanded first</strong></em>. </p>
+<h4 id="Greedy-search"><a href="#Greedy-search" class="headerlink" title="Greedy search"></a>Greedy search</h4><ul>
+<li>Evaluation function &#x3D; estimation of cost from node n to the closest goal, h(n)</li>
+<li>h can be any function as long as h(n) &#x3D; 0 when n &#x3D; goal such as 直线距离</li>
+<li>greedy search: best first search that uses h to select the next node to expand</li>
+<li>not complete(stuck in loop)</li>
+<li>time, space: O($b^m$), m: max depth of search tree ( keep all node in memory )</li>
+<li>not optimal</li>
+</ul>
+<h4 id="A-search"><a href="#A-search" class="headerlink" title="A search"></a>A search</h4><ul>
+<li>evaluation function  f &#x3D; g(n) + h(n) g:cost so far to reach n</li>
+<li>0&lt;&#x3D;h(n)&lt;&#x3D; true cost from n to goal</li>
+<li>complete, unless inifinity nodes with f&lt;&#x3D; f(Goal)</li>
+<li>time, exponential in [error in h * length of solution]</li>
+<li>space. keep all nodes</li>
+<li>optimal </li>
+<li>no other optimal alg is is guaranteed to expand fewer nodes than A (没expand all f 小于goal的 node， 就有可能miss optimal solution)</li>
+</ul>
+<h5 id="Dominance"><a href="#Dominance" class="headerlink" title="Dominance"></a>Dominance</h5><p>if h2 &gt; h1 for all n, then h2 dominates h1 and is better</p>
+<p>$N &#x3D; 1 + b^1 + b^2 + … + b^d $</p>
+<p>N:total number of expanded nodes, b: effective branching factor d: solution depth. use b to determine the h’s overall usefulness.</p>
+<h3 id="Recursive-Best-First-Search-RBFS"><a href="#Recursive-Best-First-Search-RBFS" class="headerlink" title="Recursive Best First Search RBFS"></a>Recursive Best First Search RBFS</h3><pre><code>          1.Deterministic2.Stochastic
+</code></pre>
+<p>Single point    Hill-climbing     Simulator A</p>
+<p>Multiple poi  Multi-start     GA</p>
+<p>Mul: Send whole class to search </p>
+<h3 id="Hill-climbing"><a href="#Hill-climbing" class="headerlink" title="Hill climbing"></a>Hill climbing</h3><p>如果邻居最大值 &lt; current -&gt; return</p>
+<p>else current &#x3D; 邻居最大值</p>
+<p>problem: stuck on local max</p>
+<h3 id="Simulated-annealing"><a href="#Simulated-annealing" class="headerlink" title="Simulated annealing"></a>Simulated annealing</h3><ul>
+<li>escape local max by allowing some “ bad “ moves ( next &#x3D; randomly selected) but gradually decrease their size and frequency</li>
+<li>if next &#x3D; better, always excuted</li>
+<li>$p &#x3D; e^{\Delta E&#x2F;T}$</li>
+</ul>
+<h3 id="Genetic-algorithms"><a href="#Genetic-algorithms" class="headerlink" title="Genetic algorithms"></a>Genetic algorithms</h3><p>选择初始生命种群(initial population)</p>
+<p>​	评价种群中的个体适应度(fitness function)</p>
+<p>​	以比例原则（分数高的挑中机率也较高）选择产生下一个种群。不仅仅挑分数最高的的原因是这么做可能收敛到局部的最佳点，而非整体的。</p>
+<p>​	改变该种群（交叉和变异）(crossover mutation)</p>
+<p>直到停止循环的条件满足</p>
+<h2 id="Game-play"><a href="#Game-play" class="headerlink" title="Game play"></a>Game play</h2><h3 id="Minimax"><a href="#Minimax" class="headerlink" title="Minimax"></a>Minimax</h3><ul>
+<li>complete if tree is finite</li>
+<li>optimal if opponent is optimal</li>
+<li>time ：$O(b^m)$</li>
+<li>space: O(bm) depth first</li>
+</ul>
+<p>Resource limits: cutoff test: depth limit ; evaluation function:&#x3D; estimated desirability of position</p>
+<h4 id="Evaluation-function"><a href="#Evaluation-function" class="headerlink" title="Evaluation function"></a>Evaluation function</h4><ul>
+<li>agree with the utility function on terminal states</li>
+<li>not too long</li>
+<li>accurately reflect the actual chances of winning</li>
+</ul>
+<h3 id="Qui’escence-search"><a href="#Qui’escence-search" class="headerlink" title="Qui’escence search"></a>Qui’escence search</h3><p>Expand non-quiescent(静) positions until quiescent positions are reached.</p>
+<h4 id="Alpha-Beta-pruning"><a href="#Alpha-Beta-pruning" class="headerlink" title="Alpha-Beta pruning"></a>Alpha-Beta pruning</h4><p>compute the correct minimax decision without looking at every node in the search tree.</p>
+<p>perfect order: time &#x3D; $O(b^{m&#x2F;2})$</p>
+<h2 id="Logic"><a href="#Logic" class="headerlink" title="Logic"></a>Logic</h2><p><em><strong>Syntax</strong></em> defines the sentences in the language</p>
+<p><em><strong>Semantics</strong></em> define the meaning of sentences </p>
+<p>m is a  <em><strong>model</strong></em> of a sentence s if s in true in m</p>
+<p>M(s) &#x3D; set of all models of s</p>
+<p>KB entails s  iff M(KB) belongs to M(s)</p>
+<ul>
+<li>Soundness: i is sound if whenever KB entails(i) s, then KB entails s</li>
+<li>Completeness: i is complete if whenever KB entails s, then Kb entails(i) s. Derivations can produce all entailed sentences</li>
+</ul>
+<p>Valid: true in all models</p>
+<p>Satisfiable: true in some models</p>
+<p>Unsatisfiable: true in no models</p>
+<h3 id="Horn-Form"><a href="#Horn-Form" class="headerlink" title="Horn Form"></a>Horn Form</h3><p>conjunction of Horn clauses</p>
+<p><em><strong>Horn clauses</strong></em></p>
+<p>proposition symbol || conjucton of symbols -&gt; symbol</p>
+<h3 id="Backward-chaining"><a href="#Backward-chaining" class="headerlink" title="Backward chaining"></a>Backward chaining</h3><p>1.check if q is known already </p>
+<p>2.prove by BC all premises of some rules concluding q</p>
+<ul>
+<li><strong>Forward chaining</strong><ul>
+<li>data-driven</li>
+<li>may do lots of works that is irrelevant to the goal</li>
+</ul>
+</li>
+<li><strong>Backward chaining</strong><ul>
+<li>goal-driven</li>
+<li>complexity of BC can be much less than linear in size of KB</li>
+</ul>
+</li>
+</ul>
+<h3 id="Resolution"><a href="#Resolution" class="headerlink" title="Resolution"></a>Resolution</h3><h4 id="CNF-universal"><a href="#CNF-universal" class="headerlink" title="CNF-universal"></a>CNF-universal</h4><p>conjunction of “disjunctions of literals”</p>
+<ul>
+<li>$ a\leftrightarrow b\Rightarrow(a\rightarrow b) \wedge(b\rightarrow a)$</li>
+<li>$a\rightarrow b\Rightarrow \neg a \vee b$</li>
+<li>$ \neg( a \vee b)\Rightarrow \neg a \wedge \neg b$</li>
+<li>$(a \wedge b) \vee c \Rightarrow (a \vee c) \wedge ( b \vee c)$</li>
+</ul>
+<h4 id="Resolution-inference-rule"><a href="#Resolution-inference-rule" class="headerlink" title="Resolution inference rule"></a>Resolution inference rule</h4><p>sound and complete</p>
+<p>To proof Kb entails a , by contradiction, show that Kb and not a unsatisfiable</p>
+<h2 id="First-Order-Logic"><a href="#First-Order-Logic" class="headerlink" title="First Order Logic"></a>First Order Logic</h2><ul>
+<li>Terms: Function(Term,…) | constant | variable</li>
+<li>atomic sentences: a predicate symbol followed by a parenthesized list of terms.(also an equality)</li>
+<li>complex sentences: logical connectives (and or) </li>
+<li>Quantifier, for all, exist one</li>
+</ul>
+<p><strong>well formed formula&#x2F;wff</strong>: for sentences that have all their variables properly introduced.</p>
+<p>FOL: one can quantify over objects but not over relations or functions on these object</p>
+<p>Higher order logic : quantify over relations and functions</p>
+<p>$(\lambda x,y\ x^2-y^2)(25,24) &#x3D; 25^2 - 24^2 &#x3D; 49$</p>
+<p>E! &#x3D; unique</p>
+<h3 id="Universal-instantiation-x2F-Existential-instantiation"><a href="#Universal-instantiation-x2F-Existential-instantiation" class="headerlink" title="Universal instantiation &#x2F; Existential instantiation"></a>Universal instantiation &#x2F; Existential instantiation</h3><p>UI can be applied several times to <strong>add</strong> new sentences, the new KB is <strong>logically equivalent</strong></p>
+<p>to the old</p>
+<p>EI can be applied <strong>once</strong> to <strong>replace</strong> the existential sentence, the new KB is <strong>not</strong> equivalent to the old.</p>
+<h3 id="Unification"><a href="#Unification" class="headerlink" title="Unification"></a>Unification</h3><p>UNIFY(p,q) &#x3D; theta where SUBST(theta,p) &#x3D; SUBST(theta, q)</p>
+<h3 id="Backward-channing-and-FC"><a href="#Backward-channing-and-FC" class="headerlink" title="Backward channing and FC"></a>Backward channing and FC</h3><ul>
+<li>BWC<ul>
+<li>space is linear in size of proof</li>
+<li>incomplete due to infinite loops(checking current goal against every goal on stack)</li>
+<li>inefficient due to repeated sub goals ( caching previous results)</li>
+</ul>
+</li>
+<li>FWC<ul>
+<li>sound and complete</li>
+<li>may not terminate in general if alpha is not entailed</li>
+<li>entailment with definite clauses is semi-decidable</li>
+</ul>
+</li>
+</ul>
+<h2 id="Learning-From-Examples"><a href="#Learning-From-Examples" class="headerlink" title="Learning From Examples"></a>Learning From Examples</h2><p><strong>Decision Tree</strong> not a good way to represent the function because the truth table is exponentially large in the number of attributes</p>
+<ul>
+<li>If there are no examples left, it means that no such example has been observed, and we return the majority classification of the node’s parent.</li>
+<li>If there are no attributes left, but both +ve and -ve examples, which means that these examples have exactly the same description, but different classifications. This happens when <ul>
+<li>noise</li>
+<li>not fully describe</li>
+<li>the domain is non-deterministic</li>
+</ul>
+</li>
+</ul>
+<p>**Ockham’s razor.**The most likely hypothesis is the simplest one that is consistent with all observations.</p>
+<p><strong>Information content I</strong></p>
+<p>$I(P(v_1),…,P(v_n)) &#x3D; \sum-P(v_i)log_2P(v_i)$</p>
+<p>P is smaller, then -log P is bigger</p>
+<p>$Gain(A) &#x3D; I(p&#x2F;(p+n), n&#x2F;(n+p)) - Reminder(A)$</p>
+<p>$Reminder(A) &#x3D; \sum\frac{p_i+n_i}{p+n}I(p_i&#x2F;{p_i+n_i},n_i&#x2F;p_i+n_i)$</p>
+<p>We select features with largest Gain.</p>
+<ul>
+<li>Fasle negative: the hypothesis must generalization: C2(x) implies C1(x). C2 is to be generalized</li>
+<li>Dropping conditions || add OR conditions</li>
+<li>False positive: specialization. special &#x3D; contradiction</li>
+</ul>
+<p><strong>Sample Size</strong>: $m &gt;&#x3D; 1&#x2F;e ( ln 1&#x2F;o + ln|H|)$</p>
+<p>e &#x3D; max error o &#x3D; error’s probablity H&#x3D; number of possible hypothesis</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/AI/" rel="tag"># AI</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2017/09/08/%E6%B8%AF%E7%8B%AC%E8%80%8C%E8%AE%BA/" rel="prev" title="致楼上港独言论">
+      <i class="fa fa-chevron-left"></i> 致楼上港独言论
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2017/12/24/csci3230-HW3/" rel="next" title="CSCI3230 HW3">
+      CSCI3230 HW3 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ESTR-3108-Review"><span class="nav-number">1.</span> <span class="nav-text">ESTR 3108 Review</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Agents"><span class="nav-number">1.1.</span> <span class="nav-text">Agents</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Simple-reflex-agents"><span class="nav-number">1.1.1.</span> <span class="nav-text">Simple reflex agents</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Model-based-Reflex-agents-with-state"><span class="nav-number">1.1.2.</span> <span class="nav-text">Model based Reflex agents with state</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Model-based-Goal-based-agents"><span class="nav-number">1.1.3.</span> <span class="nav-text">Model-based, Goal-based agents</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Model-based-Utility-based-agents"><span class="nav-number">1.1.4.</span> <span class="nav-text">Model-based, Utility-based agents</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Learning-Agents"><span class="nav-number">1.1.5.</span> <span class="nav-text">Learning Agents</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Problem-solving-agents"><span class="nav-number">1.1.6.</span> <span class="nav-text">Problem-solving agents</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-problem-types"><span class="nav-number">1.1.7.</span> <span class="nav-text">4 problem types</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#single-state-problems"><span class="nav-number">1.1.7.1.</span> <span class="nav-text">single-state problems</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Multiple-state-problems"><span class="nav-number">1.1.7.2.</span> <span class="nav-text">Multiple state problems</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Contingency%EF%BC%88%E5%81%B6%E7%84%B6%E6%80%A7%EF%BC%89-problems"><span class="nav-number">1.1.7.3.</span> <span class="nav-text">Contingency（偶然性） problems</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Exploration-problems"><span class="nav-number">1.1.7.4.</span> <span class="nav-text">Exploration problems</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tree-Search-alg"><span class="nav-number">1.2.</span> <span class="nav-text">Tree Search alg</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Evaluation-methods"><span class="nav-number">1.2.1.</span> <span class="nav-text">Evaluation methods</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BFS"><span class="nav-number">1.2.2.</span> <span class="nav-text">BFS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Uniform-cost-search"><span class="nav-number">1.2.3.</span> <span class="nav-text">Uniform cost search</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DFS"><span class="nav-number">1.2.4.</span> <span class="nav-text">DFS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Depth-limited-search"><span class="nav-number">1.2.5.</span> <span class="nav-text">Depth limited search</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Iterative-deepening-search"><span class="nav-number">1.2.6.</span> <span class="nav-text">Iterative deepening search</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Best-first-search"><span class="nav-number">1.2.7.</span> <span class="nav-text">Best first search</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Greedy-search"><span class="nav-number">1.2.7.1.</span> <span class="nav-text">Greedy search</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#A-search"><span class="nav-number">1.2.7.2.</span> <span class="nav-text">A search</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Dominance"><span class="nav-number">1.2.7.2.1.</span> <span class="nav-text">Dominance</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Recursive-Best-First-Search-RBFS"><span class="nav-number">1.2.8.</span> <span class="nav-text">Recursive Best First Search RBFS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hill-climbing"><span class="nav-number">1.2.9.</span> <span class="nav-text">Hill climbing</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Simulated-annealing"><span class="nav-number">1.2.10.</span> <span class="nav-text">Simulated annealing</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Genetic-algorithms"><span class="nav-number">1.2.11.</span> <span class="nav-text">Genetic algorithms</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Game-play"><span class="nav-number">1.3.</span> <span class="nav-text">Game play</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Minimax"><span class="nav-number">1.3.1.</span> <span class="nav-text">Minimax</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Evaluation-function"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">Evaluation function</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Qui%E2%80%99escence-search"><span class="nav-number">1.3.2.</span> <span class="nav-text">Qui’escence search</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Alpha-Beta-pruning"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">Alpha-Beta pruning</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Logic"><span class="nav-number">1.4.</span> <span class="nav-text">Logic</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Horn-Form"><span class="nav-number">1.4.1.</span> <span class="nav-text">Horn Form</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Backward-chaining"><span class="nav-number">1.4.2.</span> <span class="nav-text">Backward chaining</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Resolution"><span class="nav-number">1.4.3.</span> <span class="nav-text">Resolution</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#CNF-universal"><span class="nav-number">1.4.3.1.</span> <span class="nav-text">CNF-universal</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Resolution-inference-rule"><span class="nav-number">1.4.3.2.</span> <span class="nav-text">Resolution inference rule</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#First-Order-Logic"><span class="nav-number">1.5.</span> <span class="nav-text">First Order Logic</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Universal-instantiation-x2F-Existential-instantiation"><span class="nav-number">1.5.1.</span> <span class="nav-text">Universal instantiation &#x2F; Existential instantiation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Unification"><span class="nav-number">1.5.2.</span> <span class="nav-text">Unification</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Backward-channing-and-FC"><span class="nav-number">1.5.3.</span> <span class="nav-text">Backward channing and FC</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Learning-From-Examples"><span class="nav-number">1.6.</span> <span class="nav-text">Learning From Examples</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Li Wei"
+      src="/images/liwei3.jpg">
+  <p class="site-author-name" itemprop="name">Li Wei</p>
+  <div class="site-description" itemprop="description">人生注定是一个人的旅行，但就算孤独也要做一直前行的人啊</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">138</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">28</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/wadmes" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;wadmes" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:werry715@gmail.com" title="E-Mail → mailto:werry715@gmail.com" rel="noopener" target="_blank"><i class="fas fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://music.163.com/#/playlist?id=49000450" title="Music → https:&#x2F;&#x2F;music.163.com&#x2F;#&#x2F;playlist?id&#x3D;49000450" rel="noopener" target="_blank"><i class="fas fa-music fa-fw"></i>Music</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://steamcommunity.com/id/wadmes/" title="Steam → https:&#x2F;&#x2F;steamcommunity.com&#x2F;id&#x2F;wadmes&#x2F;" rel="noopener" target="_blank"><i class="fab fa-steam fa-fw"></i>Steam</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="link fa-fw"></i>
+      Interesting links!
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://wadmes.github.io/2019/12/11/EDA-family-tree/" title="https:&#x2F;&#x2F;wadmes.github.io&#x2F;2019&#x2F;12&#x2F;11&#x2F;EDA-family-tree&#x2F;">EDA family tree</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://wenku.baidu.com/view/f5cdb37aeff9aef8951e0673" title="https:&#x2F;&#x2F;wenku.baidu.com&#x2F;view&#x2F;f5cdb37aeff9aef8951e0673" rel="noopener" target="_blank">小爷当年的高考满分作文</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Li Wei</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='50' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : true,
+      appId      : 'NmNqnbed4p8koRJWwGm6SdrW-gzGzoHsz',
+      appKey     : 'ECnYjjxnwouXPYlJjrjLJhv9',
+      placeholder: "Just go go",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>
