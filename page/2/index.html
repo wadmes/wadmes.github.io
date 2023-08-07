@@ -213,6 +213,113 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2022/04/17/Recipe-generation/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/liwei3.jpg">
+      <meta itemprop="name" content="Li Wei">
+      <meta itemprop="description" content="人生注定是一个人的旅行，但就算孤独也要做一直前行的人啊">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="NEWAY">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/04/17/Recipe-generation/" class="post-title-link" itemprop="url">Recipe generation</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-04-17 11:43:55" itemprop="dateCreated datePublished" datetime="2022-04-17T11:43:55-05:00">2022-04-17</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-04-19 11:47:40" itemprop="dateModified" datetime="2022-04-19T11:47:40-05:00">2022-04-19</time>
+              </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2022/04/17/Recipe-generation/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2022/04/17/Recipe-generation/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <blockquote>
+<p>This is a reading notes for recipe generation papers, whcih is for my 10701 projects.</p>
+</blockquote>
+<h1 id="Generating-Personalized-Recipes-from-Historical-User-Preferences"><a href="#Generating-Personalized-Recipes-from-Historical-User-Preferences" class="headerlink" title="Generating Personalized Recipes from Historical User Preferences"></a>Generating Personalized Recipes from Historical User Preferences</h1><h2 id="Input"><a href="#Input" class="headerlink" title="Input:"></a>Input:</h2><ul>
+<li>the <strong>tokenized name</strong> of a specific dish, (vocabulary embedding)</li>
+<li>a few (partial) key <strong>ingredients</strong> (ingredient embedding )</li>
+<li>calorie level. (caloric-level embedding)</li>
+</ul>
+<p>tokenization method: Byte-Pair Encoding (BPE) tokenization </p>
+<h2 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h2><p>tokenized recipe sequence</p>
+<h2 id="Approach"><a href="#Approach" class="headerlink" title="Approach"></a><strong>Approach</strong></h2><p>Input -&gt; encoder-decoder -&gt; attend with hiden user features (come from previous recipe ranking of this particular user) -&gt; combine them with a attention fusion layer to jointly determine text generation</p>
+<h3 id="Encoder"><a href="#Encoder" class="headerlink" title="Encoder"></a>Encoder</h3><p>BiGRU for dish name and ingredients</p>
+<p>Projection for calorie level</p>
+<h3 id="Decoder-output-recipe-embeeding-h-t"><a href="#Decoder-output-recipe-embeeding-h-t" class="headerlink" title="Decoder ((output: recipe embeeding ($h_t$)))"></a>Decoder ((output: recipe embeeding ($h_t$)))</h3><p>two-layer GRU, where first layer input $h_0$ is the concatenation of the output from the encoder, for each layer, there is an attention term that calculates an weighted sum of the encoded ingredient feature</p>
+<h3 id="Combine-with-user-hitorical-review-data"><a href="#Combine-with-user-hitorical-review-data" class="headerlink" title="Combine with user hitorical review data"></a>Combine with user hitorical review data</h3><p>Each prior reviewed recipe has a recipe embedding, and is used to calculate the recipe attention </p>
+<p>Each recipe has multiple used techniques and we use them to calculate the recipe </p>
+<h3 id="Attention-Fusion-Layer"><a href="#Attention-Fusion-Layer" class="headerlink" title="Attention Fusion Layer"></a>Attention Fusion Layer</h3><p>fuse all contexts calculated at time t, concatenating them with decoder GRU output and previous token embedding:</p>
+<p><img src="/../figures/image-20220417165336643.png" alt="image-20220417165336643"></p>
+<p>$o_t$ is the output of decoder, $a_t^i$ is the ingredion features (calculated based on weighted sum of ingredient sum), $a_t^{r_u}$ is the user recipe feature (calculated based on weighted sum of user previous ranked recipe representation)  </p>
+<h3 id="Final-output"><a href="#Final-output" class="headerlink" title="Final output"></a>Final output</h3><p><strong>Top k</strong> <strong>sampling</strong> means sorting by probability and zero-ing out the probabilities for anything below the k’th token. It appears to improve quality by removing the tail and making it less likely to go off topic</p>
+<h2 id="Experiments"><a href="#Experiments" class="headerlink" title="Experiments"></a>Experiments</h2><h3 id="Dataset"><a href="#Dataset" class="headerlink" title="Dataset"></a>Dataset</h3><p>Here, we restrict to recipes with at least 3 steps, and at least 4 and no more than 20 ingredients. </p>
+<p>We discard users with fewer than 4 reviews, giving 180K+ recipes and 700K+ reviews</p>
+<p>in our training data, the average recipe length is 117 tokens with a maximum of 256.</p>
+<h4 id="Train-x2F-Test-x2F-Validation"><a href="#Train-x2F-Test-x2F-Validation" class="headerlink" title="Train&#x2F;Test&#x2F;Validation"></a>Train&#x2F;Test&#x2F;Validation</h4><p>We order reviews by timestamp, keeping the most recent review for each user as the test set, the second most recent for validation, and the remainder for training </p>
+<h4 id="Cooking-techniques"><a href="#Cooking-techniques" class="headerlink" title="Cooking techniques"></a>Cooking techniques</h4><p>We manually construct a list of 58 cooking techniques from 384 cooking actions collected by Bosselut et al. (2018b);</p>
+<h3 id="Evaluation-metric"><a href="#Evaluation-metric" class="headerlink" title="Evaluation metric"></a>Evaluation metric</h3><p><strong>BLEU</strong> (<strong>bilingual evaluation understudy</strong>) is an algorithm for <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Evaluation_of_machine_translation">evaluating</a> the quality of text which has been <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Machine_translation">machine-translated</a> from one <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Natural_language">natural language</a> to another.  each word in the output has a maxinum clip value, which is the count in the true labels.</p>
+<p>ROUGE-L: Longest Common Subsequence (LCS)[<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/ROUGE_(metric)#cite_note-lin-acl-2004-3">3]</a> based statistics</p>
+<h4 id="Personalization-randomly-9-user-input-1-golden-user-input-gt-output-probability-of-word-prob-of-sensente"><a href="#Personalization-randomly-9-user-input-1-golden-user-input-gt-output-probability-of-word-prob-of-sensente" class="headerlink" title="Personalization (randomly 9 user input + 1 golden user input -&gt; output probability of word (prob of sensente ))"></a>Personalization (randomly 9 user input + 1 golden user input -&gt; output probability of word (prob of sensente ))</h4><p>(UMA)—the proportion where the gold user is ranked highest—</p>
+<p>Mean Reciprocal Rank (MRR) (Radev et al., 2002) of the gold user</p>
+<h4 id="Recipe-Level-Coherence"><a href="#Recipe-Level-Coherence" class="headerlink" title="Recipe Level Coherence:"></a>Recipe Level Coherence:</h4>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2022/04/15/Ranking/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -238,7 +345,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2022-04-15 12:34:24 / Modified: 12:45:19" itemprop="dateCreated datePublished" datetime="2022-04-15T12:34:24-07:00">2022-04-15</time>
+              <time title="Created: 2022-04-15 14:34:24 / Modified: 14:45:19" itemprop="dateCreated datePublished" datetime="2022-04-15T14:34:24-05:00">2022-04-15</time>
             </span>
 
           
@@ -313,14 +420,14 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2022-03-31 10:03:57" itemprop="dateCreated datePublished" datetime="2022-03-31T10:03:57-07:00">2022-03-31</time>
+              <time title="Created: 2022-03-31 12:03:57" itemprop="dateCreated datePublished" datetime="2022-03-31T12:03:57-05:00">2022-03-31</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-04-26 18:52:47" itemprop="dateModified" datetime="2022-04-26T18:52:47-07:00">2022-04-26</time>
+                <time title="Modified: 2022-04-26 20:52:47" itemprop="dateModified" datetime="2022-04-26T20:52:47-05:00">2022-04-26</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -503,14 +610,14 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2022-03-27 18:34:47" itemprop="dateCreated datePublished" datetime="2022-03-27T18:34:47-07:00">2022-03-27</time>
+              <time title="Created: 2022-03-27 20:34:47" itemprop="dateCreated datePublished" datetime="2022-03-27T20:34:47-05:00">2022-03-27</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-05-08 18:55:36" itemprop="dateModified" datetime="2022-05-08T18:55:36-07:00">2022-05-08</time>
+                <time title="Modified: 2022-05-08 20:55:36" itemprop="dateModified" datetime="2022-05-08T20:55:36-05:00">2022-05-08</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -609,14 +716,14 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2022-03-03 13:19:47" itemprop="dateCreated datePublished" datetime="2022-03-03T13:19:47-08:00">2022-03-03</time>
+              <time title="Created: 2022-03-03 15:19:47" itemprop="dateCreated datePublished" datetime="2022-03-03T15:19:47-06:00">2022-03-03</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-03-16 13:13:48" itemprop="dateModified" datetime="2022-03-16T13:13:48-07:00">2022-03-16</time>
+                <time title="Modified: 2022-03-16 15:13:48" itemprop="dateModified" datetime="2022-03-16T15:13:48-05:00">2022-03-16</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -706,14 +813,14 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2022-01-01 20:07:40" itemprop="dateCreated datePublished" datetime="2022-01-01T20:07:40-08:00">2022-01-01</time>
+              <time title="Created: 2022-01-01 22:07:40" itemprop="dateCreated datePublished" datetime="2022-01-01T22:07:40-06:00">2022-01-01</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-06-18 23:56:45" itemprop="dateModified" datetime="2022-06-18T23:56:45-07:00">2022-06-18</time>
+                <time title="Modified: 2022-06-19 01:56:45" itemprop="dateModified" datetime="2022-06-19T01:56:45-05:00">2022-06-19</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -822,14 +929,14 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2021-12-29 18:34:47" itemprop="dateCreated datePublished" datetime="2021-12-29T18:34:47-08:00">2021-12-29</time>
+              <time title="Created: 2021-12-29 20:34:47" itemprop="dateCreated datePublished" datetime="2021-12-29T20:34:47-06:00">2021-12-29</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-01-01 20:08:01" itemprop="dateModified" datetime="2022-01-01T20:08:01-08:00">2022-01-01</time>
+                <time title="Modified: 2022-01-01 22:08:01" itemprop="dateModified" datetime="2022-01-01T22:08:01-06:00">2022-01-01</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -999,7 +1106,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2021-12-26 10:04:07 / Modified: 13:43:33" itemprop="dateCreated datePublished" datetime="2021-12-26T10:04:07-08:00">2021-12-26</time>
+              <time title="Created: 2021-12-26 12:04:07 / Modified: 15:43:33" itemprop="dateCreated datePublished" datetime="2021-12-26T12:04:07-06:00">2021-12-26</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1091,14 +1198,14 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2021-11-14 17:39:59" itemprop="dateCreated datePublished" datetime="2021-11-14T17:39:59-08:00">2021-11-14</time>
+              <time title="Created: 2021-11-14 19:39:59" itemprop="dateCreated datePublished" datetime="2021-11-14T19:39:59-06:00">2021-11-14</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-11-15 11:34:07" itemprop="dateModified" datetime="2021-11-15T11:34:07-08:00">2021-11-15</time>
+                <time title="Modified: 2021-11-15 13:34:07" itemprop="dateModified" datetime="2021-11-15T13:34:07-06:00">2021-11-15</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1164,7 +1271,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2021/09/21/2021%E5%B9%B4%E4%B9%9D%E6%9C%88%E7%9A%84%E9%9A%8F%E7%AC%94/">
+    <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2021/09/22/2021%E5%B9%B4%E4%B9%9D%E6%9C%88%E7%9A%84%E9%9A%8F%E7%AC%94/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/liwei3.jpg">
@@ -1178,7 +1285,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/09/21/2021%E5%B9%B4%E4%B9%9D%E6%9C%88%E7%9A%84%E9%9A%8F%E7%AC%94/" class="post-title-link" itemprop="url">2021年九月的随笔：关于香港的回忆</a>
+            <a href="/2021/09/22/2021%E5%B9%B4%E4%B9%9D%E6%9C%88%E7%9A%84%E9%9A%8F%E7%AC%94/" class="post-title-link" itemprop="url">2021年九月的随笔：关于香港的回忆</a>
         </h2>
 
         <div class="post-meta">
@@ -1188,14 +1295,14 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2021-09-21 23:07:43" itemprop="dateCreated datePublished" datetime="2021-09-21T23:07:43-07:00">2021-09-21</time>
+              <time title="Created: 2021-09-22 01:07:43" itemprop="dateCreated datePublished" datetime="2021-09-22T01:07:43-05:00">2021-09-22</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-12-30 21:22:44" itemprop="dateModified" datetime="2021-12-30T21:22:44-08:00">2021-12-30</time>
+                <time title="Modified: 2021-12-30 23:22:44" itemprop="dateModified" datetime="2021-12-30T23:22:44-06:00">2021-12-30</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1216,8 +1323,8 @@
       </span>
       <span class="post-meta-item-text">Valine: </span>
     
-    <a title="valine" href="/2021/09/21/2021%E5%B9%B4%E4%B9%9D%E6%9C%88%E7%9A%84%E9%9A%8F%E7%AC%94/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2021/09/21/2021%E5%B9%B4%E4%B9%9D%E6%9C%88%E7%9A%84%E9%9A%8F%E7%AC%94/" itemprop="commentCount"></span>
+    <a title="valine" href="/2021/09/22/2021%E5%B9%B4%E4%B9%9D%E6%9C%88%E7%9A%84%E9%9A%8F%E7%AC%94/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/09/22/2021%E5%B9%B4%E4%B9%9D%E6%9C%88%E7%9A%84%E9%9A%8F%E7%AC%94/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -1256,121 +1363,6 @@
 <p>还记得自己从几个相声里面偷些梗结合起来，自己亲自说的一次相声。</p>
 <p>还记得通关了N次的三国志真三国无双系列。。。丞相没做到的我倒是帮他实现很多次了。。。</p>
 
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2021/09/01/Missing-class-in-computer-science/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/liwei3.jpg">
-      <meta itemprop="name" content="Li Wei">
-      <meta itemprop="description" content="人生注定是一个人的旅行，但就算孤独也要做一直前行的人啊">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="NEWAY">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/09/01/Missing-class-in-computer-science/" class="post-title-link" itemprop="url">Missing class in computer science</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2021-09-01 11:46:42" itemprop="dateCreated datePublished" datetime="2021-09-01T11:46:42-07:00">2021-09-01</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-09-02 07:36:14" itemprop="dateModified" datetime="2021-09-02T07:36:14-07:00">2021-09-02</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/study/" itemprop="url" rel="index"><span itemprop="name">study</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine: </span>
-    
-    <a title="valine" href="/2021/09/01/Missing-class-in-computer-science/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2021/09/01/Missing-class-in-computer-science/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="Shell"><a href="#Shell" class="headerlink" title="Shell"></a>Shell</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">pwd = print working directory</span><br><span class="line">COMMAND &gt; FILE: execute COMMAND and the output rewrites the FILE</span><br><span class="line">COMMAND &gt;&gt; FILE: execute COMMAND and the output concates the FILE</span><br><span class="line">LCOMMAND | RCOMMAND: (pipe) use the output of left command as the input of right command</span><br></pre></td></tr></table></figure>
-
-<h2 id="Shell-script"><a href="#Shell-script" class="headerlink" title="Shell script"></a>Shell script</h2><h3 id="‘’-and-“”"><a href="#‘’-and-“”" class="headerlink" title="‘’ and “”"></a>‘’ and “”</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">foo=bar</span><br><span class="line">echo &quot;$foo&quot;</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">prints bar</span></span><br><span class="line">echo &#x27;$foo&#x27;</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">prints <span class="variable">$foo</span></span></span><br></pre></td></tr></table></figure>
-
-<h3 id=""><a href="#" class="headerlink" title="$"></a>$</h3><ul>
-<li><code>$1</code> to <code>$9</code> - Arguments to the script. <code>$1</code> is the first argument and so on.</li>
-<li><code>$@</code> - All the arguments</li>
-<li><code>$?</code> - Return code of the previous command</li>
-<li><code>!!</code> - Entire last command, including arguments. A common pattern is to execute a command only for it to fail due to missing permissions; you can quickly re-execute the command with sudo by doing <code>sudo !!</code></li>
-<li><code>$_</code> - Last argument from the last command. If you are in an interactive shell, you can also quickly get this value by typing <code>Esc</code> followed by <code>.</code></li>
-</ul>
-<h3 id="example"><a href="#example" class="headerlink" title="example"></a>example</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">!/bin/bash</span></span><br><span class="line"></span><br><span class="line">echo &quot;Starting program at $(date)&quot; # date is a command</span><br><span class="line"></span><br><span class="line">echo &quot;Running program $0 with $# arguments with pid $$&quot;</span><br><span class="line"></span><br><span class="line">for file in &quot;$@&quot;; do</span><br><span class="line">    grep foobar &quot;$file&quot; &gt; /dev/null 2&gt; /dev/null</span><br><span class="line">    # When pattern is not found, grep has exit status 1</span><br><span class="line">    # We redirect STDOUT and STDERR to a null register since we do not care about them</span><br><span class="line">    if [[ $? -ne 0 ]]; then</span><br><span class="line">        echo &quot;File $file does not have any foobar, adding one&quot;</span><br><span class="line">        echo &quot;# foobar&quot; &gt;&gt; &quot;$file&quot;</span><br><span class="line">    fi</span><br><span class="line">done</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="-1"><a href="#-1" class="headerlink" title="{}"></a>{}</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mv *&#123;.py,.sh&#125; folder</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">Will move all *.py and *.sh files</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="lt-CMD-save-the-output-in-a-temporary-file-and-return-the-file-name"><a href="#lt-CMD-save-the-output-in-a-temporary-file-and-return-the-file-name" class="headerlink" title="&lt;(CMD): save the output in a temporary file, and return the file name"></a>&lt;(CMD): save the output in a temporary file, and return the file name</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">Show differences between files <span class="keyword">in</span> foo and bar</span></span><br><span class="line">diff &lt;(ls foo) &lt;(ls bar)</span><br></pre></td></tr></table></figure>
-
-<h3 id="shebang"><a href="#shebang" class="headerlink" title="#! shebang"></a>#! shebang</h3><p>used to select the interpreter of the code (if python script, then the interpreter should be python)</p>
-<ul>
-<li><code>#!/usr/bin/env python3</code> – Execute with a <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Python_(programming_language)">Python</a> interpreter, using the <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Env">env</a> program search path to find it</li>
-<li><code>#!/bin/bash</code> – Execute the file using the <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Bash_shell">Bash shell</a></li>
-</ul>
-<h3 id="find"><a href="#find" class="headerlink" title="find"></a>find</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">Delete all files with .tmp extension</span></span><br><span class="line">find . -name &#x27;*.tmp&#x27; -exec rm &#123;&#125; \;</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">Find all PNG files and convert them to JPG</span></span><br><span class="line">find . -name &#x27;*.png&#x27; -exec convert &#123;&#125; &#123;&#125;.jpg \;</span><br></pre></td></tr></table></figure>
-
-<h2 id="Others"><a href="#Others" class="headerlink" title="Others"></a>Others</h2><ul>
-<li><code>sed</code> : a command that <strong>edits</strong> file without opening it</li>
-<li><code>tmux</code> : terminal  multiplexer</li>
-</ul>
-<h2 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h2>
       
     </div>
 
@@ -1455,7 +1447,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">138</span>
+          <span class="site-state-item-count">139</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

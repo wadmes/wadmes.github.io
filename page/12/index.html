@@ -213,6 +213,190 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2018/04/14/Mask-RCNN/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/liwei3.jpg">
+      <meta itemprop="name" content="Li Wei">
+      <meta itemprop="description" content="人生注定是一个人的旅行，但就算孤独也要做一直前行的人啊">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="NEWAY">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/04/14/Mask-RCNN/" class="post-title-link" itemprop="url">Mask RCNN</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2018-04-14 09:03:39" itemprop="dateCreated datePublished" datetime="2018-04-14T09:03:39-05:00">2018-04-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-03-21 08:34:38" itemprop="dateModified" datetime="2019-03-21T08:34:38-05:00">2019-03-21</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/paper/" itemprop="url" rel="index"><span itemprop="name">paper</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2018/04/14/Mask-RCNN/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2018/04/14/Mask-RCNN/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="Some-Terms"><a href="#Some-Terms" class="headerlink" title="Some Terms"></a>Some Terms</h2><p>Ground Truth boxes: The masks labeled in the original data.</p>
+<h2 id="Paper-writing"><a href="#Paper-writing" class="headerlink" title="Paper writing"></a>Paper writing</h2><ul>
+<li>Historically speaking,…</li>
+<li>conjecture 推测</li>
+<li>Qualitative results 一些example</li>
+<li>elucidate 阐发。make something clear</li>
+</ul>
+<h2 id="RCNN"><a href="#RCNN" class="headerlink" title="RCNN"></a><a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1311.2524.pdf">RCNN</a></h2><h3 id="Key-contributions"><a href="#Key-contributions" class="headerlink" title="Key contributions"></a>Key contributions</h3><ul>
+<li><p>proposed the <strong>impotance of features.</strong></p>
+<blockquote>
+<p>Features matter, the first sentence of RCNN paper.</p>
+</blockquote>
+</li>
+<li><p><strong>Generalize</strong> the CNN classification results on ImageNet  to object detection</p>
+<p>BY</p>
+<p>bridging the gap beween image classification and object detection.</p>
+</li>
+</ul>
+<h3 id="Modules-description"><a href="#Modules-description" class="headerlink" title="Modules description"></a>Modules description</h3><h4 id="Region-proposals-generation-Selective-search"><a href="#Region-proposals-generation-Selective-search" class="headerlink" title="Region proposals generation: Selective search"></a>Region proposals generation: Selective search</h4><p>generating category-independent region proposals. Use Selective search ( a traditional machine learning method).</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Input: image</span><br><span class="line">Return: a <span class="built_in">set</span> of proposals</span><br><span class="line"></span><br><span class="line">Regions Initializer: R = &#123;r1,r2...&#125; </span><br><span class="line"><span class="keyword">for</span> each ri, rj <span class="keyword">in</span> R:</span><br><span class="line">	cal similarity of i,j: s(ri,rj)</span><br><span class="line">     S = S <span class="keyword">and</span> s(ri,rj)</span><br><span class="line"><span class="keyword">while</span> S <span class="keyword">not</span> empy:</span><br><span class="line">    get s_max=  s(ri,rj)</span><br><span class="line">    rt = ri + rj</span><br><span class="line">    remove s(r*,r*) including ri <span class="keyword">and</span> rj</span><br><span class="line">    S = S <span class="keyword">and</span> St</span><br><span class="line">    R = R <span class="keyword">and</span> rt</span><br><span class="line"><span class="keyword">return</span> bounding box of each region <span class="keyword">in</span> R</span><br></pre></td></tr></table></figure>
+
+<h4 id="Feature-extraction"><a href="#Feature-extraction" class="headerlink" title="Feature extraction"></a>Feature extraction</h4><h5 id="Proposal-transformation"><a href="#Proposal-transformation" class="headerlink" title="Proposal transformation"></a>Proposal transformation</h5><ul>
+<li>tightest square with context (context for fulfill 227,227)(context:前后关系。此处意为proposal再图像里的左右部分 )</li>
+<li>tightest square without context</li>
+<li>Resize and zero padding</li>
+</ul>
+<h5 id="Train"><a href="#Train" class="headerlink" title="Train:"></a>Train:</h5><ul>
+<li>Positive data: proposals with IOU &gt; 0.5 and Ground Truth labels</li>
+<li>Negative data: proposals with IOU &lt; 0.5</li>
+</ul>
+<p>A CNN model. </p>
+<p>Input: $(227,227,3)$</p>
+<p>Output features: $(4096)$</p>
+<h4 id="Class-specific-linear-SVMs-class-independently"><a href="#Class-specific-linear-SVMs-class-independently" class="headerlink" title="Class-specific linear SVMs (class independently)"></a>Class-specific linear SVMs (class independently)</h4><p>For each proposal, SVM generates an expected class and corresponding confidence. Final results only include proposals with IoU (Intersection of union) <strong>[Bounding box]</strong> overlap with a higher scoring selected region larger than a learned <strong>threshold</strong> <em>(pretty important according to the paper).</em></p>
+<p><strong>Train:</strong> </p>
+<ul>
+<li>Positive data: Ground Truth labels</li>
+<li>Negative data: proposals with IOU &lt; 0.3</li>
+<li>Dropped data: proposals with IOU &gt; 0.3 (Too much positive samples which do not emphasize <strong>precise localization</strong>)</li>
+</ul>
+<h4 id="Visualize-method"><a href="#Visualize-method" class="headerlink" title="Visualize method"></a>Visualize method</h4><h5 id="Features"><a href="#Features" class="headerlink" title="Features"></a>Features</h5><p>Use 10M+ images as input, for each feature unit, a output value will be generated. Then rank the 10M+ value and show images with corresponding top 10 values. (Speak for themselves)</p>
+<p><img src="/../images/1523806612856.png" alt="1523806612856"></p>
+<p><em>[Each row indicates the result of each feature unit]</em></p>
+<h5 id="Ablation-切除"><a href="#Ablation-切除" class="headerlink" title="Ablation(切除)"></a>Ablation(切除)</h5><ul>
+<li>Convolution layer has sufficient representational power of image. (更偏于原图)</li>
+<li>Fc 更偏于 features. The fine-tuning of fc will benefit more because features of different tasks are different.(But the deep representation format of same image has no much difference)</li>
+</ul>
+<h4 id="Bounding-box-regression"><a href="#Bounding-box-regression" class="headerlink" title="Bounding box regression"></a>Bounding box regression</h4><h5 id="Train-1"><a href="#Train-1" class="headerlink" title="Train"></a>Train</h5><ul>
+<li>Positive data: Region proposal with biggest IOU and IOU &gt; 0.6. ($P_x,P_y,P_w,P_h$)</li>
+</ul>
+<p>$f(P_x, P_y, P_w, P_h) &#x3D; (\hat{G_x}, \hat{G_y}, \hat{G_w}, \hat{G_h})$<br>and<br>$(\hat{G_x}, \hat{G_y}, \hat{G_w}, \hat{G_h}) \approx (G_x, G_y, G_w, G_h)$</p>
+<ol>
+<li>shift. $\hat G_x &#x3D; P_w d_x(P) + P_x , \text(1).\hat G_y&#x3D; P_h d_y(P) + P_y , \text(2)$</li>
+<li>scale.$\hat G_w&#x3D; P_w exp(d_w(P) ),  \text(3).\hat G_h&#x3D; P_h exp(d_h(P) ) , \text(4)$</li>
+<li>Four real parameters: $d_x(P), d_y(P), d_w(P), d_h(P) &#x3D;t_*&#x3D; (t_x, t_y, t_w, t_h) $</li>
+</ol>
+<p>$<code>W_* = argmin_&#123;w_*&#125; \sum_i^N(t_*^i - \hat w_*^T\phi_5(P^i))^2 + \lambda || \hat w_*||^2</code>$</p>
+<p>$t$ : real changing needing to do.</p>
+<p>$w$: learned changing, which need to be regression.</p>
+<h2 id="Fast-RCNN"><a href="#Fast-RCNN" class="headerlink" title="Fast RCNN"></a>Fast RCNN</h2><h3 id="Drawbacks-of-RCNN"><a href="#Drawbacks-of-RCNN" class="headerlink" title="Drawbacks of RCNN"></a>Drawbacks of RCNN</h3><ul>
+<li>multi-stage pipeline trainning</li>
+<li>training is too expensive</li>
+<li>slow object detection ( proposal and the convolution forward of each proposal is the major time-consuming part )<ul>
+<li>solved by: <strong>SPP nets</strong>(spatial pyramid pooling networks)<ol>
+<li>computes a convolutional feature map for the <strong>entire input image</strong> instead of <strong>each proposals.</strong></li>
+<li>classifies each proposal using a <strong>feature vector</strong> extracted from the shared feature map (by max-pooling to a fixed size output such as $6\times6$)</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="Contributions"><a href="#Contributions" class="headerlink" title="Contributions"></a>Contributions</h3><ul>
+<li>Single-stage training</li>
+<li>No disk storage is required for feature caching</li>
+</ul>
+<h3 id="Architectures"><a href="#Architectures" class="headerlink" title="Architectures"></a>Architectures</h3><p><img src="/../images/fastrcnn.png" alt="img"></p>
+<p>Two <strong>differences</strong>:</p>
+<ul>
+<li>feature maps are calculated using proposals, but entire image.</li>
+<li>Prediction of class id and bbox regression is implemented using one single network. ( instead of SVM + FC)</li>
+</ul>
+<h4 id="ROI-pooling-layer"><a href="#ROI-pooling-layer" class="headerlink" title="ROI pooling layer"></a>ROI pooling layer</h4><p>Any size($16\times20$ for example ) of ROI’s corresponding feature maps will be transformed into fixed size(7*7 for example).</p>
+<p>Using a windows of size($16&#x2F;7\times20&#x2F;7$) to do  max pooling. </p>
+<h5 id="backwards-calculation"><a href="#backwards-calculation" class="headerlink" title="backwards calculation"></a>backwards calculation</h5><p>derivatives are accumulated in the input of the ROI pooling layer if it is selected as MAX feature unit.</p>
+<h5 id="Scale-invariance-to-brute-force-or-finesse"><a href="#Scale-invariance-to-brute-force-or-finesse" class="headerlink" title="Scale invariance: to brute force or finesse?"></a>Scale invariance: to brute force or finesse?</h5><p>Brute force: fixed size ( single scale)</p>
+<p>finesses multi scale</p>
+<h4 id="Multi-task-Loss"><a href="#Multi-task-Loss" class="headerlink" title="Multi-task Loss"></a>Multi-task Loss</h4><p>Overall loss &#x3D; Loss of classification + bounding box regresssion</p>
+<p>Typically, The bounding box loss is different!</p>
+<p>$L_{bbr} &#x3D; $</p>
+<ul>
+<li>$0.5x^2\ if |x|&lt;1, where\ x &#x3D;(predicted-label) $</li>
+<li>$|x|-0.5\ otherwise$</li>
+</ul>
+<p>To avoid exploding gradient . (Previous $L_{bbr}’ &#x3D; 2|x|$)</p>
+<h4 id="Mini-batch-sampling"><a href="#Mini-batch-sampling" class="headerlink" title="Mini batch sampling"></a>Mini batch sampling</h4><p>Mini batch size &#x3D; 128 &#x3D; 64 RoIs &#x2F;image * 2images</p>
+<p>RoIs &#x3D; 25% proposals generated  AND IoU&gt;0.5</p>
+<h4 id="Non-Max-SUPPRESSION"><a href="#Non-Max-SUPPRESSION" class="headerlink" title="Non Max SUPPRESSION"></a>Non Max SUPPRESSION</h4><p>一组 iou &gt; IOU_THRESHOLD 的proposals。以 iou排序， 选取最大的那个proposal， 计算其他proposals和他的iou，大于 NMS_THRESHOLD 的 全部删掉 （和最好的那个重复太多），一直重复遍历。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2018/03/23/%E5%B9%B3%E5%87%A1%E7%9A%84%E4%B8%96%E7%95%8C%E8%AF%BB%E5%90%8E%E6%84%9F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -237,14 +421,14 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2018-03-23 13:36:09" itemprop="dateCreated datePublished" datetime="2018-03-23T13:36:09-07:00">2018-03-23</time>
+              <time title="Created: 2018-03-23 15:36:09" itemprop="dateCreated datePublished" datetime="2018-03-23T15:36:09-05:00">2018-03-23</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-02-22 00:33:46" itemprop="dateModified" datetime="2020-02-22T00:33:46-08:00">2020-02-22</time>
+                <time title="Modified: 2020-02-22 02:33:46" itemprop="dateModified" datetime="2020-02-22T02:33:46-06:00">2020-02-22</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -332,14 +516,14 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2018-03-14 20:36:20" itemprop="dateCreated datePublished" datetime="2018-03-14T20:36:20-07:00">2018-03-14</time>
+              <time title="Created: 2018-03-14 22:36:20" itemprop="dateCreated datePublished" datetime="2018-03-14T22:36:20-05:00">2018-03-14</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-02-22 00:33:43" itemprop="dateModified" datetime="2020-02-22T00:33:43-08:00">2020-02-22</time>
+                <time title="Modified: 2020-02-22 02:33:43" itemprop="dateModified" datetime="2020-02-22T02:33:43-06:00">2020-02-22</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -428,14 +612,14 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2018-03-08 14:07:09" itemprop="dateCreated datePublished" datetime="2018-03-08T14:07:09-08:00">2018-03-08</time>
+              <time title="Created: 2018-03-08 16:07:09" itemprop="dateCreated datePublished" datetime="2018-03-08T16:07:09-06:00">2018-03-08</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-03-21 06:31:21" itemprop="dateModified" datetime="2019-03-21T06:31:21-07:00">2019-03-21</time>
+                <time title="Modified: 2019-03-21 08:31:21" itemprop="dateModified" datetime="2019-03-21T08:31:21-05:00">2019-03-21</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -770,14 +954,14 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2018-02-26 13:30:03" itemprop="dateCreated datePublished" datetime="2018-02-26T13:30:03-08:00">2018-02-26</time>
+              <time title="Created: 2018-02-26 15:30:03" itemprop="dateCreated datePublished" datetime="2018-02-26T15:30:03-06:00">2018-02-26</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-03-21 06:25:31" itemprop="dateModified" datetime="2019-03-21T06:25:31-07:00">2019-03-21</time>
+                <time title="Modified: 2019-03-21 08:25:31" itemprop="dateModified" datetime="2019-03-21T08:25:31-05:00">2019-03-21</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1006,14 +1190,14 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2018-02-26 07:42:03" itemprop="dateCreated datePublished" datetime="2018-02-26T07:42:03-08:00">2018-02-26</time>
+              <time title="Created: 2018-02-26 09:42:03" itemprop="dateCreated datePublished" datetime="2018-02-26T09:42:03-06:00">2018-02-26</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-03-21 06:32:40" itemprop="dateModified" datetime="2019-03-21T06:32:40-07:00">2019-03-21</time>
+                <time title="Modified: 2019-03-21 08:32:40" itemprop="dateModified" datetime="2019-03-21T08:32:40-05:00">2019-03-21</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1207,14 +1391,14 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2018-02-14 09:24:22" itemprop="dateCreated datePublished" datetime="2018-02-14T09:24:22-08:00">2018-02-14</time>
+              <time title="Created: 2018-02-14 11:24:22" itemprop="dateCreated datePublished" datetime="2018-02-14T11:24:22-06:00">2018-02-14</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-03-21 06:25:19" itemprop="dateModified" datetime="2019-03-21T06:25:19-07:00">2019-03-21</time>
+                <time title="Modified: 2019-03-21 08:25:19" itemprop="dateModified" datetime="2019-03-21T08:25:19-05:00">2019-03-21</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1351,14 +1535,14 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2018-01-30 13:08:41" itemprop="dateCreated datePublished" datetime="2018-01-30T13:08:41-08:00">2018-01-30</time>
+              <time title="Created: 2018-01-30 15:08:41" itemprop="dateCreated datePublished" datetime="2018-01-30T15:08:41-06:00">2018-01-30</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-03-21 06:34:04" itemprop="dateModified" datetime="2019-03-21T06:34:04-07:00">2019-03-21</time>
+                <time title="Modified: 2019-03-21 08:34:04" itemprop="dateModified" datetime="2019-03-21T08:34:04-05:00">2019-03-21</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1446,14 +1630,14 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2018-01-23 09:47:42" itemprop="dateCreated datePublished" datetime="2018-01-23T09:47:42-08:00">2018-01-23</time>
+              <time title="Created: 2018-01-23 11:47:42" itemprop="dateCreated datePublished" datetime="2018-01-23T11:47:42-06:00">2018-01-23</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-03-21 06:27:42" itemprop="dateModified" datetime="2019-03-21T06:27:42-07:00">2019-03-21</time>
+                <time title="Modified: 2019-03-21 08:27:42" itemprop="dateModified" datetime="2019-03-21T08:27:42-05:00">2019-03-21</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1534,14 +1718,14 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2018-01-20 13:06:42" itemprop="dateCreated datePublished" datetime="2018-01-20T13:06:42-08:00">2018-01-20</time>
+              <time title="Created: 2018-01-20 15:06:42" itemprop="dateCreated datePublished" datetime="2018-01-20T15:06:42-06:00">2018-01-20</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-03-21 06:18:53" itemprop="dateModified" datetime="2019-03-21T06:18:53-07:00">2019-03-21</time>
+                <time title="Modified: 2019-03-21 08:18:53" itemprop="dateModified" datetime="2019-03-21T08:18:53-05:00">2019-03-21</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1580,128 +1764,6 @@
       
           <h4 id="Conv-sppedup"><a href="#Conv-sppedup" class="headerlink" title="Conv sppedup"></a>Conv sppedup</h4><h5 id="Accurate-compu"><a href="#Accurate-compu" class="headerlink" title="Accurate compu"></a>Accurate compu</h5><h5 id="Approximatation-computation"><a href="#Approximatation-computation" class="headerlink" title="Approximatation computation"></a>Approximatation computation</h5><h6 id="Low-rank"><a href="#Low-rank" class="headerlink" title="Low-rank"></a>Low-rank</h6><h6 id="sparse"><a href="#sparse" class="headerlink" title="sparse"></a>sparse</h6><h6 id="Activation-function-ReLU"><a href="#Activation-function-ReLU" class="headerlink" title="Activation function (ReLU)"></a>Activation function (ReLU)</h6><h6 id="Yuzhe"><a href="#Yuzhe" class="headerlink" title="Yuzhe"></a>Yuzhe</h6><p>$min\sum||Y_i-r((A+B)\cdot X_i)||_F^2, st.rank(A)&lt;T_1, ||B||_0&lt;T_2$</p>
 <p>A is a low-rank tensor, while B is a sparse tensor </p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2018/01/16/mobile-dev/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/liwei3.jpg">
-      <meta itemprop="name" content="Li Wei">
-      <meta itemprop="description" content="人生注定是一个人的旅行，但就算孤独也要做一直前行的人啊">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="NEWAY">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/01/16/mobile-dev/" class="post-title-link" itemprop="url">mobile dev</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2018-01-16 11:05:36" itemprop="dateCreated datePublished" datetime="2018-01-16T11:05:36-08:00">2018-01-16</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-03-21 06:34:49" itemprop="dateModified" datetime="2019-03-21T06:34:49-07:00">2019-03-21</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/seminar/" itemprop="url" rel="index"><span itemprop="name">seminar</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine: </span>
-    
-    <a title="valine" href="/2018/01/16/mobile-dev/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2018/01/16/mobile-dev/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>Speaker: </p>
-<blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`Prof. Xiang Chen`</span><br></pre></td></tr></table></figure>
-</blockquote>
-<h5 id="Low-power"><a href="#Low-power" class="headerlink" title="Low power"></a>Low power</h5><p>power barrier ( battery capacity size)</p>
-<p>OLED</p>
-<ul>
-<li>不同颜色能耗比不同，相比降低亮度，可以增加红绿的比例（oled）</li>
-<li>对不同label的视频（游戏，电影，新闻——。。）可以有不同的处理方式。</li>
-</ul>
-<p>GPS:</p>
-<ul>
-<li>不持续发送信号</li>
-</ul>
-<p>GPU</p>
-<ul>
-<li>fps： 手机越小，距离越大。需求越小。GGG<ul>
-<li>距离：用camera（间歇性）+sensor(持续性)</li>
-</ul>
-</li>
-</ul>
-<p>DNN</p>
-<ul>
-<li>FC （ memory sensitive）<ul>
-<li>sparsity -&gt; cluster?</li>
-</ul>
-</li>
-<li>CNN(computational sensitive)<ul>
-<li>layer partition of different nodes(distributed computation)</li>
-</ul>
-</li>
-</ul>
-<h5 id="Mobile-security"><a href="#Mobile-security" class="headerlink" title="Mobile security"></a>Mobile security</h5><ul>
-<li>Gesture (velocity pressure area) is different</li>
-</ul>
 
       
     </div>
@@ -1787,7 +1849,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">138</span>
+          <span class="site-state-item-count">139</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

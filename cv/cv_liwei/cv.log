@@ -1,17 +1,16 @@
-This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022) (preloaded format=xelatex 2022.8.31)  14 FEB 2023 12:54
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.4.8)  6 AUG 2023 20:35
 entering extended mode
- \write18 enabled.
- file:line:error style messages enabled.
+ restricted \write18 enabled.
  %&-line parsing enabled.
-**cv
+**cv.tex
 (./cv.tex
-LaTeX2e <2021-11-15> patch level 1
-L3 programming layer <2022-02-24> (./resume.cls
+LaTeX2e <2022-11-01> patch level 1
+L3 programming layer <2023-02-22> (./resume.cls
 Document Class: resume 2010/07/10 v0.9 Resume class
-(/usr/local/texlive/2022/texmf-dist/tex/latex/base/article.cls
-Document Class: article 2021/10/04 v1.4n Standard LaTeX document class
-(/usr/local/texlive/2022/texmf-dist/tex/latex/base/size10.clo
-File: size10.clo 2021/10/04 v1.4n Standard LaTeX file (size option)
+(/usr/local/texlive/2023/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2022/07/02 v1.4n Standard LaTeX document class
+(/usr/local/texlive/2023/texmf-dist/tex/latex/base/size10.clo
+File: size10.clo 2022/07/02 v1.4n Standard LaTeX file (size option)
 )
 \c@part=\count181
 \c@section=\count182
@@ -21,104 +20,118 @@ File: size10.clo 2021/10/04 v1.4n Standard LaTeX file (size option)
 \c@subparagraph=\count186
 \c@figure=\count187
 \c@table=\count188
-\abovecaptionskip=\skip47
-\belowcaptionskip=\skip48
-\bibindent=\dimen138
-) (/usr/local/texlive/2022/texmf-dist/tex/latex/parskip/parskip.sty
+\abovecaptionskip=\skip48
+\belowcaptionskip=\skip49
+\bibindent=\dimen140
+)
+(/usr/local/texlive/2023/texmf-dist/tex/latex/parskip/parskip.sty
 Package: parskip 2021-03-14 v2.0h non-zero parskip adjustments
- (/usr/local/texlive/2022/texmf-dist/tex/latex/kvoptions/kvoptions.sty
-Package: kvoptions 2020-10-07 v3.14 Key value format for package options (HO)
- (/usr/local/texlive/2022/texmf-dist/tex/latex/graphics/keyval.sty
-Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+
+(/usr/local/texlive/2023/texmf-dist/tex/latex/kvoptions/kvoptions.sty
+Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
+
+(/usr/local/texlive/2023/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
 \KV@toks@=\toks16
-) (/usr/local/texlive/2022/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
+)
+(/usr/local/texlive/2023/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
 Package: ltxcmds 2020-05-10 v1.25 LaTeX kernel commands for general use (HO)
-) (/usr/local/texlive/2022/texmf-dist/tex/generic/kvsetkeys/kvsetkeys.sty
-Package: kvsetkeys 2019/12/15 v1.18 Key value parser (HO)
-)) (/usr/local/texlive/2022/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+)
+(/usr/local/texlive/2023/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty
+Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
+))
+(/usr/local/texlive/2023/texmf-dist/tex/latex/etoolbox/etoolbox.sty
 Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
 \etb@tempcnta=\count189
-)) (/usr/local/texlive/2022/texmf-dist/tex/latex/tools/array.sty
-Package: array 2021/10/04 v2.5f Tabular extension package (FMi)
-\col@sep=\dimen139
-\ar@mcellbox=\box50
-\extrarowheight=\dimen140
+))
+(/usr/local/texlive/2023/texmf-dist/tex/latex/tools/array.sty
+Package: array 2022/09/04 v2.5g Tabular extension package (FMi)
+\col@sep=\dimen141
+\ar@mcellbox=\box51
+\extrarowheight=\dimen142
 \NC@list=\toks17
-\extratabsurround=\skip49
-\backup@length=\skip50
-\ar@cellbox=\box51
-) (/usr/local/texlive/2022/texmf-dist/tex/latex/base/ifthen.sty
-Package: ifthen 2020/11/24 v1.1c Standard LaTeX ifthen package (DPC)
-) (/usr/local/texlive/2022/texmf-dist/tex/latex/graphics/color.sty
-Package: color 2021/12/07 v1.3c Standard LaTeX Color (DPC)
- (/usr/local/texlive/2022/texmf-dist/tex/latex/graphics-cfg/color.cfg
+\extratabsurround=\skip50
+\backup@length=\skip51
+\ar@cellbox=\box52
+)
+(/usr/local/texlive/2023/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2022/04/13 v1.1d Standard LaTeX ifthen package (DPC)
+)
+(/usr/local/texlive/2023/texmf-dist/tex/latex/graphics/color.sty
+Package: color 2022/01/06 v1.3d Standard LaTeX Color (DPC)
+
+(/usr/local/texlive/2023/texmf-dist/tex/latex/graphics-cfg/color.cfg
 File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
 Package color Info: Driver file: xetex.def on input line 149.
- (/usr/local/texlive/2022/texmf-dist/tex/latex/graphics-def/xetex.def
-File: xetex.def 2021/03/18 v5.0k Graphics/color driver for xetex
-))) (/usr/local/texlive/2022/texmf-dist/tex/latex/geometry/geometry.sty
+
+(/usr/local/texlive/2023/texmf-dist/tex/latex/graphics-def/xetex.def
+File: xetex.def 2022/09/22 v5.0n Graphics/color driver for xetex
+)
+(/usr/local/texlive/2023/texmf-dist/tex/latex/graphics/mathcolor.ltx)))
+(/usr/local/texlive/2023/texmf-dist/tex/latex/geometry/geometry.sty
 Package: geometry 2020/01/02 v5.9 Page Geometry
- (/usr/local/texlive/2022/texmf-dist/tex/generic/iftex/ifvtex.sty
+
+(/usr/local/texlive/2023/texmf-dist/tex/generic/iftex/ifvtex.sty
 Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
- (/usr/local/texlive/2022/texmf-dist/tex/generic/iftex/iftex.sty
+
+(/usr/local/texlive/2023/texmf-dist/tex/generic/iftex/iftex.sty
 Package: iftex 2022/02/03 v1.0f TeX engine tests
 ))
 \Gm@cnth=\count190
 \Gm@cntv=\count191
 \c@Gm@tempcnt=\count192
-\Gm@bindingoffset=\dimen141
-\Gm@wd@mp=\dimen142
-\Gm@odd@mp=\dimen143
-\Gm@even@mp=\dimen144
-\Gm@layoutwidth=\dimen145
-\Gm@layoutheight=\dimen146
-\Gm@layouthoffset=\dimen147
-\Gm@layoutvoffset=\dimen148
+\Gm@bindingoffset=\dimen143
+\Gm@wd@mp=\dimen144
+\Gm@odd@mp=\dimen145
+\Gm@even@mp=\dimen146
+\Gm@layoutwidth=\dimen147
+\Gm@layoutheight=\dimen148
+\Gm@layouthoffset=\dimen149
+\Gm@layoutvoffset=\dimen150
 \Gm@dimlist=\toks18
-) (/usr/local/texlive/2022/texmf-dist/tex/latex/enumitem/enumitem.sty
+)
+(/usr/local/texlive/2023/texmf-dist/tex/latex/enumitem/enumitem.sty
 Package: enumitem 2019/06/20 v3.9 Customized lists
-\labelindent=\skip51
-\enit@outerparindent=\dimen149
+\labelindent=\skip52
+\enit@outerparindent=\dimen151
 \enit@toks=\toks19
-\enit@inbox=\box52
+\enit@inbox=\box53
 \enit@count@id=\count193
 \enitdp@description=\count194
-) (/usr/local/texlive/2022/texmf-dist/tex/xelatex/xecjk/xeCJK.sty (/usr/local/texlive/2022/texmf-dist/tex/latex/l3kernel/expl3.sty
-Package: expl3 2022-02-24 L3 programming layer (loader) 
- (/usr/local/texlive/2022/texmf-dist/tex/latex/l3backend/l3backend-xetex.def
-File: l3backend-xetex.def 2022-02-07 L3 backend support: XeTeX
- (|extractbb --version)
-\c__kernel_sys_dvipdfmx_version_int=\count195
-\l__color_backend_stack_int=\count196
-\g__color_backend_stack_int=\count197
-\g__graphics_track_int=\count198
-\l__pdf_internal_box=\box53
-\g__pdf_backend_object_int=\count199
-\g__pdf_backend_annotation_int=\count266
-\g__pdf_backend_link_int=\count267
-))
-Package: xeCJK 2021/12/12 v3.8.8 Typesetting CJK scripts with XeLaTeX
- (/usr/local/texlive/2022/texmf-dist/tex/latex/ctex/ctexhook.sty
-Package: ctexhook 2021/12/12 v2.5.8 Document and package hooks (CTEX)
-) (/usr/local/texlive/2022/texmf-dist/tex/latex/l3packages/l3keys2e/l3keys2e.sty
-Package: l3keys2e 2022-01-12 LaTeX2e option processing using LaTeX3 keys
-) (/usr/local/texlive/2022/texmf-dist/tex/latex/l3packages/xtemplate/xtemplate.sty
-Package: xtemplate 2022-01-12 L3 Experimental prototype document functions
-\l__xtemplate_tmp_dim=\dimen150
-\l__xtemplate_tmp_int=\count268
-\l__xtemplate_tmp_muskip=\muskip16
-\l__xtemplate_tmp_skip=\skip52
-) (/usr/local/texlive/2022/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
-Package: xparse 2022-01-12 L3 Experimental document command parser
 )
-\l__xeCJK_tmp_int=\count269
-\l__xeCJK_tmp_box=\box54
-\l__xeCJK_tmp_dim=\dimen151
-\l__xeCJK_tmp_skip=\skip53
-\g__xeCJK_space_factor_int=\count270
-\l__xeCJK_begin_int=\count271
-\l__xeCJK_end_int=\count272
+(/usr/local/texlive/2023/texmf-dist/tex/xelatex/xecjk/xeCJK.sty
+(/usr/local/texlive/2023/texmf-dist/tex/latex/l3kernel/expl3.sty
+Package: expl3 2023-02-22 L3 programming layer (loader) 
+
+(/usr/local/texlive/2023/texmf-dist/tex/latex/l3backend/l3backend-xetex.def
+File: l3backend-xetex.def 2023-01-16 L3 backend support: XeTeX
+\g__graphics_track_int=\count195
+\l__pdf_internal_box=\box54
+\g__pdf_backend_object_int=\count196
+\g__pdf_backend_annotation_int=\count197
+\g__pdf_backend_link_int=\count198
+))
+Package: xeCJK 2022/08/05 v3.9.1 Typesetting CJK scripts with XeLaTeX
+
+(/usr/local/texlive/2023/texmf-dist/tex/latex/ctex/ctexhook.sty
+Package: ctexhook 2022/07/14 v2.5.10 Document and package hooks (CTEX)
+)
+(/usr/local/texlive/2023/texmf-dist/tex/latex/l3packages/xtemplate/xtemplate.st
+y
+Package: xtemplate 2023-02-02 L3 Experimental prototype document functions
+\l__xtemplate_tmp_dim=\dimen152
+\l__xtemplate_tmp_int=\count199
+\l__xtemplate_tmp_muskip=\muskip16
+\l__xtemplate_tmp_skip=\skip53
+)
+\l__xeCJK_tmp_int=\count266
+\l__xeCJK_tmp_box=\box55
+\l__xeCJK_tmp_dim=\dimen153
+\l__xeCJK_tmp_skip=\skip54
+\g__xeCJK_space_factor_int=\count267
+\l__xeCJK_begin_int=\count268
+\l__xeCJK_end_int=\count269
 \c__xeCJK_CJK_class_int=\XeTeXcharclass1
 \c__xeCJK_FullLeft_class_int=\XeTeXcharclass2
 \c__xeCJK_FullRight_class_int=\XeTeXcharclass3
@@ -127,71 +140,81 @@ Package: xparse 2022-01-12 L3 Experimental document command parser
 \c__xeCJK_NormalSpace_class_int=\XeTeXcharclass6
 \c__xeCJK_CM_class_int=\XeTeXcharclass7
 \c__xeCJK_HangulJamo_class_int=\XeTeXcharclass8
-\l__xeCJK_last_skip=\skip54
-\g__xeCJK_node_int=\count273
-\c__xeCJK_CJK_node_dim=\dimen152
-\c__xeCJK_CJK-space_node_dim=\dimen153
-\c__xeCJK_default_node_dim=\dimen154
-\c__xeCJK_default-space_node_dim=\dimen155
-\c__xeCJK_CJK-widow_node_dim=\dimen156
-\c__xeCJK_normalspace_node_dim=\dimen157
-\l__xeCJK_ccglue_skip=\skip55
-\l__xeCJK_ecglue_skip=\skip56
-\l__xeCJK_punct_kern_skip=\skip57
-\l__xeCJK_last_penalty_int=\count274
-\l__xeCJK_last_bound_dim=\dimen158
-\l__xeCJK_last_kern_dim=\dimen159
-\l__xeCJK_widow_penalty_int=\count275
+\l__xeCJK_last_skip=\skip55
+\c__xeCJK_none_node=\count270
+\g__xeCJK_node_int=\count271
+\c__xeCJK_CJK_node_dim=\dimen154
+\c__xeCJK_CJK-space_node_dim=\dimen155
+\c__xeCJK_default_node_dim=\dimen156
+\c__xeCJK_CJK-widow_node_dim=\dimen157
+\c__xeCJK_normalspace_node_dim=\dimen158
+\c__xeCJK_default-space_node_skip=\skip56
+\l__xeCJK_ccglue_skip=\skip57
+\l__xeCJK_ecglue_skip=\skip58
+\l__xeCJK_punct_kern_skip=\skip59
+\l__xeCJK_indent_box=\box56
+\l__xeCJK_last_penalty_int=\count272
+\l__xeCJK_last_bound_dim=\dimen159
+\l__xeCJK_last_kern_dim=\dimen160
+\l__xeCJK_widow_penalty_int=\count273
 
 Package xtemplate Info: Declaring object type 'xeCJK/punctuation' taking 0
-(xtemplate)             argument(s) on line 2337.
+(xtemplate)             argument(s) on line 2396.
 
-\l__xeCJK_fixed_punct_width_dim=\dimen160
-\l__xeCJK_mixed_punct_width_dim=\dimen161
-\l__xeCJK_middle_punct_width_dim=\dimen162
-\l__xeCJK_fixed_margin_width_dim=\dimen163
-\l__xeCJK_mixed_margin_width_dim=\dimen164
-\l__xeCJK_middle_margin_width_dim=\dimen165
-\l__xeCJK_bound_punct_width_dim=\dimen166
-\l__xeCJK_bound_margin_width_dim=\dimen167
-\l__xeCJK_margin_minimum_dim=\dimen168
-\l__xeCJK_kerning_total_width_dim=\dimen169
-\l__xeCJK_same_align_margin_dim=\dimen170
-\l__xeCJK_different_align_margin_dim=\dimen171
-\l__xeCJK_kerning_margin_width_dim=\dimen172
-\l__xeCJK_kerning_margin_minimum_dim=\dimen173
-\l__xeCJK_bound_dim=\dimen174
-\l__xeCJK_reverse_bound_dim=\dimen175
-\l__xeCJK_margin_dim=\dimen176
-\l__xeCJK_minimum_bound_dim=\dimen177
-\l__xeCJK_kerning_margin_dim=\dimen178
-\g__xeCJK_family_int=\count276
-\l__xeCJK_fam_int=\count277
-\g__xeCJK_fam_allocation_int=\count278
-\l__xeCJK_verb_case_int=\count279
-\l__xeCJK_verb_exspace_skip=\skip58
- (/usr/local/texlive/2022/texmf-dist/tex/latex/fontspec/fontspec.sty
+\l__xeCJK_fixed_punct_width_dim=\dimen161
+\l__xeCJK_mixed_punct_width_dim=\dimen162
+\l__xeCJK_middle_punct_width_dim=\dimen163
+\l__xeCJK_fixed_margin_width_dim=\dimen164
+\l__xeCJK_mixed_margin_width_dim=\dimen165
+\l__xeCJK_middle_margin_width_dim=\dimen166
+\l__xeCJK_bound_punct_width_dim=\dimen167
+\l__xeCJK_bound_margin_width_dim=\dimen168
+\l__xeCJK_margin_minimum_dim=\dimen169
+\l__xeCJK_kerning_total_width_dim=\dimen170
+\l__xeCJK_same_align_margin_dim=\dimen171
+\l__xeCJK_different_align_margin_dim=\dimen172
+\l__xeCJK_kerning_margin_width_dim=\dimen173
+\l__xeCJK_kerning_margin_minimum_dim=\dimen174
+\l__xeCJK_bound_dim=\dimen175
+\l__xeCJK_reverse_bound_dim=\dimen176
+\l__xeCJK_margin_dim=\dimen177
+\l__xeCJK_minimum_bound_dim=\dimen178
+\l__xeCJK_kerning_margin_dim=\dimen179
+\g__xeCJK_family_int=\count274
+\l__xeCJK_fam_int=\count275
+\g__xeCJK_fam_allocation_int=\count276
+\l__xeCJK_verb_case_int=\count277
+\l__xeCJK_verb_exspace_skip=\skip60
+ (/usr/local/texlive/2023/texmf-dist/tex/latex/fontspec/fontspec.sty
+(/usr/local/texlive/2023/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
+Package: xparse 2023-02-02 L3 Experimental document command parser
+)
 Package: fontspec 2022/01/15 v2.8a Font selection for XeLaTeX and LuaLaTeX
- (/usr/local/texlive/2022/texmf-dist/tex/latex/fontspec/fontspec-xetex.sty
-Package: fontspec-xetex 2022/01/15 v2.8a Font selection for XeLaTeX and LuaLaTeX
-\l__fontspec_script_int=\count280
-\l__fontspec_language_int=\count281
-\l__fontspec_strnum_int=\count282
-\l__fontspec_tmp_int=\count283
-\l__fontspec_tmpa_int=\count284
-\l__fontspec_tmpb_int=\count285
-\l__fontspec_tmpc_int=\count286
-\l__fontspec_em_int=\count287
-\l__fontspec_emdef_int=\count288
-\l__fontspec_strong_int=\count289
-\l__fontspec_strongdef_int=\count290
-\l__fontspec_tmpa_dim=\dimen179
-\l__fontspec_tmpb_dim=\dimen180
-\l__fontspec_tmpc_dim=\dimen181
- (/usr/local/texlive/2022/texmf-dist/tex/latex/base/fontenc.sty
+
+(/usr/local/texlive/2023/texmf-dist/tex/latex/fontspec/fontspec-xetex.sty
+Package: fontspec-xetex 2022/01/15 v2.8a Font selection for XeLaTeX and LuaLaTe
+X
+\l__fontspec_script_int=\count278
+\l__fontspec_language_int=\count279
+\l__fontspec_strnum_int=\count280
+\l__fontspec_tmp_int=\count281
+\l__fontspec_tmpa_int=\count282
+\l__fontspec_tmpb_int=\count283
+\l__fontspec_tmpc_int=\count284
+\l__fontspec_em_int=\count285
+\l__fontspec_emdef_int=\count286
+\l__fontspec_strong_int=\count287
+\l__fontspec_strongdef_int=\count288
+\l__fontspec_tmpa_dim=\dimen180
+\l__fontspec_tmpb_dim=\dimen181
+\l__fontspec_tmpc_dim=\dimen182
+
+(/usr/local/texlive/2023/texmf-dist/tex/latex/base/fontenc.sty
 Package: fontenc 2021/04/29 v2.0v Standard LaTeX package
-) (/usr/local/texlive/2022/texmf-dist/tex/latex/fontspec/fontspec.cfg))) (/usr/local/texlive/2022/texmf-dist/tex/xelatex/xecjk/xeCJK.cfg
-File: xeCJK.cfg 2021/12/12 v3.8.8 Configuration file for xeCJK package
+)
+(/usr/local/texlive/2023/texmf-dist/tex/latex/fontspec/fontspec.cfg)))
+(/usr/local/texlive/2023/texmf-dist/tex/xelatex/xecjk/xeCJK.cfg
+File: xeCJK.cfg 2022/08/05 v3.9.1 Configuration file for xeCJK package
 ))
 
 Package xeCJK Warning: Fandol is being set as the default font for CJK text.
@@ -204,7 +227,8 @@ Package fontspec Warning: Font "FandolSong-Regular" does not contain requested
 
 Package fontspec Info: Font family 'FandolSong-Regular(0)' created for font
 (fontspec)             'FandolSong-Regular' with options
-(fontspec)             [Script={CJK},Extension={.otf},BoldFont={FandolSong-Bold},ItalicFont={FandolKai-Regular}].
+(fontspec)             [Script={CJK},Extension={.otf},BoldFont={FandolSong-Bold
+},ItalicFont={FandolKai-Regular}].
 (fontspec)              
 (fontspec)              This font family consists of the following NFSS
 (fontspec)             series/shapes:
@@ -231,9 +255,10 @@ LaTeX Font Info:    ... okay on input line 20.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 20.
 LaTeX Font Info:    ... okay on input line 20.
 LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 20.
-LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 20.
- (/usr/local/texlive/2022/texmf-dist/tex/latex/base/ts1cmr.fd
-File: ts1cmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
+LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 2
+0.
+ (/usr/local/texlive/2023/texmf-dist/tex/latex/base/ts1cmr.fd
+File: ts1cmr.fd 2022/07/10 v2.5l Standard LaTeX font definitions
 )
 LaTeX Font Info:    ... okay on input line 20.
 LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 20.
@@ -343,12 +368,22 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <7> on input line 20.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <5> on input line 20.
-(./doc/interest.tex) (./doc/education.tex
-Underfull \hbox (badness 10000) in paragraph at lines 17--23
+(./doc/interest.tex) (./doc/education.tex) (./doc/experience.tex
+Underfull \hbox (badness 10000) in paragraph at lines 9--10
 
  []
 
-) (./doc/experience.tex [1
+
+Underfull \hbox (badness 10000) in paragraph at lines 22--23
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 40--44
+
+ []
+
+[1
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 58--59
@@ -356,18 +391,19 @@ Underfull \hbox (badness 10000) in paragraph at lines 58--59
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 64--65
+Underfull \hbox (badness 10000) in paragraph at lines 71--72
 
  []
 
-) (./doc/teach.tex) (./doc/award.tex) (./doc/publication.tex [2]) (./doc/skill.tex) [3] (./cv.aux) ) 
+) (./doc/teach.tex) (./doc/award.tex) (./doc/publication.tex [2])
+(./doc/skill.tex) [3] (./cv.aux) ) 
 Here is how much of TeX's memory you used:
- 6614 strings out of 476179
- 177097 string characters out of 5809544
- 559633 words of memory out of 5000000
- 27301 multiletter control sequences out of 15000+600000
- 469929 words of font info for 44 fonts, out of 8000000 for 9000
+ 6752 strings out of 476683
+ 184354 string characters out of 5804048
+ 1863018 words of memory out of 5000000
+ 26937 multiletter control sequences out of 15000+600000
+ 512957 words of font info for 48 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 70i,9n,81p,657b,311s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 70i,9n,81p,661b,309s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
 Output written on cv.pdf (3 pages).

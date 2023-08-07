@@ -213,6 +213,95 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2019/03/21/WAE-to-do-DNN-acceleration/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/liwei3.jpg">
+      <meta itemprop="name" content="Li Wei">
+      <meta itemprop="description" content="人生注定是一个人的旅行，但就算孤独也要做一直前行的人啊">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="NEWAY">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/03/21/WAE-to-do-DNN-acceleration/" class="post-title-link" itemprop="url">WAE to do DNN acceleration</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2019-03-21 08:36:48 / Modified: 08:36:49" itemprop="dateCreated datePublished" datetime="2019-03-21T08:36:48-05:00">2019-03-21</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/paper/" itemprop="url" rel="index"><span itemprop="name">paper</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2019/03/21/WAE-to-do-DNN-acceleration/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/03/21/WAE-to-do-DNN-acceleration/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="related-work"><a href="#related-work" class="headerlink" title="related work"></a>related work</h3><p>DNN加速，目前的几个热门方向有：</p>
+<ul>
+<li>tensor decomposition。将卷积运算中的tensor利用PCA等数学技术 降解成 低维、低rank、稀疏的tensor，从而直接提高计算速度</li>
+<li>Quantization and Pruning. 将tensor中每个weight，或feature map里所有数值，利用quantization&#x2F;pruning 提高计算速度。</li>
+<li>Network structure。$5\times 5 &#x3D; 3 \times 3 + 3\times 3, 3\times 3 &#x3D; 3\times 1 + 1\times 1 + 1\times 3$</li>
+</ul>
+<p>本篇文章另辟蹊径，直接从input入手，通过在减小input size的基础上 最大化input信息，从而directly的加速运算（对input（图像）的研究是CV方向了，需要对CV研究的比较透彻，也难怪是sensetime参与的）</p>
+<p>与其他方法比起来最明显的优势就是可以直接应用到不同的model structure（比如ResNet 到ResNext），而不需要对内部结构有修改。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2019/03/11/Optimally-Scheduling-CNN-Convolutions-forEfficient-Memory-Access/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -237,14 +326,14 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2019-03-11 10:03:57" itemprop="dateCreated datePublished" datetime="2019-03-11T10:03:57-07:00">2019-03-11</time>
+              <time title="Created: 2019-03-11 12:03:57" itemprop="dateCreated datePublished" datetime="2019-03-11T12:03:57-05:00">2019-03-11</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-03-22 21:11:07" itemprop="dateModified" datetime="2019-03-22T21:11:07-07:00">2019-03-22</time>
+                <time title="Modified: 2019-03-22 23:11:07" itemprop="dateModified" datetime="2019-03-22T23:11:07-05:00">2019-03-22</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -374,14 +463,14 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2019-02-28 19:53:34" itemprop="dateCreated datePublished" datetime="2019-02-28T19:53:34-08:00">2019-02-28</time>
+              <time title="Created: 2019-02-28 21:53:34" itemprop="dateCreated datePublished" datetime="2019-02-28T21:53:34-06:00">2019-02-28</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-03-21 06:19:01" itemprop="dateModified" datetime="2019-03-21T06:19:01-07:00">2019-03-21</time>
+                <time title="Modified: 2019-03-21 08:19:01" itemprop="dateModified" datetime="2019-03-21T08:19:01-05:00">2019-03-21</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -467,14 +556,14 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2019-02-14 18:26:02" itemprop="dateCreated datePublished" datetime="2019-02-14T18:26:02-08:00">2019-02-14</time>
+              <time title="Created: 2019-02-14 20:26:02" itemprop="dateCreated datePublished" datetime="2019-02-14T20:26:02-06:00">2019-02-14</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-04-30 01:41:54" itemprop="dateModified" datetime="2019-04-30T01:41:54-07:00">2019-04-30</time>
+                <time title="Modified: 2019-04-30 03:41:54" itemprop="dateModified" datetime="2019-04-30T03:41:54-05:00">2019-04-30</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -569,14 +658,14 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2019-02-02 14:39:02" itemprop="dateCreated datePublished" datetime="2019-02-02T14:39:02-08:00">2019-02-02</time>
+              <time title="Created: 2019-02-02 16:39:02" itemprop="dateCreated datePublished" datetime="2019-02-02T16:39:02-06:00">2019-02-02</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-01-01 21:25:01" itemprop="dateModified" datetime="2022-01-01T21:25:01-08:00">2022-01-01</time>
+                <time title="Modified: 2022-01-01 23:25:01" itemprop="dateModified" datetime="2022-01-01T23:25:01-06:00">2022-01-01</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -663,14 +752,14 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2019-01-11 11:48:12" itemprop="dateCreated datePublished" datetime="2019-01-11T11:48:12-08:00">2019-01-11</time>
+              <time title="Created: 2019-01-11 13:48:12" itemprop="dateCreated datePublished" datetime="2019-01-11T13:48:12-06:00">2019-01-11</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-03-21 06:35:04" itemprop="dateModified" datetime="2019-03-21T06:35:04-07:00">2019-03-21</time>
+                <time title="Modified: 2019-03-21 08:35:04" itemprop="dateModified" datetime="2019-03-21T08:35:04-05:00">2019-03-21</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -752,14 +841,14 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2018-12-21 11:35:17" itemprop="dateCreated datePublished" datetime="2018-12-21T11:35:17-08:00">2018-12-21</time>
+              <time title="Created: 2018-12-21 13:35:17" itemprop="dateCreated datePublished" datetime="2018-12-21T13:35:17-06:00">2018-12-21</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-03-21 06:23:59" itemprop="dateModified" datetime="2019-03-21T06:23:59-07:00">2019-03-21</time>
+                <time title="Modified: 2019-03-21 08:23:59" itemprop="dateModified" datetime="2019-03-21T08:23:59-05:00">2019-03-21</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -865,14 +954,14 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2018-11-30 15:44:24" itemprop="dateCreated datePublished" datetime="2018-11-30T15:44:24-08:00">2018-11-30</time>
+              <time title="Created: 2018-11-30 17:44:24" itemprop="dateCreated datePublished" datetime="2018-11-30T17:44:24-06:00">2018-11-30</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-04-20 10:28:29" itemprop="dateModified" datetime="2021-04-20T10:28:29-07:00">2021-04-20</time>
+                <time title="Modified: 2021-04-20 12:28:29" itemprop="dateModified" datetime="2021-04-20T12:28:29-05:00">2021-04-20</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -967,14 +1056,14 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2018-11-13 14:50:29" itemprop="dateCreated datePublished" datetime="2018-11-13T14:50:29-08:00">2018-11-13</time>
+              <time title="Created: 2018-11-13 16:50:29" itemprop="dateCreated datePublished" datetime="2018-11-13T16:50:29-06:00">2018-11-13</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-03-21 06:36:40" itemprop="dateModified" datetime="2019-03-21T06:36:40-07:00">2019-03-21</time>
+                <time title="Modified: 2019-03-21 08:36:40" itemprop="dateModified" datetime="2019-03-21T08:36:40-05:00">2019-03-21</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1057,14 +1146,14 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2018-10-26 14:50:29" itemprop="dateCreated datePublished" datetime="2018-10-26T14:50:29-07:00">2018-10-26</time>
+              <time title="Created: 2018-10-26 16:50:29" itemprop="dateCreated datePublished" datetime="2018-10-26T16:50:29-05:00">2018-10-26</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-03-21 06:30:10" itemprop="dateModified" datetime="2019-03-21T06:30:10-07:00">2019-03-21</time>
+                <time title="Modified: 2019-03-21 08:30:10" itemprop="dateModified" datetime="2019-03-21T08:30:10-05:00">2019-03-21</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1118,97 +1207,6 @@
 </blockquote>
 <p>不过分手这一两个月的心路历程真是有意思。从愤怒，到茫然，到委屈，到思念，到释怀，到急于找一个新的依托，再到现在好像觉得这些不是那么“急”。我欣赏羡慕李健，欣赏他的为人，羡慕他的爱情。但是他之所以能有这样的爱情也是他的为人决定的，连我也会觉得要是个女生会想着嫁给李健，不是么？因此也是最近的某个时刻，忽然发现，我不应该想用新的恋情去忘掉旧的过去，这样的恋情可能会幸福，但对于那个女生肯定是不公平的。一个男生，更应该想的是提高自己，不管是专业能力还是个人的修养，倘若做一个李健那样的人，自然也能吸引到优秀温柔如孟小蓓的姑娘。这样的姑娘会有吗？肯定会有的。时光还长，每每输入自己出生年月的时候，我都会又这样的感慨，我才21呀，还有十年时光给我去碰到，结识各种各样的朋友，只要我保持自己的本心，做一个真诚善良的人，同时提高自己的修养，我肯定肯定也会遇到一个适合我的姑娘的。她会在往后的岁月给我更长久的幸福，虽然不曾来过我的青春。</p>
 <p>关于工作。可能是受苏轼的影响，我发觉我越来越乐天派了，颇有点一蓑烟雨任平生的意味，尤其是看了许多人的传记后更发觉得，历史长河滚滚前行，哪怕你是时代的弄潮儿，终究也会淹没在历史的潮水下，更何况我们中大部分都只是那潮水中的一个小水滴。当我和身边优秀的人儿聊天时，无外乎申请、升职、压力，会给自己这样那样的鞭笞，有时候反而让自己的压力越来越大。这是好事还是坏事？按照主流价值观来说，肯定是好事，天行健，君子当自强不息。但是，我其实真的不想给自己这么大的物质地位荣誉上的追求压力，我觉得计算机这个行业，以后我就算混的再差肯定也可以吃喝不愁，在长沙或者什么小地方买个小房子。对我来说，重要的往往是心灵上的追求，我这样子真的能让我自己开心吗，我能碰到一个能一起幸福的姑娘吗，有孩子了我能给他最足够的陪伴吗，自己真的有心思去享受江上之清风，山间之明月么。对我来说，我继续PHD学位 现在继续research的动力不是说想出人头地，而是真心的觉得成为一个大学教授是能实现我人生价值 碰到知己的很好的一个途径。人生在世，终究会归于尘土，物质上名誉上的 东西都是虚名，只要我过世时能觉得自己不虚此行，活的精彩，这便足够了。高琨先生便是我辈的楷模，虽然发明了光纤，但放弃专利申请，功成名就之时来到家乡兴办教育，年老了和自己的夫人一起逛逛超市，学校，真好呀。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2018/09/27/%E7%A4%BE%E4%BA%A4%E7%BD%91%E7%BB%9C/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/liwei3.jpg">
-      <meta itemprop="name" content="Li Wei">
-      <meta itemprop="description" content="人生注定是一个人的旅行，但就算孤独也要做一直前行的人啊">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="NEWAY">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/09/27/%E7%A4%BE%E4%BA%A4%E7%BD%91%E7%BB%9C/" class="post-title-link" itemprop="url">社交网络观后感</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2018-09-27 13:36:09" itemprop="dateCreated datePublished" datetime="2018-09-27T13:36:09-07:00">2018-09-27</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-02-22 00:34:01" itemprop="dateModified" datetime="2020-02-22T00:34:01-08:00">2020-02-22</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/life/" itemprop="url" rel="index"><span itemprop="name">life</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine: </span>
-    
-    <a title="valine" href="/2018/09/27/%E7%A4%BE%E4%BA%A4%E7%BD%91%E7%BB%9C/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2018/09/27/%E7%A4%BE%E4%BA%A4%E7%BD%91%E7%BB%9C/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>社交网络。</p>
-<p>看完后浓浓的窒息感。</p>
-<p>第一想法就是觉得人生中有许多特别重要的抉择 当时我们可能不以为然 但往后就会陷入后悔。不过仔细想想他们的结局。其实没有谁特别糟糕。即便特别糟糕了 事情既然发生 也不能怎样了 接受天命很难 却是大部分人必须学会的。</p>
-<p>另外在争吵后，如何去调整关系，不管是伴侣，还是朋友，还是合作伙伴。也许他说的是有道理，也许我真的不适合，公司的未来发展，总之，不要盲目把自己就想成真理。</p>
 
       
     </div>
@@ -1294,7 +1292,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">138</span>
+          <span class="site-state-item-count">139</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

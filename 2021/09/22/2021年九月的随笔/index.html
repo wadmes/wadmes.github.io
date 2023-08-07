@@ -23,25 +23,19 @@
     var CONFIG = {"hostname":"wadmes.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"buttons","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"./public/search.xml"};
   </script>
 
-  <meta name="description" content="建议配合 https:&#x2F;&#x2F;www.bilibili.com&#x2F;video&#x2F;av56239558?from&#x3D;search&amp;seid&#x3D;14406218127146760248 食用。 关于read paper：我个人觉得有两块要读（思考）：一块是算法上，有什么interesting或者amazing的算法值得学习。另一块就是经验、思想上，作者是如何提出这个方法的，这个方法背后蕴藏了什么思想&amp;#x">
+  <meta name="description" content="hey neway，现在是2021年的九月，我来CMU的第一个月。虽然很久没有写随笔，但是心里一直是有打草稿挂住你的哈哈，请见谅我的懒惰和不负责。 记录一些从上次随笔到现在我人生的一些容易忘记的进程吧  在UIUC，UT Austin，CMU中我选择了CMU，最主要的原因还是CMU的reputation可能更能帮助我当一名老师吧 在八月份和香港还有香港的伙伴告别了，可能是高武的离世，我现在最希望的">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Transformer: Attention is all you need">
-<meta property="og:url" content="http://wadmes.github.io/2020/04/25/Transformer-Attention-is-all-you-need/index.html">
+<meta property="og:title" content="2021年九月的随笔：关于香港的回忆">
+<meta property="og:url" content="http://wadmes.github.io/2021/09/22/2021%E5%B9%B4%E4%B9%9D%E6%9C%88%E7%9A%84%E9%9A%8F%E7%AC%94/index.html">
 <meta property="og:site_name" content="NEWAY">
-<meta property="og:description" content="建议配合 https:&#x2F;&#x2F;www.bilibili.com&#x2F;video&#x2F;av56239558?from&#x3D;search&amp;seid&#x3D;14406218127146760248 食用。 关于read paper：我个人觉得有两块要读（思考）：一块是算法上，有什么interesting或者amazing的算法值得学习。另一块就是经验、思想上，作者是如何提出这个方法的，这个方法背后蕴藏了什么思想&amp;#x">
+<meta property="og:description" content="hey neway，现在是2021年的九月，我来CMU的第一个月。虽然很久没有写随笔，但是心里一直是有打草稿挂住你的哈哈，请见谅我的懒惰和不负责。 记录一些从上次随笔到现在我人生的一些容易忘记的进程吧  在UIUC，UT Austin，CMU中我选择了CMU，最主要的原因还是CMU的reputation可能更能帮助我当一名老师吧 在八月份和香港还有香港的伙伴告别了，可能是高武的离世，我现在最希望的">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://wadmes.github.io/figures/image-20200426111253973.png">
-<meta property="og:image" content="http://wadmes.github.io/figures/image-20200426115525168.png">
-<meta property="og:image" content="http://wadmes.github.io/figures/image-20200426140105603.png">
-<meta property="article:published_time" content="2020-04-26T06:07:16.000Z">
-<meta property="article:modified_time" content="2020-04-26T06:26:38.000Z">
+<meta property="article:published_time" content="2021-09-22T06:07:43.000Z">
+<meta property="article:modified_time" content="2021-12-31T05:22:44.000Z">
 <meta property="article:author" content="Li Wei">
-<meta property="article:tag" content="DNN">
-<meta property="article:tag" content="AI">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://wadmes.github.io/figures/image-20200426111253973.png">
 
-<link rel="canonical" href="http://wadmes.github.io/2020/04/25/Transformer-Attention-is-all-you-need/">
+<link rel="canonical" href="http://wadmes.github.io/2021/09/22/2021%E5%B9%B4%E4%B9%9D%E6%9C%88%E7%9A%84%E9%9A%8F%E7%AC%94/">
 
 
 <script id="page-configurations">
@@ -54,7 +48,7 @@
   };
 </script>
 
-  <title>Transformer: Attention is all you need | NEWAY</title>
+  <title>2021年九月的随笔：关于香港的回忆 | NEWAY</title>
   
 
 
@@ -222,7 +216,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2020/04/25/Transformer-Attention-is-all-you-need/">
+    <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2021/09/22/2021%E5%B9%B4%E4%B9%9D%E6%9C%88%E7%9A%84%E9%9A%8F%E7%AC%94/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/liwei3.jpg">
@@ -235,7 +229,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Transformer: Attention is all you need
+          2021年九月的随笔：关于香港的回忆
         </h1>
 
         <div class="post-meta">
@@ -244,17 +238,23 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-04-25 23:07:16 / Modified: 23:26:38" itemprop="dateCreated datePublished" datetime="2020-04-25T23:07:16-07:00">2020-04-25</time>
+              <time title="Created: 2021-09-22 01:07:43" itemprop="dateCreated datePublished" datetime="2021-09-22T01:07:43-05:00">2021-09-22</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-12-30 23:22:44" itemprop="dateModified" datetime="2021-12-30T23:22:44-06:00">2021-12-30</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/study/" itemprop="url" rel="index"><span itemprop="name">study</span></a>
+                  <a href="/categories/life/" itemprop="url" rel="index"><span itemprop="name">life</span></a>
                 </span>
             </span>
 
@@ -267,8 +267,8 @@
       </span>
       <span class="post-meta-item-text">Valine: </span>
     
-    <a title="valine" href="/2020/04/25/Transformer-Attention-is-all-you-need/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2020/04/25/Transformer-Attention-is-all-you-need/" itemprop="commentCount"></span>
+    <a title="valine" href="/2021/09/22/2021%E5%B9%B4%E4%B9%9D%E6%9C%88%E7%9A%84%E9%9A%8F%E7%AC%94/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/09/22/2021%E5%B9%B4%E4%B9%9D%E6%9C%88%E7%9A%84%E9%9A%8F%E7%AC%94/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -283,61 +283,29 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>建议配合 <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/av56239558?from=search&seid=14406218127146760248">https://www.bilibili.com/video/av56239558?from=search&amp;seid=14406218127146760248</a> 食用。</p>
-<p>关于read paper：我个人觉得有两块要读（思考）：一块是算法上，有什么interesting或者amazing的算法值得学习。另一块就是经验、思想上，作者是如何提出这个方法的，这个方法背后蕴藏了什么思想&#x2F;经验。</p>
-<h2 id="Background"><a href="#Background" class="headerlink" title="Background"></a>Background</h2><ul>
-<li>RNN不利于parallelization</li>
-<li>Attention可以无视sequence距离挖掘信息。（我爱这个笑着眼睛像月牙弯弯每天都像阳光一样点亮我的你-&gt; key information：我爱你）</li>
-<li>如今的attention（16年）仍然是和RNN一起出现(used in conjunction with recurrent network)</li>
-<li>现在的work：要么不能并行。要么可以并行（例如CNN）却不能挖掘远处关联。（我爱月牙弯弯）</li>
-<li>Tranformer：第一个完全利用self-attention计算input和output的representation。（不用RNN，CNN）</li>
-</ul>
-<p>Include 反义词： preclude 排除，杜绝：This inherently sequential nature precludes parallelization within training examples</p>
-<p>albeit：尽管</p>
-<h2 id="Model-Architecture"><a href="#Model-Architecture" class="headerlink" title="Model Architecture"></a>Model Architecture</h2><p>Overview:</p>
-<p><img src="/figures/image-20200426111253973.png" alt="image-20200426111253973"></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">At each step: (sequence to sequence should be generated step by step)</span><br><span class="line">	middle sequence z = Encoder(Input sequence x(我爱你))</span><br><span class="line">	output sequence y_t = Decoder(z,y_&#123;t-1&#125;)</span><br><span class="line">	注意：图中右下角的output为之前的输出。</span><br></pre></td></tr></table></figure>
-
-<h3 id="Encoder"><a href="#Encoder" class="headerlink" title="Encoder"></a>Encoder</h3><ul>
-<li>LayerNorm(x + multi-head(x))</li>
-<li>LayerNorm(x + feedforward(x))</li>
-<li>keys,values,querys: input x</li>
-</ul>
-<h3 id="Decoder"><a href="#Decoder" class="headerlink" title="Decoder"></a>Decoder</h3><ul>
-<li><p>Addtional sublayer compared with Encoder: Masked attention layer(ensures that the predictions for position i can depend only on the known outputs at positions less than i.)</p>
-</li>
-<li><p>Keys, values: middle sequence from encoder</p>
-</li>
-<li><p>querys: Masked multi-head attention</p>
-</li>
-</ul>
-<h3 id="Self-attention"><a href="#Self-attention" class="headerlink" title="Self-attention"></a>Self-attention</h3><p>A <strong>mapping</strong> from a query and a set of key-value pairs to an output</p>
-<p>output:  a <strong>weighted sum</strong> of the values, where the weight assigned to each value is computed by a compatibility function（适合性方程？总之就是计算相似度） of the query with the corresponding key.</p>
-<p><img src="/figures/image-20200426115525168.png" alt="image-20200426115525168"></p>
-<p>$Q: [seq,d_k], K:[seq,d_k],V:[seq,d_v]$</p>
-<p>$seq$: sequence length</p>
-<p>注意 原x dimension 为$d_{model}$， 经过linear projection转化为 $d_k,d_v$ dimension</p>
-<h3 id="Multi-head"><a href="#Multi-head" class="headerlink" title="Multi-head"></a>Multi-head</h3><p>$x:[d_{model}] &#x3D;&gt; [h *d_v]&#x3D;&gt;[d_{model}] $</p>
-<p>h：head数目。（multihead最后concat起来，所以是$h*d_v$）</p>
-<p>再经过一次linear transform到$d_{model}$</p>
-<h3 id="Positional-Encoding"><a href="#Positional-Encoding" class="headerlink" title="Positional Encoding"></a>Positional Encoding</h3><p>常见的position方法就是one-hot encoding，但显然不能input dimension匹配，而且若用one-hot encoding 直接sum 未免显得太蠢。</p>
-<p>Transformer提出了利用正余弦的方法：</p>
-<p><img src="/figures/image-20200426140105603.png" alt="image-20200426140105603"></p>
-<p>PE即为目标embedding。pos为word所处位置，2i即为 $d_{model}$中的维度之一。</p>
+        <p>hey neway，现在是2021年的九月，我来CMU的第一个月。虽然很久没有写随笔，但是心里一直是有打草稿挂住你的哈哈，请见谅我的懒惰和不负责。</p>
+<p>记录一些从上次随笔到现在我人生的一些容易忘记的进程吧</p>
 <ul>
-<li>PE(:,x)即为$x_{th}$ dimensition下所有position的维度。 可以看到是一个周期函数</li>
-<li>PE(x,:)即为$x_{th}$ position下的embedding，是一个从波长为2pi 到 10000 * 2pi的函数。</li>
+<li>在UIUC，UT Austin，CMU中我选择了CMU，最主要的原因还是CMU的reputation可能更能帮助我当一名老师吧</li>
+<li>在八月份和香港还有香港的伙伴告别了，可能是高武的离世，我现在最希望的就是我爱的和爱我的这些人能够平平安安，过的幸福快乐就好。那也是我第一次在别人面前因为离别而哭</li>
+<li>在探索自己的路上开始注意身边人的重要。越发越想做一个温暖、感恩、发出阳光的人。</li>
+<li>开始刷起了很多探店、美食视频。。。并成为了自己想做一个up主的motivation</li>
 </ul>
-<p>但这里反直觉的是 PE是和input直接相加。而不是concat。。。 奇怪呢。</p>
-<p>Dropout -&gt; Residual -&gt; Layer Normalization (Some papers claim that layer normalization should be in the sub-layer instead of behind residual summation)</p>
-<h2 id="Why-self-attention"><a href="#Why-self-attention" class="headerlink" title="Why self-attention"></a>Why self-attention</h2><ul>
-<li># of operations</li>
-<li>Parallel</li>
-<li>path length between long-range dependencies in the network</li>
-</ul>
-<h2 id="Results"><a href="#Results" class="headerlink" title="Results"></a>Results</h2><ul>
-<li>Dropout 效果明显</li>
-</ul>
+<h2 id="感谢"><a href="#感谢" class="headerlink" title="感谢"></a>感谢</h2><p>我本来想回顾一下自己在香港的七年，不过后面理了一遍自己波澜不惊的小半段人生，发现比起把笔墨用在我自己，还不如记录一下幸运的我碰到的那么多需要感激的人和事。</p>
+<p>按照时间顺序的话，我首先应当感谢宋庆龄基金会的两位老师。我谢谢老师们对我的知遇之恩，谢谢他们始终相信我能做一个对社会有用的人，谢谢他们在我愁云密闭的时候给了我一束阳光。</p>
+<p>然后是需要谢谢组妈组爸，和所有在我初入香港时帮助我的同学。从ocamp带我们熟悉学校香港，到后面的带我们去办身份证，一切都是那么顺其自然水到渠成。直到来到匹兹堡，我才明白完全没有同伴来到一片完全陌生的土地，是需要多少时间精力和试错。原来之前的顺利不是因为自己独立能力多么多么强，只是因为有你们帮助，仅此而已。</p>
+<p>接着是感谢琦腿、凯灿、博一，宋庆龄基金会认识的同学，以及所有在大学时候曾经一起恰同学少年的伙伴们。正因为有你们，我的大学才显得没那么枯燥冷淡。在感谢一次博一吧，谢谢大学期间每次借钱<del>借作业</del>都毫不犹豫，谢谢让我知道世上真的会有永远不会生气永远温暖温柔的人。</p>
+<p>再然后是带我入坑并且给了我很多科研指导的Beibei，lingming老师，yibo老师，和宇哲。因为老师们的手把手教学（真的是问题方法都摆在这的手把手教学。。手动捂脸🤦‍♂️），过去的三年是我很充实的三年，也是获得自我成就感的三年。看着beibei lingming从当年的AP变成现在炙手可热的领域巨星，只有两个想法：1。respect（刘邦） 2。 俺也想（项羽🐶）。</p>
+<p>还要感谢荣哥和叶辉，虽然只做了大概半年的室友，但是我已经完全感受到了你们的善良、温柔、和对我的包容。</p>
+<p>接着是913的伙伴们。谢谢你们再我难过时倾听我的心声、谢谢你们无条件的接纳包容我的无礼幼稚、谢谢你们所有人的善良友好和温暖。如果我是世界规则的制造者，我多希望我可以一辈子呆在913。</p>
+<p>然后再谢谢一些帮助过我的香港人。比如文林堂的永远热情友好的舍友们。比如捡到我钱包交到警局的某位好心路人。比如我丢了钱包帮我找帮我问的小巴司机大伯。比如所有在我问路时热情指路的爷爷奶奶们。因为有你们，我对香港永远是爱意多过恨意，因为你们，香港才会成为我的第二故乡。</p>
+<p>最后我还想感谢这七年里某些时间段的自己。比如准备宋庆龄基金会面试的自己、比如沉浸科研熬夜改paper的自己、比如思考人生怎么变得更幸福的自己。</p>
+<h2 id="画面"><a href="#画面" class="headerlink" title="画面"></a>画面</h2><p>除去感谢当时的人和事，另外一个值得我提笔留念的应该是一些还记得的画面。就当是文字化的备份。</p>
+<p>我还记得初到文林堂，把新生扒光（只剩内裤）倒水问问题的狂野，也是那天我多了neway这个名字。关于文林堂的画面还有很多，再比如一起练舞的那个大厅、两位local室友的友善、文林自带的小柜台、吃了很多次的印尼捞面、去教堂周会抄的山路小道，等等。虽然嘴上说着分到文林堂很倒霉，但是现在想来，他们的友好热情、工友的勤劳善良，不是理所当然，而是我的幸运。</p>
+<p>还记得在lab赶due的那些夜晚，基本上每次回去都有月亮作伴。所以后来读到苏轼的“多谢残灯不嫌客，孤舟一夜许相依”才会有种似曾相识的感觉。印象最深的还是3100 和小灰灰、鹏神、凯灿、书赫的proj，虽然整个大学基本是以废物的状态度过的，但是那几天拼搏的感觉真好哪。</p>
+<p>还记得CCMSA组织的各种活动。包括那次露营的那片星空。</p>
+<p>还记得自己从几个相声里面偷些梗结合起来，自己亲自说的一次相声。</p>
+<p>还记得通关了N次的三国志真三国无双系列。。。丞相没做到的我倒是帮他实现很多次了。。。</p>
 
     </div>
 
@@ -346,10 +314,6 @@
     
 
       <footer class="post-footer">
-          <div class="post-tags">
-              <a href="/tags/DNN/" rel="tag"># DNN</a>
-              <a href="/tags/AI/" rel="tag"># AI</a>
-          </div>
 
         
 
@@ -357,12 +321,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/04/24/%E5%9B%9B%E6%9C%88%E7%9A%84%E7%A2%8E%E7%A2%8E%E5%BF%B5/" rel="prev" title="四月的碎碎念">
-      <i class="fa fa-chevron-left"></i> 四月的碎碎念
+    <a href="/2021/09/01/Missing-class-in-computer-science/" rel="prev" title="Missing class in computer science">
+      <i class="fa fa-chevron-left"></i> Missing class in computer science
     </a></div>
       <div class="post-nav-item">
-    <a href="/2020/05/19/ICCAD%E5%89%8D%E7%9A%84%E5%81%B7%E6%87%92%E6%9C%88%E8%AE%B0/" rel="next" title="ICCAD前的偷懒月记">
-      ICCAD前的偷懒月记 <i class="fa fa-chevron-right"></i>
+    <a href="/2021/11/14/initilize-a-2-D-empty-list/" rel="next" title="initilize a 2-D empty list">
+      initilize a 2-D empty list <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -423,7 +387,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Background"><span class="nav-number">1.</span> <span class="nav-text">Background</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Model-Architecture"><span class="nav-number">2.</span> <span class="nav-text">Model Architecture</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Encoder"><span class="nav-number">2.1.</span> <span class="nav-text">Encoder</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Decoder"><span class="nav-number">2.2.</span> <span class="nav-text">Decoder</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Self-attention"><span class="nav-number">2.3.</span> <span class="nav-text">Self-attention</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Multi-head"><span class="nav-number">2.4.</span> <span class="nav-text">Multi-head</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Positional-Encoding"><span class="nav-number">2.5.</span> <span class="nav-text">Positional Encoding</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Why-self-attention"><span class="nav-number">3.</span> <span class="nav-text">Why self-attention</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Results"><span class="nav-number">4.</span> <span class="nav-text">Results</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%84%9F%E8%B0%A2"><span class="nav-number">1.</span> <span class="nav-text">感谢</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%BB%E9%9D%A2"><span class="nav-number">2.</span> <span class="nav-text">画面</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -438,7 +402,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">138</span>
+          <span class="site-state-item-count">139</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

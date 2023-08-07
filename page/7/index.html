@@ -213,6 +213,105 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2020/01/12/Graph-Isomorphsim-Network-Illustration/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/liwei3.jpg">
+      <meta itemprop="name" content="Li Wei">
+      <meta itemprop="description" content="人生注定是一个人的旅行，但就算孤独也要做一直前行的人啊">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="NEWAY">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/01/12/Graph-Isomorphsim-Network-Illustration/" class="post-title-link" itemprop="url">Graph Isomorphsim Network Illustration</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-01-12 12:04:07 / Modified: 06:47:05" itemprop="dateCreated datePublished" datetime="2020-01-12T12:04:07-06:00">2020-01-12</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/study/" itemprop="url" rel="index"><span itemprop="name">study</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2020/01/12/Graph-Isomorphsim-Network-Illustration/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/01/12/Graph-Isomorphsim-Network-Illustration/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1810.00826.pdf">Graph Isomorphism Network</a> 从数学理论的角度证明了，在验证graph是否同构(isomorphism)上，aggregation based gcn的能力不可能超过WL test。并以此提出了一个简单的graph isomorphism network，实现了能力范围内的最大效果。</p>
+<p>本文是对知乎大佬<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/62006729">论文解析</a>的补充。</p>
+<h2 id="WL-test"><a href="#WL-test" class="headerlink" title="WL test"></a>WL test</h2><ul>
+<li>The initial label of each node also influences the isomorphism. For example, $G_1$ and $G_2$ are graphs with same structure while $v^i_1,v^i_2$ has different labels, then the two graphs should be determined as non-isomorphism.</li>
+</ul>
+<h2 id="Lemma-2"><a href="#Lemma-2" class="headerlink" title="Lemma 2"></a>Lemma 2</h2><blockquote>
+<p>若aggregation based gcn将异构两图map到不同的embedding(即成功分辨为不同构)，则WL test也一定可以将该两图判定为不同构。</p>
+</blockquote>
+<p>该定理为了证明aggregation based gcn的能力不可能超过WL test，其实还有一个是</p>
+<blockquote>
+<p>若aggregation based gcn将同构两图map到相同的embedding(即成功分辨为同构)，则WL test也一定可以将该两图判定为同构。</p>
+</blockquote>
+<p>但这个是obvious的。。。</p>
+<p>大概证明思路。</p>
+<p>想象存在这样的两个异构图，使得gcn的embedding不一样，而WL test最后也无法判定（即最后output node label multiset 也一样）。</p>
+<p>那么我们可以从WL无法判定的方向证明:</p>
+<p>证明若WL 第i层node label一样，则gcn 第i层 node feature也肯定一样。</p>
+<p>这个证明通过归纳法推得。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2019/12/30/attention/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -237,14 +336,14 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2019-12-30 08:21:51" itemprop="dateCreated datePublished" datetime="2019-12-30T08:21:51-08:00">2019-12-30</time>
+              <time title="Created: 2019-12-30 10:21:51" itemprop="dateCreated datePublished" datetime="2019-12-30T10:21:51-06:00">2019-12-30</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-04-11 21:23:40" itemprop="dateModified" datetime="2022-04-11T21:23:40-07:00">2022-04-11</time>
+                <time title="Modified: 2022-04-11 23:23:40" itemprop="dateModified" datetime="2022-04-11T23:23:40-05:00">2022-04-11</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -335,10 +434,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2019-12-29 07:22:59 / Modified: 22:57:54" itemprop="dateCreated datePublished" datetime="2019-12-29T07:22:59-08:00">2019-12-29</time>
+              <time title="Created: 2019-12-29 09:22:59" itemprop="dateCreated datePublished" datetime="2019-12-29T09:22:59-06:00">2019-12-29</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-12-30 00:57:54" itemprop="dateModified" datetime="2019-12-30T00:57:54-06:00">2019-12-30</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -434,7 +539,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2019-12-28 13:23:11 / Modified: 07:22:22" itemprop="dateCreated datePublished" datetime="2019-12-28T13:23:11-08:00">2019-12-28</time>
+              <time title="Created: 2019-12-28 15:23:11 / Modified: 09:22:22" itemprop="dateCreated datePublished" datetime="2019-12-28T15:23:11-06:00">2019-12-28</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -520,7 +625,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2019-12-18 17:27:41 / Modified: 05:03:04" itemprop="dateCreated datePublished" datetime="2019-12-18T17:27:41-08:00">2019-12-18</time>
+              <time title="Created: 2019-12-18 19:27:41 / Modified: 07:03:04" itemprop="dateCreated datePublished" datetime="2019-12-18T19:27:41-06:00">2019-12-18</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -615,14 +720,14 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2019-12-17 12:33:08" itemprop="dateCreated datePublished" datetime="2019-12-17T12:33:08-08:00">2019-12-17</time>
+              <time title="Created: 2019-12-17 14:33:08" itemprop="dateCreated datePublished" datetime="2019-12-17T14:33:08-06:00">2019-12-17</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-01-11 21:37:17" itemprop="dateModified" datetime="2020-01-11T21:37:17-08:00">2020-01-11</time>
+                <time title="Modified: 2020-01-11 23:37:17" itemprop="dateModified" datetime="2020-01-11T23:37:17-06:00">2020-01-11</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -814,7 +919,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2019-12-13 13:23:11 / Modified: 06:55:27" itemprop="dateCreated datePublished" datetime="2019-12-13T13:23:11-08:00">2019-12-13</time>
+              <time title="Created: 2019-12-13 15:23:11 / Modified: 08:55:27" itemprop="dateCreated datePublished" datetime="2019-12-13T15:23:11-06:00">2019-12-13</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -905,14 +1010,14 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2019-12-11 19:11:53" itemprop="dateCreated datePublished" datetime="2019-12-11T19:11:53-08:00">2019-12-11</time>
+              <time title="Created: 2019-12-11 19:11:53" itemprop="dateCreated datePublished" datetime="2019-12-11T19:11:53-06:00">2019-12-11</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2023-07-14 01:06:30" itemprop="dateModified" datetime="2023-07-14T01:06:30-07:00">2023-07-14</time>
+                <time title="Modified: 2023-07-24 15:34:48" itemprop="dateModified" datetime="2023-07-24T15:34:48-05:00">2023-07-24</time>
               </span>
 
           
@@ -944,7 +1049,7 @@
 <p>This family tree is only recorded by my supervisor and me such that it cannot certainly contain every famous professor due to my ignorance. Especially, this tree focuses on Chinese schloars…</p>
 </blockquote>
 <blockquote>
-<p>Update 2023.07. During DAC, I am happy to know that this EDA tree has been viewed by many distinguished scholars. If there is any update you want me to edit, feel free to contact me <a href="mailto:&#119;&#101;&#x69;&#x6c;&#x69;&#51;&#x40;&#97;&#x6e;&#100;&#x72;&#x65;&#119;&#46;&#x63;&#x6d;&#117;&#x2e;&#101;&#x64;&#117;">&#119;&#101;&#x69;&#x6c;&#x69;&#51;&#x40;&#97;&#x6e;&#100;&#x72;&#x65;&#119;&#46;&#x63;&#x6d;&#117;&#x2e;&#101;&#x64;&#117;</a></p>
+<p>Update 2023.07. During DAC, I am happy to know that this EDA tree has been viewed by many distinguished scholars. If there is any update you want me to edit, feel free to contact me <a href="mailto:&#119;&#x65;&#x69;&#x6c;&#x69;&#x33;&#64;&#x61;&#110;&#x64;&#114;&#x65;&#x77;&#46;&#99;&#x6d;&#x75;&#x2e;&#101;&#100;&#x75;">&#119;&#x65;&#x69;&#x6c;&#x69;&#x33;&#64;&#x61;&#110;&#x64;&#114;&#x65;&#x77;&#46;&#99;&#x6d;&#x75;&#x2e;&#101;&#100;&#x75;</a></p>
 </blockquote>
 <h2 id="MIT"><a href="#MIT" class="headerlink" title="MIT"></a>MIT</h2><ul>
 <li><a target="_blank" rel="noopener" href="https://www.internethalloffame.org/about/advisory-board/cl-liu">C L Liu</a> (MIT-&gt;UIUC-&gt;NTHU)  <ul>
@@ -1093,6 +1198,17 @@
 <li><a target="_blank" rel="noopener" href="https://ece.vt.edu/people/profile/zeng">Haibo Zeng </a>(Berkeley’08-&gt;VT)</li>
 </ul>
 </li>
+<li><a target="_blank" rel="noopener" href="https://www2.eecs.berkeley.edu/Faculty/Homepages/kuh.html">Ernest S. Kuh</a> (Stanford 52’-&gt;UCB)<ul>
+<li><a target="_blank" rel="noopener" href="https://computerhistory.org/profile/ron-rohrer/">Ron Rohrer</a> (UCB’63-&gt;CMU)<ul>
+<li><a target="_blank" rel="noopener" href="https://www.ece.cmu.edu/directory/bios/pileggi-larry.html">Larry Pileggi</a> (CMU’89-&gt;UT Austin-&gt;CMU) <ul>
+<li><a target="_blank" rel="noopener" href="https://engineering.ucsb.edu/people/peng-li">Peng Li</a> (CMU’04-&gt;TAMU-&gt;UCSB)   </li>
+<li><a target="_blank" rel="noopener" href="https://ece.duke.edu/faculty/xin-li">Xin Li</a> (CMU’05-&gt;CMU-&gt;Duke)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 <h2 id="CMU"><a href="#CMU" class="headerlink" title="CMU"></a>CMU</h2><ul>
 <li><a target="_blank" rel="noopener" href="https://www.cs.cmu.edu/~bryant/">Randy Bryant</a> (CMU)  <ul>
@@ -1101,11 +1217,6 @@
 <li><a target="_blank" rel="noopener" href="https://dorsa.fyi/">Dorsa Sadigh</a> (Berkeley-&gt;Stanford)</li>
 </ul>
 </li>
-</ul>
-</li>
-<li><a target="_blank" rel="noopener" href="https://www.ece.cmu.edu/directory/bios/pileggi-larry.html">Larry Pileggi</a> (CMU’89-&gt;UT Austin-&gt;CMU) <ul>
-<li><a target="_blank" rel="noopener" href="https://engineering.ucsb.edu/people/peng-li">Peng Li</a> (CMU’04-&gt;TAMU-&gt;UCSB)   </li>
-<li><a target="_blank" rel="noopener" href="https://ece.duke.edu/faculty/xin-li">Xin Li</a> (CMU’05-&gt;CMU-&gt;Duke)</li>
 </ul>
 </li>
 </ul>
@@ -1160,14 +1271,14 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2019-11-01 18:21:51" itemprop="dateCreated datePublished" datetime="2019-11-01T18:21:51-07:00">2019-11-01</time>
+              <time title="Created: 2019-11-01 20:21:51" itemprop="dateCreated datePublished" datetime="2019-11-01T20:21:51-05:00">2019-11-01</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-12-13 07:15:35" itemprop="dateModified" datetime="2019-12-13T07:15:35-08:00">2019-12-13</time>
+                <time title="Modified: 2019-12-13 09:15:35" itemprop="dateModified" datetime="2019-12-13T09:15:35-06:00">2019-12-13</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1257,14 +1368,14 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2019-10-20 07:22:59" itemprop="dateCreated datePublished" datetime="2019-10-20T07:22:59-07:00">2019-10-20</time>
+              <time title="Created: 2019-10-20 09:22:59" itemprop="dateCreated datePublished" datetime="2019-10-20T09:22:59-05:00">2019-10-20</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-10-19 20:26:23" itemprop="dateModified" datetime="2019-10-19T20:26:23-07:00">2019-10-19</time>
+                <time title="Modified: 2019-10-19 22:26:23" itemprop="dateModified" datetime="2019-10-19T22:26:23-05:00">2019-10-19</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1306,102 +1417,6 @@
 <p>今年没有什么希冀，本来赛前就一直告诉自己我软泥怪打酱油的。</p>
 <p>但是输的时候，还是意难平。</p>
 <p>也无需安慰自己什么这就是竞技体育的魅力。也许没机会看小狗继续秀了。anyway，生活也要继续，加油吧。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2019/09/18/Linux%E8%A3%85%E6%9C%BA%E8%AE%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/liwei3.jpg">
-      <meta itemprop="name" content="Li Wei">
-      <meta itemprop="description" content="人生注定是一个人的旅行，但就算孤独也要做一直前行的人啊">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="NEWAY">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/09/18/Linux%E8%A3%85%E6%9C%BA%E8%AE%B0/" class="post-title-link" itemprop="url">Linux装机记</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2019-09-18 13:18:21" itemprop="dateCreated datePublished" datetime="2019-09-18T13:18:21-07:00">2019-09-18</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-11-04 05:41:42" itemprop="dateModified" datetime="2019-11-04T05:41:42-08:00">2019-11-04</time>
-              </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine: </span>
-    
-    <a title="valine" href="/2019/09/18/Linux%E8%A3%85%E6%9C%BA%E8%AE%B0/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/09/18/Linux%E8%A3%85%E6%9C%BA%E8%AE%B0/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>今天固态到了，于是想着把系统装到固态里面，可谓一波三折，装了许多linux发行版，都记录下把</p>
-<h2 id="ubuntu18"><a href="#ubuntu18" class="headerlink" title="ubuntu18"></a>ubuntu18</h2><p>Gnome: 还是有cpu占用率 50%+的bug，</p>
-<h2 id="Manjaro-KDE"><a href="#Manjaro-KDE" class="headerlink" title="Manjaro KDE"></a>Manjaro KDE</h2><p>漂亮是漂亮，但是各种常用按键都要自己设定？？？（包括但不限于workspace切换，快捷打开terminal）</p>
-<h2 id="Manjaro-xKDE（忘名字了）"><a href="#Manjaro-xKDE（忘名字了）" class="headerlink" title="Manjaro xKDE（忘名字了）"></a>Manjaro xKDE（忘名字了）</h2><p>高分屏极度不友好。醉了。</p>
-<h2 id="Manjaro-clinnama"><a href="#Manjaro-clinnama" class="headerlink" title="Manjaro clinnama"></a>Manjaro clinnama</h2><p>高分屏友好 按键可以设定 算是比较满意的了。。但是dock不方便实现，也是醉了。</p>
-<h2 id="Deepin"><a href="#Deepin" class="headerlink" title="Deepin"></a>Deepin</h2><p>确实挺漂亮的。但是没有wifi（所有debian based通病）+ 不方便安装显卡驱动（官方的不可以安装，可能是proxy问题？）</p>
-<h2 id="阶段性总结"><a href="#阶段性总结" class="headerlink" title="阶段性总结"></a>阶段性总结</h2><p>一天下来还是没有满意的，明天打算尝试 manjaro + gnome + macOS ，不行就manjaro + deepin</p>
-<p>总之几个痛点是一定要满足的</p>
-<ul>
-<li>WIFI（不然学校的proxy实在是太。。。）</li>
-<li>高分屏适配</li>
-<li>workspace，terminal等快捷键</li>
-<li>其他的比如dock这种美观的就没办法了。哎做人真难，谁让我有强迫症呢</li>
-</ul>
-<h2 id="折腾之终章"><a href="#折腾之终章" class="headerlink" title="折腾之终章"></a>折腾之终章</h2><p>这是两个月后的总结：</p>
-<p>windows 万岁。</p>
-<p>另外附一个win10 修改全局字体为苹方的链接吧 (苹方实在是太适合高分屏了)</p>
-<p><a target="_blank" rel="noopener" href="https://www.iplaysoft.com/windows-replace-pingfang.html">戳我</a></p>
 
       
     </div>
@@ -1487,7 +1502,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">138</span>
+          <span class="site-state-item-count">139</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
