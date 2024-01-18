@@ -1173,7 +1173,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2021/12/26/Recent-interetsting-bugs-in-my-implementation/">
+    <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2021/12/29/Untitled/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/liwei3.jpg">
@@ -1187,7 +1187,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/12/26/Recent-interetsting-bugs-in-my-implementation/" class="post-title-link" itemprop="url">Recent intersting bugs in my implementation</a>
+            <a href="/2021/12/29/Untitled/" class="post-title-link" itemprop="url">Untitled</a>
         </h2>
 
         <div class="post-meta">
@@ -1198,16 +1198,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2021-12-26 13:04:07 / Modified: 16:43:33" itemprop="dateCreated datePublished" datetime="2021-12-26T13:04:07-05:00">2021-12-26</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/study/" itemprop="url" rel="index"><span itemprop="name">study</span></a>
-                </span>
+              <time title="Created: 2021-12-29 21:34:11 / Modified: 21:34:12" itemprop="dateCreated datePublished" datetime="2021-12-29T21:34:11-05:00">2021-12-29</time>
             </span>
 
           
@@ -1219,8 +1210,8 @@
       </span>
       <span class="post-meta-item-text">Valine: </span>
     
-    <a title="valine" href="/2021/12/26/Recent-interetsting-bugs-in-my-implementation/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2021/12/26/Recent-interetsting-bugs-in-my-implementation/" itemprop="commentCount"></span>
+    <a title="valine" href="/2021/12/29/Untitled/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/12/29/Untitled/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -1235,19 +1226,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="Assign-values-to-pytorch-tensor"><a href="#Assign-values-to-pytorch-tensor" class="headerlink" title="Assign values to pytorch tensor"></a>Assign values to pytorch tensor</h2><p>Everytime when I try to initialize a pytorch tensor, I would like to use <code>torch.zeros</code>:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sum_each_bbox = torch.zeros(<span class="built_in">len</span>(bbox),<span class="built_in">len</span>(bbox[<span class="number">0</span>]))</span><br></pre></td></tr></table></figure>
-
-<p>But when I try to assign interger value to the tensor, like:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sum_each_bbox[i,j] = <span class="built_in">sum</span>(bbox[i][j])</span><br><span class="line"><span class="built_in">print</span>(sum_each_bbox[i,j] )</span><br><span class="line"><span class="built_in">print</span>(bbox[i][j])</span><br></pre></td></tr></table></figure>
-
-<p>The value will be different:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tensor(16906704.)</span><br><span class="line">16906703</span><br></pre></td></tr></table></figure>
-
-<p>Instead, we should specify the data type to make it assigned correctly. </p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sum_each_bbox = torch.zeros(<span class="built_in">len</span>(bbox),<span class="built_in">len</span>(bbox[<span class="number">0</span>]),dtype=torch.int64)</span><br></pre></td></tr></table></figure>
-
-
+          
       
     </div>
 
@@ -1266,7 +1245,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2021/11/14/initilize-a-2-D-empty-list/">
+    <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2021/12/29/GNNinCircuit/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/liwei3.jpg">
@@ -1280,7 +1259,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/11/14/initilize-a-2-D-empty-list/" class="post-title-link" itemprop="url">initilize a 2-D empty list</a>
+            <a href="/2021/12/29/GNNinCircuit/" class="post-title-link" itemprop="url">Untitled</a>
         </h2>
 
         <div class="post-meta">
@@ -1289,24 +1268,9 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
+              
 
-              <time title="Created: 2021-11-14 20:39:59" itemprop="dateCreated datePublished" datetime="2021-11-14T20:39:59-05:00">2021-11-14</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-11-15 14:34:07" itemprop="dateModified" datetime="2021-11-15T14:34:07-05:00">2021-11-15</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/study/" itemprop="url" rel="index"><span itemprop="name">study</span></a>
-                </span>
+              <time title="Created: 2021-12-29 21:32:23 / Modified: 21:32:35" itemprop="dateCreated datePublished" datetime="2021-12-29T21:32:23-05:00">2021-12-29</time>
             </span>
 
           
@@ -1318,8 +1282,8 @@
       </span>
       <span class="post-meta-item-text">Valine: </span>
     
-    <a title="valine" href="/2021/11/14/initilize-a-2-D-empty-list/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2021/11/14/initilize-a-2-D-empty-list/" itemprop="commentCount"></span>
+    <a title="valine" href="/2021/12/29/GNNinCircuit/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/12/29/GNNinCircuit/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -1334,17 +1298,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>In python, we sometimes need to define an empty 2-D list to store something, i.e., tensors for different sizes at different grid point in the 2-D list.</p>
-<p>Using Google, you may initialize the list in this way:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a = [<span class="number">0</span>*dim_0]*dim_1</span><br></pre></td></tr></table></figure>
-
-<p>In this way, the reference of the second dim is the same, when you change a[0][1], a[0][0] will also be changed. (if a stores tensors)</p>
-<p>The correct way is:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(dim_0):</span><br><span class="line">    a.append([])</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(dim_1):</span><br><span class="line">        a[i].append([])</span><br></pre></td></tr></table></figure>
-
-
-
-
+          
       
     </div>
 
@@ -1362,7 +1316,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -1429,7 +1383,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">140</span>
+          <span class="site-state-item-count">142</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -1494,7 +1448,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2023</span>
+  <span itemprop="copyrightYear">2024</span>
   <span class="with-love">
     <i class="user"></i>
   </span>

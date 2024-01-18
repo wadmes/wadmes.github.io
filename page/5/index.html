@@ -213,6 +213,364 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2021/04/02/Study-notes-matrics-for-engineering/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/liwei3.jpg">
+      <meta itemprop="name" content="Li Wei">
+      <meta itemprop="description" content="人生注定是一个人的旅行，但就算孤独也要做一直前行的人啊">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="NEWAY">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/04/02/Study-notes-matrics-for-engineering/" class="post-title-link" itemprop="url">Study notes: matrics for engineering</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-04-02 13:35:44" itemprop="dateCreated datePublished" datetime="2021-04-02T13:35:44-04:00">2021-04-02</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-05-18 02:11:20" itemprop="dateModified" datetime="2021-05-18T02:11:20-04:00">2021-05-18</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/study/" itemprop="url" rel="index"><span itemprop="name">study</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2021/04/02/Study-notes-matrics-for-engineering/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/04/02/Study-notes-matrics-for-engineering/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Some-mathematical-English"><a href="#Some-mathematical-English" class="headerlink" title="Some mathematical English"></a>Some mathematical English</h1><p>$A$ : <em>capital</em> A</p>
+<p>$A^T$: capital A <em>superscript</em>(下标：subscript) capital T</p>
+<p>$A^{-1}$: capital A <em>to</em> the minus one </p>
+<p>$1&#x2F;2$:  one over two</p>
+<h1 id="Some-forgotten-terms"><a href="#Some-forgotten-terms" class="headerlink" title="Some forgotten terms"></a>Some forgotten terms</h1><p><strong>Banded matrix</strong>: like a diagonal matrix, but it has also elements above the main diagonal and below the main diagonal.</p>
+<p><strong>Triangular matrix</strong>: only has elements above (upper) or below (lower) the main diagonal.</p>
+<p><strong>Skew-symmetric matrix</strong>: $A^T&#x3D;-A$ (so that the diagnoal element is zero)</p>
+<p><strong>Orthonormal vectors</strong>: the two vectors $u,v$ (usually, when we say a vector, its dimension is n by 1, a column vector), are both orthogonal $u^Tv &#x3D; 0$ and normalized (||u|| &#x3D; ||v|| &#x3D; 1)</p>
+<p><strong>orthogonal matrix</strong>:</p>
+<ul>
+<li>$Q^{-1}&#x3D; Q^T$</li>
+<li>$QQ^T &#x3D; I$</li>
+<li>In the multiplication above, if selected rows are the same, results are 1 (diagonal element), otherwise, 0</li>
+<li>That is, the row&#x2F;column vectors are <strong>othernormal vectors</strong></li>
+<li>$(Q X)^T(QX) &#x3D; ||QX||^2 &#x3D; X^TQ^TQX &#x3D; X^TX &#x3D; ||X||^2$: an orthogonal matrix <strong>preserves the norms and lengths.</strong></li>
+</ul>
+<h1 id="LU-decomposition"><a href="#LU-decomposition" class="headerlink" title="LU decomposition"></a>LU decomposition</h1><p><strong>Elementary matrix</strong>: the identity matrix with one of the zeros replaced by a number</p>
+<blockquote>
+<p>Consider matrix multiplication R &#x3D; M$\times$A:</p>
+<p>$R_1$ (the first row of R) is calculated by the combination sum:  $m_{11}\times A_1 + m_{12}\times A_2 +…$</p>
+</blockquote>
+<p><strong>Inverse of elementary matrix</strong>: swap the sign of non-zero element (Think $MM^{-1}A &#x3D; A$)</p>
+<p>Eg: </p>
+<p>$$M &#x3D; \begin{bmatrix}<br>1 &amp; 0 &amp; 0 \<br>0 &amp; 1 &amp; 0 \ -1&amp; 0 &amp; 1 \end{bmatrix}$$</p>
+<p>$$M^{-1} &#x3D; \begin{bmatrix}<br>1 &amp; 0 &amp; 0 \<br>0 &amp; 1 &amp; 0 \ 1&amp; 0 &amp; 1 \end{bmatrix}$$</p>
+<p>$$M &#x3D; \begin{bmatrix}<br>1 &amp; 0 &amp; 0 \<br>0 &amp; 1 &amp; 0 \ -1&amp; 0 &amp; 1 \end{bmatrix}$$</p>
+<p><strong>LU decomposition</strong>: A &#x3D; LU, L is a lower triangular matrix and U is a upper triangular matrix.</p>
+<p>Then, when we try to solve Ax &#x3D; b, we can actually solve (LU)x &#x3D; b cause y &#x3D; Ux, Ly &#x3D; b are easier to compute compared with Ax&#x3D; b. (Note L,U are triangular matrices).</p>
+<blockquote>
+<p>Note: it is NOT computational-friendly by LU decomposition if we only calculate Ax&#x3D;b once. However, if there are multiple b, we can decompose A one time, and benefit from the effecient computation by triangular matrix.</p>
+</blockquote>
+<h1 id="Vector-Space"><a href="#Vector-Space" class="headerlink" title="Vector Space"></a>Vector Space</h1><p>vector space &#x3D; set of vectors (in this course, column matrices) + set of scalars (real numbers)</p>
+<p>should be <strong>closed</strong> under vector addition and scalar multiplication</p>
+<h2 id="Linear-Independence"><a href="#Linear-Independence" class="headerlink" title="Linear Independence"></a>Linear Independence</h2><p>The set of vectors ${u_1,…,u_n}$ are linearly independent if $c_1u_1 + … +c_nu_n &#x3D; 0$ has only solution $c_1&#x3D;c_2&#x3D;…&#x3D;c_n$.</p>
+<blockquote>
+<p>meaning: no vector in the set can be written as a linear combination of other vectors.</p>
+</blockquote>
+<p><strong>span</strong>: we say a set of vector ${u_1,…,u_n}$ <strong>span</strong> a vector space only consisting of all linear combinations of  ${u_1,…,u_n}$.</p>
+<p><strong>basis</strong> of a vector space is a set of minumum # of vectors that span the space.</p>
+<p>The munumum # above is <strong>dimension</strong>.</p>
+<h2 id="Null-Space"><a href="#Null-Space" class="headerlink" title="Null Space"></a>Null Space</h2><p>Null(A) is a vector space of all column vectors x s.t. Ax &#x3D; 0.</p>
+<p> That is, the dot product between row vector and the null vector (vector in the null space) is zero.</p>
+<p>Thereofore, row space is orthogonal with null space.</p>
+<p>Therefore, dim(Row(A)) + dim(Null(A)) &#x3D; n (why?)</p>
+<blockquote>
+<p>Left Null Space: $x^TA &#x3D; 0$</p>
+</blockquote>
+<h2 id="Column-Space"><a href="#Column-Space" class="headerlink" title="Column Space"></a>Column Space</h2><p>$$Mx &#x3D; \begin{bmatrix}<br>a &amp; b  \<br>c &amp;d  \end{bmatrix} \begin{bmatrix}<br>x_1   \<br>x_2   \end{bmatrix} &#x3D; x_1\begin{bmatrix}<br>a   \<br>c   \end{bmatrix}+x_2\begin{bmatrix}<br>b   \<br>d   \end{bmatrix}$$</p>
+<blockquote>
+<p>Consider row space: $$x^TM &#x3D; \begin{bmatrix}<br>x_1  &amp;<br>x_2   \end{bmatrix}\begin{bmatrix}<br>a &amp; b  \<br>c &amp;d  \end{bmatrix}  &#x3D; x_1\begin{bmatrix}<br>a  &amp;<br>b   \end{bmatrix}+x_2\begin{bmatrix}<br>c   &amp;<br>d   \end{bmatrix}$$</p>
+<p>$x^TM$ gives you a vector that is in the row space of M</p>
+</blockquote>
+<p>Above: linear combination of columns of the matrix (in the column space); <strong>Mx gives you a vector that is in the column space of M.</strong></p>
+<p><strong>Dimension</strong> of column space eqauls to the dimension of row space, i.e., dim(Col(A)) &#x3D; dim(Col(A$^T$)), where the dimension is called <strong>rank</strong> of A.&#x3D; number of linearly independent columns </p>
+<h2 id="Relationships-of-Null-Space-Column-Space-and-Row-space"><a href="#Relationships-of-Null-Space-Column-Space-and-Row-space" class="headerlink" title="Relationships of Null Space, Column Space, and Row space."></a>Relationships of Null Space, Column Space, and Row space.</h2><ol>
+<li>The <strong>column space</strong> of M can be represented by the space spaned by $Mx$. for any x.</li>
+<li>Similarly, the <strong>row space</strong> of M can be represented by the space spaned by $x^TM$ for any x.</li>
+<li>Dim(Col(A)) &#x3D; dim(Row(A)) &#x3D; rank</li>
+<li>Dim(Null(A)) &#x3D; n - r</li>
+<li>Dim(Null($A^T$) &#x3D; m - r</li>
+</ol>
+<h2 id="Orthogonal-Projections"><a href="#Orthogonal-Projections" class="headerlink" title="Orthogonal Projections"></a>Orthogonal Projections</h2><p>Project vector down into a subspace. The projected vector is the vector in the subspace that is closest to the original vector.</p>
+<h2 id="One-example-Solution-of-the-Least-Squares-Problem"><a href="#One-example-Solution-of-the-Least-Squares-Problem" class="headerlink" title="One example: Solution of the Least-Squares Problem"></a>One example: Solution of the Least-Squares Problem</h2><p>Ax &#x3D; b (x is the target ), $A\in \R^{m\times n}, m&gt;n$</p>
+<p>b is the y-axis data point value, A is a matrix related to x-axis data point value. The equation Ax&#x3D;b assumes that the line (represented in x) can go through all points, which is impossible.</p>
+<p>Therefore, this is considered as over-determined.</p>
+<p>Remeber that Ax gives you a vector that is in the column space of A. If Ax&#x3D;b is over-determined, that means b is not in the column space of A since there is no solution.</p>
+<p><strong>But to find the best solution, what we can do is to project b into the column space of A.</strong></p>
+<p>So, we cannot solve Ax&#x3D;b, instead, we solve Ax&#x3D; $b_{projCol(A)}$.</p>
+<p>write $b &#x3D; b_{projCol(A)}$ + $b - b_{projCol(A)}$</p>
+<p>Consdier the term $b - b_{projCol(A)}$ is orthogonal to the column space of A, (because $b_{projCol(A)}$ is a projection of b to Col(A)), the term is in the subspace Null(A$^T$).</p>
+<p>Therefore, we multiply Ax&#x3D;b by $A^T$ to get rid of the term.</p>
+<p>$A^TAx &#x3D; A^Tb$, <strong>normal equation,</strong> which has a solution (previous equation is un-solvable) as long as $A^TA$ is invertable,</p>
+<p>$x &#x3D; (A^TA)^{-1}A^Tb$</p>
+<p>$Ax &#x3D; A(A^TA)^{-1}A^Tb &#x3D;  b_{projCol(A)}$</p>
+<p>here, $A(A^TA)^{-1}A^T$ is called the projection matrix that projects b into the column matrix of A.</p>
+<h1 id="Determinants"><a href="#Determinants" class="headerlink" title="Determinants"></a>Determinants</h1><h2 id="Leibniz-Formula-for-calculating-determinants"><a href="#Leibniz-Formula-for-calculating-determinants" class="headerlink" title="Leibniz Formula for calculating determinants"></a>Leibniz Formula for calculating determinants</h2><p>$\det(A)&#x3D;\sum_{\sigma \in S_n}\text{sgn}(\sigma)\prod_{i&#x3D;1}^{n} a_{\sigma(i),i}$</p>
+<p>where $sgn(\sigma)$ is +&#x2F;- when the permutation $\sigma$ needs even&#x2F;odd times of permutations from a normal order. $S_n$ is the permutation group.</p>
+<h2 id="Properties"><a href="#Properties" class="headerlink" title="Properties"></a>Properties</h2><ol>
+<li>Det I &#x3D; 1</li>
+<li>det changes sign when row interchanges</li>
+<li>det is a linear function of all rows. (<strong>multiply</strong> the first row by a constant, then det is also multiplied by the constant, <strong>add</strong> works in a similar way)</li>
+<li>by 2 3: det &#x3D; 0 if there are equal rows</li>
+<li>det D&#x2F;L&#x2F;U &#x3D; product of diagonal elements</li>
+<li>Det(AB) &#x3D; detA * detB</li>
+<li>Gaussian Elemination does not change the det</li>
+</ol>
+<h1 id="Eigenvalue"><a href="#Eigenvalue" class="headerlink" title="Eigenvalue"></a>Eigenvalue</h1><p>Given a matrix $A\in \R^{n\times n}$:</p>
+<p>$Ax &#x3D; \lambda x $, $x$ is the eigen vector and $\lambda$ is the eigen value</p>
+<p>That is, $(A-\lambda I )x &#x3D; 0$.</p>
+<p>If $A-\lambda x$ can be inversed (the determinant is not zero), then x&#x3D;0 is a trivial solution.</p>
+<p>Therefore, $A-\lambda x$ cannot be an invertiable matrix (det is zero)</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2021/03/29/Study-Notes-Learning-how-to-learn/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/liwei3.jpg">
+      <meta itemprop="name" content="Li Wei">
+      <meta itemprop="description" content="人生注定是一个人的旅行，但就算孤独也要做一直前行的人啊">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="NEWAY">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/03/29/Study-Notes-Learning-how-to-learn/" class="post-title-link" itemprop="url">Study Notes: Learning how to learn</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-03-29 22:37:21" itemprop="dateCreated datePublished" datetime="2021-03-29T22:37:21-04:00">2021-03-29</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-03-31 11:40:15" itemprop="dateModified" datetime="2021-03-31T11:40:15-04:00">2021-03-31</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/study/" itemprop="url" rel="index"><span itemprop="name">study</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2021/03/29/Study-Notes-Learning-how-to-learn/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/03/29/Study-Notes-Learning-how-to-learn/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="General-Summary"><a href="#General-Summary" class="headerlink" title="General Summary"></a>General Summary</h1><h2 id="What-to-do-everyday"><a href="#What-to-do-everyday" class="headerlink" title="What to do everyday"></a>What to do everyday</h2><ul>
+<li>Pomodoro</li>
+<li>Before sleep, recap + prepared Daily TO-DO with a specfic ddl (8.00pm for example)</li>
+<li>When you wake up, work on the most important and most disliked task first, at least one Pomodoro</li>
+</ul>
+<h2 id="What-to-do-general"><a href="#What-to-do-general" class="headerlink" title="What to do (general)"></a>What to do (general)</h2><ul>
+<li><p>Ask questions (engaged in) during some disliked activities, e.g. boring lecture.</p>
+</li>
+<li><p>have a <strong>big picture</strong>. (For example, pre-view the chapter headings and figures before class)</p>
+</li>
+</ul>
+<h2 id="What-not-to-do"><a href="#What-not-to-do" class="headerlink" title="What not to do"></a>What not to do</h2><ul>
+<li>do not cram one time, learn by spaced repetition</li>
+<li>do not worry about your product, which may discourage you and make you procrastinated</li>
+<li></li>
+</ul>
+<h1 id="Week-1"><a href="#Week-1" class="headerlink" title="Week 1"></a>Week 1</h1><p><strong>Diffuse</strong>: Let the thinking flies by taking a showering, exercise …. When you are trying to propose new ideas, a diffuse mode is better.</p>
+<p><strong>Sleep</strong>: New synapses are built.</p>
+<h2 id="Reason-for-Procrastination"><a href="#Reason-for-Procrastination" class="headerlink" title="Reason. for Procrastination"></a>Reason. for Procrastination</h2><ol>
+<li>feel unhappy</li>
+<li>switch to a more plesant task</li>
+<li>feel happy temperarily</li>
+</ol>
+<p>Solution: Pomodoro(番茄工作法): 25 minutes without internetrruption + a few minutes awards (diffuse mode)</p>
+<h2 id="Practice-for-permanent"><a href="#Practice-for-permanent" class="headerlink" title="Practice for permanent"></a>Practice for permanent</h2><p>Math symbol is abstract, making it difficult to remeber and understand. However, we can remeber some abstarct symbols (like emotion). The reason is <strong>practice</strong>.</p>
+<h2 id="Memory"><a href="#Memory" class="headerlink" title="Memory"></a>Memory</h2><p>Working memory(short term memory)：stored in an ineffecient blackboard</p>
+<p>Long term memory: stored in an immense warehouse (need to repeat at lease a few times)</p>
+<p>spaced repetition: better than practcing one thing for multiple times ONE DAY. （leave time for mortar 砂浆 to dry)</p>
+<h2 id="Sleep"><a href="#Sleep" class="headerlink" title="Sleep"></a>Sleep</h2><ul>
+<li>remove toxins when sleeping.</li>
+<li>strength something important to learn </li>
+<li>When you are sleeping, It’s as if the complete deactivation of the conscious you in the prefrontal cortex at the forefront of your brain helps other areas of your brain start talking more easily to one another, allowing them to put together the neural solution to your learning task while you’re sleeping. (diffuse mode) -&gt; focused mode learn before sleeping</li>
+</ul>
+<h2 id="Others"><a href="#Others" class="headerlink" title="Others"></a>Others</h2><p>How to concertarte in something you dislike, e.g. a boring lecture?</p>
+<p>A: Ask questions. Because you learn more when you are engaged in something.</p>
+<p>Enriched enviorment is going to help you learning better. In the un-enriched enviorment, exercise will also help you.(new neurons are born ) : use your muscles rather than brain.</p>
+<h1 id="Second-week-chuncks"><a href="#Second-week-chuncks" class="headerlink" title="Second week chuncks"></a>Second week chuncks</h1><p> <strong>Chuncks</strong>: compact packages of information that your mind can easily access</p>
+<p>In you <em>foucs mode</em>, you generate chuncks.</p>
+<h2 id="How-to-form-a-chunk"><a href="#How-to-form-a-chunk" class="headerlink" title="How to form a chunk?"></a>How to form a chunk?</h2><ul>
+<li>First build some small mini chuncks (small music passages)</li>
+<li>And then merge them together to form a chunk (john passages together to play a song)</li>
+</ul>
+<p>In math&amp;science, we learn some sample problems with worked out solutions.</p>
+<p>Other important things:</p>
+<ul>
+<li>Docused attention</li>
+<li>understand the basic idea</li>
+<li>understand solutions to basic questions are not enough (you should be able to <strong>do it by YOURSELF</strong>)</li>
+<li>You should have a <strong>big picture</strong>. (For example, pre-view the chapter headings and figures before class), so that you know when and which chuncks and constructed&#x2F;used, and how chuncks are connected to each other.</li>
+</ul>
+<h2 id="Illusions-of-Competence"><a href="#Illusions-of-Competence" class="headerlink" title="Illusions of Competence"></a>Illusions of Competence</h2><p>Try to remeber a piece of material?</p>
+<p>BAD: re-read (re-study); Many underlining and highlighting</p>
+<p>GOOD: <strong>recall</strong>-&gt;re-read(re-study)-&gt;recall; (in some sense linke test); recall when <strong>outside</strong> your usual study place.</p>
+<p>More advaced study(after you know basic ideas): concept mapping</p>
+<h1 id="Week-3-Procrastination"><a href="#Week-3-Procrastination" class="headerlink" title="Week 3: Procrastination"></a>Week 3: Procrastination</h1><p>Willpower is not easy. Do not waste willpower on fending off procrastination except when necessary. </p>
+<h2 id="Habits"><a href="#Habits" class="headerlink" title="Habits"></a>Habits</h2><p>Four parts:</p>
+<ol>
+<li>Cue（信号，也有皱眉的意思）not neither helpful nor harmful. It is our routine that matters.</li>
+<li>Routine (Zombie mode)</li>
+<li>Reward</li>
+<li>Belief</li>
+</ol>
+<p>Procastination is a simple habit that follows the four steps above</p>
+<h2 id="Process-vs-Product"><a href="#Process-vs-Product" class="headerlink" title="Process vs. Product"></a>Process vs. Product</h2><ul>
+<li>To avoid procrastination, concentrate on process instead of product. </li>
+<li>Process relates to simple habits that coincidentally allow you to do unpleasant task</li>
+</ul>
+<p>For example, a hard homework</p>
+<ul>
+<li>avoid focusing on the product: the answers to the questions</li>
+<li>Focus on doing a Pomodoro (番茄工作法), a 25-minutes work session</li>
+</ul>
+<h2 id="How-to-overcome-pricastination"><a href="#How-to-overcome-pricastination" class="headerlink" title="How to overcome pricastination"></a>How to overcome pricastination</h2><ul>
+<li>Plan: <ul>
+<li>develop a new ritual（仪式）, e.g. leave your phone in the car when attending class. May not work perfectly a first.</li>
+<li>Weekly list + daily TODO list with a quitting time (write this before you go to sleep)</li>
+<li>Work on the most important and most disliked task first, at least one Pomodoro</li>
+</ul>
+</li>
+<li>Reward</li>
+<li>believe your system will work</li>
+</ul>
+<h1 id="Week-4-How-to-Become-a-Better-Learner"><a href="#Week-4-How-to-Become-a-Better-Learner" class="headerlink" title="Week 4: How to Become a Better Learner"></a>Week 4: How to Become a Better Learner</h1><ul>
+<li>exercise</li>
+<li>metaphor or analogy</li>
+<li>Change your thoughts and admit the mistake</li>
+<li>work with other person to avoid blind spot (but should not be a socialization group)</li>
+<li>For test:<ul>
+<li>start hard, jump to easy</li>
+<li>this test makes me afraid -&gt; this test makes me determined to do my best!</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2020/10/13/%E8%AE%B0%E9%AB%98%E6%AD%A6/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1241,245 +1599,10 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2020/04/26/Transformer-Attention-is-all-you-need/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/liwei3.jpg">
-      <meta itemprop="name" content="Li Wei">
-      <meta itemprop="description" content="人生注定是一个人的旅行，但就算孤独也要做一直前行的人啊">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="NEWAY">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/04/26/Transformer-Attention-is-all-you-need/" class="post-title-link" itemprop="url">Transformer: Attention is all you need</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2020-04-26 02:07:16 / Modified: 02:26:38" itemprop="dateCreated datePublished" datetime="2020-04-26T02:07:16-04:00">2020-04-26</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/study/" itemprop="url" rel="index"><span itemprop="name">study</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine: </span>
-    
-    <a title="valine" href="/2020/04/26/Transformer-Attention-is-all-you-need/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2020/04/26/Transformer-Attention-is-all-you-need/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>建议配合 <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/av56239558?from=search&seid=14406218127146760248">https://www.bilibili.com/video/av56239558?from=search&amp;seid=14406218127146760248</a> 食用。</p>
-<p>关于read paper：我个人觉得有两块要读（思考）：一块是算法上，有什么interesting或者amazing的算法值得学习。另一块就是经验、思想上，作者是如何提出这个方法的，这个方法背后蕴藏了什么思想&#x2F;经验。</p>
-<h2 id="Background"><a href="#Background" class="headerlink" title="Background"></a>Background</h2><ul>
-<li>RNN不利于parallelization</li>
-<li>Attention可以无视sequence距离挖掘信息。（我爱这个笑着眼睛像月牙弯弯每天都像阳光一样点亮我的你-&gt; key information：我爱你）</li>
-<li>如今的attention（16年）仍然是和RNN一起出现(used in conjunction with recurrent network)</li>
-<li>现在的work：要么不能并行。要么可以并行（例如CNN）却不能挖掘远处关联。（我爱月牙弯弯）</li>
-<li>Tranformer：第一个完全利用self-attention计算input和output的representation。（不用RNN，CNN）</li>
-</ul>
-<p>Include 反义词： preclude 排除，杜绝：This inherently sequential nature precludes parallelization within training examples</p>
-<p>albeit：尽管</p>
-<h2 id="Model-Architecture"><a href="#Model-Architecture" class="headerlink" title="Model Architecture"></a>Model Architecture</h2><p>Overview:</p>
-<p><img src="/figures/image-20200426111253973.png" alt="image-20200426111253973"></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">At each step: (sequence to sequence should be generated step by step)</span><br><span class="line">	middle sequence z = Encoder(Input sequence x(我爱你))</span><br><span class="line">	output sequence y_t = Decoder(z,y_&#123;t-1&#125;)</span><br><span class="line">	注意：图中右下角的output为之前的输出。</span><br></pre></td></tr></table></figure>
-
-<h3 id="Encoder"><a href="#Encoder" class="headerlink" title="Encoder"></a>Encoder</h3><ul>
-<li>LayerNorm(x + multi-head(x))</li>
-<li>LayerNorm(x + feedforward(x))</li>
-<li>keys,values,querys: input x</li>
-</ul>
-<h3 id="Decoder"><a href="#Decoder" class="headerlink" title="Decoder"></a>Decoder</h3><ul>
-<li><p>Addtional sublayer compared with Encoder: Masked attention layer(ensures that the predictions for position i can depend only on the known outputs at positions less than i.)</p>
-</li>
-<li><p>Keys, values: middle sequence from encoder</p>
-</li>
-<li><p>querys: Masked multi-head attention</p>
-</li>
-</ul>
-<h3 id="Self-attention"><a href="#Self-attention" class="headerlink" title="Self-attention"></a>Self-attention</h3><p>A <strong>mapping</strong> from a query and a set of key-value pairs to an output</p>
-<p>output:  a <strong>weighted sum</strong> of the values, where the weight assigned to each value is computed by a compatibility function（适合性方程？总之就是计算相似度） of the query with the corresponding key.</p>
-<p><img src="/figures/image-20200426115525168.png" alt="image-20200426115525168"></p>
-<p>$Q: [seq,d_k], K:[seq,d_k],V:[seq,d_v]$</p>
-<p>$seq$: sequence length</p>
-<p>注意 原x dimension 为$d_{model}$， 经过linear projection转化为 $d_k,d_v$ dimension</p>
-<h3 id="Multi-head"><a href="#Multi-head" class="headerlink" title="Multi-head"></a>Multi-head</h3><p>$x:[d_{model}] &#x3D;&gt; [h *d_v]&#x3D;&gt;[d_{model}] $</p>
-<p>h：head数目。（multihead最后concat起来，所以是$h*d_v$）</p>
-<p>再经过一次linear transform到$d_{model}$</p>
-<h3 id="Positional-Encoding"><a href="#Positional-Encoding" class="headerlink" title="Positional Encoding"></a>Positional Encoding</h3><p>常见的position方法就是one-hot encoding，但显然不能input dimension匹配，而且若用one-hot encoding 直接sum 未免显得太蠢。</p>
-<p>Transformer提出了利用正余弦的方法：</p>
-<p><img src="/figures/image-20200426140105603.png" alt="image-20200426140105603"></p>
-<p>PE即为目标embedding。pos为word所处位置，2i即为 $d_{model}$中的维度之一。</p>
-<ul>
-<li>PE(:,x)即为$x_{th}$ dimensition下所有position的维度。 可以看到是一个周期函数</li>
-<li>PE(x,:)即为$x_{th}$ position下的embedding，是一个从波长为2pi 到 10000 * 2pi的函数。</li>
-</ul>
-<p>但这里反直觉的是 PE是和input直接相加。而不是concat。。。 奇怪呢。</p>
-<p>Dropout -&gt; Residual -&gt; Layer Normalization (Some papers claim that layer normalization should be in the sub-layer instead of behind residual summation)</p>
-<h2 id="Why-self-attention"><a href="#Why-self-attention" class="headerlink" title="Why self-attention"></a>Why self-attention</h2><ul>
-<li># of operations</li>
-<li>Parallel</li>
-<li>path length between long-range dependencies in the network</li>
-</ul>
-<h2 id="Results"><a href="#Results" class="headerlink" title="Results"></a>Results</h2><ul>
-<li>Dropout 效果明显</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2020/04/25/%E5%9B%9B%E6%9C%88%E7%9A%84%E7%A2%8E%E7%A2%8E%E5%BF%B5/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/liwei3.jpg">
-      <meta itemprop="name" content="Li Wei">
-      <meta itemprop="description" content="人生注定是一个人的旅行，但就算孤独也要做一直前行的人啊">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="NEWAY">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/04/25/%E5%9B%9B%E6%9C%88%E7%9A%84%E7%A2%8E%E7%A2%8E%E5%BF%B5/" class="post-title-link" itemprop="url">四月的碎碎念</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-04-25 00:40:49" itemprop="dateCreated datePublished" datetime="2020-04-25T00:40:49-04:00">2020-04-25</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-05-21 11:06:32" itemprop="dateModified" datetime="2020-05-21T11:06:32-04:00">2020-05-21</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/life/" itemprop="url" rel="index"><span itemprop="name">life</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine: </span>
-    
-    <a title="valine" href="/2020/04/25/%E5%9B%9B%E6%9C%88%E7%9A%84%E7%A2%8E%E7%A2%8E%E5%BF%B5/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2020/04/25/%E5%9B%9B%E6%9C%88%E7%9A%84%E7%A2%8E%E7%A2%8E%E5%BF%B5/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="1988"><a href="#1988" class="headerlink" title="1988"></a>1988</h2><p>看很多人说1988后劲很大，我觉得后劲这个词实在是用的太妙了。</p>
-<p>不过这后劲倒不是什么贬义词，相反，我还期盼着这辈子都能有这种后劲。至少，心里会时刻警醒着自己。</p>
-<p>前几天读了高中毕业时写的文章，一方面庆幸自己写了一些记录自己思想和记忆的有意思的东西，另一方面又感慨：自己曾经也是个意气风发敢爱敢恨的少年哪。大学几年的颓废生活不仅把身子养颓废了，更重要的是把人的思想变颓废了，不再去思考人生，不再去感受周边的环境和人物关系，整个人也只会变得越来越行尸走肉，当想要追寻一些关于幸福的答案时，便只能无力。我想，这是我们为什么要做一个温暖的人、一个经常思考的人。</p>
-<h2 id="高武"><a href="#高武" class="headerlink" title="高武"></a>高武</h2><p>说到高中，自从知道了那件事后，很不想再和过去的时光有什么瓜葛：有点我以我心对明月，奈何明月照沟渠的意思。但是对于高武，确实是让我感动到耿耿于怀的：那个在草稿本上写满武定中原，看起来深不可测的高武，高考前两个月一直和我小姨发短信说我压力很大让小姨安慰安慰我。高中刚毕业时，对于这些，粗线条的我只是感动，然后一带而过。但现在越发觉得，要做到这一步，实在是太无私伟大了。人生在世，大多数人只是为了自己：和你相处是为了自己的前途或是为了自己能开心，倘若你对我的前途无用、或是你惹的我不开心了，我屁股一拍就可以溜了，临走时还可以忿忿道对方如何如何不好。而像高武，便是我钦佩和想成为的，温暖而不张扬，照顾他人情绪而不仅仅是为了自己。可惜的是高中后便和他断了联系，纵使一直qq找他也了无音信。</p>
-<h2 id="感情"><a href="#感情" class="headerlink" title="感情"></a>感情</h2><p>还是忍不住去撇了眼余丝的微博。有一条让我很委屈：大意就是从前那段日子很黑暗，不过好在现在过去了。</p>
-<p>我不知道是不是很多女生喜欢借着丑化前任来彰显自己的无错和可怜，但是我们的分手明明是她做错了。明明是她说好十点回宿舍结果玩到12点也没微信消息，然后还一副“我错了然后呢“的态度。结果好像又变成了对我的批判会：不过现在我不需要参加这个会了，我只是像一个特工一样暗自去她的微博看她的“批判”就行，而不是带着高脚帽站在台子上被训斥。</p>
-<p>至少在我看来，我唯一的这段恋爱，虽然由于都是初恋，两个人性格都不成熟，但我还是可以称之为幸福的，再怎么样也算不上黑暗：除非我是真的没了解她。在我看来，这么多年两个人是真心喜欢的，不然也不可能都不成熟的两个人硬是如两个刺猬拥抱在一起一样坚持了这么久。有很长一段时间，两个人最重要的人都是彼此，也可能是这个世界唯一的牵挂：毕竟双方还都出自单身家庭。</p>
-<p>但仔细想想，总的来说，我其实有很多地方都没做好。譬如在她脆弱犹豫缺乏安全感的时候，没有明白的表示自己心意，告诉她她对我来说多么重要；譬如很多生活上的细节忽视了她的感受。啊。。也许这是单亲家庭的通病吧：没有见识过幸福的家庭和爱情，所以不知道那样的家庭爱情的日常是怎样的。所以，为什么没早点看1988，没早点想这些事呢。</p>
-<h2 id="成长"><a href="#成长" class="headerlink" title="成长"></a>成长</h2><p>大概是分手后？感觉自己在思想上疯狂的成长：可能是跳出了之前本铺好了的人生大道的舒适圈，所以危机之时必须考虑一些问题：感情、人生、事业。</p>
-<p>思考这些问题，真实的让我成长了。不知什么时候起，我逐渐不需要依靠爸妈，而是恰恰放过来，他们需要依靠我了，很多事情，事业上的，人生上的，他们会问我的想法，寻求我的意见。</p>
-<p>其实我也不能在把自己当作孩子了，我可是二十三了，搁古人这已经是立不世之功的年纪了。不过很庆幸在这个即将成为顶梁柱的年纪想明白了很多思想上的事，自己也形成了稳定成熟的三观，可以让自己不在这个信息碎片娱乐至死的社会活的迷茫。</p>
-<p>好了，得睡了。最近又失眠了，褪黑素好像也不管用了。没办法，只能睡不着的时候办公：只要coding的够晚，失眠就追不上我。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -1546,7 +1669,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">140</span>
+          <span class="site-state-item-count">142</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -1611,7 +1734,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2023</span>
+  <span itemprop="copyrightYear">2024</span>
   <span class="with-love">
     <i class="user"></i>
   </span>
