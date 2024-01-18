@@ -23,17 +23,20 @@
     var CONFIG = {"hostname":"wadmes.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"buttons","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"./public/search.xml"};
   </script>
 
-  <meta name="description" content="人生注定是一个人的旅行，但就算孤独也要做一直前行的人啊">
-<meta property="og:type" content="website">
-<meta property="og:title" content="NEWAY">
-<meta property="og:url" content="http://wadmes.github.io/archives/page/4/index.html">
+  <meta name="description" content="Node featuresImportance-based node features &amp; structure-based features Node degreeNode centralityTakes the node importance in a graph into account Eigenvector centralityWe update the following equ">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CS224W ML in graphs-study notes">
+<meta property="og:url" content="http://wadmes.github.io/2021/05/03/CS224W-ML-in-graphs-study-notes/index.html">
 <meta property="og:site_name" content="NEWAY">
-<meta property="og:description" content="人生注定是一个人的旅行，但就算孤独也要做一直前行的人啊">
+<meta property="og:description" content="Node featuresImportance-based node features &amp; structure-based features Node degreeNode centralityTakes the node importance in a graph into account Eigenvector centralityWe update the following equ">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-05-03T20:30:20.000Z">
+<meta property="article:modified_time" content="2024-01-18T13:32:39.444Z">
 <meta property="article:author" content="Li Wei">
+<meta property="article:tag" content="DNN">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://wadmes.github.io/archives/page/4/">
+<link rel="canonical" href="http://wadmes.github.io/2021/05/03/CS224W-ML-in-graphs-study-notes/">
 
 
 <script id="page-configurations">
@@ -41,12 +44,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'en'
   };
 </script>
 
-  <title>Archive | NEWAY</title>
+  <title>CS224W ML in graphs-study notes | NEWAY</title>
   
 
 
@@ -207,240 +210,153 @@
         <div class="content-wrap">
           
 
-          <div class="content archive">
+          <div class="content post posts-expand">
             
 
+    
   
   
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2021/05/03/CS224W-ML-in-graphs-study-notes/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/liwei3.jpg">
+      <meta itemprop="name" content="Li Wei">
+      <meta itemprop="description" content="人生注定是一个人的旅行，但就算孤独也要做一直前行的人啊">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="NEWAY">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          CS224W ML in graphs-study notes
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-05-03 16:30:20" itemprop="dateCreated datePublished" datetime="2021-05-03T16:30:20-04:00">2021-05-03</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2024-01-18 08:32:39" itemprop="dateModified" datetime="2024-01-18T08:32:39-05:00">2024-01-18</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/study/" itemprop="url" rel="index"><span itemprop="name">study</span></a>
+                </span>
+            </span>
+
+          
   
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        
-        <span class="collection-header">Great! 144 posts in total. Keep on posting.</span>
-      </div>
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2021/05/03/CS224W-ML-in-graphs-study-notes/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/05/03/CS224W-ML-in-graphs-study-notes/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <span class="collection-header">2021</span>
-    </div>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2021-07-11T21:43:57-04:00"
-              content="2021-07-11">
-          07-11
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/07/11/%E6%98%8E%E6%9C%9D%E9%82%A3%E4%BA%9B%E4%BA%8B%E7%AC%94%E8%AE%B0/" itemprop="url">
-            <span itemprop="name">明朝那些事笔记-朱元璋朱棣朱佑憆篇</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2021-07-05T23:50:29-04:00"
-              content="2021-07-05">
-          07-05
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/07/05/%E9%A6%99%E6%B8%AF%E8%B4%AD%E7%9C%BC%E9%95%9C%E8%AE%B0/" itemprop="url">
-            <span itemprop="name">宋庆龄基金会致远助学金攻略</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2021-07-03T23:50:29-04:00"
-              content="2021-07-03">
-          07-03
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/07/03/Pitt%20Rent/" itemprop="url">
-            <span itemprop="name">匹兹堡租房记</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2021-06-30T20:21:40-04:00"
-              content="2021-06-30">
-          06-30
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/06/30/xelatex-%E4%B8%8D%E8%83%BD-textit/" itemprop="url">
-            <span itemprop="name">xelatex 不能 textit</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2021-06-22T20:15:02-04:00"
-              content="2021-06-22">
-          06-22
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/06/22/%E4%B8%BB%E6%9D%83%E5%92%8C%E6%B0%91%E4%B8%BB/" itemprop="url">
-            <span itemprop="name">主权和民主</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2021-05-22T21:43:57-04:00"
-              content="2021-05-22">
-          05-22
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/05/22/%E6%98%8E%E6%9C%9D%E9%82%A3%E4%BA%9B%E4%BA%8B%E8%BE%B9%E8%AF%BB%E8%BE%B9%E5%86%99%E5%90%90%E6%A7%BD/" itemprop="url">
-            <span itemprop="name">明朝那些事读时感</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2021-05-03T21:23:32-04:00"
-              content="2021-05-03">
-          05-03
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/05/03/CS224W-ML-in-graphs-study-notes-node-embedding/" itemprop="url">
-            <span itemprop="name">CS224W ML in graphs-study notes: node embedding</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2021-05-03T16:30:20-04:00"
-              content="2021-05-03">
-          05-03
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/05/03/CS224W-ML-in-graphs-study-notes/" itemprop="url">
-            <span itemprop="name">CS224W ML in graphs-study notes</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2021-04-24T21:00:34-04:00"
-              content="2021-04-24">
-          04-24
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/04/24/%E9%9D%9E%E6%9A%B4%E5%8A%9B%E6%B2%9F%E9%80%9A%E6%80%BB%E7%BB%93-%E8%AF%BB%E5%90%8E%E6%84%9F/" itemprop="url">
-            <span itemprop="name">非暴力沟通总结&读后感</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2021-04-20T17:48:28-04:00"
-              content="2021-04-20">
-          04-20
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/04/20/Hey-Neway-April-2021/" itemprop="url">
-            <span itemprop="name">Hey Neway, April, 2021</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
+        <h2 id="Node-features"><a href="#Node-features" class="headerlink" title="Node features"></a>Node features</h2><p>Importance-based node features &amp; structure-based features</p>
+<h3 id="Node-degree"><a href="#Node-degree" class="headerlink" title="Node degree"></a>Node degree</h3><h3 id="Node-centrality"><a href="#Node-centrality" class="headerlink" title="Node centrality"></a>Node centrality</h3><p>Takes the <strong>node importance</strong> in a graph into account</p>
+<h4 id="Eigenvector-centrality"><a href="#Eigenvector-centrality" class="headerlink" title="Eigenvector centrality"></a>Eigenvector centrality</h4><p>We update the following equation in a recursive manner:</p>
+<p>$c_v &#x3D; 1&#x2F;\lambda \sum_{u\in N(v)} c_u$</p>
+<p>that can be rewritten as:</p>
+<p>$\lambda \textbf{c} &#x3D; \textbf{Ac} $</p>
+<p>Then, the centrality $c$ is the <strong>eigenvector</strong></p>
+<blockquote>
+<p>PageRank is for undirected graph. And the definition is:</p>
+<p>$c_v &#x3D; 1&#x2F;\lambda \times \sum_{u \rightarrow v} c_u&#x2F;\textbf{d_u}$</p>
+<p>That is, pagerank vector is a stationary distribution for the random walk &#x3D; principal eigenvector of storychastic adj matrix (connection equals probabilities)</p>
+<p>Google proposes solution to solve Spider-traps(all goes to one) and Dead-end (no out)</p>
+<ul>
+<li>remove dead-end by adding outs to all nodes</li>
+<li>add a random probabiloty</li>
+</ul>
+</blockquote>
+<h4 id="Betweenness-centrality"><a href="#Betweenness-centrality" class="headerlink" title="Betweenness centrality"></a>Betweenness centrality</h4><p>A node is important if it lies on many shortest paths between other nodes （在其他点的最短路径上面）</p>
+<h4 id="Closeness-centrality"><a href="#Closeness-centrality" class="headerlink" title="Closeness centrality"></a>Closeness centrality</h4><p>A node is important if it has small shortest path lengths to all other nodes. (离所有点都很近)</p>
+<h3 id="Clustering-Coefficient"><a href="#Clustering-Coefficient" class="headerlink" title="Clustering Coefficient"></a>Clustering Coefficient</h3><p>点v的邻点相连的比率, that counts # of triangles (node v, one neighbor of node v, another neighbor of v)</p>
+<h3 id="Graphlets"><a href="#Graphlets" class="headerlink" title="Graphlets"></a>Graphlets</h3><p>count # of graphlets (rooted and connected sub-graph) and use the # as the vector feature.</p>
+<h2 id="Edge-Prediction"><a href="#Edge-Prediction" class="headerlink" title="Edge Prediction"></a>Edge Prediction</h2><p><strong>Katz index</strong>:  count # of paths of all lengths (computed by powers of adj matrix) between a given pair of nodes:</p>
+<p>$S_{v_1v_2} &#x3D; \sum_{l&#x3D;1}^{\inf}\beta ^l A^l_{v_1v_2} $, $\beta$ is a discount factor.</p>
+<p>（越近，即距离越短的，关系越高）</p>
+<p>Then:</p>
+<p>$S &#x3D; \sum \beta^i A^i &#x3D; (I-\beta A)^{-1} -I $</p>
+<p>(According to Geometric series of matrices)</p>
+<h2 id="Graph-level-features"><a href="#Graph-level-features" class="headerlink" title="Graph level features"></a>Graph level features</h2><h3 id="Graph-Kernel"><a href="#Graph-Kernel" class="headerlink" title="Graph Kernel"></a>Graph Kernel</h3><p>Goal: Design graph feature vector, and the feature vector can be calculated for similarity.</p>
+<p>Method: bag of *( simply uses * as features for graphs, and we compare the features), where * can be:</p>
+<ul>
+<li>node labels</li>
+<li>node degree</li>
+<li>graphlets</li>
+<li>color refinement by recursively updating (WL-test)</li>
+</ul>
 
     </div>
-  </div>
-  
-  
-  
 
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/DNN/" rel="tag"># DNN</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/04/24/%E9%9D%9E%E6%9A%B4%E5%8A%9B%E6%B2%9F%E9%80%9A%E6%80%BB%E7%BB%93-%E8%AF%BB%E5%90%8E%E6%84%9F/" rel="prev" title="非暴力沟通总结&读后感">
+      <i class="fa fa-chevron-left"></i> 非暴力沟通总结&读后感
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/05/03/CS224W-ML-in-graphs-study-notes-node-embedding/" rel="next" title="CS224W ML in graphs-study notes: node embedding">
+      CS224W ML in graphs-study notes: node embedding <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
   
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/archives/page/3/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/archives/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/15/">15</a><a class="extend next" rel="next" href="/archives/page/5/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
-  </nav>
+  
+  
 
 
 
           </div>
           
+    <div class="comments" id="valine-comments"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -487,6 +403,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Node-features"><span class="nav-number">1.</span> <span class="nav-text">Node features</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Node-degree"><span class="nav-number">1.1.</span> <span class="nav-text">Node degree</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Node-centrality"><span class="nav-number">1.2.</span> <span class="nav-text">Node centrality</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Eigenvector-centrality"><span class="nav-number">1.2.1.</span> <span class="nav-text">Eigenvector centrality</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Betweenness-centrality"><span class="nav-number">1.2.2.</span> <span class="nav-text">Betweenness centrality</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Closeness-centrality"><span class="nav-number">1.2.3.</span> <span class="nav-text">Closeness centrality</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Clustering-Coefficient"><span class="nav-number">1.3.</span> <span class="nav-text">Clustering Coefficient</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Graphlets"><span class="nav-number">1.4.</span> <span class="nav-text">Graphlets</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Edge-Prediction"><span class="nav-number">2.</span> <span class="nav-text">Edge Prediction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Graph-level-features"><span class="nav-number">3.</span> <span class="nav-text">Graph level features</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Graph-Kernel"><span class="nav-number">3.1.</span> <span class="nav-text">Graph Kernel</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
