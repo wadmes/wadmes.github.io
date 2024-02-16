@@ -213,6 +213,95 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2018/07/26/Python%20function%20object%20reference%E5%AF%BC%E8%87%B4%E7%9A%84bug/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/liwei3.jpg">
+      <meta itemprop="name" content="Li Wei">
+      <meta itemprop="description" content="人生注定是一个人的旅行，但就算孤独也要做一直前行的人啊">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="NEWAY">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/07/26/Python%20function%20object%20reference%E5%AF%BC%E8%87%B4%E7%9A%84bug/" class="post-title-link" itemprop="url">python object reference</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2018-07-26 10:42:03" itemprop="dateCreated datePublished" datetime="2018-07-26T10:42:03-04:00">2018-07-26</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-03-21 09:35:45" itemprop="dateModified" datetime="2019-03-21T09:35:45-04:00">2019-03-21</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/code/" itemprop="url" rel="index"><span itemprop="name">code</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2018/07/26/Python%20function%20object%20reference%E5%AF%BC%E8%87%B4%E7%9A%84bug/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2018/07/26/Python%20function%20object%20reference%E5%AF%BC%E8%87%B4%E7%9A%84bug/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="Python-function-object-reference导致的bug"><a href="#Python-function-object-reference导致的bug" class="headerlink" title="Python function object reference导致的bug"></a>Python function object reference导致的bug</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">imsave(<span class="string">&#x27;./generated_inputs/&#x27;</span> +<span class="built_in">str</span>(iters) +<span class="string">&#x27;_0&#x27;</span>+<span class="built_in">str</span>(i)+ <span class="string">&#x27;_two.png&#x27;</span>, deprocess_image(imgs[<span class="number">0</span>]))</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">deprocess_image</span>(<span class="params">x</span>):</span><br><span class="line">    tmp = x</span><br><span class="line">    tmp = tmp.reshape((<span class="number">100</span>, <span class="number">100</span>, <span class="number">3</span>))</span><br><span class="line">    <span class="comment"># Remove zero-center by mean pixel</span></span><br><span class="line">    tmp[:, :, <span class="number">0</span>] += <span class="number">103.939</span></span><br><span class="line">    tmp[:, :, <span class="number">1</span>] += <span class="number">116.779</span></span><br><span class="line">    tmp[:, :, <span class="number">2</span>] += <span class="number">123.68</span></span><br><span class="line">    <span class="comment"># &#x27;BGR&#x27;-&gt;&#x27;RGB&#x27;</span></span><br><span class="line">    tmp = tmp[:, :, ::-<span class="number">1</span>]</span><br><span class="line">    tmp = np.clip(tmp, <span class="number">0</span>, <span class="number">255</span>).astype(<span class="string">&#x27;uint8&#x27;</span>)</span><br><span class="line">    <span class="keyword">return</span> tmp</span><br><span class="line">// 如此添加tmp。x的值仍会一直改变。则重复调用deprocess无法得到相同结果。</span><br><span class="line">// 正确做法 使用x.copy()</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">deprocess_image</span>(<span class="params">x</span>):</span><br><span class="line">    tmp = x.copy()</span><br><span class="line">    tmp = tmp.reshape((<span class="number">100</span>, <span class="number">100</span>, <span class="number">3</span>))</span><br><span class="line">    <span class="comment"># Remove zero-center by mean pixel</span></span><br><span class="line">    tmp[:, :, <span class="number">0</span>] += <span class="number">103.939</span></span><br><span class="line">    tmp[:, :, <span class="number">1</span>] += <span class="number">116.779</span></span><br><span class="line">    tmp[:, :, <span class="number">2</span>] += <span class="number">123.68</span></span><br><span class="line">    <span class="comment"># &#x27;BGR&#x27;-&gt;&#x27;RGB&#x27;</span></span><br><span class="line">    tmp = tmp[:, :, ::-<span class="number">1</span>]</span><br><span class="line">    tmp = np.clip(tmp, <span class="number">0</span>, <span class="number">255</span>).astype(<span class="string">&#x27;uint8&#x27;</span>)</span><br><span class="line">    <span class="keyword">return</span> tmp</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2018/06/01/RNG%E4%BD%93%E9%AA%8C%E8%90%A5/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1555,207 +1644,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2018/02/26/FUZZY-SYSTEM-REPORT/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/liwei3.jpg">
-      <meta itemprop="name" content="Li Wei">
-      <meta itemprop="description" content="人生注定是一个人的旅行，但就算孤独也要做一直前行的人啊">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="NEWAY">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/02/26/FUZZY-SYSTEM-REPORT/" class="post-title-link" itemprop="url">FUZZY SYSTEM REPORT</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2018-02-26 10:42:03" itemprop="dateCreated datePublished" datetime="2018-02-26T10:42:03-05:00">2018-02-26</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-03-21 09:32:40" itemprop="dateModified" datetime="2019-03-21T09:32:40-04:00">2019-03-21</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/study/" itemprop="url" rel="index"><span itemprop="name">study</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine: </span>
-    
-    <a title="valine" href="/2018/02/26/FUZZY-SYSTEM-REPORT/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2018/02/26/FUZZY-SYSTEM-REPORT/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="ENGG5189-FUZZY-EXPERT-SYSTEM-REPORT"><a href="#ENGG5189-FUZZY-EXPERT-SYSTEM-REPORT" class="headerlink" title="ENGG5189 FUZZY EXPERT SYSTEM REPORT"></a>ENGG5189 FUZZY EXPERT SYSTEM REPORT</h3><p>Li Wei 1155062148</p>
-<h4 id="Background"><a href="#Background" class="headerlink" title="Background"></a>Background</h4><p>There are hundreds of programming languages to use now, which make it difficult for programmers to decide which language is the most suitable for them.</p>
-<p>Below picture (cited from Quora) also shows that many people, no matter they are experienced programmers or not, have the question:</p>
-<p><strong>Which programming language should I learn next?</strong></p>
-<p><img src="/../images/1519616125.png" alt="1519616125"></p>
-<h4 id="Motivation"><a href="#Motivation" class="headerlink" title="Motivation"></a>Motivation</h4><p>Motivated by the wide range of discussion: “ best programming language to learn” and our former hesitant experience when deciding which programming course to enroll, we decided to design a Fuzzy expert system to solve these kinds of problems.</p>
-<h4 id="Problem-Definition"><a href="#Problem-Definition" class="headerlink" title="Problem Definition"></a>Problem Definition</h4><p>The users do not have a clear knowledge on different programming language, which make them hard to select the best&#x2F; most suitable programming language for them to learn.</p>
-<h4 id="System-Design"><a href="#System-Design" class="headerlink" title="System Design"></a>System Design</h4><p>The Fuzzy system is designed for recommending suitable programming languages for users to learn. And <em>rules</em> are provided for inference so that users need to answer some simple programming habits questions, which are used as <em>facts</em> in the system.</p>
-<h4 id="Implementation"><a href="#Implementation" class="headerlink" title="Implementation"></a>Implementation</h4><h5 id="Fuzzy-type"><a href="#Fuzzy-type" class="headerlink" title="Fuzzy type"></a>Fuzzy type</h5><ul>
-<li><strong>Difficulty</strong> the expected difficulty of programming language.</li>
-<li><strong>Time</strong> the expected time spent to learn programming language every week.</li>
-<li><strong>Resource</strong> the expected learning resource of programming language.</li>
-<li><strong>Experience</strong> the former programming experience of the user.</li>
-<li><strong>Efficiency</strong> the expected efficiency of programming language.</li>
-<li><strong>Package</strong> the expected package(eg. <code>numpy</code> in <em>python</em>) requirements of programming language.</li>
-<li><strong>Debug</strong> the debugging ability and willing of user.</li>
-</ul>
-<h5 id="Objects"><a href="#Objects" class="headerlink" title="Objects"></a>Objects</h5><ul>
-<li><p>(conclusion)</p>
-<p>preset values of the result</p>
-</li>
-<li><p><strong>expectation_of_difficulty</strong></p>
-</li>
-<li><p><strong>time_spent_on_learning</strong></p>
-</li>
-<li><p><strong>available_resource</strong></p>
-</li>
-<li><p><strong>experience</strong></p>
-</li>
-<li><p><strong>package_requirement</strong></p>
-</li>
-<li><p><strong>efficiency_requirement</strong></p>
-</li>
-<li><p><strong>upset_when_debug</strong></p>
-</li>
-<li><p><strong>market_requirement</strong> </p>
-<p>whether the reason user learns programming is for finding a job.</p>
-</li>
-<li><p><strong>company_orientation</strong></p>
-<p>the expected IT companies the user wants to work for.</p>
-</li>
-<li><p><strong>interest_field</strong></p>
-<p>the expected programming field the user wants to work in.</p>
-</li>
-<li><p><strong>compiled_language_or_not</strong></p>
-<p>whether the user is suitable for compiled language or not.</p>
-</li>
-</ul>
-<h5 id="Rules"><a href="#Rules" class="headerlink" title="Rules"></a>Rules</h5><p>Rules in the system is divided into two perspectives: Facts and languages.</p>
-<p>For the facts perspective, the rules help to inference the conclusion and other objects such as <em>expectation of difficulty</em> by facts. Here are some examples:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">RULE CODE:difficulty_rule_easy_111</span><br><span class="line">IF time_spent_on_learning is little AND available_resource is little AND experience is little</span><br><span class="line">THEN expectation_of_difficulty is easy</span><br><span class="line">WITH CERTAINTY: 0.9</span><br><span class="line">//help to inference expectation_of_difficulty</span><br><span class="line"></span><br><span class="line">RULE CODE:difficulty_rule_1</span><br><span class="line">IF expectation_of_difficulty is easy</span><br><span class="line">THEN programming_language is Python</span><br><span class="line">WITH CERTAINTY: 0.75</span><br><span class="line">//help to inference programming_language</span><br></pre></td></tr></table></figure>
-
-<p>For the languages perspective, the rules help to inference the conclusion by languages, this kind of rule makes use of the key features of different programming language. Here is one example:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">RULE CODE:js_rule_2</span><br><span class="line">IF  expectation_of_difficulty is easy AND efficiency_requirement is high AND interest_field is Web_programming</span><br><span class="line">THEN programming_language is Javascript</span><br><span class="line">WITH CERTAINTY: 0.95</span><br></pre></td></tr></table></figure>
-
-<h5 id="Inference-structure"><a href="#Inference-structure" class="headerlink" title="Inference structure"></a>Inference structure</h5><p>![Untitled Diagram](..&#x2F;images&#x2F;Untitled Diagram.png)</p>
-<h5 id="Results"><a href="#Results" class="headerlink" title="Results"></a>Results</h5><p>Given these facts:</p>
-<ul>
-<li><strong>time_spent_on_learning</strong> much (1.0)</li>
-<li>**available_resource **much (1.0)</li>
-<li><strong>experience</strong> much (1.0)</li>
-<li>**package_requirement **high (1.0)</li>
-<li><strong>efficiency_requirement</strong> high (1.0)</li>
-<li><strong>upset_when_debug</strong> No (1.0)</li>
-<li><strong>market_requirement</strong>  Yes (1.0)</li>
-<li><strong>company_orientation</strong>  Apple (1.0)</li>
-<li><strong>interest_field</strong>  No_preference (1.0)</li>
-</ul>
-<p>The results are:</p>
-<p><img src="C:\Users\neway\Desktop\1519621128(1).png" alt="1519621128(../images/1519621128(1).png)"></p>
-<p><img src="C:\Users\neway\Desktop\1519621161(1).png" alt="1519621161(../images/1519621161(1).png)"></p>
-<p><img src="C:\Users\neway\Desktop\1519621201(1).png" alt="1519621201(../images/1519621201(1).png)"></p>
-<h5 id="Discussion-and-conclusion"><a href="#Discussion-and-conclusion" class="headerlink" title="Discussion and conclusion"></a>Discussion and conclusion</h5><h6 id="Pros-and-cons"><a href="#Pros-and-cons" class="headerlink" title="Pros and cons"></a>Pros and cons</h6><p>Our system has done a basic programming language recommendation task, which covers almost all possibilities. And the result is really practical for uses.</p>
-<p>However, the system can not solve a few specific language requirements well, such as Database programmer and so on. </p>
-<h6 id="Further-improvements"><a href="#Further-improvements" class="headerlink" title="Further improvements"></a>Further improvements</h6><p>According to what we mentioned above, the system can be still improved by importing more language-based rules so that the system can handle some specific language requirements better.</p>
-<h5 id="Work-distribution"><a href="#Work-distribution" class="headerlink" title="Work distribution"></a>Work distribution</h5><table>
-<thead>
-<tr>
-<th align="center">Work</th>
-<th align="center">Liu Boyi</th>
-<th align="center">Li Wei</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">Brainstorm the topic</td>
-<td align="center">yes</td>
-<td align="center">yes</td>
-</tr>
-<tr>
-<td align="center">Conduct survey and collect expert knowledge</td>
-<td align="center">yes</td>
-<td align="center">yes</td>
-</tr>
-<tr>
-<td align="center">Design the system (Main workload)</td>
-<td align="center">yes</td>
-<td align="center">yes</td>
-</tr>
-<tr>
-<td align="center">Coding the Fuzzy Set and Object part</td>
-<td align="center">yes</td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">Coding the Rule part(Main workload)</td>
-<td align="center">yes</td>
-<td align="center">yes</td>
-</tr>
-<tr>
-<td align="center">Test and debug</td>
-<td align="center"></td>
-<td align="center">yes</td>
-</tr>
-</tbody></table>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1826,7 +1714,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">144</span>
+          <span class="site-state-item-count">145</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

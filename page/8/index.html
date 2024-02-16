@@ -213,6 +213,204 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2019/12/17/heterogenous%20network/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/liwei3.jpg">
+      <meta itemprop="name" content="Li Wei">
+      <meta itemprop="description" content="人生注定是一个人的旅行，但就算孤独也要做一直前行的人啊">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="NEWAY">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/12/17/heterogenous%20network/" class="post-title-link" itemprop="url">Heterogenous Graph Neural Network</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-12-17 15:33:08" itemprop="dateCreated datePublished" datetime="2019-12-17T15:33:08-05:00">2019-12-17</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-01-12 00:37:17" itemprop="dateModified" datetime="2020-01-12T00:37:17-05:00">2020-01-12</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/study/" itemprop="url" rel="index"><span itemprop="name">study</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2019/12/17/heterogenous%20network/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/12/17/heterogenous%20network/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>For More information on GNN, please refer to <a href="https://wadmes.github.io/2019/09/14/GNN-GIN-GMN-study/">here</a></p>
+<h2 id="General-GNN"><a href="#General-GNN" class="headerlink" title="General GNN"></a>General GNN</h2><p>No normalization:<br>$$ {w}<br>H^{(k+1)} &#x3D; activation((A+I)H^kW) \A &#x3D; adjacent \ matrix \H^0 &#x3D; features \ of \ graph \ nodes \W &#x3D; trainable \ variables <br>$$<br>GCN can be also explained in a message-passing way where the intermediate representations can be viewed as messages. </p>
+<p>The <strong>aggregation</strong> is the actual <strong>message-passing</strong> phase and each node passes its message to its neighbors along the edge ($X &#x3D; (A+I)H^k$). </p>
+<p>The <strong>encoder</strong> is served as the <strong>integration</strong> phase, in which each node integrates received the message and reduces it into its new message ($activation(XW)$).</p>
+<p>Each message-pass and integration phase formulate one GCN layer.</p>
+<p>The representation after the final layer is called the <strong>node embedding</strong> of each node and the <strong>graph embedding</strong> by GCN is usually obtained by a summation or mean operation using node embeddings.</p>
+<h2 id="How-about-HetGNN"><a href="#How-about-HetGNN" class="headerlink" title="How about HetGNN?"></a>How about HetGNN?</h2><h3 id="What-is-Het-Graph"><a href="#What-is-Het-Graph" class="headerlink" title="What is Het Graph?"></a>What is Het Graph?</h3><p>Multiple kinds of edges, multiple kinds of nodes.</p>
+<p><img src="/../images/image-20191217134320619.png" alt="image-20191217134320619"></p>
+<h4 id="meta-path"><a href="#meta-path" class="headerlink" title="meta-path"></a>meta-path</h4><ul>
+<li>composed of edge types. e.t. author-paper-author</li>
+<li>meta-path indicates some sematic information. e.t. author-paper-author &#x3D; co-author relationship&#x2F; paper contribution relationship</li>
+<li>multiple meta-paths (actually exponential to edge types ). (author-paper,author-paper-author,author-paper-venue,author-paper-venue-paper-author…)</li>
+</ul>
+<h3 id="IF-we-use-general-GNN-to-Het-Graph…"><a href="#IF-we-use-general-GNN-to-Het-Graph…" class="headerlink" title="IF we use general GNN to Het Graph…"></a>IF we use general GNN to Het Graph…</h3><ul>
+<li>How to decide $A$, the adjacent matrix (there are multiple adjacent matrices for multiple types of edges)</li>
+<li>How to decide $H^0$, the input features of graph nodes. Different kinds of nodes have different kinds of features.</li>
+</ul>
+<p>Also, there are some special points to be noted in Het Graph</p>
+<ul>
+<li>The number of direct neighbors are significantly unbalanced in some cases. (academic graph for example)</li>
+<li>The format of input feature may be different ( image, video, text… )</li>
+</ul>
+<h3 id="How-to-solve-the-problem"><a href="#How-to-solve-the-problem" class="headerlink" title="How to solve the problem?"></a>How to solve the problem?</h3><p>Some more&#x2F;modified steps are introduced:</p>
+<ul>
+<li><p><strong>[new]</strong> Reduce input content to vector feature</p>
+</li>
+<li><p><strong>[modified]</strong> Decide neighbors (proper adjacent matrix $A$) to aggregate and aggregate neighbor features by different types (node type&#x2F;edge type&#x2F;meta path type)</p>
+</li>
+<li><p><strong>[modified]</strong> encode new features by aggregated neighbor features</p>
+</li>
+<li><p><strong>[new]</strong> encode new node feature by the generated new features of different types</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Input</th>
+<th>Output</th>
+<th>RGCN</th>
+<th>HetGNN(KDD 19)</th>
+<th>HetGAN(WWW 19)</th>
+<th>GTN(NIPS 19)</th>
+<th>General GCN</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>[new]</strong> Reduce input content to vector feature of node</td>
+<td>Input contents of each node (figs, texts…)</td>
+<td>vector feature of each node</td>
+<td>NA</td>
+<td>contents-&gt;content features-&gt;node features(by biLSTM)</td>
+<td>NA</td>
+<td>NA</td>
+<td>NA</td>
+</tr>
+<tr>
+<td><strong>[modified]</strong> Decide neighbors (proper adjacent matrix $A$) to aggregate and aggregate neighbor features by different types (node type&#x2F;edge type&#x2F;meta path type)</td>
+<td>the graph</td>
+<td>for each node $v$, tell him which nodes should be selected to receive there messages?</td>
+<td>Direct neighbor,</td>
+<td>select type-based neighbors with fixed size by random walk,</td>
+<td>Manually selected meta-path neighbors</td>
+<td>attention based meta-path(meta path is represented as a weighed multiplication of different edge type’s  $A$)</td>
+<td>Direct neighbor,</td>
+</tr>
+<tr>
+<td><strong>[modified]</strong> encode new features by aggregated neighbor features</td>
+<td>Received    messages of different type.</td>
+<td>Encoded message of corresponding type</td>
+<td>linear transformation</td>
+<td>BiLSTM</td>
+<td>attention sum with activation</td>
+<td>linear transformation</td>
+<td>linear transformation</td>
+</tr>
+<tr>
+<td><strong>[new]</strong> encode new node feature by the generated new features of different types</td>
+<td>Encoded messages of different types</td>
+<td>Final new feature(message) of this node $v$</td>
+<td>sum</td>
+<td>attention sum</td>
+<td>attention sum with activation</td>
+<td>concat</td>
+<td>NA</td>
+</tr>
+<tr>
+<td>neighbor type</td>
+<td>NA</td>
+<td>NA</td>
+<td>edge type</td>
+<td>node type</td>
+<td>meta path type</td>
+<td>meta path type</td>
+<td>NA</td>
+</tr>
+</tbody></table>
+<h3 id="Performance-comparison"><a href="#Performance-comparison" class="headerlink" title="Performance comparison"></a>Performance comparison</h3><ul>
+<li><strong>[new]</strong> Reduce input content to vector feature<ul>
+<li>biLSTM(0.67) &gt; fc (0.65) [HetGNN]</li>
+</ul>
+</li>
+<li><strong>[modified]</strong> Decide neighbors (proper adjacent matrix $A$) to aggregate and aggregate neighbor features by different types (node type&#x2F;edge type&#x2F;meta path type)</li>
+<li><strong>[modified]</strong> encode new features by aggregated neighbor features</li>
+<li><strong>[new]</strong> encode new node feature by the generated new features of different types<ul>
+<li>attention sum(0.768) &gt; fc (0.763) [HetGNN]</li>
+</ul>
+</li>
+<li>One more attention is always better… (icluding GTN)</li>
+<li></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2019/12/13/%E5%8E%86%E5%8F%B2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1259,96 +1457,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2019/09/09/Thanks-Yi-Jianlian/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/liwei3.jpg">
-      <meta itemprop="name" content="Li Wei">
-      <meta itemprop="description" content="人生注定是一个人的旅行，但就算孤独也要做一直前行的人啊">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="NEWAY">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/09/09/Thanks-Yi-Jianlian/" class="post-title-link" itemprop="url">Thanks, Yi Jianlian</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2019-09-09 00:16:14" itemprop="dateCreated datePublished" datetime="2019-09-09T00:16:14-04:00">2019-09-09</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-09-08 12:16:31" itemprop="dateModified" datetime="2019-09-08T12:16:31-04:00">2019-09-08</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/life/" itemprop="url" rel="index"><span itemprop="name">life</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine: </span>
-    
-    <a title="valine" href="/2019/09/09/Thanks-Yi-Jianlian/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/09/09/Thanks-Yi-Jianlian/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>虽然不看cba 虽然一直都是跟着老詹粉球队 虽然这次看比赛真的看的气</p>
-<p>但是以后玩2k 还是会把阿联周琦搞到自己球队里 选秀的时候还会刻意选个中国的小伙子</p>
-<p>然后谢谢你啊 阿联</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1419,7 +1527,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">144</span>
+          <span class="site-state-item-count">145</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

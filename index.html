@@ -213,6 +213,148 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2024/02/08/Survey-of-VLSI-LLM/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/liwei3.jpg">
+      <meta itemprop="name" content="Li Wei">
+      <meta itemprop="description" content="人生注定是一个人的旅行，但就算孤独也要做一直前行的人啊">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="NEWAY">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2024/02/08/Survey-of-VLSI-LLM/" class="post-title-link" itemprop="url">Survey of VLSI LLM</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2024-02-08 12:52:02" itemprop="dateCreated datePublished" datetime="2024-02-08T12:52:02-05:00">2024-02-08</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2024-02-11 01:44:13" itemprop="dateModified" datetime="2024-02-11T01:44:13-05:00">2024-02-11</time>
+              </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2024/02/08/Survey-of-VLSI-LLM/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2024/02/08/Survey-of-VLSI-LLM/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <table>
+<thead>
+<tr>
+<th></th>
+<th align="left">Category</th>
+<th align="left">Base Model</th>
+<th align="left">Data</th>
+<th align="left">Open-source</th>
+<th align="left">Training cost</th>
+<th align="left">Problem</th>
+<th align="left">Metric</th>
+<th>Experimental Conclusions</th>
+<th>Other Remarks</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>DATE23-BPAN, Benchmarking LLM for automated Verilog RTL Code Generation</td>
+<td align="left">Fine-tuning</td>
+<td align="left">CodeGen, 345M - 16B</td>
+<td align="left">Github: 50K files &#x2F; ~ 300MB: Verilog Book: 100MB</td>
+<td align="left">Yes</td>
+<td align="left">CodeGen 2B: 1 epoch, two RTX8000(48GB), 2days; CodeGen 6B: 1 epoch, 4 RYX8000(48GB), 4 days; CodeGen 16B: 1 epoch, 3 A100, 6 days.</td>
+<td align="left">Code generation from HDLBits website</td>
+<td align="left">1. Compiled completions; 2. functional pass</td>
+<td>1. Fine-tuning increase compiling completion rate significantly; (with 10 different completions) 2. Fine-tuning is still bad at functionality correctness of intermediate and advanced problems</td>
+<td>LLM is only good at small scale&#x2F; light-weight task</td>
+</tr>
+<tr>
+<td>ChipNemo</td>
+<td align="left">Fine-tuning</td>
+<td align="left">LLaMA2, 7B, 13B, 70B</td>
+<td align="left">Internal Data (Bug summary, Design source, Documentation, verification, other): ~22B tokens; Wiki: 1.5 B tokens [natural language]; Github: 0.7 B tokens, C++, Python, Verilog [code].</td>
+<td align="left">No</td>
+<td align="left">7B: 2710 A100 hours; 13B: 5100 A100 hours</td>
+<td align="left">Script Generation; Chatbot (88 practical questions in arch&#x2F;design&#x2F;verification); Bug summary and analysis</td>
+<td align="left">Mostly human rating</td>
+<td>A lager lr. (3x10e-4 vs5x10e-6) degrades performance significantly</td>
+<td>In most cases, 70B w.o. FT is better than 13B w. FT</td>
+</tr>
+<tr>
+<td>ChatEDA</td>
+<td align="left">Fine-Tuning</td>
+<td align="left">LLaMA2, 70B</td>
+<td align="left">In-context learning (give example in prompt) gives 1500 instructions + proofreading.</td>
+<td align="left">No</td>
+<td align="left">15 epochs, 8xA100 80GB,</td>
+<td align="left">task planning; Script generation</td>
+<td align="left">1. the task planning is accurate? 2. the script generation is accurate?</td>
+<td></td>
+<td>Auto-gressive objective?</td>
+</tr>
+<tr>
+<td>RTL-Coder</td>
+<td align="left">Fine-Tuning</td>
+<td align="left">Mistra-7B-v0.1</td>
+<td align="left">27k+ samples (pair of problem + RTL code )</td>
+<td align="left">Yes</td>
+<td align="left">4 RTX4090</td>
+<td align="left">RTL code generation</td>
+<td align="left">VerilogEval  + RTLLM</td>
+<td>The new training scheme seems to be very effective; Using generation method in RTLLM, the function correctness even reaches 60% for GPT4</td>
+<td></td>
+</tr>
+</tbody></table>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2023/10/30/%E5%85%B3%E4%BA%8E%E4%B8%9E%E7%9B%B8%E7%9A%84%E4%B8%80%E4%BA%9B%E6%83%B3%E6%B3%95/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1125,108 +1267,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2022/08/12/%E4%BA%BA%E7%94%9F%E4%B8%89%E5%88%86%E4%B9%8B%E4%B8%80%E6%97%B6%E5%80%99%E7%9A%84%E9%9A%8F%E7%AC%94/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/liwei3.jpg">
-      <meta itemprop="name" content="Li Wei">
-      <meta itemprop="description" content="人生注定是一个人的旅行，但就算孤独也要做一直前行的人啊">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="NEWAY">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/08/12/%E4%BA%BA%E7%94%9F%E4%B8%89%E5%88%86%E4%B9%8B%E4%B8%80%E6%97%B6%E5%80%99%E7%9A%84%E9%9A%8F%E7%AC%94/" class="post-title-link" itemprop="url">人生三分之一时候的随笔</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2022-08-12 00:54:20" itemprop="dateCreated datePublished" datetime="2022-08-12T00:54:20-04:00">2022-08-12</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-09-06 11:11:15" itemprop="dateModified" datetime="2022-09-06T11:11:15-04:00">2022-09-06</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/life/" itemprop="url" rel="index"><span itemprop="name">life</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine: </span>
-    
-    <a title="valine" href="/2022/08/12/%E4%BA%BA%E7%94%9F%E4%B8%89%E5%88%86%E4%B9%8B%E4%B8%80%E6%97%B6%E5%80%99%E7%9A%84%E9%9A%8F%E7%AC%94/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2022/08/12/%E4%BA%BA%E7%94%9F%E4%B8%89%E5%88%86%E4%B9%8B%E4%B8%80%E6%97%B6%E5%80%99%E7%9A%84%E9%9A%8F%E7%AC%94/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1384570306&auto=1&height=66"></iframe>
-
-<p>因为实习太累，所以昨晚睡得很早，到了凌晨迷迷糊糊的反倒睡不着了。既然睡不着，便起床把一些要处理的工作顺手完成，然后吞了一粒褪黑素，继续躺床上，大脑反而越来越清醒。</p>
-<p>不行啊，明天可不是周末，还有各种会要开。</p>
-<p>本来想找本书看，但是又没带kindle或者什么书来加州。寻思了一会，既然读不了，干脆就随便写写。</p>
-<p>人类的寿命一般是75岁左右，所以我的人生也在今天正式走过了三分之一的旅程(如果顺利活到75的话)。三分之一不是一个小数字了，比如什么task的accuracy只有66.7%的话，我大概率会觉得这个算法很水：有三分之一的样本都搞错了，有啥厉害的。</p>
-<p>有三分之一的时间都很无趣的过去了，有啥厉害的。</p>
-<p>是的，回过头看自己三分之一的人生，好像并没有值得说道的地方。世界上有那么多有意思的事、有意思的地方、有意思的美食等着我去尝试，但是我探索过的太少了。过去的这二十几年，感觉自己一直都活的很仓促。好像都有双无形的手在推着我前行，高中要搞奥赛、高考，大学后面要计划未来，然后MPhil要看paper考托福申请，到了PhD还要看paper写paper，哪怕来到加州也是各种各样的会议、deadline等着我去fulfill。年纪越大，时间仿佛就过的越快，也越来越多的希望自己能让时间停下来：这样我就可以把这个paper写完了&#x2F;这样我就可以把这个实验跑完了&#x2F;这样就可以。。。即便是自己的幻想中，我也只是希望自己能有足够的时间去工作，而不是有一点点时间可以停下来享受生活。</p>
-<blockquote>
-<p>时间的长河看不到尽头 <em>像只鱼儿游没办法逆流</em></p>
-</blockquote>
-<p>这就是一个很多人都熟悉的矛盾点：小时候有时间有精力，却没钱没vision（视野？）；大了有钱了知道自己喜欢什么想做什么了，却没时间了。</p>
-<p>不过真要说起来，我对这三分之一的人生倒是很知足了。</p>
-<p>我有太多受之有愧的恩赐了。这世上有太多在经历生老病死的人、有太多还在为生计发愁的人、有太多没有出过国、没有机会接受高等教育的人，大家不都还在努力的生活着吗。我现在的消愁，跟真正还在泥潭中挣扎的人来比，只能算得上是“为赋新词强说愁”吧。</p>
-<p>PS：塞尔达</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1297,7 +1337,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">144</span>
+          <span class="site-state-item-count">145</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

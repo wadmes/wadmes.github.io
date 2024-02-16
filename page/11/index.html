@@ -213,6 +213,95 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2019/01/11/numpy-access-elements-trick/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/liwei3.jpg">
+      <meta itemprop="name" content="Li Wei">
+      <meta itemprop="description" content="人生注定是一个人的旅行，但就算孤独也要做一直前行的人啊">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="NEWAY">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/01/11/numpy-access-elements-trick/" class="post-title-link" itemprop="url">numpy access elements trick</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-01-11 14:48:12" itemprop="dateCreated datePublished" datetime="2019-01-11T14:48:12-05:00">2019-01-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-03-21 09:35:04" itemprop="dateModified" datetime="2019-03-21T09:35:04-04:00">2019-03-21</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/code/" itemprop="url" rel="index"><span itemprop="name">code</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2019/01/11/numpy-access-elements-trick/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/01/11/numpy-access-elements-trick/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">considering a numpy matrix mat <span class="keyword">with</span> shape[<span class="number">10</span>,<span class="number">7</span>,<span class="number">1</span>,<span class="number">2</span>]</span><br><span class="line"><span class="keyword">if</span> we want to access the FIRST column of mat, which has shape[<span class="number">10</span>]</span><br><span class="line">then we should use:</span><br><span class="line">    mat[:,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>]</span><br><span class="line">instead of:</span><br><span class="line">    mat[:][<span class="number">0</span>][<span class="number">0</span>][<span class="number">0</span>] (<span class="keyword">return</span> the shape of [<span class="number">5</span>])</span><br><span class="line">	cause mat = mat[:] actully.</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2018/12/21/CS221N-study-notes/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1123,95 +1212,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2018/07/26/Python%20function%20object%20reference%E5%AF%BC%E8%87%B4%E7%9A%84bug/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/liwei3.jpg">
-      <meta itemprop="name" content="Li Wei">
-      <meta itemprop="description" content="人生注定是一个人的旅行，但就算孤独也要做一直前行的人啊">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="NEWAY">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/07/26/Python%20function%20object%20reference%E5%AF%BC%E8%87%B4%E7%9A%84bug/" class="post-title-link" itemprop="url">python object reference</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2018-07-26 10:42:03" itemprop="dateCreated datePublished" datetime="2018-07-26T10:42:03-04:00">2018-07-26</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-03-21 09:35:45" itemprop="dateModified" datetime="2019-03-21T09:35:45-04:00">2019-03-21</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/code/" itemprop="url" rel="index"><span itemprop="name">code</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine: </span>
-    
-    <a title="valine" href="/2018/07/26/Python%20function%20object%20reference%E5%AF%BC%E8%87%B4%E7%9A%84bug/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2018/07/26/Python%20function%20object%20reference%E5%AF%BC%E8%87%B4%E7%9A%84bug/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="Python-function-object-reference导致的bug"><a href="#Python-function-object-reference导致的bug" class="headerlink" title="Python function object reference导致的bug"></a>Python function object reference导致的bug</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">imsave(<span class="string">&#x27;./generated_inputs/&#x27;</span> +<span class="built_in">str</span>(iters) +<span class="string">&#x27;_0&#x27;</span>+<span class="built_in">str</span>(i)+ <span class="string">&#x27;_two.png&#x27;</span>, deprocess_image(imgs[<span class="number">0</span>]))</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">deprocess_image</span>(<span class="params">x</span>):</span><br><span class="line">    tmp = x</span><br><span class="line">    tmp = tmp.reshape((<span class="number">100</span>, <span class="number">100</span>, <span class="number">3</span>))</span><br><span class="line">    <span class="comment"># Remove zero-center by mean pixel</span></span><br><span class="line">    tmp[:, :, <span class="number">0</span>] += <span class="number">103.939</span></span><br><span class="line">    tmp[:, :, <span class="number">1</span>] += <span class="number">116.779</span></span><br><span class="line">    tmp[:, :, <span class="number">2</span>] += <span class="number">123.68</span></span><br><span class="line">    <span class="comment"># &#x27;BGR&#x27;-&gt;&#x27;RGB&#x27;</span></span><br><span class="line">    tmp = tmp[:, :, ::-<span class="number">1</span>]</span><br><span class="line">    tmp = np.clip(tmp, <span class="number">0</span>, <span class="number">255</span>).astype(<span class="string">&#x27;uint8&#x27;</span>)</span><br><span class="line">    <span class="keyword">return</span> tmp</span><br><span class="line">// 如此添加tmp。x的值仍会一直改变。则重复调用deprocess无法得到相同结果。</span><br><span class="line">// 正确做法 使用x.copy()</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">deprocess_image</span>(<span class="params">x</span>):</span><br><span class="line">    tmp = x.copy()</span><br><span class="line">    tmp = tmp.reshape((<span class="number">100</span>, <span class="number">100</span>, <span class="number">3</span>))</span><br><span class="line">    <span class="comment"># Remove zero-center by mean pixel</span></span><br><span class="line">    tmp[:, :, <span class="number">0</span>] += <span class="number">103.939</span></span><br><span class="line">    tmp[:, :, <span class="number">1</span>] += <span class="number">116.779</span></span><br><span class="line">    tmp[:, :, <span class="number">2</span>] += <span class="number">123.68</span></span><br><span class="line">    <span class="comment"># &#x27;BGR&#x27;-&gt;&#x27;RGB&#x27;</span></span><br><span class="line">    tmp = tmp[:, :, ::-<span class="number">1</span>]</span><br><span class="line">    tmp = np.clip(tmp, <span class="number">0</span>, <span class="number">255</span>).astype(<span class="string">&#x27;uint8&#x27;</span>)</span><br><span class="line">    <span class="keyword">return</span> tmp</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1282,7 +1282,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">144</span>
+          <span class="site-state-item-count">145</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
