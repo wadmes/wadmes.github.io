@@ -213,6 +213,115 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2024/03/14/Cython%E7%9A%84%E4%BC%98%E5%8C%96%E6%8C%87%E5%8D%97/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/liwei3.jpg">
+      <meta itemprop="name" content="Li Wei">
+      <meta itemprop="description" content="人生注定是一个人的旅行，但就算孤独也要做一直前行的人啊">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="NEWAY">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2024/03/14/Cython%E7%9A%84%E4%BC%98%E5%8C%96%E6%8C%87%E5%8D%97/" class="post-title-link" itemprop="url">Cython的优化指南</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2024-03-14 20:29:50 / Modified: 23:53:37" itemprop="dateCreated datePublished" datetime="2024-03-14T20:29:50-04:00">2024-03-14</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/study/" itemprop="url" rel="index"><span itemprop="name">study</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2024/03/14/Cython%E7%9A%84%E4%BC%98%E5%8C%96%E6%8C%87%E5%8D%97/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2024/03/14/Cython%E7%9A%84%E4%BC%98%E5%8C%96%E6%8C%87%E5%8D%97/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>很有用的资源<br>官方： <a target="_blank" rel="noopener" href="https://cython.readthedocs.io/en/latest/src/userguide/numpy_tutorial.html">https://cython.readthedocs.io/en/latest/src/userguide/numpy_tutorial.html</a><br>B站： <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1NF411i74S/">https://www.bilibili.com/video/BV1NF411i74S/</a></p>
+<h1 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h1><p>Cython可以在python中实现近似于C++的速度，基本方法是用类似于python的语法写<code>.pyx</code> 文件，然后再编译成python可以直接调用的library</p>
+<p>编译需要一个<code>setup.py</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># setup.py</span><br><span class="line"></span><br><span class="line">from distutils.core import setup</span><br><span class="line">from distutils.extension import Extension</span><br><span class="line">from Cython.Distutils import build_ext</span><br><span class="line">from Cython.Build import cythonize</span><br><span class="line"></span><br><span class="line">setup(</span><br><span class="line">    ext_modules = cythonize(&quot;cython_module.pyx&quot;, annotate=True)</span><br><span class="line">)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>然后敲入入下代码就可以编译了</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python setup.py build_ext --inplace</span><br></pre></td></tr></table></figure>
+
+<p>Cython还提供了很方便的visualization，可以看implementation里面有哪些是C++ 哪些是python</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cython -a target.pyx</span><br></pre></td></tr></table></figure>
+
+<p>例子：<br><img src="/assets/17104695941068.jpg"></p>
+<p>其中黄色越深，代表调用的Python API 越多，which means the efficiency is lower</p>
+<h1 id="怎么优化"><a href="#怎么优化" class="headerlink" title="怎么优化"></a>怎么优化</h1><p>最常用的一般是下面几个要点</p>
+<ul>
+<li>在function前加上<code>@cython.wraparound(False) @cython.boundscheck(False) @cython.cdivision(True)</code>，避免python里面耗时间的boundscheck and so on （当然这样的话bound error就不会提示了，所以建议最后没bug了再加</li>
+<li>标注function input和return 的type</li>
+<li>标注所有要用到的variable 的type（包括numpy array 和 index，例如i j等） （就和c一样）</li>
+<li>不要直接用numpy的api，要用就自己写</li>
+</ul>
+<p>效果如下，可以看到最后loop全部都白啦！</p>
+<p><img src="/assets/17104739889217.jpg"></p>
+<h1 id="其他小技巧-OpenMP-多线程加速"><a href="#其他小技巧-OpenMP-多线程加速" class="headerlink" title="其他小技巧 OpenMP 多线程加速"></a>其他小技巧 OpenMP 多线程加速</h1><p>在<code>.pyx</code> 中，加入如下prefix</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># distutils: extra_compile_args=-fopenmp</span><br><span class="line"># distutils: extra_link_args=-fopenmp</span><br></pre></td></tr></table></figure>
+
+<p>然后在想要并行计算的for loop里用<code>prange</code>， 就可以啦：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># We use prange here.</span><br><span class="line">for x in prange(x_max, nogil=True):</span><br><span class="line">    for y in range(y_max):</span><br><span class="line"></span><br><span class="line">        tmp = clip(array_1[x, y], 2, 10)</span><br><span class="line">        tmp = tmp * a + array_2[x, y] * b</span><br><span class="line">        result_view[x, y] = tmp + c</span><br></pre></td></tr></table></figure>
+
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>如果有些实现起来很简单，但是python因为type determine, memory allocation, bound check等 各种原因导致效率很慢，可以试着用cython来加速。效果很显著，最主要的是很容易就可以integrate into python, which is a must-have for DL work.</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2024/02/25/2024%E4%BA%8C%E6%9C%88%E7%9A%84%E7%A2%8E%E7%A2%8E%E5%BF%B5/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1168,110 +1277,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2023/02/16/%E4%BA%8C%E6%9C%88%E7%9A%84%E7%A2%8E%E7%A2%8E%E5%BF%B5%EF%BC%882023%E7%89%88%EF%BC%89/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/liwei3.jpg">
-      <meta itemprop="name" content="Li Wei">
-      <meta itemprop="description" content="人生注定是一个人的旅行，但就算孤独也要做一直前行的人啊">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="NEWAY">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2023/02/16/%E4%BA%8C%E6%9C%88%E7%9A%84%E7%A2%8E%E7%A2%8E%E5%BF%B5%EF%BC%882023%E7%89%88%EF%BC%89/" class="post-title-link" itemprop="url">二月的一些想法和有意思的事（2023版）</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2023-02-16 15:38:26 / Modified: 19:04:07" itemprop="dateCreated datePublished" datetime="2023-02-16T15:38:26-05:00">2023-02-16</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/life/" itemprop="url" rel="index"><span itemprop="name">life</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine: </span>
-    
-    <a title="valine" href="/2023/02/16/%E4%BA%8C%E6%9C%88%E7%9A%84%E7%A2%8E%E7%A2%8E%E5%BF%B5%EF%BC%882023%E7%89%88%EF%BC%89/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2023/02/16/%E4%BA%8C%E6%9C%88%E7%9A%84%E7%A2%8E%E7%A2%8E%E5%BF%B5%EF%BC%882023%E7%89%88%EF%BC%89/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1974443814&auto=1&height=66"></iframe>
-
-<blockquote>
-<p>写完这个文章 发现自己的文学功底退化的十分明显。但又能怎么办呢，时间把我的才华偷走了。</p>
-</blockquote>
-<h2 id="关于这篇floorplan的那些事"><a href="#关于这篇floorplan的那些事" class="headerlink" title="关于这篇floorplan的那些事"></a>关于这篇floorplan的那些事</h2><p>这个work的整个过程真有点哲学意味：<br>本来想的是投一篇apple做的work，结果apple不给数据，<br>反而是在那个work中发现了一个子问题自己捣鼓出了这个work；<br>捣鼓完paper结果因为系统钓鱼执法不能提交了，<br>其实那时候心里已经想着烂掉了，就这样吧，但不知道为什么还是坚持“骚扰”了chair两三次，最后还是交上去了。<br>人生哪，永远不知道下一粒巧克力是什么味道，但是如果不去尝一下，那就永远都不知道下一粒没准是提交成功并且accepted的“惊喜”呢。<br>就像Jose说的</p>
-<blockquote>
-<p>Fantastic. Persistence wins. </p>
-</blockquote>
-<p>尽吾志也而不能至者，可以无悔矣。“可以无悔”重要，“尽吾志也”也很重要。</p>
-<h2 id="paper的规划"><a href="#paper的规划" class="headerlink" title="paper的规划"></a>paper的规划</h2><p>来CMU前，我定下了一个看起来很完美的五年计划</p>
-<ul>
-<li>每年 中 一篇paper</li>
-<li>每学期 投 一篇新paper</li>
-</ul>
-<p>计划有条不紊的进行，现在也是达标的状态。但我忽然发现一个问题：<br>如果每年中一篇，但是每学期投一篇，那岂不是意味着最后我会有一半的投稿都跟我的coloring一样去arxiv了？<br>emmm。。。</p>
-<h2 id="方向"><a href="#方向" class="headerlink" title="方向"></a>方向</h2><p>认识了一些人、投了这么些paper后，发现方向实在是太重要了。<br>虽然其实不同方向需要的数学方法都大同小异，但是<br>发paper、找教职、拉funding看的不是你数学能力、实现能力、思维能力，还得看你的方向match不match。<br>说到这个我就头大了。<br>之前说过，感觉自己只是一个天马行空的铺水泥的，缺少一个建筑师该有的大局观。<br>也许我需要多学习、多思考、多交流、多聆听，才能找到那个方向吧。</p>
-<h2 id="三国志14"><a href="#三国志14" class="headerlink" title="三国志14"></a>三国志14</h2><p>之前沉迷三国志14的时候，因为对游戏中的数值设定不满，于是自学了CE，然后自己调了一些数值，并且发到了网上。<br>最开始一两天没有掀起什么波澜，甚至连回复的也没有。我本来挺失落的：第一次游戏编程 就这么结束了，一点水花都没掀起。<br>结果过了半年多，那个帖子火起来了，下面一堆“大神”、“大佬“的留言差点没让我迷失自我。<br>甚至还有一个初中生通过手机号加到我的微信，出钱让我帮他改数值，哈哈。<br>每次疲倦重复每日工作、会议的时候，想到这些，才会有种自己是真的在生活的感觉。真好呐。</p>
-<h2 id="我记得"><a href="#我记得" class="headerlink" title="我记得"></a>我记得</h2><p>这是我最近单曲循环的一首歌。<br>本来只是觉得曲子好听，直到听到这句词：</p>
-<blockquote>
-<p>在星空另一端 思念从未停止 如同墓碑上的名字</p>
-</blockquote>
-<p>然后就没法阻止的想到了高武。<br>想到当年他给我小姨发短信说我心情不好让小姨多照顾我；<br>想到他瞒着我偷偷给我妈汇报我最近的心情、学习；<br>想到高三最后两个月和他在被子里一起偷听他喜欢的电台；<br>想到大学后他在qq上给我的留言：李巍，你最近过的怎么样；<br>想到知道他去世时候我哭到站不起身；<br>想到去他家里他爸孤身一人家徒四壁的情境。<br>也许另一个时空，我仍和他互为挚友，回国时也会去找他把酒言欢。<br>但是我这个时空他永远的离开了，人世间这么精彩，但是高武已经只剩一个墓碑，永远孤零零的在那大山里了。<br>不过我相信，就像三体中说的，刻在石头上的信息往往比现代科技存储的更久。<br>高武的墓碑肯定会一直在那，就像我对他的思念一样。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1342,7 +1347,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">146</span>
+          <span class="site-state-item-count">141</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
