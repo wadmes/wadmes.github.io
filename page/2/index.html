@@ -213,6 +213,208 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2023/05/04/GNN%20reviews%202023/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/liwei3.jpg">
+      <meta itemprop="name" content="Li Wei">
+      <meta itemprop="description" content="人生注定是一个人的旅行，但就算孤独也要做一直前行的人啊">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="NEWAY">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/05/04/GNN%20reviews%202023/" class="post-title-link" itemprop="url">Advantages of ReLU</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2023-05-04 17:50:29" itemprop="dateCreated datePublished" datetime="2023-05-04T17:50:29-04:00">2023-05-04</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2023-05-10 18:57:38" itemprop="dateModified" datetime="2023-05-10T18:57:38-04:00">2023-05-10</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/study/" itemprop="url" rel="index"><span itemprop="name">study</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2023/05/04/GNN%20reviews%202023/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2023/05/04/GNN%20reviews%202023/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="STRATEGIES-FOR-PRE-TRAINING-GRAPH-NEURAL-NETWORS"><a href="#STRATEGIES-FOR-PRE-TRAINING-GRAPH-NEURAL-NETWORS" class="headerlink" title="STRATEGIES FOR PRE-TRAINING GRAPH NEURAL NETWORS"></a>STRATEGIES FOR PRE-TRAINING GRAPH NEURAL NETWORS</h2><p>Motivation: Naïve pre-training strategies (graph-level multi-task supervised pre-training) can lead to negative transfer on many downstream tasks.</p>
+<h3 id="Pre-train-Method"><a href="#Pre-train-Method" class="headerlink" title="Pre-train Method"></a>Pre-train Method</h3><h4 id="NODE-Context-prediction：探索graph-structure-information"><a href="#NODE-Context-prediction：探索graph-structure-information" class="headerlink" title="NODE: Context prediction：探索graph structure information"></a>NODE: Context prediction：探索graph structure information</h4><p><strong>context graph</strong>: for each node, the subgraph between $r_1$-hop and $r_2$-hop.<br><strong>context anchor nodes</strong>: 假设GNN是r-hop，context anchor nodes就说context graph和r-hop overlap的点。（也就是r1 到 r 之间的点）</p>
+<ol>
+<li>获取context embedding<ol>
+<li>用GNN获取context graph 上的node embedding</li>
+<li>average embeddings of context anchor nodes to obtain a fixed-length context embedding.</li>
+</ol>
+</li>
+<li>context embedding和对应的r-hop 的node embeeding的inner product接近1 （prior that the two embeddings must be similar when they come from the same neighborhood)</li>
+</ol>
+<h4 id="NODE-also-applies-to-GRAPH-level-Mask-attributes-and-predict-them"><a href="#NODE-also-applies-to-GRAPH-level-Mask-attributes-and-predict-them" class="headerlink" title="NODE (also applies to GRAPH level): Mask attributes and predict them"></a>NODE (also applies to GRAPH level): Mask attributes and predict them</h4><h2 id="Principal-Neighbourhood-Aggregation-for-Graph-Nets"><a href="#Principal-Neighbourhood-Aggregation-for-Graph-Nets" class="headerlink" title="Principal Neighbourhood Aggregation for Graph Nets"></a>Principal Neighbourhood Aggregation for Graph Nets</h2><p>单个aggregator不行，需要combine多种不同aggregator<br><img src="/assets/16837591769134.jpg"><br>这里的S 是基于degree的一个额外系数：<br><img src="/assets/16837593665863.jpg"><br>alpha pos时，node的degree（d）越大，S值就越大，于是feature值越大。（amplification）<br>反之则为 attenuation</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2023/04/10/%E7%BB%A7%E6%89%BF%E4%B8%8E%E5%8F%9B%E9%80%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/liwei3.jpg">
+      <meta itemprop="name" content="Li Wei">
+      <meta itemprop="description" content="人生注定是一个人的旅行，但就算孤独也要做一直前行的人啊">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="NEWAY">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/04/10/%E7%BB%A7%E6%89%BF%E4%B8%8E%E5%8F%9B%E9%80%86/" class="post-title-link" itemprop="url">继承与叛逆</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2023-04-10 00:18:39 / Modified: 00:40:27" itemprop="dateCreated datePublished" datetime="2023-04-10T00:18:39-04:00">2023-04-10</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/life/" itemprop="url" rel="index"><span itemprop="name">life</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2023/04/10/%E7%BB%A7%E6%89%BF%E4%B8%8E%E5%8F%9B%E9%80%86/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2023/04/10/%E7%BB%A7%E6%89%BF%E4%B8%8E%E5%8F%9B%E9%80%86/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>科学是一个继承与积累的过程，强如牛顿世不是一个人发展动力学、一个人收集整理数据!(Cohen 62) ，然而从牛顿运动定律到达尔文的自然选择学说，再到爱因斯坦的相对论原理 ，每次新理论的出现现往往伴随随对前人科学的否定。</p>
+<p>本文将从探讨几位科学巨匠的继承与叛逆入手，分析继承与叛逆在科学的发展中所扮演的角色，从而思考其能给我们带来的启示。</p>
+<h1 id="科学巨匠们的继承与叛逆"><a href="#科学巨匠们的继承与叛逆" class="headerlink" title="科学巨匠们的继承与叛逆"></a>科学巨匠们的继承与叛逆</h1><h2 id="牛顿"><a href="#牛顿" class="headerlink" title="牛顿"></a>牛顿</h2><p>谈到科学史，牛顿是绕不开的话题。牛顿《自然哲学中的数学原理》《以下称《原理》)的问世是整个物理学史中最伟大的事件之一(Cohen 49)，而牛顿也被公认为将科学与宗教分离的现代科学开创者(陈方正 595)。在后人看来，对于那个以亚里士多德体系为科学标准的时代，牛顿可以说是以叛逆者的形象出现的。而这点恐怕是牛顿万万没想到的，事实上，无论是在宗教层面曾用天体运动证明神的存在(Cohen 55)还是在数学层面对于古典几何学的发扬，牛顿都是一个古代传统的继承者而非叛逆者，这也与其本人想法一致(陈方正595)。</p>
+<p>牛顿的自诩不无道理。现代科学革命是由古希腊科学的复兴所触发(陈方正628)，牛顿的科学体系也有许多是继承了古希腊科学思维。牛顿在无数例子中提炼出了惯性定律，而古希腊科学也重视演绎和归纳，譬如试图将地、海、火、风这些常见的自然现象感景观归纳为构成世界的四种元素(Lindberg 27)。《原理》对定理的证明逻辑严密，对数学的运用也十分巧妙，这些也正符合古希腊科学的特征(Thomas 89)。</p>
+<p>但仅将牛顿称为继承者又显不妥，牛顿的许多贡献，如微积分、实验科学是超出了前人的研究程度甚至理解能力的，而这些贡献又一定程度上颠覆了前人的科学体系或是思维方式，这也是牛顿会被大众视为“叛逆者”的原因。但我认为，牛顿的最好定义应当是继承者、发展者和叛逆者。一方面，牛顿继承了前人部分思维方式、吸收了同时代其他科学家们的实验或是理论结晶，最后发展出将数学、观测、思想三者系统的结合起来的崭新哲学(余英时)，而这门哲学反过来颠覆了传统理论，即叛逆一说。</p>
+<h2 id="达尔文"><a href="#达尔文" class="headerlink" title="达尔文"></a>达尔文</h2><p>作为另一个叛逆者的杰出代表，达尔文的叛逆显而易见，他认为自然选择使产生有利变异的个体有更好的机会生存并将这个有利变异遗传下去，而有利变异的逐步积累则产生了物种进化，后来便出现了人类这样的高等生物(Darwin 95)，这对上帝造人说无疑是巨大的挑战。</p>
+<p>事实上，达尔文不仅是个叛逆者。他分别吸收了莱尔地质缓慢变化理论，马尔萨斯的资源有限导致生存竞争的概念·拉马克的特征可传理论，并将三者结合起来，再联系自己的实验及理论最终形成了自然选择学说。</p>
+<h2 id="坎德尔"><a href="#坎德尔" class="headerlink" title="坎德尔"></a>坎德尔</h2><p>作为当代科学家的杰出代表，坎德尔的研究历程更值得深思。他不是以“叛逆者的形象出现，而是一位优秀的合作者，继承者。</p>
+<p>在探索意识的生物学基础这个尚未有人“开发”的难题时，他的导师建议他从下而上研究神经细胞的内部世界进而探索更上层的心理结构理论(Kapde1180)，而在探索负责意识统一性的分布位置时巨匠克里克给了他关于屏状核的启示(Kandel 190)。可见人类的知识已不可能由一个人来全方位的扩展，当代科学中多人合作已不可避免。</p>
+<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>如上，达尔文的历程与牛顿都经历了吸收他人理论、发展自己理论、推翻前人理论的过程。但两人本意并不是叛逆，他们只是在发展自己的理论后发现与传统理论矛盾，于是选择成为叛逆者推翻原有理论。</p>
+<p>用一个比喻来说明继承、叛逆与发展在科学中的角色:将科学比作一张试卷，继承就像试卷前面的基础题，你只需学习前人的理论便可，而发展就像是后面没有标准答案的难题，你得推导出更深层次的理论才可能完成。叛逆的一部分是你推导理论时跳出前人知识圈子的能力，而当你做完后面的难题，得到了自己的理论，发现基础题根本不能按从前的方法做时，你冒着 0分的风险把基础题全改掉的勇气就是叛逆的另一部分。</p>
+<p>至于当代高层次的科学，就好像是几个人一起做一张只有难题的试卷，大家各抒已见，互帮互助，互相吸收时方的思路，这是发展。而一张卷子用了好几代人的时间来做，后人看前人的思路来继续解题，这是传承。当后人发现的人的思路有问题一笔涂掉，这是叛逆。当然，最后卷子做完，这张卷子的题目以后就变成基础题等着后人来做了。</p>
+<h1 id="启示"><a href="#启示" class="headerlink" title="启示"></a>启示</h1><p>对于我们学生来说，继承无疑是容易的，但发展则困难些，它需要我们去探索未知的可能，而叛逆则更显困难，因为我们首先需要一套严密的体系去推翻它，这需要有足够的知识，而学习时我们又得小心不要陷在原体系的思维局限中，这无疑更为困难。因此在学习时锻炼自己的思辨能力以及敢于犯错的能力是及其重要的。</p>
+<p>但同时，我们也不能盲目叛逆·不顾前人已得到的经验而盲目的追求标新立异、妄图空想出一个改变整个科学历史的重大发现自然是不可取的。从牛顿到达尔文，没有一个不是在学习、实验无数小时、自成了一套严谨科学的体系之后才开始叛逆，尚不能行，焉能跑否?这在当代的科学环境中尤为重要。</p>
+<p>相对叛逆，我们更应思考如何在继承的基础上发展知识。细说，我们在将目前的课程掌握的基础上可以把握大学广淘的资源，去深入探索更高层次的问题，广说，谁也不能断言爱因斯坦构建的物理大厚不会崩塌，但我们能确信的是科学将会一直发展，我们能做的就是学到人类知识边缘，然后以团队之力为科学开疆扩土，并将这份志愿传承下去。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>克里克说，如果他可以活得久一些，他就要做一个实验确认当某个刺激进入意识知觉时，屏状核是否被激活了。他没有完成，但他的思路给了后人启示，于是坎德尔完成了。这种科学家之间的传承，何尝不令人动容?</p>
+<p>历史上那些对科学的发展做了贡献的科学家们，就如已演变成中子星但仍在浩静夜空中闪耀着光芒的恒星的“鬼”，即使已经消亡，但星光一直在照耀我们。</p>
+<p>若我们在黑夜里寻求真理时能有一缕星光相伴，即使可能会走弯路，总比闭着眼往前走来得可靠得多。而当我们走到一片完全没有星光的黑夜之中时，我们大可以毫无顾忌的摸索前进，因为终究有一天，会有一个执着着摸索前进着的人，成为这片黑夜上的星光给之后前来探路的人照亮前路的方向。</p>
+<p>未来，当你再次仰望星空，看到这些可能几百万年前便已逝去但仍将光辉抚在你脸上的繁星，你想到亚里士多德，想到牛顿，想到达尔文，斯人已逝，科学犹存，这也许就是科学的魅力所在。</p>
+<p>而我们擎路蓝缕，如坎德尔继承克里克一般，头顶星光脚踏实地的不断探索先人未曾或未能触及的领域，这也许就是对继承与叛逆最好的注解。</p>
+<blockquote>
+<p>这篇文章作于2015.04，是我与自然对话的Final paper。转眼便是八年，我也真的在做一些算是“新东西”的科研，每每再读，都思绪万千。希望自己的赤子之心不要随着时间磨灭，希望自己能真的脚踏实地，有幸也能成为漫漫黑夜中的那一束星光。</p>
+</blockquote>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2023/02/16/%E4%BA%8C%E6%9C%88%E7%9A%84%E7%A2%8E%E7%A2%8E%E5%BF%B5%EF%BC%882023%E7%89%88%EF%BC%89/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1081,223 +1283,10 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2022/03/03/some-pytorch-python-linux-tips/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/liwei3.jpg">
-      <meta itemprop="name" content="Li Wei">
-      <meta itemprop="description" content="人生注定是一个人的旅行，但就算孤独也要做一直前行的人啊">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="NEWAY">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/03/03/some-pytorch-python-linux-tips/" class="post-title-link" itemprop="url">some pytorch & python & linux tips</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2022-03-03 16:19:47" itemprop="dateCreated datePublished" datetime="2022-03-03T16:19:47-05:00">2022-03-03</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-03-16 16:13:48" itemprop="dateModified" datetime="2022-03-16T16:13:48-04:00">2022-03-16</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/code/" itemprop="url" rel="index"><span itemprop="name">code</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine: </span>
-    
-    <a title="valine" href="/2022/03/03/some-pytorch-python-linux-tips/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2022/03/03/some-pytorch-python-linux-tips/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <blockquote>
-<p>A cheatsheet for some common operations I may need to ask Google again and again…</p>
-</blockquote>
-<h1 id="Pytorch"><a href="#Pytorch" class="headerlink" title="Pytorch"></a>Pytorch</h1><h2 id="Select-rows-based-on-conditions-of-column-values"><a href="#Select-rows-based-on-conditions-of-column-values" class="headerlink" title="Select rows based on conditions of column values"></a>Select rows based on conditions of column values</h2><p>Basic idea is to <strong>use conditions to find all true index</strong>, and <strong>select the row&#x2F;column based on index</strong></p>
-<p>For example, return rows whose column 1 value is exactly 2:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a[:,a[:, 0] == 2]</span><br></pre></td></tr></table></figure>
-
-<p>Another example is (selct rows whose column values are all larger than 0)</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a[(a &gt; 0).all(1)]</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2022/01/01/2021%E5%B9%B4%E7%9A%84%E6%80%BB%E7%BB%93%E5%92%8C%E4%B8%80%E4%BA%9B%E7%A2%8E%E7%A2%8E%E5%BF%B5/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/liwei3.jpg">
-      <meta itemprop="name" content="Li Wei">
-      <meta itemprop="description" content="人生注定是一个人的旅行，但就算孤独也要做一直前行的人啊">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="NEWAY">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/01/01/2021%E5%B9%B4%E7%9A%84%E6%80%BB%E7%BB%93%E5%92%8C%E4%B8%80%E4%BA%9B%E7%A2%8E%E7%A2%8E%E5%BF%B5/" class="post-title-link" itemprop="url">2021年的总结和一些碎碎念</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2022-01-01 23:07:40" itemprop="dateCreated datePublished" datetime="2022-01-01T23:07:40-05:00">2022-01-01</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-06-19 02:56:45" itemprop="dateModified" datetime="2022-06-19T02:56:45-04:00">2022-06-19</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/life/" itemprop="url" rel="index"><span itemprop="name">life</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine: </span>
-    
-    <a title="valine" href="/2022/01/01/2021%E5%B9%B4%E7%9A%84%E6%80%BB%E7%BB%93%E5%92%8C%E4%B8%80%E4%BA%9B%E7%A2%8E%E7%A2%8E%E5%BF%B5/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2022/01/01/2021%E5%B9%B4%E7%9A%84%E6%80%BB%E7%BB%93%E5%92%8C%E4%B8%80%E4%BA%9B%E7%A2%8E%E7%A2%8E%E5%BF%B5/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1402051900&auto=1&height=66"></iframe>
-
-<h2 id="2021年的总结"><a href="#2021年的总结" class="headerlink" title="2021年的总结"></a>2021年的总结</h2><p>2021年又是在疫情中度过的一年。因为疫情，自己的大部分生活锁死在了宿舍。即便这样，2021也是我人生最“动荡”的一年。我就好像是一片充满补丁仍昂扬要追求大海的帆船，即便是狂风暴雨，但终究还是过完了这一年：虽然过去的旅程其实只是被风暴推着走的。</p>
-<p>2021年是没有成果的一年：paper基本没有进展、学习上也没有学到什么新鲜有意思的东西、即便结婚却时常还是有孤独感。</p>
-<p>不过也是很幸运的一年。其实不止是2021，感觉自己一直是比较幸运的人。爸妈给的脑子、大学碰到的同学、913的小伙伴、来美国后的labmate和特别友好的两位导师。我真的挺庆幸自己能活在他们的庇护下，一直都不需要为了生活和琐碎的人际关系发愁。</p>
-<p>风格好像有点太阴沉了，积极点说吧！2021年我做到了这些：</p>
-<ul>
-<li>成为了名副其实的EDA&#x2F;VLSI design&#x2F;VLSI testing 半懂哥，基本上芯片是怎么从RTL到chip的也可以大概跟别人解释清楚啦</li>
-<li>再次成为幸运小子，两位导师对我都很好～（damn 好像不是我做到的哈哈哈 实在没什么写的了 还是写下来吧</li>
-<li>基本上完全适应美国的生活啦，甚至资本主义的羊毛都要被我薅秃了哈哈哈哈哈</li>
-<li>大概率拿到了apple的intern offer啦（其实本来没想申intern的。。就是老板让我去试试fellowship。。然后apple的人可能觉得我不够格但是research interest又挺适合他们intern需求的。。于是就。。。（upd，apple最后还真把fellowship给我了，邮件里对我方向的鼓励、presentation的认可也是很感动啊，一下子就有点报君黄金台上意的努力冲动了。）</li>
-<li>虽然paper没进展，但是两个proj都是有条不紊的继续着，好像暂时也没有排斥research 或者 不喜欢自己目前proj的想法，挺好的嘿嘿</li>
-</ul>
-<p>然后是今年的计划（雄心勃勃</p>
-<ul>
-<li>两个proj第一学期都给我做完！然后第二学期再投一篇！You have to push yourself！不仅为自己，也要为两位这么nice的导师。OK？</li>
-<li>有时间就学着剪视频（哈哈哈每年愿望清单都有你）。It is always not a bad thing.</li>
-<li>好像没啥了额。。就祝你每天开心、不用压力太大，你已经很棒啦！</li>
-</ul>
-<h2 id="盗月社"><a href="#盗月社" class="headerlink" title="盗月社"></a>盗月社</h2><p>看盗月社的时候，总会有种暖意。之前不知道为什么，后面明白了：是因为他们本身是温暖的、或者说，他们的视频、故事都是积极阳光的、他们就像太阳一样，会主动温暖身边的人。我想，这也是为什么他们的视频里人们也永远是那么热情友好吧。</p>
-<p>是呀，我们也应该做一个这样温暖的人吧。人生其实也只有几十年，赚钱意义不是很大、改变造福世界又不太可能、做一个温暖的人，让自己和周围的人被阳光滋润着似乎是个挺靠谱的人生选择。主动表达自己的感激、永远乐观积极，给周围的人带去温暖而不是阴沉。希望我可以吧～</p>
-<p>不过说起来，我其实不知道盗月社的大家是怎么能一直保持阳光的。也许他们背后也会脆弱也需要别人的温暖吧？反正我是这样的。虽然很早就明白人生注定是只属于自己的孤独的旅程，但是总是有很多时刻，我还是需要他人的情感支持。</p>
-<h2 id="遗憾"><a href="#遗憾" class="headerlink" title="遗憾"></a>遗憾</h2><p>也许人生就是这样，当你选择做一个随风飘流的小船儿时，你注定就会有遗憾。</p>
-<p>回顾我的二十四年，遗憾其实还不少。譬如小时候喜欢围棋却没有学习资源没有老师，只能自己靠着对“围”的理解瞎捣鼓；譬如小学自己模仿qq三国画了几十张地图，还设计了完善的装备 剧情 战斗系统 （虽然所有玩法都是基于掷骰子的随机性哈哈哈），但是大学却没有想过（或者说没有勇气？）去找游戏方面的工作，曾经的那些地图也都没有保存下来；再比如小时候挺喜欢画画，曾经对着书上的风景画照着画，被美术老师以“你这肯定是贴着画直接抄的”为理由给了不及格，委屈的哭的要死，也顺带扼杀了我的美术乐趣；在比如大学唯一报名的辩论队，最后还是怂了没去面试。。。</p>
-<p>大部分的遗憾其实还是源自自己的短视和懦弱、短视可能受家庭环境教育影响、但是懦弱纯粹就是自己的问题了。这也许也是为什么我看着白鹿原里的白孝文如此“触目惊心”、看明朝那些事那么振聋发聩了。所以我很喜欢那句自己说了七年的那句话：follow your heart。</p>
-<p>那么就以这段话作为结尾、也作为对新年的希冀吧！不论要做什么决定，不用担心后果、不用考虑其他有的没得影响，只要记得：</p>
-<blockquote>
-<p>唯愿此心无怨尤</p>
-</blockquote>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -1364,7 +1353,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">140</span>
+          <span class="site-state-item-count">143</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

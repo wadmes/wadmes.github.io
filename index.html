@@ -213,6 +213,190 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2024/04/08/stable-baselines3%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B0%8F%E6%8A%80%E5%B7%A7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/liwei3.jpg">
+      <meta itemprop="name" content="Li Wei">
+      <meta itemprop="description" content="人生注定是一个人的旅行，但就算孤独也要做一直前行的人啊">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="NEWAY">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2024/04/08/stable-baselines3%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B0%8F%E6%8A%80%E5%B7%A7/" class="post-title-link" itemprop="url">stable-baselines3的一些小技巧</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2024-04-08 20:29:50" itemprop="dateCreated datePublished" datetime="2024-04-08T20:29:50-04:00">2024-04-08</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2024-04-29 17:19:20" itemprop="dateModified" datetime="2024-04-29T17:19:20-04:00">2024-04-29</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/study/" itemprop="url" rel="index"><span itemprop="name">study</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2024/04/08/stable-baselines3%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B0%8F%E6%8A%80%E5%B7%A7/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2024/04/08/stable-baselines3%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B0%8F%E6%8A%80%E5%B7%A7/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Use-gym-wrapper"><a href="#Use-gym-wrapper" class="headerlink" title="Use gym wrapper"></a>Use gym wrapper</h1><p>需要重写 <code>reset()</code> and <code>step()</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">class TimeLimitWrapper(gym.Wrapper):</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    :param env: (gym.Env) Gym environment that will be wrapped</span><br><span class="line">    :param max_steps: (int) Max number of steps per episode</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line"></span><br><span class="line">    def __init__(self, env, max_steps=100):</span><br><span class="line">        # Call the parent constructor, so we can access self.env later</span><br><span class="line">        super(TimeLimitWrapper, self).__init__(env)</span><br><span class="line">        self.max_steps = max_steps</span><br><span class="line">        # Counter of steps per episode</span><br><span class="line">        self.current_step = 0</span><br><span class="line"></span><br><span class="line">    def reset(self, **kwargs):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        Reset the environment</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        # Reset the counter</span><br><span class="line">        self.current_step = 0</span><br><span class="line">        return self.env.reset(**kwargs)</span><br><span class="line"></span><br><span class="line">    def step(self, action):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        :param action: ([float] or int) Action taken by the agent</span><br><span class="line">        :return: (np.ndarray, float, bool, bool, dict) observation, reward, is the episode over?, additional informations</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        self.current_step += 1</span><br><span class="line">        obs, reward, terminated, truncated, info = self.env.step(action)</span><br><span class="line">        # Overwrite the truncation signal when when the number of steps reaches the maximum</span><br><span class="line">        if self.current_step &gt;= self.max_steps:</span><br><span class="line">            truncated = True</span><br><span class="line">        return obs, reward, terminated, truncated, info</span><br></pre></td></tr></table></figure>
+
+<p>当然，如果自己写<code>enviorment</code> 就不需要 写wrapper了</p>
+<h1 id="logger-中的各种值"><a href="#logger-中的各种值" class="headerlink" title="logger 中的各种值"></a>logger 中的各种值</h1><h2 id="entropy-loss"><a href="#entropy-loss" class="headerlink" title="entropy_loss"></a>entropy_loss</h2><p><code>entropy_loss</code>: 负数值，越小代表预测的越不“自信”</p>
+<p>if probs is [0.1,0.9]</p>
+<p>entropy &#x3D; -0.1ln(0.1) - 0.9ln(0.9) &#x3D;~ 0.325</p>
+<p>entropy_loss &#x3D; -0.325</p>
+<p>if probs is [0.5,0.5]</p>
+<p>entropy &#x3D; -0.5ln(0.5)-0.5ln(0.5) &#x3D;~ 0.69</p>
+<h2 id="explained-variance"><a href="#explained-variance" class="headerlink" title="explained_variance"></a>explained_variance</h2><p><code>explained_variance</code>, 用于计算how well <strong>value function</strong> (or critic in actor-critic methods) match the actual returns<br>~&#x3D; 1: 完美<br>0: 和全预测一个值一样<br>&lt;0: 比简单预测mean还差</p>
+<h1 id="RL-Tricks-I-found-in-internet"><a href="#RL-Tricks-I-found-in-internet" class="headerlink" title="RL Tricks I found in internet"></a>RL Tricks I found in internet</h1><h2 id="http-joschu-net-docs-nuts-and-bolts-pdf"><a href="#http-joschu-net-docs-nuts-and-bolts-pdf" class="headerlink" title="http://joschu.net/docs/nuts-and-bolts.pdf"></a><a target="_blank" rel="noopener" href="http://joschu.net/docs/nuts-and-bolts.pdf">http://joschu.net/docs/nuts-and-bolts.pdf</a></h2><ul>
+<li><p>Premature drop in policy entropy ⇒ no learning</p>
+<ul>
+<li>Alleviate by using <strong>entropy bonus</strong> or KL penalty （鼓励randomness）</li>
+</ul>
+</li>
+<li><p>I was confused as to what action I should take to improve my results after lots of experimentation whether feature engineering, reward shaping, more training steps, or algo hyper-parameter tuning. From lots of experiments, first and foremost look at your <strong>reward function</strong> and validate that the reward value for a given episode is representative for what you actually want to achieve - it took a lot of iterations to finally get this somewhat right. If you’ve checked and double checked your reward function, move to <strong>feature engineering</strong>. In my case, I was able to quickly test with feature answers (e.g. data that included information the policy was suppose to figure out) to realize that my reward function was not executing like it should. To that point, start small and simple and validate while making small changes. Don’t waste your time <strong>hyper-parameter tuning</strong> while you are still in development of your environment, observation space, action space, and reward function. While hyper-parameters make a huge difference, it won’t correct a bad reward function. In my experience, hyper-parameter tuning was able to identify the parameters to get to a higher reward quicker but that didn’t necessarily generalize to a better training experience. I used the hyper-parameter tuning as a starting point and then tweaked things manually from there.</p>
+</li>
+<li><p>Lastly, how much do you need to train - the million dollar question. This is going to significantly vary from problem to problem, I found success when the algo was able to process through any given episode 60+ times. This is the factor of exploration. Some problems&#x2F;environments need less exploration and others need more. The larger the observation space and the larger the action space, the more steps that are needed. For myself, I came up with this function <strong>needed_steps &#x3D; number_distinct_episodes * envs * episode_length</strong> mentioned in #2 based on how many times I wanted a given episode executed. Because my problem is data analytics focused, it was easy to determine how many distinct episodes I had, and then just needed to evaluate how many times I needed&#x2F;wanted a given episode explored. In other problems, there is no clear amount of distinct episodes and the rule of thumb that I followed was run for 1M steps and see how it goes, and then if I’m sure of everything else run for 5M steps, and then for 10M steps - though there are constraints on time and compute resources. I would also work in parallel in which I would make some change run a training job and then in a different environment make a different change and run another training job - this allowed me to validate changes pretty quickly of which path I wanted to go down killing jobs that I decided against without having to wait for it to finish - tmux was helpful for this.</p>
+<ul>
+<li>Comments to your last point: make more use of callbacks. <a target="_blank" rel="noopener" href="https://stable-baselines3.readthedocs.io/en/master/guide/callbacks.html">https://stable-baselines3.readthedocs.io/en/master/guide/callbacks.html</a> There are a lot of configured callbacks you can use to capture the best model, stop training on no improvement, regularly checkpoint… Lots of stuff. Be explicit about using Eval environment.</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2024/03/25/%E6%BB%A1%E5%88%86%E4%BD%9C%E6%96%87/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/liwei3.jpg">
+      <meta itemprop="name" content="Li Wei">
+      <meta itemprop="description" content="人生注定是一个人的旅行，但就算孤独也要做一直前行的人啊">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="NEWAY">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2024/03/25/%E6%BB%A1%E5%88%86%E4%BD%9C%E6%96%87/" class="post-title-link" itemprop="url">Untitled</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2024-03-25 23:02:55" itemprop="dateCreated datePublished" datetime="2024-03-25T23:02:55-04:00">2024-03-25</time>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2024/03/25/%E6%BB%A1%E5%88%86%E4%BD%9C%E6%96%87/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2024/03/25/%E6%BB%A1%E5%88%86%E4%BD%9C%E6%96%87/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>穷乡僻壤，美丽乡村。乡党委书记是怎样使它蜕变？又用怎样的丹青勾勒出这如画风<br>景？<br>答道：以其信心，凭其决心，用其全心而已。<br>顿悟——人生如画，我以我心绘风景，绘出个草长莺飞，绘出个青山万丈，绘出一道<br>最亮丽的风景线！<br>我以信心绘风景，绘出一轮欲览的青天明月。五岁的她获得歌咏比赛一等奖，校长夸<br>奖道：“小姑娘，能拿冠军真是你的幸运。”她反抗道：“不，这是我应得的。”她是撒切<br>尔夫人，正是她的信心，使英国政坛多了一道迷人而又张扬的风景。<br>我凭决心绘风景，绘出一件已被黄沙打穿的金甲。乡党委书记凭着过人的决心建设乡<br>村，他成功了；孙权凭借“再有说者，便如此案”的决心，击败不可一世的曹操；邓艾凭<br>着“积军资之粮”的决心，以偏师平定蜀汉；项羽凭着破釜沉舟的决心，打败三十万秦<br>军……事例太多，但请君细想，若没有决心，曹操可能已一统天下，蜀汉仍能苟延残<br>喘，反秦势力可能烟消云散，那历史画卷中那些亮丽风景岂不消失殆尽？因此，我凭决<br>心绘风景，定要绘出“不破楼兰终不还”的豪情。<br>我用全心绘风景，绘出一派奋斗之花盛开的图景。乡党委书记用全心投入到乡村建<br>设，于是乡村焕然一新，而正值青春年少的我们，怎么有理由不全身心地投入到勾绘精<br>彩人生画卷之中去呢？但是，我看到了吊儿郎当的学生，我看到了沉迷灯红酒绿的青<br>年，他们的人生画卷黯淡无光。林清玄曾说：“我们要以全心来绽放，以花的姿态证明自<br>己的存在”。全心全意，只此四字，要做到却着实不易。孔明全身心地投入复兴汉室的伟<br>业中，即使失败也是一道风景；哈兰德•桑德斯退休后全心研究炸鸡方法，最终在街头巷<br>尾绘出一片“肯德鸡”的风景；科比全心练习篮球，在凌晨四点便开始训练，铸造了紫金<br>王朝那一抹风景。他们，或是儒生，或是老朽，或是“富二代”<br>，都全心投入各自坚守的<br>事业，亲手绘出一段段风景绚丽的人生卷轴，而我们又怎能轻易放弃？<br>每个人都有能力创造属于自己的风景，但需要信心、决心，更重要的是全心投入。如<br>此，蓦然回首，你会发现那风景已在灯火阑珊处。<br>我以我心绘风景，风景迷人因我心。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2024/03/14/Cython%E7%9A%84%E4%BC%98%E5%8C%96%E6%8C%87%E5%8D%97/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -236,10 +420,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2024-03-14 20:29:50 / Modified: 23:53:37" itemprop="dateCreated datePublished" datetime="2024-03-14T20:29:50-04:00">2024-03-14</time>
+              <time title="Created: 2024-03-14 20:29:50" itemprop="dateCreated datePublished" datetime="2024-03-14T20:29:50-04:00">2024-03-14</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2024-03-15 00:14:33" itemprop="dateModified" datetime="2024-03-15T00:14:33-04:00">2024-03-15</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -285,7 +475,7 @@
 <p>Cython还提供了很方便的visualization，可以看implementation里面有哪些是C++ 哪些是python</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cython -a target.pyx</span><br></pre></td></tr></table></figure>
 
-<p>例子：<br><img src="/assets/17104695941068.jpg"></p>
+<p>例子：<br><img src="/./assets/17104695941068.jpg"></p>
 <p>其中黄色越深，代表调用的Python API 越多，which means the efficiency is lower</p>
 <h1 id="怎么优化"><a href="#怎么优化" class="headerlink" title="怎么优化"></a>怎么优化</h1><p>最常用的一般是下面几个要点</p>
 <ul>
@@ -1075,212 +1265,10 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2023/05/04/GNN%20reviews%202023/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/liwei3.jpg">
-      <meta itemprop="name" content="Li Wei">
-      <meta itemprop="description" content="人生注定是一个人的旅行，但就算孤独也要做一直前行的人啊">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="NEWAY">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2023/05/04/GNN%20reviews%202023/" class="post-title-link" itemprop="url">Advantages of ReLU</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2023-05-04 17:50:29" itemprop="dateCreated datePublished" datetime="2023-05-04T17:50:29-04:00">2023-05-04</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2023-05-10 18:57:38" itemprop="dateModified" datetime="2023-05-10T18:57:38-04:00">2023-05-10</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/study/" itemprop="url" rel="index"><span itemprop="name">study</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine: </span>
-    
-    <a title="valine" href="/2023/05/04/GNN%20reviews%202023/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2023/05/04/GNN%20reviews%202023/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="STRATEGIES-FOR-PRE-TRAINING-GRAPH-NEURAL-NETWORS"><a href="#STRATEGIES-FOR-PRE-TRAINING-GRAPH-NEURAL-NETWORS" class="headerlink" title="STRATEGIES FOR PRE-TRAINING GRAPH NEURAL NETWORS"></a>STRATEGIES FOR PRE-TRAINING GRAPH NEURAL NETWORS</h2><p>Motivation: Naïve pre-training strategies (graph-level multi-task supervised pre-training) can lead to negative transfer on many downstream tasks.</p>
-<h3 id="Pre-train-Method"><a href="#Pre-train-Method" class="headerlink" title="Pre-train Method"></a>Pre-train Method</h3><h4 id="NODE-Context-prediction：探索graph-structure-information"><a href="#NODE-Context-prediction：探索graph-structure-information" class="headerlink" title="NODE: Context prediction：探索graph structure information"></a>NODE: Context prediction：探索graph structure information</h4><p><strong>context graph</strong>: for each node, the subgraph between $r_1$-hop and $r_2$-hop.<br><strong>context anchor nodes</strong>: 假设GNN是r-hop，context anchor nodes就说context graph和r-hop overlap的点。（也就是r1 到 r 之间的点）</p>
-<ol>
-<li>获取context embedding<ol>
-<li>用GNN获取context graph 上的node embedding</li>
-<li>average embeddings of context anchor nodes to obtain a fixed-length context embedding.</li>
-</ol>
-</li>
-<li>context embedding和对应的r-hop 的node embeeding的inner product接近1 （prior that the two embeddings must be similar when they come from the same neighborhood)</li>
-</ol>
-<h4 id="NODE-also-applies-to-GRAPH-level-Mask-attributes-and-predict-them"><a href="#NODE-also-applies-to-GRAPH-level-Mask-attributes-and-predict-them" class="headerlink" title="NODE (also applies to GRAPH level): Mask attributes and predict them"></a>NODE (also applies to GRAPH level): Mask attributes and predict them</h4><h2 id="Principal-Neighbourhood-Aggregation-for-Graph-Nets"><a href="#Principal-Neighbourhood-Aggregation-for-Graph-Nets" class="headerlink" title="Principal Neighbourhood Aggregation for Graph Nets"></a>Principal Neighbourhood Aggregation for Graph Nets</h2><p>单个aggregator不行，需要combine多种不同aggregator<br><img src="/assets/16837591769134.jpg"><br>这里的S 是基于degree的一个额外系数：<br><img src="/assets/16837593665863.jpg"><br>alpha pos时，node的degree（d）越大，S值就越大，于是feature值越大。（amplification）<br>反之则为 attenuation</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2023/04/10/%E7%BB%A7%E6%89%BF%E4%B8%8E%E5%8F%9B%E9%80%86/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/liwei3.jpg">
-      <meta itemprop="name" content="Li Wei">
-      <meta itemprop="description" content="人生注定是一个人的旅行，但就算孤独也要做一直前行的人啊">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="NEWAY">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2023/04/10/%E7%BB%A7%E6%89%BF%E4%B8%8E%E5%8F%9B%E9%80%86/" class="post-title-link" itemprop="url">继承与叛逆</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2023-04-10 00:18:39 / Modified: 00:40:27" itemprop="dateCreated datePublished" datetime="2023-04-10T00:18:39-04:00">2023-04-10</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/life/" itemprop="url" rel="index"><span itemprop="name">life</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine: </span>
-    
-    <a title="valine" href="/2023/04/10/%E7%BB%A7%E6%89%BF%E4%B8%8E%E5%8F%9B%E9%80%86/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2023/04/10/%E7%BB%A7%E6%89%BF%E4%B8%8E%E5%8F%9B%E9%80%86/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>科学是一个继承与积累的过程，强如牛顿世不是一个人发展动力学、一个人收集整理数据!(Cohen 62) ，然而从牛顿运动定律到达尔文的自然选择学说，再到爱因斯坦的相对论原理 ，每次新理论的出现现往往伴随随对前人科学的否定。</p>
-<p>本文将从探讨几位科学巨匠的继承与叛逆入手，分析继承与叛逆在科学的发展中所扮演的角色，从而思考其能给我们带来的启示。</p>
-<h1 id="科学巨匠们的继承与叛逆"><a href="#科学巨匠们的继承与叛逆" class="headerlink" title="科学巨匠们的继承与叛逆"></a>科学巨匠们的继承与叛逆</h1><h2 id="牛顿"><a href="#牛顿" class="headerlink" title="牛顿"></a>牛顿</h2><p>谈到科学史，牛顿是绕不开的话题。牛顿《自然哲学中的数学原理》《以下称《原理》)的问世是整个物理学史中最伟大的事件之一(Cohen 49)，而牛顿也被公认为将科学与宗教分离的现代科学开创者(陈方正 595)。在后人看来，对于那个以亚里士多德体系为科学标准的时代，牛顿可以说是以叛逆者的形象出现的。而这点恐怕是牛顿万万没想到的，事实上，无论是在宗教层面曾用天体运动证明神的存在(Cohen 55)还是在数学层面对于古典几何学的发扬，牛顿都是一个古代传统的继承者而非叛逆者，这也与其本人想法一致(陈方正595)。</p>
-<p>牛顿的自诩不无道理。现代科学革命是由古希腊科学的复兴所触发(陈方正628)，牛顿的科学体系也有许多是继承了古希腊科学思维。牛顿在无数例子中提炼出了惯性定律，而古希腊科学也重视演绎和归纳，譬如试图将地、海、火、风这些常见的自然现象感景观归纳为构成世界的四种元素(Lindberg 27)。《原理》对定理的证明逻辑严密，对数学的运用也十分巧妙，这些也正符合古希腊科学的特征(Thomas 89)。</p>
-<p>但仅将牛顿称为继承者又显不妥，牛顿的许多贡献，如微积分、实验科学是超出了前人的研究程度甚至理解能力的，而这些贡献又一定程度上颠覆了前人的科学体系或是思维方式，这也是牛顿会被大众视为“叛逆者”的原因。但我认为，牛顿的最好定义应当是继承者、发展者和叛逆者。一方面，牛顿继承了前人部分思维方式、吸收了同时代其他科学家们的实验或是理论结晶，最后发展出将数学、观测、思想三者系统的结合起来的崭新哲学(余英时)，而这门哲学反过来颠覆了传统理论，即叛逆一说。</p>
-<h2 id="达尔文"><a href="#达尔文" class="headerlink" title="达尔文"></a>达尔文</h2><p>作为另一个叛逆者的杰出代表，达尔文的叛逆显而易见，他认为自然选择使产生有利变异的个体有更好的机会生存并将这个有利变异遗传下去，而有利变异的逐步积累则产生了物种进化，后来便出现了人类这样的高等生物(Darwin 95)，这对上帝造人说无疑是巨大的挑战。</p>
-<p>事实上，达尔文不仅是个叛逆者。他分别吸收了莱尔地质缓慢变化理论，马尔萨斯的资源有限导致生存竞争的概念·拉马克的特征可传理论，并将三者结合起来，再联系自己的实验及理论最终形成了自然选择学说。</p>
-<h2 id="坎德尔"><a href="#坎德尔" class="headerlink" title="坎德尔"></a>坎德尔</h2><p>作为当代科学家的杰出代表，坎德尔的研究历程更值得深思。他不是以“叛逆者的形象出现，而是一位优秀的合作者，继承者。</p>
-<p>在探索意识的生物学基础这个尚未有人“开发”的难题时，他的导师建议他从下而上研究神经细胞的内部世界进而探索更上层的心理结构理论(Kapde1180)，而在探索负责意识统一性的分布位置时巨匠克里克给了他关于屏状核的启示(Kandel 190)。可见人类的知识已不可能由一个人来全方位的扩展，当代科学中多人合作已不可避免。</p>
-<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>如上，达尔文的历程与牛顿都经历了吸收他人理论、发展自己理论、推翻前人理论的过程。但两人本意并不是叛逆，他们只是在发展自己的理论后发现与传统理论矛盾，于是选择成为叛逆者推翻原有理论。</p>
-<p>用一个比喻来说明继承、叛逆与发展在科学中的角色:将科学比作一张试卷，继承就像试卷前面的基础题，你只需学习前人的理论便可，而发展就像是后面没有标准答案的难题，你得推导出更深层次的理论才可能完成。叛逆的一部分是你推导理论时跳出前人知识圈子的能力，而当你做完后面的难题，得到了自己的理论，发现基础题根本不能按从前的方法做时，你冒着 0分的风险把基础题全改掉的勇气就是叛逆的另一部分。</p>
-<p>至于当代高层次的科学，就好像是几个人一起做一张只有难题的试卷，大家各抒已见，互帮互助，互相吸收时方的思路，这是发展。而一张卷子用了好几代人的时间来做，后人看前人的思路来继续解题，这是传承。当后人发现的人的思路有问题一笔涂掉，这是叛逆。当然，最后卷子做完，这张卷子的题目以后就变成基础题等着后人来做了。</p>
-<h1 id="启示"><a href="#启示" class="headerlink" title="启示"></a>启示</h1><p>对于我们学生来说，继承无疑是容易的，但发展则困难些，它需要我们去探索未知的可能，而叛逆则更显困难，因为我们首先需要一套严密的体系去推翻它，这需要有足够的知识，而学习时我们又得小心不要陷在原体系的思维局限中，这无疑更为困难。因此在学习时锻炼自己的思辨能力以及敢于犯错的能力是及其重要的。</p>
-<p>但同时，我们也不能盲目叛逆·不顾前人已得到的经验而盲目的追求标新立异、妄图空想出一个改变整个科学历史的重大发现自然是不可取的。从牛顿到达尔文，没有一个不是在学习、实验无数小时、自成了一套严谨科学的体系之后才开始叛逆，尚不能行，焉能跑否?这在当代的科学环境中尤为重要。</p>
-<p>相对叛逆，我们更应思考如何在继承的基础上发展知识。细说，我们在将目前的课程掌握的基础上可以把握大学广淘的资源，去深入探索更高层次的问题，广说，谁也不能断言爱因斯坦构建的物理大厚不会崩塌，但我们能确信的是科学将会一直发展，我们能做的就是学到人类知识边缘，然后以团队之力为科学开疆扩土，并将这份志愿传承下去。</p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>克里克说，如果他可以活得久一些，他就要做一个实验确认当某个刺激进入意识知觉时，屏状核是否被激活了。他没有完成，但他的思路给了后人启示，于是坎德尔完成了。这种科学家之间的传承，何尝不令人动容?</p>
-<p>历史上那些对科学的发展做了贡献的科学家们，就如已演变成中子星但仍在浩静夜空中闪耀着光芒的恒星的“鬼”，即使已经消亡，但星光一直在照耀我们。</p>
-<p>若我们在黑夜里寻求真理时能有一缕星光相伴，即使可能会走弯路，总比闭着眼往前走来得可靠得多。而当我们走到一片完全没有星光的黑夜之中时，我们大可以毫无顾忌的摸索前进，因为终究有一天，会有一个执着着摸索前进着的人，成为这片黑夜上的星光给之后前来探路的人照亮前路的方向。</p>
-<p>未来，当你再次仰望星空，看到这些可能几百万年前便已逝去但仍将光辉抚在你脸上的繁星，你想到亚里士多德，想到牛顿，想到达尔文，斯人已逝，科学犹存，这也许就是科学的魅力所在。</p>
-<p>而我们擎路蓝缕，如坎德尔继承克里克一般，头顶星光脚踏实地的不断探索先人未曾或未能触及的领域，这也许就是对继承与叛逆最好的注解。</p>
-<blockquote>
-<p>这篇文章作于2015.04，是我与自然对话的Final paper。转眼便是八年，我也真的在做一些算是“新东西”的科研，每每再读，都思绪万千。希望自己的赤子之心不要随着时间磨灭，希望自己能真的脚踏实地，有幸也能成为漫漫黑夜中的那一束星光。</p>
-</blockquote>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -1347,7 +1335,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">140</span>
+          <span class="site-state-item-count">143</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
