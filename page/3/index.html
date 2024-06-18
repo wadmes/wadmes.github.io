@@ -213,6 +213,112 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2022/03/27/Security/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/liwei3.jpg">
+      <meta itemprop="name" content="Li Wei">
+      <meta itemprop="description" content="人生注定是一个人的旅行，但就算孤独也要做一直前行的人啊">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="NEWAY">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/03/27/Security/" class="post-title-link" itemprop="url">Paper summary: ML (especially GNNs) and anti-ML in Logic Locking</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-03-27 18:34:47" itemprop="dateCreated datePublished" datetime="2022-03-27T18:34:47-07:00">2022-03-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-05-08 18:55:36" itemprop="dateModified" datetime="2022-05-08T18:55:36-07:00">2022-05-08</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/study/" itemprop="url" rel="index"><span itemprop="name">study</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2022/03/27/Security/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2022/03/27/Security/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="GNNs-for-attacking"><a href="#GNNs-for-attacking" class="headerlink" title="GNNs for attacking"></a>GNNs for attacking</h1><p>Now, all (at least from my knowledge) GNN-based works focus on attacking, that is, given a locked circuit, using GNNs to attack it (predict the correct key values). </p>
+<p>These works can be roughly divided into two categories based on the target locking method.</p>
+<h2 id="GNNs-for-link-prediction"><a href="#GNNs-for-link-prediction" class="headerlink" title="GNNs for link prediction"></a>GNNs for link prediction</h2><p>To attack some logic locking methods, the problem can be formulated as a link prediction task. For example, for the MUX-based locking method, what the attacker is doing is actually trying to determine which edge in the MUX should be preserved. </p>
+<p>Here are some papers (although most of them come from the same author)</p>
+<ul>
+<li><p>ICCAD21 - UNTANGLE: Unlocking Routing and Logic Obfuscation Using Graph Neural Networks-based Link Prediction</p>
+</li>
+<li><p>DATE22 - MuxLink: Circumventing Learning-Resilient MUX-Locking Using Graph Neural Network-based Link Prediction</p>
+</li>
+</ul>
+<h2 id="GNNs-for-node-classification"><a href="#GNNs-for-node-classification" class="headerlink" title="GNNs for node classification"></a>GNNs for node classification</h2><ul>
+<li>DATE21- GNNUnlock: Graph Neural Networks-based Oracle-less Unlocking Scheme for Provably Secure Logic Locking<ul>
+<li>(Attack Anti-SAT) predict whether the node (gate) belongs to Anti-SAT (AN, green box) module or original design (DN, gray box)</li>
+<li><img src="/figures/image-20220508133120863.png" alt="image-20220508133120863"></li>
+<li>(TTLock and SFLL-HD) predict whether the node belongs to 1) orig design (DN) 2) pertub unit (PN) 3) restore unit (PN)</li>
+<li><img src="/figures/image-20220508171929174.png" alt="image-20220508171929174"></li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2022/03/03/some-pytorch-python-linux-tips/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -237,14 +343,14 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2022-03-03 16:19:47" itemprop="dateCreated datePublished" datetime="2022-03-03T16:19:47-05:00">2022-03-03</time>
+              <time title="Created: 2022-03-03 13:19:47" itemprop="dateCreated datePublished" datetime="2022-03-03T13:19:47-08:00">2022-03-03</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-03-16 16:13:48" itemprop="dateModified" datetime="2022-03-16T16:13:48-04:00">2022-03-16</time>
+                <time title="Modified: 2022-03-16 13:13:48" itemprop="dateModified" datetime="2022-03-16T13:13:48-07:00">2022-03-16</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -334,14 +440,14 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2022-01-01 23:07:40" itemprop="dateCreated datePublished" datetime="2022-01-01T23:07:40-05:00">2022-01-01</time>
+              <time title="Created: 2022-01-01 20:07:40" itemprop="dateCreated datePublished" datetime="2022-01-01T20:07:40-08:00">2022-01-01</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-06-19 02:56:45" itemprop="dateModified" datetime="2022-06-19T02:56:45-04:00">2022-06-19</time>
+                <time title="Modified: 2022-06-18 23:56:45" itemprop="dateModified" datetime="2022-06-18T23:56:45-07:00">2022-06-18</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -450,14 +556,14 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2021-12-29 21:34:47" itemprop="dateCreated datePublished" datetime="2021-12-29T21:34:47-05:00">2021-12-29</time>
+              <time title="Created: 2021-12-29 18:34:47" itemprop="dateCreated datePublished" datetime="2021-12-29T18:34:47-08:00">2021-12-29</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-01-01 23:08:01" itemprop="dateModified" datetime="2022-01-01T23:08:01-05:00">2022-01-01</time>
+                <time title="Modified: 2022-01-01 20:08:01" itemprop="dateModified" datetime="2022-01-01T20:08:01-08:00">2022-01-01</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -627,7 +733,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2021-12-26 13:04:07 / Modified: 16:43:33" itemprop="dateCreated datePublished" datetime="2021-12-26T13:04:07-05:00">2021-12-26</time>
+              <time title="Created: 2021-12-26 10:04:07 / Modified: 13:43:33" itemprop="dateCreated datePublished" datetime="2021-12-26T10:04:07-08:00">2021-12-26</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -719,14 +825,14 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2021-11-14 20:39:59" itemprop="dateCreated datePublished" datetime="2021-11-14T20:39:59-05:00">2021-11-14</time>
+              <time title="Created: 2021-11-14 17:39:59" itemprop="dateCreated datePublished" datetime="2021-11-14T17:39:59-08:00">2021-11-14</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-11-15 14:34:07" itemprop="dateModified" datetime="2021-11-15T14:34:07-05:00">2021-11-15</time>
+                <time title="Modified: 2021-11-15 11:34:07" itemprop="dateModified" datetime="2021-11-15T11:34:07-08:00">2021-11-15</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -792,7 +898,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2021/09/22/2021%E5%B9%B4%E4%B9%9D%E6%9C%88%E7%9A%84%E9%9A%8F%E7%AC%94/">
+    <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2021/09/21/2021%E5%B9%B4%E4%B9%9D%E6%9C%88%E7%9A%84%E9%9A%8F%E7%AC%94/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/liwei3.jpg">
@@ -806,7 +912,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/09/22/2021%E5%B9%B4%E4%B9%9D%E6%9C%88%E7%9A%84%E9%9A%8F%E7%AC%94/" class="post-title-link" itemprop="url">2021年九月的随笔：关于香港的回忆</a>
+            <a href="/2021/09/21/2021%E5%B9%B4%E4%B9%9D%E6%9C%88%E7%9A%84%E9%9A%8F%E7%AC%94/" class="post-title-link" itemprop="url">2021年九月的随笔：关于香港的回忆</a>
         </h2>
 
         <div class="post-meta">
@@ -816,14 +922,14 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2021-09-22 02:07:43" itemprop="dateCreated datePublished" datetime="2021-09-22T02:07:43-04:00">2021-09-22</time>
+              <time title="Created: 2021-09-21 23:07:43" itemprop="dateCreated datePublished" datetime="2021-09-21T23:07:43-07:00">2021-09-21</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-12-31 00:22:44" itemprop="dateModified" datetime="2021-12-31T00:22:44-05:00">2021-12-31</time>
+                <time title="Modified: 2021-12-30 21:22:44" itemprop="dateModified" datetime="2021-12-30T21:22:44-08:00">2021-12-30</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -844,8 +950,8 @@
       </span>
       <span class="post-meta-item-text">Valine: </span>
     
-    <a title="valine" href="/2021/09/22/2021%E5%B9%B4%E4%B9%9D%E6%9C%88%E7%9A%84%E9%9A%8F%E7%AC%94/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2021/09/22/2021%E5%B9%B4%E4%B9%9D%E6%9C%88%E7%9A%84%E9%9A%8F%E7%AC%94/" itemprop="commentCount"></span>
+    <a title="valine" href="/2021/09/21/2021%E5%B9%B4%E4%B9%9D%E6%9C%88%E7%9A%84%E9%9A%8F%E7%AC%94/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/09/21/2021%E5%B9%B4%E4%B9%9D%E6%9C%88%E7%9A%84%E9%9A%8F%E7%AC%94/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -926,14 +1032,14 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2021-09-01 14:46:42" itemprop="dateCreated datePublished" datetime="2021-09-01T14:46:42-04:00">2021-09-01</time>
+              <time title="Created: 2021-09-01 11:46:42" itemprop="dateCreated datePublished" datetime="2021-09-01T11:46:42-07:00">2021-09-01</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-09-02 10:36:14" itemprop="dateModified" datetime="2021-09-02T10:36:14-04:00">2021-09-02</time>
+                <time title="Modified: 2021-09-02 07:36:14" itemprop="dateModified" datetime="2021-09-02T07:36:14-07:00">2021-09-02</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1041,14 +1147,14 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2021-07-17 21:43:57" itemprop="dateCreated datePublished" datetime="2021-07-17T21:43:57-04:00">2021-07-17</time>
+              <time title="Created: 2021-07-17 18:43:57" itemprop="dateCreated datePublished" datetime="2021-07-17T18:43:57-07:00">2021-07-17</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-10-04 01:15:47" itemprop="dateModified" datetime="2021-10-04T01:15:47-04:00">2021-10-04</time>
+                <time title="Modified: 2021-10-03 22:15:47" itemprop="dateModified" datetime="2021-10-03T22:15:47-07:00">2021-10-03</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1240,14 +1346,14 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2021-07-16 21:43:57" itemprop="dateCreated datePublished" datetime="2021-07-16T21:43:57-04:00">2021-07-16</time>
+              <time title="Created: 2021-07-16 18:43:57" itemprop="dateCreated datePublished" datetime="2021-07-16T18:43:57-07:00">2021-07-16</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-10-04 01:15:50" itemprop="dateModified" datetime="2021-10-04T01:15:50-04:00">2021-10-04</time>
+                <time title="Modified: 2021-10-03 22:15:50" itemprop="dateModified" datetime="2021-10-03T22:15:50-07:00">2021-10-03</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1384,145 +1490,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2021/07/14/%E6%98%8E%E6%9C%9D%E9%82%A3%E4%BA%9B%E4%BA%8B4/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/liwei3.jpg">
-      <meta itemprop="name" content="Li Wei">
-      <meta itemprop="description" content="人生注定是一个人的旅行，但就算孤独也要做一直前行的人啊">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="NEWAY">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/07/14/%E6%98%8E%E6%9C%9D%E9%82%A3%E4%BA%9B%E4%BA%8B4/" class="post-title-link" itemprop="url">明朝那些事笔记-张居正篇</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2021-07-14 21:43:57" itemprop="dateCreated datePublished" datetime="2021-07-14T21:43:57-04:00">2021-07-14</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-10-04 01:15:57" itemprop="dateModified" datetime="2021-10-04T01:15:57-04:00">2021-10-04</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/life/" itemprop="url" rel="index"><span itemprop="name">life</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine: </span>
-    
-    <a title="valine" href="/2021/07/14/%E6%98%8E%E6%9C%9D%E9%82%A3%E4%BA%9B%E4%BA%8B4/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2021/07/14/%E6%98%8E%E6%9C%9D%E9%82%A3%E4%BA%9B%E4%BA%8B4/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <blockquote>
-<p>事实确实如此，万事如意，天下太平，一封信足矣。 奇迹啊，现将此信的主要内容介绍如下，以供大家学习参考： 胡大人，我记得你以前出外巡视的时候曾经说过，各州县都要节约，过路官员不准铺张浪费，但今天我县接待一个过往人员的时候，他认为招待过于简单，竟然毒打了服务员，还敢自称是您的儿子。我一直听说您对儿女的教育很严格，怎么会有这样的儿子呢？这个人一定是假冒的，败坏您的名声，如此恶劣，令人发指，为示惩戒，他的全部财产已被我没收，充入国库，并把此人送到你那里去，让你发落。</p>
-</blockquote>
-<p>《高情商》《又有点阴阳怪气》《我太喜欢了》</p>
-<blockquote>
-<p>同时他还发现，原来这个世界上还有很多人不喜欢诗词书画，也没有那么多的忧伤哀愁，他们想要的只是一碗掺着沙子的米饭。对那些骨瘦如柴、眼窝深陷的饥民而言，一幅字画是王羲之的还是怀素的，一点儿也不重要，重要的是那张字画的纸够不够厚，方不方便消化。</p>
-</blockquote>
-<p>现在又何尝不是如此呢。安得广厦千万间，大庇天下寒士俱欢颜！</p>
-<blockquote>
-<p>每当张居正结束应酬，离开丰盛的酒席，走出金碧辉煌的王府门口时，总能看到饿得奄奄一息的饥民和无家可归只能睡大街的流浪者。 原来天堂和地狱只有一墙之隔。 这就是大明天下的真相。当无数的贫民受到压榨，失去土地四处流浪的时候，高贵的大人们却正思考着明天去何处游玩，该作一首什么样的诗。 这些在官员们看来并不稀奇的场景却深深地打动了张居正，因为他和大多数官员不同，他还有良心。 面对着那些乞求和无助的眼神，面对着路旁冻饿而死的尸骨，张居正再次确立了他的志向，一个最终坚持到底的志向——以天下为己任。</p>
-</blockquote>
-<p>朱门酒肉臭，路有冻死骨。倘若有机会，我也愿意奉献自己的一切去构造一个老有所终，壮有所用，幼有所长，鳏寡孤独废疾者皆有所养的社会。</p>
-<blockquote>
-<p>接下来发生的事情被写进了大大小小的史书，堪称史上之奇观。 在听到这句话后，海瑞呆了一会儿，然后突然大哭起来，哭得撕心裂肺，哭到喘不过气，然后就开始吐，先吐这顿的，再吐上顿的，最后是黄胆水。 看守呆住了，他不知道这是怎么回事，吓得魂不附体，紧紧贴着墙壁，一动也不敢动。 海瑞是真哭，嘉靖死了，他很悲伤。说来真有点儿讽刺意味，嘉靖信任严嵩、信任徐阶，给了他们高官厚禄，结果一个把他当工具，一个把他当傀儡，唯一为他的死而感到悲哀的人，竟然是那个痛骂过他、又被他关进监狱的海瑞。</p>
-</blockquote>
-<p>海瑞。。。牛的。</p>
-<blockquote>
-<p>作为曾经在太医院干过的医生，此时的李时珍已经成了传奇人物，来找他看病的人络绎不绝。医术且不说，想想当初这人给皇帝都号过脉，那就是御医，说起来咱这辈子还看过御医，也够吹个三五十年的。 名声大了，收入自然也高了，李时珍就算闭着眼睛号脉，混个百万富翁也绝不成问题。然而，他默默地收拾行囊，开始远行，足迹踏遍了全国十三省，无论是名山大川，还是悬崖峭壁，凡是有药材的地方，就有他的踪影。为了弄清药物的疗效，他曾亲自品尝过许多药材植物，好几次差点儿植物中毒，一命呜呼。 为了写这本书，李时珍从一个名医变成了流浪汉。他居无定所、风餐露宿，他放弃了舒适的生活，放弃了宽敞的诊所，也放弃了自己唾手可得的幸福生活。</p>
-</blockquote>
-<p>respect</p>
-<blockquote>
-<p>李时珍于万历二十一年（1593）去世，他没有能够看到此书的出版。 三年后，《本草纲目》正式印刷发行，很快脱销，并迅速传入日本、朝鲜以及东南亚一带，几十年后又传入欧洲、北美，并被翻译成几十种文字，成为世界医学史上的权威书籍。而李时珍也得以超越嘉靖、徐阶、张居正，成为被世界公认的伟大科学家。 而对于《本草纲目》的意义，其实不需要用它的传播范围以及受到的夸赞加以肯定，我们只要知道，它的出现已经拯救了无数人的生命，直到现在仍然继续，这就够了。</p>
-</blockquote>
-<p>这便是对于成功最好的注解：按照自己的方式度过人生。什么名留青史，建功立业，都比不上follow your heart。</p>
-<blockquote>
-<p>参考消息：赵贞吉的人缘 赵贞吉与高拱一样，都有个刚愎自用的毛病。八月入阁，赵大学士就在皇帝面前发表了自己的上任感言：“朝廷的纲纪、边防、政务都废弛了一段时间了，臣我有心整顿朝政，就是担心会遭人记恨，恳请皇上您到时候一定要为我做主啊。”这么一声张，不仅公开让皇帝为自己撑腰，还无视内阁此前的工作成绩，结果自然和他说的一样，刚入阁就在同僚内部落了个坏人缘。九月，赵贞吉又上疏，告了边关处理战事不利的御状，不仅把边将骂了，兵部乃至首辅李春芳也都在他的谴责之列，成功地创造了个人一举而树众敌的新纪录。</p>
-</blockquote>
-<p>《低情商》《文字的艺术》</p>
-<blockquote>
-<p>面对这个污浊的世界，海瑞以为只有自己看到了黑暗，他认为，自己是唯一的清醒者。 然而，他是糊涂的。事实证明，徐阶看到了，高拱看到了，张居正也看到了，他们不但看到了问题，还有解决问题的方法。而海瑞唯一能做的，只是痛骂而已。 所以从始至终，他只是一个传奇的榜样，和一件好用的工具。</p>
-</blockquote>
-<p>他们不但看到了问题，还有解决问题的方法。倘若真想解决问题，痛骂自然是不够的。</p>
-<blockquote>
-<p>唯一的失败者是赵全。这位仁兄毫无廉耻地当了十几年走狗，最终却得到了这样的下场。 历史又一次证明，所有背叛自己祖国的人，终将被所有人背叛，因为奴才终究只是奴才。</p>
-</blockquote>
-<p>所有背叛自己祖国的人，终将被所有人背叛。</p>
-<blockquote>
-<p>其实自从元朝取消国号后，混吃等死就成了大多数蒙古人的心愿，所谓回中原当大地主，梦里时常也能见到。</p>
-</blockquote>
-<p>哈哈哈哈哈哈哈</p>
-<blockquote>
-<p>而赞成的自然是高拱、张居正一帮人，但高拱毕竟是内阁大学士，算是皇帝的秘书，不便公开表态。他是个聪明人，一看朝廷里反对声一片，强行批准定被口水淹死，便见风使舵，想出了一个办法。 在我看来，正是因为想出了这个方法，高拱才得到了明代杰出政治家的光荣称号。而这个办法，也充分地体现出了中国人几千年来的卓越才能，包括：钻空子、绕道走、打擦边球以及民主精神。 他找到了反对派首领张溶，可还没等他说话，张溶就叫嚣起来： “无论你说什么，我们都绝不同意！” “没问题，”高拱笑着说道，“如果你们不同意，那我们来表决。” 张溶目瞪口呆，因为事实证明，高拱并没有开玩笑。 于是中国历史上最为奇特的“封贡票决”事件发生了，大家不闹腾了，开始投票。据史料记载，参与此次投票的共有四十四人，经过商议，赞成、反对双方坚持了各自的观点，陆续发言，而最后的结果却更让人哭笑不得。 经皇帝公证，验票统计如下：赞成者合计二十二人，反对者合计二十二人。 这下白闹了，事情又被踢给了皇帝。 这大概算是中国政治史上少有的一幕，皇帝说了不算，内阁说了也不算，在万恶的封建社会，竟然要靠投票解决问题，实在有负“黑暗专制”的恶名。 当然，高拱兄不是什么自由斗士，对搞民主也没啥兴趣，他之所以来这么一出，实在是另有企图。 根据我的估计，在此之前，他一定曾算过票数，知道会有这样的结果，所以才提议投票。因为一旦投票不成，事情就会推给皇帝，可是皇帝不会管事，自然就会推给内阁，而内阁，是高拱说了算。 于是一圈绕回来，还是绕到了高拱的手上，这就是传说中的乾坤挪移大法。</p>
-</blockquote>
-<p>原来咱们很早就实现了自由民主的君主立宪制🐶</p>
-<blockquote>
-<p>在张居正看来，六部也好，给事中也好，御史也好，都该归我管，我说什么，你们就干什么，不要瞎吵。 因为他很明白，互相限制、互相制约固然是一种民主的方式，但是民主是需要成本的。 一件事情交代下去，你讲一句，他讲一句，争得天翻地覆，说得振振有词，其实一点儿业务都不懂，结果十天半个月，什么都没办。而对于这些人，张居正一贯是深恶痛绝。</p>
-</blockquote>
-<p>民主是需要成本的。（我想到了台湾</p>
-<blockquote>
-<p>十年前，当我即将踏入大学校园时，在一个极为特殊的场合，有一个人对我说过这样一番话： 你还很年轻，将来你会遇到很多人，经历很多事，得到很多，也会失去很多，但无论如何，有两样东西，你绝不能丢弃，一个叫良心，另一个叫理想。 我记得，当时我碍于形势，连连点头，虽然我并不知道这句话的真实含义。 一晃十年过去了，如他所言，我得到了很多，也失去了很多，所幸，这两样东西我还带着，虽然不多，总算还有。 当然，我并不因此感到自豪，因为这并非是我的意志有多坚强，或是人格有多高尚，唯一的原因在于，我遇到的人还不够坏，经历的事情还不够多，吃的苦头还不够大。 我也曾经见到，许多道貌岸然的所谓道学家，整日把仁义道德放在嘴边，所作所为却尽为男盗女娼之流。 我并不愤怒，恰恰相反，我理解他们，在生存的压力和生命的尊严之间，他们选择了前者，仅此而已，虽不合法，却很合理。 我不知道，是否所有的人在历经沧桑苦难之后，都会变成和他们一样的人。张居正的一生 直到我真正读懂了张居正，读懂了他的经历、他的情感，以及他的选择。我才找到了一个答案，一个让人宽慰的答案。 他用他的人生告诉我们，良知和理想是不会消失的，不因富贵而逝去，不因权势而凋亡。 不是好人，不是坏人，他是一个有理想、有良心的人。</p>
-</blockquote>
-<p>理想驱动着我们前行，良心指引我们前行的方向。Neway啊Neway，千万不要丢了理想和良心。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1593,7 +1560,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">143</span>
+          <span class="site-state-item-count">145</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
