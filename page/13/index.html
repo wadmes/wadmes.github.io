@@ -213,6 +213,242 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2018/02/26/CSCI3170-Midterm-Review/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/liwei3.jpg">
+      <meta itemprop="name" content="Li Wei">
+      <meta itemprop="description" content="人生注定是一个人的旅行，但就算孤独也要做一直前行的人啊">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="NEWAY">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/02/26/CSCI3170-Midterm-Review/" class="post-title-link" itemprop="url">CSCI3170 Midterm Review</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2018-02-26 16:30:03" itemprop="dateCreated datePublished" datetime="2018-02-26T16:30:03-05:00">2018-02-26</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-03-21 09:25:31" itemprop="dateModified" datetime="2019-03-21T09:25:31-04:00">2019-03-21</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/study/" itemprop="url" rel="index"><span itemprop="name">study</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2018/02/26/CSCI3170-Midterm-Review/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2018/02/26/CSCI3170-Midterm-Review/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="ER-model"><a href="#ER-model" class="headerlink" title="ER model"></a>ER model</h3><p>a collection of <strong>entities</strong> and <strong>relationships</strong></p>
+<h4 id="Entity"><a href="#Entity" class="headerlink" title="Entity"></a>Entity</h4><ul>
+<li>an object in the real world that is distinguishable from other objects. ( can be same category)</li>
+<li>described using a set of <strong>attributes</strong>.</li>
+</ul>
+<p><strong>Entity set</strong> is a collection of entities of the same type. All entities in a given entity set have the same attributes ( the values may be different).</p>
+<p><strong>Domain</strong>: domain of possible values of each attribute in an entity set.</p>
+<h4 id="Key"><a href="#Key" class="headerlink" title="Key"></a>Key</h4><p><strong>superkey</strong>: any set of attributes which can uniquely identify an entity</p>
+<p><strong>key</strong> (candidate key): a minimal set of attributes whose values can uniquely identify an entity in the set. (should depend on the real life possibility 即使还有entity 加入&#x2F;删除， 这个key永远identify an entity)</p>
+<p><strong>primary key</strong>: a candidate key chosen to serve as the key for the <u>entity set</u></p>
+<h4 id="Relationships"><a href="#Relationships" class="headerlink" title="Relationships"></a>Relationships</h4><p>an association among two or more entities. </p>
+<p>eg. Teach: (John,CENG4567) ,(David, CSCI1234)</p>
+<p><strong>relationship set</strong>: a set of similar relationships: {(John,CENG4567) ,(David, CSCI1234)}</p>
+<p>relationships can also have descriptive <strong>attributes</strong></p>
+<p><strong>Recursive Relationship</strong>: relationship两边entity其实一样</p>
+<h5 id="One-to-many"><a href="#One-to-many" class="headerlink" title="One to many"></a>One to many</h5><p><img src="/../images/%E5%9B%BE%E7%89%872.png" alt="图片2"></p>
+<p>Tenary：aggregation把3个变成2个</p>
+<h5 id="One-to-One"><a href="#One-to-One" class="headerlink" title="One to One"></a>One to One</h5><p>similar with one to many, but have two arrows</p>
+<h5 id="Key-for-relationship-set"><a href="#Key-for-relationship-set" class="headerlink" title="Key for relationship set"></a>Key for relationship set</h5><ul>
+<li><strong>Many-many</strong> union of the primary keys for E1,…Ek</li>
+<li><strong>One-many</strong> 找many的那个primary key就行。（知道一个孩子的ID就能确定是哪个‘mother-of’）</li>
+<li><strong>One-one</strong> 随便找个primary key就行。</li>
+</ul>
+<h5 id="Participation-constraint"><a href="#Participation-constraint" class="headerlink" title="Participation constraint"></a>Participation constraint</h5><ul>
+<li><strong>total</strong> –each entity in the entity set must participate in at least one relationship. （对应的entity——relation的线加粗）</li>
+<li><strong>partial</strong>- 不需要</li>
+</ul>
+<h4 id="Weak-entities"><a href="#Weak-entities" class="headerlink" title="Weak entities"></a>Weak entities</h4><p><strong>strong entity</strong> , an entity which has a super key</p>
+<p>weak entity 相反</p>
+<p>若需要identify一个weak entity： –by considering some of its attributes in conjunction with the primary key of employee (identifying owner).</p>
+<p><strong>partial key</strong> 例如：教授家属需要identify就需要<u>（教授id，家属名字）</u></p>
+<p><img src="/../images/%E5%9B%BE%E7%89%873.png" alt="图片3"></p>
+<h4 id="Class-hierarchies"><a href="#Class-hierarchies" class="headerlink" title="Class hierarchies"></a>Class hierarchies</h4><p><strong>Overlap constraint</strong> 两个subclass能否包含相同entity （default：no）</p>
+<p><strong>Cover constraint</strong> 是否subclass包含了superclass里所有entity （ default：no）</p>
+<h4 id="Aggregation"><a href="#Aggregation" class="headerlink" title="Aggregation"></a>Aggregation</h4><p>A relationship between a collection of <u>entities</u> and <u>relationships</u></p>
+<p><img src="/../images/%E5%9B%BE%E7%89%873-9800549015.png" alt="图片3"></p>
+<h3 id="Relational-Model"><a href="#Relational-Model" class="headerlink" title="Relational Model"></a>Relational Model</h3><p>main construct: a set of <strong>relations</strong></p>
+<p>relation consists of <strong>relation schema</strong> and <strong>relation instance</strong></p>
+<h4 id="Relation-instance"><a href="#Relation-instance" class="headerlink" title="Relation instance"></a>Relation instance</h4><p>Simply a table with rows and columns</p>
+<ul>
+<li>row &#x3D; tuple&#x2F;record, no two rows are identical</li>
+<li>column &#x3D; field&#x2F;attribute</li>
+</ul>
+<h4 id="Relation-schema"><a href="#Relation-schema" class="headerlink" title="Relation schema"></a>Relation schema</h4><p>specifies <u>relation’s name</u>, <u>name of each field</u>(primary key should be underlined), <u>domain of each field</u></p>
+<p><strong>Degree&#x2F;arity</strong> of a relation: number of fields</p>
+<p><strong>Cardinality</strong> of a relation instance: number of tuples</p>
+<p><strong>Relational database</strong> : a collection of relations</p>
+<p><strong>Instance</strong>: a collection of relation instances (one per relation schema).</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> Students</span><br><span class="line">	(sid	<span class="type">CHAR</span>(<span class="number">20</span>),</span><br><span class="line">	 name	<span class="type">CHAR</span>(<span class="number">30</span>),</span><br><span class="line">	 login	<span class="type">CHAR</span>(<span class="number">20</span>),</span><br><span class="line">	 age	<span class="type">INTEGER</span>,</span><br><span class="line">	 gpa	<span class="type">REAL</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">INSERT</span></span><br><span class="line"><span class="keyword">INTO</span>	 Students  (sid, name, login, age, gpa)</span><br><span class="line"><span class="keyword">VALUES</span> (‘<span class="number">53688</span>’, ‘Smith’, ‘smith<span class="variable">@ee</span>’, <span class="number">18</span>, <span class="number">3.2</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">DELETE</span> </span><br><span class="line"><span class="keyword">FROM</span>	  Students S</span><br><span class="line"><span class="keyword">WHERE</span>  S.name <span class="operator">=</span> ‘Smith’</span><br><span class="line"></span><br><span class="line"><span class="keyword">UPDATE</span> Students S</span><br><span class="line"><span class="keyword">SET</span> 	  S.age <span class="operator">=</span> S.age <span class="operator">+</span> <span class="number">1</span>, S.gpa <span class="operator">=</span> S.gpa – <span class="number">1</span></span><br><span class="line"><span class="keyword">WHERE</span>  S.sid <span class="operator">=</span> ‘<span class="number">53688</span>’</span><br></pre></td></tr></table></figure>
+
+<h4 id="Integrity-constraints"><a href="#Integrity-constraints" class="headerlink" title="Integrity constraints"></a>Integrity constraints</h4><p><strong>restricts</strong> the data that can be stored in an instance of the database on a <strong>database schema</strong></p>
+<ul>
+<li><strong>Specified</strong> when the schema is defined.</li>
+<li>**Checked **when relations are modified.</li>
+</ul>
+<h4 id="Key-constraints"><a href="#Key-constraints" class="headerlink" title="Key constraints"></a>Key constraints</h4><p>Certain minimal subset of the fields (candidate key) of a relation is a unique identifier for  a tuple (instance).</p>
+<p>设计者可以自己identify a primary key（比如index）</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> Students</span><br><span class="line">	(sid	<span class="type">CHAR</span>(<span class="number">20</span>),</span><br><span class="line">	 name	<span class="type">CHAR</span>(<span class="number">30</span>),</span><br><span class="line">	 login	<span class="type">CHAR</span>(<span class="number">20</span>),</span><br><span class="line">	 age	<span class="type">INTEGER</span>,</span><br><span class="line">	 gpa	<span class="type">REAL</span>,</span><br><span class="line">	 <span class="keyword">UNIQUE</span> (name, age),<span class="operator">/</span><span class="operator">/</span><span class="keyword">declare</span> a key</span><br><span class="line">	 <span class="keyword">CONSTRAINT</span> StudentsKey <span class="keyword">PRIMARY</span> KEY ( sid)) <span class="operator">/</span><span class="operator">/</span>StudentKey: <span class="keyword">Constraint</span> name(opt)</span><br></pre></td></tr></table></figure>
+
+<h4 id="Foreign-key-constraints"><a href="#Foreign-key-constraints" class="headerlink" title="Foreign key constraints"></a>Foreign key constraints</h4><p>Sometimes, the information stored in a relation is linked to the information stored in another relation.</p>
+<p><code>Enrolled(sid: string, cid: string, grade: string)</code> sid就是Enrolled这个relation的 foreign key and refer to Students</p>
+<p>Formally, a <strong>foreign key</strong> is a set of fields （the primary key of s） in one relation r that is used to “refer” to a tuple in another relation s. </p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> Enrolled (</span><br><span class="line">		sid       <span class="type">CHAR</span>(<span class="number">20</span>),</span><br><span class="line">		cid       <span class="type">CHAR</span>(<span class="number">20</span>),</span><br><span class="line">		grade   <span class="type">CHAR</span>(<span class="number">10</span>),</span><br><span class="line">		<span class="keyword">PRIMARY</span> KEY (sid, cid),</span><br><span class="line">		<span class="keyword">FOREIGN</span> KEY (sid) <span class="keyword">REFERENCES</span> Students)</span><br></pre></td></tr></table></figure>
+
+<p>four options on DELETE and UPDATE.</p>
+<ul>
+<li>NO ACTION (DEFAULT) rejected</li>
+<li>CASCADE（级联） 如果被删除，那么相关联的所有row也全被删除</li>
+<li>SET DEFAULT 如果被删除，那么相关联的所有row设置为DEFAULT</li>
+<li>SET NULL</li>
+</ul>
+<h4 id="ER-to-Relational"><a href="#ER-to-Relational" class="headerlink" title="ER to Relational"></a>ER to Relational</h4><ul>
+<li><p>entity sets -&gt; tables</p>
+</li>
+<li><p>relationship sets(without constraints) -&gt; tables，attributes包括</p>
+<ul>
+<li>每个entity的primary key</li>
+<li>relationship set的descriptive attributes<img src="/../images/%E5%9B%BE%E7%89%871-9824412916.png" alt="图片1"></li>
+</ul>
+</li>
+<li><p>with constraints</p>
+<ul>
+<li>arrow: arrow对应的m个entity，因此又m个candidate key，随便选一个作为primary key</li>
+</ul>
+</li>
+<li><p>weak entity</p>
+<p>将weak entity及对应relation 统一为一个table 并且（ON DELETE CASCADE)</p>
+</li>
+<li><p>Class hierarchies</p>
+<ul>
+<li><p>different relations (父母孩子都有)</p>
+<p>more general。</p>
+</li>
+<li><p>(仅有孩子)</p>
+<p>not always possible。can be accessible easily</p>
+</li>
+</ul>
+</li>
+<li><p>Aggregation</p>
+</li>
+</ul>
+<h3 id="Relational-Algebra"><a href="#Relational-Algebra" class="headerlink" title="Relational Algebra"></a>Relational Algebra</h3><h4 id="Baisc-Operators"><a href="#Baisc-Operators" class="headerlink" title="Baisc Operators"></a>Baisc Operators</h4><h5 id="selection-sigma"><a href="#selection-sigma" class="headerlink" title="selection $\sigma$"></a>selection $\sigma$</h5><p>a boolean combination (an expression using logical connectives $\wedge \vee$)</p>
+<p><img src="/../images/%E5%9B%BE%E7%89%871-9826420248.png" alt="图片1"></p>
+<h5 id="Projection-Pi-fileds"><a href="#Projection-Pi-fileds" class="headerlink" title="Projection $\Pi(fileds)$"></a>Projection $\Pi(fileds)$</h5><p>extract columns from a relation</p>
+<p>duplicated row will be eliminated </p>
+<p><img src="/../images/%E5%9B%BE%E7%89%872-9826962473.png" alt="图片2"></p>
+<h5 id="Union-U"><a href="#Union-U" class="headerlink" title="Union $U$"></a>Union $U$</h5><p>must be union-compatible:</p>
+<ul>
+<li>same number of fields</li>
+<li>corresponding fields have the same domains</li>
+</ul>
+<h5 id="Set-Difference"><a href="#Set-Difference" class="headerlink" title="Set Difference $-$"></a>Set Difference $-$</h5><p>also union-compatible</p>
+<h5 id="Intersection-cap"><a href="#Intersection-cap" class="headerlink" title="Intersection $\cap$"></a>Intersection $\cap$</h5><p>also union-compatible</p>
+<p>$R\cap S &#x3D; R-(R-S)$</p>
+<h5 id="Rename-rho"><a href="#Rename-rho" class="headerlink" title="Rename $\rho$"></a>Rename $\rho$</h5><p>$\rho (R(F),E) \ or\  \rho(R,E)$</p>
+<p>E: arbitrary relation algebra ,F:renaming list, R&#x3D; E 除了F rename的东西</p>
+<h5 id="Cartesian-product-cross-product-times"><a href="#Cartesian-product-cross-product-times" class="headerlink" title="Cartesian product (cross product) $\times$"></a>Cartesian product (cross product) $\times$</h5><p><img src="/../images/%E5%9B%BE%E7%89%873-9828365900.png" alt="图片3"></p>
+<h5 id="Join-Join"><a href="#Join-Join" class="headerlink" title="Join $\Join$"></a>Join $\Join$</h5><p>Join can be defined as a cross-product followed by selections and sometimes with projections.</p>
+<ul>
+<li><strong>Join condition $\Join_c &#x3D;\sigma_c(R\times S)$</strong></li>
+<li><strong>Equi join</strong> c is R.name1 &#x3D; S.name2, S.name2 will be droped in the final resulting relation</li>
+<li><strong>Natural join</strong>: C 是R S所有fields相同的</li>
+</ul>
+<p><img src="/../images/%E5%9B%BE%E7%89%874.png" alt="图片4"></p>
+<h5 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h5><p><img src="/../images/%E5%9B%BE%E7%89%875.png" alt="图片5"></p>
+<h5 id="Division-x2F"><a href="#Division-x2F" class="headerlink" title="Division  &#x2F;"></a>Division  &#x2F;</h5><p><img src="/../images/%E5%9B%BE%E7%89%876.png" alt="图片6"></p>
+<h5 id="Example-1"><a href="#Example-1" class="headerlink" title="Example"></a>Example</h5><p><img src="/../images/%E5%9B%BE%E7%89%877.png" alt="图片7"></p>
+<h3 id="SQL"><a href="#SQL" class="headerlink" title="SQL"></a>SQL</h3><p><img src="/../images/%E5%9B%BE%E7%89%871-9831873318.png" alt="图片1"></p>
+<ol>
+<li>先计算 relation list的cross product</li>
+<li>考虑是否满足 qualifications</li>
+<li>选取target list里面的attributes</li>
+<li>如果有  DISTINCT, 把duplicated rows删掉（默认不删）</li>
+</ol>
+<h4 id="Natural-Join"><a href="#Natural-Join" class="headerlink" title="Natural Join"></a>Natural Join</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span>  S.sname</span><br><span class="line"><span class="keyword">FROM</span>     Sailors S, Reserves R</span><br><span class="line"><span class="keyword">WHERE</span>  S.sid<span class="operator">=</span>R.sid <span class="keyword">AND</span> R.bid<span class="operator">=</span><span class="number">103</span></span><br><span class="line"><span class="operator">=</span></span><br><span class="line"><span class="keyword">SELECT</span>  S.sname</span><br><span class="line"><span class="keyword">FROM</span>     Sailors S <span class="keyword">NATURAL</span> <span class="keyword">JOIN</span> Reserves R</span><br><span class="line"><span class="keyword">WHERE</span>  R.bid<span class="operator">=</span><span class="number">103</span></span><br><span class="line"></span><br><span class="line">#<span class="keyword">IN</span> operator</span><br><span class="line"><span class="keyword">SELECT</span>  B.bname</span><br><span class="line"><span class="keyword">FROM</span>  Boats B</span><br><span class="line"><span class="keyword">WHERE</span>  B.color  <span class="keyword">IN</span>  (‘red’,  ‘blue’,  ’green’)</span><br><span class="line"></span><br><span class="line">#Nested Queries</span><br><span class="line">Find names <span class="keyword">of</span> sailors who’ve reserved boat #<span class="number">103</span>:</span><br><span class="line"><span class="keyword">SELECT</span>  S.sname</span><br><span class="line"><span class="keyword">FROM</span>  Sailors S</span><br><span class="line"><span class="keyword">WHERE</span>  S.sid <span class="keyword">IN</span>  (<span class="keyword">SELECT</span>  R.sid</span><br><span class="line">                  <span class="keyword">FROM</span>  Reserves R</span><br><span class="line">                  <span class="keyword">WHERE</span>  R.bid<span class="operator">=</span><span class="number">103</span>) #<span class="keyword">inner</span> <span class="keyword">function</span> can use the relation <span class="keyword">in</span> <span class="keyword">outer</span> <span class="keyword">function</span></span><br><span class="line"><span class="operator">&gt;</span> <span class="keyword">ANY</span> : 比某一些大就行</span><br></pre></td></tr></table></figure>
+
+<h4 id="Expressions-and-string"><a href="#Expressions-and-string" class="headerlink" title="Expressions and string"></a>Expressions and string</h4><p>LIKE for string matching. <code>_</code> &#x3D; any one character, <code>%</code> &#x3D; 0 or more arbitrary characters</p>
+<h4 id="Aggregate-Operators"><a href="#Aggregate-Operators" class="headerlink" title="Aggregate Operators"></a>Aggregate Operators</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">COUNT</span>([<span class="keyword">DISTINCT</span>] A)</span><br><span class="line"><span class="built_in">SUM</span> ( [<span class="keyword">DISTINCT</span>] A)</span><br><span class="line"><span class="built_in">AVG</span> ([<span class="keyword">DISTINCT</span>] A)</span><br><span class="line"><span class="built_in">MAX</span> (A)</span><br><span class="line"><span class="built_in">MIN</span> (A) A: <span class="keyword">any</span> <span class="keyword">column</span> <span class="keyword">of</span> a relation</span><br><span class="line"># cannot be netsted<span class="operator">!</span> <span class="built_in">MIN</span>(<span class="built_in">AVG</span>(A)) <span class="keyword">is</span> <span class="keyword">not</span> allowed<span class="operator">!</span></span><br><span class="line">eg.Find the name <span class="keyword">and</span> age <span class="keyword">of</span> the oldest sailor</span><br><span class="line"><span class="keyword">SELECT</span>  S.sname, S.age</span><br><span class="line"><span class="keyword">FROM</span>  Sailors S</span><br><span class="line"><span class="keyword">WHERE</span>  S.age <span class="operator">=</span></span><br><span class="line">              (<span class="keyword">SELECT</span>  <span class="built_in">MAX</span> (S2.age)</span><br><span class="line">               <span class="keyword">FROM</span>  Sailors S2)</span><br><span class="line">eg.Find the names <span class="keyword">of</span> sailors who <span class="keyword">are</span> older than the oldest sailor <span class="keyword">with</span> a rating <span class="keyword">of</span> <span class="number">10.</span></span><br><span class="line"><span class="keyword">SELECT</span> 	S.name</span><br><span class="line"><span class="keyword">FROM</span>	Sailors S</span><br><span class="line"><span class="keyword">WHERE</span>	S.age <span class="operator">&gt;</span> (	<span class="keyword">SELECT</span>	<span class="built_in">MAX</span> (S2.age)</span><br><span class="line">					<span class="keyword">FROM</span>	Sailors S2</span><br><span class="line">					<span class="keyword">WHERE</span>	S2.rating <span class="operator">=</span> <span class="number">10</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="GROUP-BY-and-Having"><a href="#GROUP-BY-and-Having" class="headerlink" title="GROUP BY and Having"></a>GROUP BY and Having</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">eg Find the age <span class="keyword">of</span> the youngest sailor <span class="keyword">for</span> <span class="keyword">each</span> rating level.</span><br><span class="line"><span class="keyword">SELECT</span> 	       S.rating, <span class="built_in">MIN</span> (S.age)</span><br><span class="line"><span class="keyword">FROM</span>  	       Sailors S</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span>   S.rating</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span>        [<span class="keyword">DISTINCT</span>]  target<span class="operator">-</span>list STEP <span class="number">2</span> <span class="operator">/</span><span class="operator">/</span>target list <span class="operator">=</span> attribute names <span class="operator">+</span> terms <span class="keyword">with</span> ahhregate operations, The attribute names must be a <span class="keyword">subset</span> <span class="keyword">of</span> <span class="keyword">grouping</span><span class="operator">-</span>list.  </span><br><span class="line"><span class="keyword">FROM</span>         relation<span class="operator">-</span>list STEP <span class="number">1</span></span><br><span class="line"><span class="keyword">WHERE</span>        qualification STEP <span class="number">2</span></span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span>  <span class="keyword">grouping</span><span class="operator">-</span>list STEP3</span><br><span class="line"><span class="keyword">HAVING</span>      <span class="keyword">group</span><span class="operator">-</span>qualification STEP <span class="number">4</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/../images/%E5%9B%BE%E7%89%872-9835880790.png" alt="图片2"></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span>  R.day</span><br><span class="line"><span class="keyword">FROM</span>  Reserves R</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span>  R.day</span><br><span class="line"><span class="keyword">HAVING</span> <span class="built_in">COUNT</span>(<span class="keyword">DISTINCT</span> R.sid) <span class="operator">=</span> <span class="number">1</span></span><br><span class="line"></span><br><span class="line">Example: Find the average age <span class="keyword">of</span> sailors <span class="keyword">for</span> <span class="keyword">each</span> rating level that has <span class="keyword">at</span> least two sailors.</span><br><span class="line"><span class="keyword">SELECT</span>  S.rating, <span class="built_in">AVG</span>(S.age) <span class="keyword">AS</span> avgage</span><br><span class="line"><span class="keyword">FROM</span>  Sailor S</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> S.rating</span><br><span class="line"><span class="keyword">HAVING</span> <span class="built_in">COUNT</span> (<span class="operator">*</span>) <span class="operator">&gt;</span> <span class="number">1</span></span><br><span class="line"></span><br><span class="line">Example:Find those ratings <span class="keyword">for</span> which the average age <span class="keyword">is</span> the minimum <span class="keyword">over</span> <span class="keyword">all</span> ratings</span><br><span class="line"><span class="keyword">SELECT</span>  Temp.rating, Temp.avgage</span><br><span class="line"><span class="keyword">FROM</span>  (<span class="keyword">SELECT</span>  S.rating, <span class="built_in">AVG</span> (S.age) <span class="keyword">AS</span> avgage</span><br><span class="line">       <span class="keyword">FROM</span>  Sailors S</span><br><span class="line">       <span class="keyword">GROUP</span> <span class="keyword">BY</span>  S.rating) <span class="keyword">AS</span> Temp</span><br><span class="line"><span class="keyword">WHERE</span>  Temp.avgage <span class="operator">=</span> (<span class="keyword">SELECT</span>  <span class="built_in">MIN</span> (Temp.avgage)</span><br><span class="line">                      <span class="keyword">FROM</span>  Temp)</span><br></pre></td></tr></table></figure>
+
+<h4 id="Division"><a href="#Division" class="headerlink" title="Division"></a>Division</h4><p><img src="/../images/%E5%9B%BE%E7%89%873-9836442357.png" alt="图片3"></p>
+<h4 id="CREATE-VIEW"><a href="#CREATE-VIEW" class="headerlink" title="CREATE VIEW"></a>CREATE VIEW</h4><p><img src="/../images/%E5%9B%BE%E7%89%874-9836641612.png" alt="图片4"></p>
+<p>Delete view：<code>DROP VIEW Temp</code></p>
+<h4 id="Outer-Join"><a href="#Outer-Join" class="headerlink" title="Outer Join"></a>Outer Join</h4><p>S LEFT OUTER JOIN R: S 中不对应 R的也会加进去。 只是R的field就是 NULL</p>
+<p>FULL OUTER JOIN： both</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2018/02/26/FUZZY-SYSTEM-REPORT/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -237,14 +473,14 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2018-02-26 07:42:03" itemprop="dateCreated datePublished" datetime="2018-02-26T07:42:03-08:00">2018-02-26</time>
+              <time title="Created: 2018-02-26 10:42:03" itemprop="dateCreated datePublished" datetime="2018-02-26T10:42:03-05:00">2018-02-26</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-03-21 06:32:40" itemprop="dateModified" datetime="2019-03-21T06:32:40-07:00">2019-03-21</time>
+                <time title="Modified: 2019-03-21 09:32:40" itemprop="dateModified" datetime="2019-03-21T09:32:40-04:00">2019-03-21</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -438,14 +674,14 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2018-02-14 09:24:22" itemprop="dateCreated datePublished" datetime="2018-02-14T09:24:22-08:00">2018-02-14</time>
+              <time title="Created: 2018-02-14 12:24:22" itemprop="dateCreated datePublished" datetime="2018-02-14T12:24:22-05:00">2018-02-14</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-03-21 06:25:19" itemprop="dateModified" datetime="2019-03-21T06:25:19-07:00">2019-03-21</time>
+                <time title="Modified: 2019-03-21 09:25:19" itemprop="dateModified" datetime="2019-03-21T09:25:19-04:00">2019-03-21</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -582,14 +818,14 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2018-01-30 13:08:41" itemprop="dateCreated datePublished" datetime="2018-01-30T13:08:41-08:00">2018-01-30</time>
+              <time title="Created: 2018-01-30 16:08:41" itemprop="dateCreated datePublished" datetime="2018-01-30T16:08:41-05:00">2018-01-30</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-03-21 06:34:04" itemprop="dateModified" datetime="2019-03-21T06:34:04-07:00">2019-03-21</time>
+                <time title="Modified: 2019-03-21 09:34:04" itemprop="dateModified" datetime="2019-03-21T09:34:04-04:00">2019-03-21</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -677,14 +913,14 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2018-01-23 09:47:42" itemprop="dateCreated datePublished" datetime="2018-01-23T09:47:42-08:00">2018-01-23</time>
+              <time title="Created: 2018-01-23 12:47:42" itemprop="dateCreated datePublished" datetime="2018-01-23T12:47:42-05:00">2018-01-23</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-03-21 06:27:42" itemprop="dateModified" datetime="2019-03-21T06:27:42-07:00">2019-03-21</time>
+                <time title="Modified: 2019-03-21 09:27:42" itemprop="dateModified" datetime="2019-03-21T09:27:42-04:00">2019-03-21</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -765,14 +1001,14 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2018-01-20 13:06:42" itemprop="dateCreated datePublished" datetime="2018-01-20T13:06:42-08:00">2018-01-20</time>
+              <time title="Created: 2018-01-20 16:06:42" itemprop="dateCreated datePublished" datetime="2018-01-20T16:06:42-05:00">2018-01-20</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-03-21 06:18:53" itemprop="dateModified" datetime="2019-03-21T06:18:53-07:00">2019-03-21</time>
+                <time title="Modified: 2019-03-21 09:18:53" itemprop="dateModified" datetime="2019-03-21T09:18:53-04:00">2019-03-21</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -854,14 +1090,14 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2018-01-16 11:05:36" itemprop="dateCreated datePublished" datetime="2018-01-16T11:05:36-08:00">2018-01-16</time>
+              <time title="Created: 2018-01-16 14:05:36" itemprop="dateCreated datePublished" datetime="2018-01-16T14:05:36-05:00">2018-01-16</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-03-21 06:34:49" itemprop="dateModified" datetime="2019-03-21T06:34:49-07:00">2019-03-21</time>
+                <time title="Modified: 2019-03-21 09:34:49" itemprop="dateModified" datetime="2019-03-21T09:34:49-04:00">2019-03-21</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -976,14 +1212,14 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2018-01-15 11:40:55" itemprop="dateCreated datePublished" datetime="2018-01-15T11:40:55-08:00">2018-01-15</time>
+              <time title="Created: 2018-01-15 14:40:55" itemprop="dateCreated datePublished" datetime="2018-01-15T14:40:55-05:00">2018-01-15</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-03-21 06:36:25" itemprop="dateModified" datetime="2019-03-21T06:36:25-07:00">2019-03-21</time>
+                <time title="Modified: 2019-03-21 09:36:25" itemprop="dateModified" datetime="2019-03-21T09:36:25-04:00">2019-03-21</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1067,14 +1303,14 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2018-01-12 07:43:33" itemprop="dateCreated datePublished" datetime="2018-01-12T07:43:33-08:00">2018-01-12</time>
+              <time title="Created: 2018-01-12 10:43:33" itemprop="dateCreated datePublished" datetime="2018-01-12T10:43:33-05:00">2018-01-12</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-03-21 06:33:26" itemprop="dateModified" datetime="2019-03-21T06:33:26-07:00">2019-03-21</time>
+                <time title="Modified: 2019-03-21 09:33:26" itemprop="dateModified" datetime="2019-03-21T09:33:26-04:00">2019-03-21</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1181,14 +1417,14 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2018-01-11 10:49:25" itemprop="dateCreated datePublished" datetime="2018-01-11T10:49:25-08:00">2018-01-11</time>
+              <time title="Created: 2018-01-11 13:49:25" itemprop="dateCreated datePublished" datetime="2018-01-11T13:49:25-05:00">2018-01-11</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-03-21 06:27:28" itemprop="dateModified" datetime="2019-03-21T06:27:28-07:00">2019-03-21</time>
+                <time title="Modified: 2019-03-21 09:27:28" itemprop="dateModified" datetime="2019-03-21T09:27:28-04:00">2019-03-21</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1555,166 +1791,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2018/01/10/%E8%87%B4%E8%BF%9C%E5%8A%A9%E5%AD%A6%E9%87%91/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/liwei3.jpg">
-      <meta itemprop="name" content="Li Wei">
-      <meta itemprop="description" content="人生注定是一个人的旅行，但就算孤独也要做一直前行的人啊">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="NEWAY">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/01/10/%E8%87%B4%E8%BF%9C%E5%8A%A9%E5%AD%A6%E9%87%91/" class="post-title-link" itemprop="url">香港购眼镜攻略</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2018-01-10 20:50:29" itemprop="dateCreated datePublished" datetime="2018-01-10T20:50:29-08:00">2018-01-10</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-07-04 14:35:21" itemprop="dateModified" datetime="2021-07-04T14:35:21-07:00">2021-07-04</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/life/" itemprop="url" rel="index"><span itemprop="name">life</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine: </span>
-    
-    <a title="valine" href="/2018/01/10/%E8%87%B4%E8%BF%9C%E5%8A%A9%E5%AD%A6%E9%87%91/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2018/01/10/%E8%87%B4%E8%BF%9C%E5%8A%A9%E5%AD%A6%E9%87%91/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>这一年来眼睛经常感到疲倦，再加之镜腿断了，于是想要换个合适的眼镜。</p>
-<p>换眼镜也是换出了很多学问，索性记录一下。</p>
-<h5 id="how-to-buy"><a href="#how-to-buy" class="headerlink" title="how to buy"></a>how to buy</h5><p>第一件事是决定怎么买，参考网上各论坛建议，选了三种方案。</p>
-<ol>
-<li><p>淘宝镜片 + 淘宝镜架 + 香港验光</p>
-<ul>
-<li>优点，便宜，透明。明月全套250 + 验光100 + 深圳路费 50</li>
-<li>缺点，时间久，去深圳麻烦</li>
-</ul>
-</li>
-<li><p>深圳眼镜</p>
-<ul>
-<li>优点，便宜，是批发市场</li>
-<li>缺点，不透明，容易被宰，验光不规范</li>
-</ul>
-</li>
-<li><p>香港眼镜</p>
-<ul>
-<li>优点，眼光规范，方便，品牌货便宜</li>
-<li>缺点，一般货贵，容易被宰</li>
-</ul>
-</li>
-</ol>
-<p>因为镜腿断了，急着要用眼镜。而另外两个都有明显缺陷（淘宝太久，深圳太远而且怕被宰）</p>
-<h5 id="where-to-buy"><a href="#where-to-buy" class="headerlink" title="where to buy"></a>where to buy</h5><p>决定在香港买眼镜后发现事情没那么简单。香港眼镜店对我来说也分了三种选择。</p>
-<ul>
-<li>眼镜88，EGG等连锁店</li>
-<li>写字楼 楼上铺</li>
-<li>日本平价店铺 zoff</li>
-</ul>
-<p>还能怎么办，一个一个比较，看呗。</p>
-<p>另外在香港论坛查了许多，又恰逢发现小米有镜架（249），蓝光眼镜（99）卖。查了下都是钨钢材质，虽然听不懂但对小米的品质还是有信心的，于是买了个蓝光眼镜拆了镜片做镜框。（客服说99的镜框和249的镜架材质重量设计都一模一样&#x3D; &#x3D;，唯一区别是一个韩国，一个国产。。。）</p>
-<p>镜架有了，一个一个去问镜片。</p>
-<p>香港好的一点是，说我再去其他地方看看不会尴尬，店员都很爽快。</p>
-<p>总共问了6个店子。</p>
-<h6 id="写字楼1号-巴黎眼镜店"><a href="#写字楼1号-巴黎眼镜店" class="headerlink" title="写字楼1号 巴黎眼镜店"></a>写字楼1号 巴黎眼镜店</h6><p>熟人推荐，瑞士宝1.61非球面300+防蓝光200 &#x3D; 500。在那才知道。。我戴了三年的眼镜。。。戴！反！了！</p>
-<p>难！怪！一！直！头！晕！</p>
-<p>难！怪！一！直！掉！镜！片！</p>
-<h6 id="写字楼2号-不知名眼镜店"><a href="#写字楼2号-不知名眼镜店" class="headerlink" title="写字楼2号 不知名眼镜店"></a>写字楼2号 不知名眼镜店</h6><p>只有一个说广东话的老头，这种看起来挺靠谱的。</p>
-<p>阿波罗1.61非球面290+防蓝光200 &#x3D; 490</p>
-<h6 id="写字楼3号-连锁眼镜仓库"><a href="#写字楼3号-连锁眼镜仓库" class="headerlink" title="写字楼3号 连锁眼镜仓库?"></a>写字楼3号 连锁眼镜仓库?</h6><p>装修的和内地有点像，但是听到 依视路880？不确定听没听错。</p>
-<h6 id="眼镜88"><a href="#眼镜88" class="headerlink" title="眼镜88"></a>眼镜88</h6><p>DULUX1.61蓝光 &#x3D; 700</p>
-<p>依视路1.61蓝光 &#x3D; 1300</p>
-<h6 id="EGG"><a href="#EGG" class="headerlink" title="EGG"></a>EGG</h6><p>豪雅？不确定是否为EGG特供。</p>
-<p>1.61非球面600 + 蓝光100 &#x3D; 700</p>
-<p>1.67非球面900 + 蓝光0 &#x3D; 900</p>
-<h6 id="ZOFF"><a href="#ZOFF" class="headerlink" title="ZOFF"></a>ZOFF</h6><p>一家日本的连锁平价眼镜，在香港很受欢迎。</p>
-<p>因为暂时只在太古城有店，所以电话问了下。</p>
-<ol>
-<li>不支持单独配镜片</li>
-<li>镜片是自己zoff的。。。？</li>
-<li>1.61非球面480+ 蓝光280&#x3D; 760 全套眼镜</li>
-</ol>
-<p>最终看了下，大概就是一般品牌500，豪雅700值得考虑。又想了下豪雅这么便宜！还要什么飞机！淘宝上买镜片都不止这个价了。最终手机没电了，不想再来所以入手EGG豪雅。。</p>
-<p>值得一提的是香港的验光确实多了些没体验过的环节，总的来说感觉上专业一点。</p>
-<h5 id="conclusion"><a href="#conclusion" class="headerlink" title="conclusion"></a>conclusion</h5><p>遗憾:</p>
-<p>最后买的有点仓库，没考虑几点:</p>
-<ul>
-<li>是否为EGG豪雅特供镜片，如果是的话。。。</li>
-<li>许多参数并没有了解询问，如片基，阿贝数，镜片材料</li>
-<li>具体型号？现在才知道就算是正品豪雅(VP IP 等等）也有很多型号</li>
-</ul>
-<p>不过总的来说觉得700验光+豪雅已经是很不错的了，具体是什么豪雅 后天就知道了（特意叮嘱了给我留着镜片包装）</p>
-<h5 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h5><p>眼镜到手，试戴半天后效果特别好，真的看电脑久了不头晕了！不过也可能是之前一直是反的原因。</p>
-<p>镜片包装也如约给我了：</p>
-<p><a href="https://wadmes.github.io/images/1515759363478.jpg"><img src="/../figures/1515759363478-5434462.jpg" alt="1515759363478"></a></p>
-<p><a href="https://wadmes.github.io/images/1515759363478.jpg">1515759363478</a></p>
-<p>包装上没有任何豪雅的资料，电话问了豪雅的人确定确实egg有用，找工作人员，工作人员加了我微信，说可以给我一个我自己镜片的豪雅证明，里面也会specify具体是哪一款豪雅镜片。</p>
-<p>总之是一次特别棒的体验</p>
-<h4 id="更新-1"><a href="#更新-1" class="headerlink" title="更新"></a>更新</h4><p>本着所有东西都要体验一下的高尚理想，这次(2019.10)配眼镜选了另外一种方法…网上听热门的 日本JINS网店 海淘。</p>
-<p>因为自己海淘的挺多，加之性价比确实蛮高的，500+可以有一个1.74折射率的HOYA眼镜，还是钛金属的镜框（镜架是塑料。。）也是挺满意的说。</p>
-<p>另外打算下次配眼镜要么去日本线下？顺便还可以去玩下。要么就去知乎的深圳眼镜热店。</p>
-<p>生活就是折腾才有意思啊哈哈~</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1785,7 +1861,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">145</span>
+          <span class="site-state-item-count">146</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
