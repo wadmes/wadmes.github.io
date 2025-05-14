@@ -32,8 +32,9 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://wadmes.github.io/assets/16837591769134.jpg">
 <meta property="og:image" content="http://wadmes.github.io/assets/16837593665863.jpg">
+<meta property="og:image" content="http://wadmes.github.io/assets/17390495359066.jpg">
 <meta property="article:published_time" content="2023-05-04T21:50:29.000Z">
-<meta property="article:modified_time" content="2023-05-10T22:57:38.176Z">
+<meta property="article:modified_time" content="2025-02-08T21:25:02.763Z">
 <meta property="article:author" content="Li Wei">
 <meta property="article:tag" content="DNN">
 <meta name="twitter:card" content="summary">
@@ -250,7 +251,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2023-05-10 18:57:38" itemprop="dateModified" datetime="2023-05-10T18:57:38-04:00">2023-05-10</time>
+                <time title="Modified: 2025-02-08 16:25:02" itemprop="dateModified" datetime="2025-02-08T16:25:02-05:00">2025-02-08</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -298,6 +299,14 @@
 <li>context embedding和对应的r-hop 的node embeeding的inner product接近1 （prior that the two embeddings must be similar when they come from the same neighborhood)</li>
 </ol>
 <h4 id="NODE-also-applies-to-GRAPH-level-Mask-attributes-and-predict-them"><a href="#NODE-also-applies-to-GRAPH-level-Mask-attributes-and-predict-them" class="headerlink" title="NODE (also applies to GRAPH level): Mask attributes and predict them"></a>NODE (also applies to GRAPH level): Mask attributes and predict them</h4><h2 id="Principal-Neighbourhood-Aggregation-for-Graph-Nets"><a href="#Principal-Neighbourhood-Aggregation-for-Graph-Nets" class="headerlink" title="Principal Neighbourhood Aggregation for Graph Nets"></a>Principal Neighbourhood Aggregation for Graph Nets</h2><p>单个aggregator不行，需要combine多种不同aggregator<br><img src="/assets/16837591769134.jpg"><br>这里的S 是基于degree的一个额外系数：<br><img src="/assets/16837593665863.jpg"><br>alpha pos时，node的degree（d）越大，S值就越大，于是feature值越大。（amplification）<br>反之则为 attenuation</p>
+<h2 id="Global-Self-Attention-as-a-Replacement-for-Graph-Convolution"><a href="#Global-Self-Attention-as-a-Replacement-for-Graph-Convolution" class="headerlink" title="Global Self-Attention as a Replacement for Graph Convolution"></a>Global Self-Attention as a Replacement for Graph Convolution</h2><p><img src="/assets/17390495359066.jpg"></p>
+<p>The basic idea is, rather than pre-defined functionality of edges, which introduce inductive bias. Let transformer learns it by itself.</p>
+<p>here, edge information used in:</p>
+<ol>
+<li>$G$ is linear projection from edge embeedings. Will be a gate contriolling the attention. (Eq 4)</li>
+<li>$E$ is a linear projection from edge embeddings. Directly influence attention. (Eq 5)</li>
+<li>$E$ SVD on adj mat A, and use left and right singular vectors as positional encoding.</li>
+</ol>
 
     </div>
 
@@ -382,7 +391,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#STRATEGIES-FOR-PRE-TRAINING-GRAPH-NEURAL-NETWORS"><span class="nav-number">1.</span> <span class="nav-text">STRATEGIES FOR PRE-TRAINING GRAPH NEURAL NETWORS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Pre-train-Method"><span class="nav-number">1.1.</span> <span class="nav-text">Pre-train Method</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#NODE-Context-prediction%EF%BC%9A%E6%8E%A2%E7%B4%A2graph-structure-information"><span class="nav-number">1.1.1.</span> <span class="nav-text">NODE: Context prediction：探索graph structure information</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#NODE-also-applies-to-GRAPH-level-Mask-attributes-and-predict-them"><span class="nav-number">1.1.2.</span> <span class="nav-text">NODE (also applies to GRAPH level): Mask attributes and predict them</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Principal-Neighbourhood-Aggregation-for-Graph-Nets"><span class="nav-number">2.</span> <span class="nav-text">Principal Neighbourhood Aggregation for Graph Nets</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#STRATEGIES-FOR-PRE-TRAINING-GRAPH-NEURAL-NETWORS"><span class="nav-number">1.</span> <span class="nav-text">STRATEGIES FOR PRE-TRAINING GRAPH NEURAL NETWORS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Pre-train-Method"><span class="nav-number">1.1.</span> <span class="nav-text">Pre-train Method</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#NODE-Context-prediction%EF%BC%9A%E6%8E%A2%E7%B4%A2graph-structure-information"><span class="nav-number">1.1.1.</span> <span class="nav-text">NODE: Context prediction：探索graph structure information</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#NODE-also-applies-to-GRAPH-level-Mask-attributes-and-predict-them"><span class="nav-number">1.1.2.</span> <span class="nav-text">NODE (also applies to GRAPH level): Mask attributes and predict them</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Principal-Neighbourhood-Aggregation-for-Graph-Nets"><span class="nav-number">2.</span> <span class="nav-text">Principal Neighbourhood Aggregation for Graph Nets</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Global-Self-Attention-as-a-Replacement-for-Graph-Convolution"><span class="nav-number">3.</span> <span class="nav-text">Global Self-Attention as a Replacement for Graph Convolution</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -397,7 +406,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">146</span>
+          <span class="site-state-item-count">147</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -462,7 +471,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2024</span>
+  <span itemprop="copyrightYear">2025</span>
   <span class="with-love">
     <i class="user"></i>
   </span>

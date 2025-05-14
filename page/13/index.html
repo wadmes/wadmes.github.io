@@ -213,6 +213,348 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2018/03/08/ENGG5189-fuzzy-query/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/liwei3.jpg">
+      <meta itemprop="name" content="Li Wei">
+      <meta itemprop="description" content="人生注定是一个人的旅行，但就算孤独也要做一直前行的人啊">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="NEWAY">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/03/08/ENGG5189-fuzzy-query/" class="post-title-link" itemprop="url">ENGG5189 fuzzy query</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2018-03-08 17:07:09" itemprop="dateCreated datePublished" datetime="2018-03-08T17:07:09-05:00">2018-03-08</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-03-21 09:31:21" itemprop="dateModified" datetime="2019-03-21T09:31:21-04:00">2019-03-21</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/study/" itemprop="url" rel="index"><span itemprop="name">study</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2018/03/08/ENGG5189-fuzzy-query/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2018/03/08/ENGG5189-fuzzy-query/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>NAME: Li Wei</p>
+<p>SID: 1155062148</p>
+<h4 id="Criteria-design"><a href="#Criteria-design" class="headerlink" title="Criteria design"></a>Criteria design</h4><p>In this section, I will introduce and justify my criteria and state my assumptions I make when designing this kind of criteria. Typically, <strong>fuzzy criteria will be highlighted</strong>.</p>
+<ul>
+<li><p>The stock with highest PE in same type will be excluded. This criteria is inspired by the introduction of PE in the specification: </p>
+<blockquote>
+<p> PE(Price-Earning Ratio) &#x3D; Market price &#x2F; EPS(earning per share). Usually lower is better, but it depends on the PE ratio of the similar stocks. (However, if some types contain only one stock in the database, then this special stock won’t be excluded.)</p>
+</blockquote>
+</li>
+<li><p><strong>high buying level</strong>. High buying level means more stable and has less risk. The following is the corresponding fuzzy membership function.</p>
+<table>
+<thead>
+<tr>
+<th align="center">Buying level</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">$\mu_{high_buy_lv}$</td>
+<td>0.1</td>
+<td>0.3</td>
+<td>0.5</td>
+<td>0.7</td>
+<td>0.9</td>
+</tr>
+</tbody></table>
+</li>
+<li><p><strong>high difference</strong>. High difference level means that the stock may have more profit but also more risk. The following is the corresponding fuzzy membership function. However, the difference between ‘too high’ and ‘very high’ is not huge. Therefore the fuzzy memebership function is not linear. </p>
+<table>
+<thead>
+<tr>
+<th align="center">Difference</th>
+<th>0</th>
+<th>25</th>
+<th>50</th>
+<th>75</th>
+<th>100</th>
+<th>125</th>
+<th>150</th>
+<th>175</th>
+<th>200</th>
+<th>225</th>
+<th>250</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">$\mu_{high_diff}$</td>
+<td>0.0</td>
+<td>0.2</td>
+<td>0.4</td>
+<td>0.6</td>
+<td>0.75</td>
+<td>0.8</td>
+<td>0.85</td>
+<td>0.9</td>
+<td>0.95</td>
+<td>0.98</td>
+<td>1.0</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<h4 id="Query"><a href="#Query" class="headerlink" title="Query"></a>Query</h4><p>This section is to introduce the query we design:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">STOCK_CLASS(NAME) (<span class="keyword">or</span> ((<span class="keyword">and</span> (= <span class="type">Type</span> SEMI) (&lt; PE <span class="number">31</span>))</span><br><span class="line">                       (<span class="keyword">and</span> (= <span class="type">Type</span> WWW) (&lt; PE <span class="number">66.4</span>))</span><br><span class="line">                       (= <span class="type">Type</span> TECH)</span><br><span class="line">                       (= <span class="type">Type</span> FOOD)</span><br><span class="line">                       (= <span class="type">Type</span> GAME)</span><br><span class="line">                   )</span><br><span class="line">                   (<span class="keyword">and</span> </span><br><span class="line">                   	   (High_BUY_LV</span><br><span class="line">                       (<span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">4</span> <span class="number">5</span>)</span><br><span class="line">                       (<span class="number">0.1</span> <span class="number">0.3</span> <span class="number">0.5</span> <span class="number">0.7</span> <span class="number">0.9</span>)<span class="number">1</span>)</span><br><span class="line">                   	   (High_DIFF_LV</span><br><span class="line">                       (<span class="number">0</span> <span class="number">25</span> <span class="number">50</span> <span class="number">75</span> <span class="number">100</span> <span class="number">125</span> <span class="number">150</span> <span class="number">175</span> <span class="number">200</span> <span class="number">225</span> <span class="number">250</span>)</span><br><span class="line">                       (<span class="number">0.0</span>	<span class="number">0.2</span>	<span class="number">0.4</span> <span class="number">0.6</span> <span class="number">0.75</span> <span class="number">0.8</span> <span class="number">0.85</span> <span class="number">0.9</span> <span class="number">0.95</span> <span class="number">0.98</span> <span class="number">1.0</span>)<span class="number">1</span>)</span><br><span class="line">                   )</span><br></pre></td></tr></table></figure>
+
+<h4 id="Calculation"><a href="#Calculation" class="headerlink" title="Calculation"></a>Calculation</h4><h5 id="Non-fuzzy-criteria"><a href="#Non-fuzzy-criteria" class="headerlink" title="Non-fuzzy criteria"></a>Non-fuzzy criteria</h5><p>The stock with highest PE in same type will be excluded. </p>
+<table>
+<thead>
+<tr>
+<th>NAME</th>
+<th>PRICE</th>
+<th>ORIGI N</th>
+<th>TYPE</th>
+<th>PE</th>
+<th>PE_LV</th>
+<th>BUY_LV</th>
+<th>DIFF</th>
+<th>DIFF_LV</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>AAPL</td>
+<td>167</td>
+<td>US</td>
+<td>TECH</td>
+<td>18</td>
+<td>1</td>
+<td>4</td>
+<td>33</td>
+<td>2</td>
+</tr>
+<tr>
+<td><strong><del>TXN</del></strong></td>
+<td>110</td>
+<td>US</td>
+<td><strong><del>SEMI</del></strong></td>
+<td>31</td>
+<td>2</td>
+<td>4</td>
+<td>47</td>
+<td>2</td>
+</tr>
+<tr>
+<td>FB</td>
+<td>187</td>
+<td>US</td>
+<td>WWW</td>
+<td>35</td>
+<td>2</td>
+<td>5</td>
+<td>43</td>
+<td>2</td>
+</tr>
+<tr>
+<td>MU</td>
+<td>44</td>
+<td>US</td>
+<td>SEMI</td>
+<td>7</td>
+<td>1</td>
+<td>5</td>
+<td>80</td>
+<td>3</td>
+</tr>
+<tr>
+<td>BABA</td>
+<td>205</td>
+<td>CHN</td>
+<td>WWW</td>
+<td>55</td>
+<td>4</td>
+<td>5</td>
+<td>101</td>
+<td>4</td>
+</tr>
+<tr>
+<td>KM</td>
+<td>120</td>
+<td>CHN</td>
+<td>FOOD</td>
+<td>39</td>
+<td>3</td>
+<td>4</td>
+<td>220</td>
+<td>5</td>
+</tr>
+<tr>
+<td>SAMSUNG</td>
+<td>2325</td>
+<td>KOR</td>
+<td>SEMI</td>
+<td>9.53</td>
+<td>1</td>
+<td>4</td>
+<td>25</td>
+<td>1</td>
+</tr>
+<tr>
+<td>NINTENDO</td>
+<td>440</td>
+<td>JPN</td>
+<td>GAME</td>
+<td>50</td>
+<td>3</td>
+<td>4</td>
+<td>200</td>
+<td>5</td>
+</tr>
+<tr>
+<td>TENCENT</td>
+<td>59</td>
+<td>CHN</td>
+<td>WWW</td>
+<td>58</td>
+<td>4</td>
+<td>4</td>
+<td>230</td>
+<td>5</td>
+</tr>
+<tr>
+<td><strong><del>PYPL</del></strong></td>
+<td>85</td>
+<td>US</td>
+<td><strong><del>WWW</del></strong></td>
+<td>66.4</td>
+<td>5</td>
+<td>3</td>
+<td>90</td>
+<td>4</td>
+</tr>
+</tbody></table>
+<h5 id="Fuzzy-criteria"><a href="#Fuzzy-criteria" class="headerlink" title="Fuzzy criteria"></a>Fuzzy criteria</h5><p>high buying level and high difference level.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Buying level</th>
+<th>Difference level</th>
+<th>Membership(min)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>AAPL</td>
+<td>$\mu_{high_buy_lv}(4) &#x3D; 0.7$</td>
+<td>$\mu_{high_diff}(33)&#x3D;0.2$</td>
+<td>0.2</td>
+</tr>
+<tr>
+<td>FB</td>
+<td>$\mu_{high_buy_lv}(5) &#x3D; 0.9$</td>
+<td>$\mu_{high_diff}(43)&#x3D;0.2$</td>
+<td>0.2</td>
+</tr>
+<tr>
+<td>MU</td>
+<td>$\mu_{high_buy_lv}(5) &#x3D; 0.9$</td>
+<td>$\mu_{high_diff}(80)&#x3D;0.6$</td>
+<td>0.6</td>
+</tr>
+<tr>
+<td>BABA</td>
+<td>$\mu_{high_buy_lv}(5) &#x3D; 0.9$</td>
+<td>$\mu_{high_diff}(101)&#x3D;0.75$</td>
+<td>0.75</td>
+</tr>
+<tr>
+<td>KM</td>
+<td>$\mu_{high_buy_lv}(4) &#x3D; 0.7$</td>
+<td>$\mu_{high_diff}(220)&#x3D;0.95$</td>
+<td>0.7</td>
+</tr>
+<tr>
+<td>SAMSUNG</td>
+<td>$\mu_{high_buy_lv}(4) &#x3D; 0.7$</td>
+<td>$\mu_{high_diff}(25)&#x3D;0.2$</td>
+<td>0.2</td>
+</tr>
+<tr>
+<td>MINTENDO</td>
+<td>$\mu_{high_buy_lv}(4) &#x3D; 0.7$</td>
+<td>$\mu_{high_diff}(200)&#x3D;0.95$</td>
+<td>0.7</td>
+</tr>
+<tr>
+<td>TENCENT</td>
+<td>$\mu_{high_buy_lv}(4) &#x3D; 0.7$</td>
+<td>$\mu_{high_diff}(230)&#x3D;0.9$</td>
+<td>0.7</td>
+</tr>
+</tbody></table>
+<h4 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h4><p>Therefore, the system will select BABA to buy from our calculation.</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2018/02/26/CSCI3170-Midterm-Review/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1389,408 +1731,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2018/01/11/CSCI4190-01/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/liwei3.jpg">
-      <meta itemprop="name" content="Li Wei">
-      <meta itemprop="description" content="人生注定是一个人的旅行，但就算孤独也要做一直前行的人啊">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="NEWAY">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/01/11/CSCI4190-01/" class="post-title-link" itemprop="url">CSCI4190_01</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2018-01-11 13:49:25" itemprop="dateCreated datePublished" datetime="2018-01-11T13:49:25-05:00">2018-01-11</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-03-21 09:27:28" itemprop="dateModified" datetime="2019-03-21T09:27:28-04:00">2019-03-21</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/study/" itemprop="url" rel="index"><span itemprop="name">study</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine: </span>
-    
-    <a title="valine" href="/2018/01/11/CSCI4190-01/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2018/01/11/CSCI4190-01/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>一位local女教授，既Jimmy之后第二位不准手机铃声的教授。。。</p>
-<p>第一节课是拿一个英文的科普视频 放一段讲一段。。。太真实了吧？。。。</p>
-<h3 id="C1-Strong-and-Weak-ties-17"><a href="#C1-Strong-and-Weak-ties-17" class="headerlink" title="C1 Strong and Weak ties 17"></a>C1 Strong and Weak ties 17</h3><h4 id="Basic-definition"><a href="#Basic-definition" class="headerlink" title="Basic definition"></a>Basic definition</h4><h5 id="Path"><a href="#Path" class="headerlink" title="Path"></a>Path</h5><ul>
-<li>A path in a graph is a sequence of nodes with the property that each consecutive pair in the sequence is connected by an edge.</li>
-<li>A path can have <strong>repeat</strong> nodes;</li>
-<li>Path <strong>without repeat</strong> nodes is a <strong>simple path</strong></li>
-</ul>
-<h5 id="Cycle"><a href="#Cycle" class="headerlink" title="Cycle"></a>Cycle</h5><p>A cycle is a path with <strong>at least three</strong> edges, in which the first and last nodes are the same, but <strong>otherwise all nodes are distinct.</strong></p>
-<h5 id="Bridge"><a href="#Bridge" class="headerlink" title="Bridge"></a>Bridge</h5><p>the <strong>edge joining two nodes</strong> if deleting that edge would cause the two nodes in two different components. </p>
-<h6 id="Local-Bridge"><a href="#Local-Bridge" class="headerlink" title="Local Bridge"></a>Local Bridge</h6><p>Bridge is rare</p>
-<p>the edge joining nodes A and B, if its endpoints A and B <strong>have no friends in common</strong>.</p>
-<h6 id="Span-of-a-local-bridge"><a href="#Span-of-a-local-bridge" class="headerlink" title="Span of a local bridge:"></a>Span of a local bridge:</h6><p>the distance between the end points if that edge were deleted.(original:1)</p>
-<h5 id="Embeddedness-edge"><a href="#Embeddedness-edge" class="headerlink" title="Embeddedness(edge)"></a>Embeddedness(edge)</h5><p>Embeddedness of an edge in a network is the <strong>number of common neighbors</strong> the two endpoints have. </p>
-<p>Embeddedness(Local bridge) &#x3D;0 </p>
-<h5 id="Structure-hole-几个不同contacts的中间人"><a href="#Structure-hole-几个不同contacts的中间人" class="headerlink" title="Structure hole (几个不同contacts的中间人)"></a>Structure hole (几个不同contacts的中间人)</h5><ul>
-<li><strong>access information</strong> originating in multiple, non-interacting parts of the network.</li>
-<li>have <strong>opportunities for innovations</strong> arose from the unexpected synthesis of multiple ideas, each of them on their own perhaps well-known, but well-known in distinct and unrelated bodies of expertise.</li>
-<li>have an opportunity for a kind of <strong>social “gate-keeping”</strong>; a source of power in the organization.</li>
-</ul>
-<h5 id="Connected"><a href="#Connected" class="headerlink" title="Connected"></a>Connected</h5><p>A graph is connected if for every pair of nodes, there is a path between them</p>
-<h5 id="Traffic-in-a-Network"><a href="#Traffic-in-a-Network" class="headerlink" title="Traffic in a Network"></a>Traffic in a Network</h5><p>For each pair of nodes A and B:  1 unit of traffic “flow” from A to B  if A and B belong to same component. the flow divides itself evenly along all the possible shortest paths from A to B </p>
-<h5 id="Betweenness"><a href="#Betweenness" class="headerlink" title="Betweenness"></a>Betweenness</h5><ul>
-<li><strong>Edge</strong>:  total amount of flow that the edge carries, counting flow between all pairs of nodes using this edge. </li>
-<li><strong>Node</strong>:  total amount of flow that the node carries, when a unit of flow between each pair of nodes is divided up evenly over shortest paths</li>
-</ul>
-<h5 id="Triadic-closure"><a href="#Triadic-closure" class="headerlink" title="Triadic closure"></a>Triadic closure</h5><p>朋友的朋友更容易成为朋友</p>
-<h5 id="cluster-coefficient-a"><a href="#cluster-coefficient-a" class="headerlink" title="cluster coefficient(a)"></a>cluster coefficient(a)</h5><p>a的朋友们也互相是朋友的概率</p>
-<h5 id="Strong-Triadic-Closure-Property"><a href="#Strong-Triadic-Closure-Property" class="headerlink" title="Strong Triadic Closure Property"></a>Strong Triadic Closure Property</h5><p>如果a 和bc关系很好，那么bc会成为朋友。</p>
-<p>如果不是(no matter strong or weak)，violate the property</p>
-<h4 id="Strength-of-weak-ties"><a href="#Strength-of-weak-ties" class="headerlink" title="Strength of weak ties"></a>Strength of weak ties</h4><h5 id="neighborhood-overlap-edge"><a href="#neighborhood-overlap-edge" class="headerlink" title="neighborhood overlap (edge)"></a>neighborhood overlap (edge)</h5><p>no of nodes who are neighbors of both A and B**&#x2F;** no of nodes who are neighbors of at least one of A of B.</p>
-<ul>
-<li>Neighborhood overlap increases with the strength </li>
-<li>Local level : tie strength increases with neighborhood</li>
-<li>Global level : weak ties serve to link together different tightly-knit communities ?</li>
-</ul>
-<p>Weak ties provide the more crucial(关键) connective structure<br>• for holding together disparate communities and<br>• for keeping the global structure of the giant components intact.</p>
-<h4 id="Graph-patitioning"><a href="#Graph-patitioning" class="headerlink" title="Graph patitioning"></a>Graph patitioning</h4><h5 id="division"><a href="#division" class="headerlink" title="division"></a>division</h5><p>移除最可能连接两大块的（betweenness最大值）</p>
-<h5 id="agglomerative-凝聚"><a href="#agglomerative-凝聚" class="headerlink" title="agglomerative(凝聚)"></a>agglomerative(凝聚)</h5><p>把nodes that are likely to belong to the same region merge起来</p>
-<h5 id="Girvan-Newman-Method"><a href="#Girvan-Newman-Method" class="headerlink" title="Girvan-Newman Method"></a>Girvan-Newman Method</h5><ul>
-<li>Find the edge of highest betweenness  and <strong>remove</strong> these edges from the graph. </li>
-<li>Recalculate all betweennesses, again remove the edge or edges of highest betweenness.</li>
-</ul>
-<h3 id="C2-Networks-in-their-Surrounding-Contexts"><a href="#C2-Networks-in-their-Surrounding-Contexts" class="headerlink" title="C2 Networks in their Surrounding Contexts"></a>C2 Networks in their Surrounding Contexts</h3><h4 id="Homophily"><a href="#Homophily" class="headerlink" title="Homophily"></a>Homophily</h4><p>The tendency of individuals to associate and bond with similar others</p>
-<h5 id="Friendship-that-forms-because-two-people"><a href="#Friendship-that-forms-because-two-people" class="headerlink" title="Friendship that forms because two people"></a>Friendship that forms because two people</h5><ul>
-<li>have a common friend <strong>(intrinsic network structure, triadic closure)</strong></li>
-<li>attend the same school or work for the same company (contextual factor)情境因素</li>
-</ul>
-<h5 id="Measuring-Homophily"><a href="#Measuring-Homophily" class="headerlink" title="Measuring Homophily"></a>Measuring Homophily</h5><p><strong>Homophily Test</strong>: If the fraction of cross-gender edges is significantly less than 2pq(p &#x3D; fraction of males,q &#x3D; fraction of females), then there is evidence for homophily.</p>
-<p>The edge is <strong>heterogeneous</strong>(异质) if two end nodes do not share the same characteristic</p>
-<h5 id="Mechanisms-Underlying-Homophily"><a href="#Mechanisms-Underlying-Homophily" class="headerlink" title="Mechanisms Underlying Homophily"></a>Mechanisms Underlying Homophily</h5><h6 id="Selection"><a href="#Selection" class="headerlink" title="Selection"></a>Selection</h6><p>select friends with similar characteristic.  tends to drive the network towards smaller clusters of like-minded individuals (balkanization)</p>
-<ul>
-<li>individual characteristics drive the formation of links (邻居)</li>
-<li>involves immutable(不变) characteristics (determined at birth)</li>
-<li>物以类聚。</li>
-</ul>
-<h6 id="Socialization-and-social-influence"><a href="#Socialization-and-social-influence" class="headerlink" title="Socialization and social influence"></a>Socialization and social influence</h6><p>modify their behaviors to bring them more closely into alignment with the behaviors of their friends.</p>
-<p>– reverse of selection<br>– Involves mutable characteristics<br>– 近朱者赤， 近墨者黑&#x2F;lies down with dogs, rises with fleas</p>
-<h6 id="Social-influence"><a href="#Social-influence" class="headerlink" title="Social influence"></a>Social influence</h6><p>can produce network-wide uniformity, as new behavior spreads across the links.</p>
-<h5 id="Affiliation-联系-Networks-17"><a href="#Affiliation-联系-Networks-17" class="headerlink" title="Affiliation(联系) Networks 17"></a>Affiliation(联系) Networks 17</h5><p>Include the contextual factors (the set of activities) into the network. expressed as a bipartite(even)<br>graph. </p>
-<ul>
-<li>node: person or focus(activity)</li>
-<li>edge: (person,focus)</li>
-</ul>
-<p>• A graph is <strong>bipartite</strong> if its nodes can be divided into two sets in such a way that every edge connects a node in one set to a node in the other set</p>
-<p>• Two people sharing the same focus → an opportunity to become friends.</p>
-<p><strong>Extension:</strong></p>
-<ul>
-<li>Node: person&#x2F;focus</li>
-<li>edge: (person,focus) <strong>or</strong> (person person)</li>
-</ul>
-<h5 id="3-Closure-Processes"><a href="#3-Closure-Processes" class="headerlink" title="3 Closure Processes"></a>3 Closure Processes</h5><ul>
-<li><strong>Triadic closure</strong>: 朋友的朋友更容易成为朋友</li>
-<li><strong>Membership closure</strong>(social influence): 朋友参加的活动更容易参加</li>
-<li><strong>Focal closure</strong> (selction): 一个活动中的两人更容易成为朋友</li>
-</ul>
-<h5 id="Tracking-Link-Formation"><a href="#Tracking-Link-Formation" class="headerlink" title="Tracking Link Formation"></a>Tracking Link Formation</h5><ol>
-<li>– For each k, identify all pairs of nodes who have exactly k friends in common, but who are not directly connected by an edge.</li>
-<li>(Difference time with step1 ) T (k) &#x3D; the fraction of these pairs that have formed an edge.</li>
-</ol>
-<ul>
-<li>Triadic Closure： HIGH comon friends -&gt; higher fraction</li>
-<li>Focal closure: high -&gt; not so high</li>
-</ul>
-<h4 id="The-Schelling-Model"><a href="#The-Schelling-Model" class="headerlink" title="The Schelling Model"></a>The Schelling Model</h4><p>How global patterns of spatial segregation can arise from the effect of homophily operating at a local level (Thomas Schelling) </p>
-<ul>
-<li>Each agent(population) wants to have <strong>at least t agents</strong> of its own type as neighbors</li>
-<li>Unsatisfied agents: – <strong>fewer than t neighbors</strong> of the same type as itself and <strong>move</strong> to a new cell</li>
-</ul>
-<p><strong>homophily</strong> draws people together along <strong>immutable characteristics</strong></p>
-<p><strong>The Schelling model</strong> creates a natural tendency for <strong>mutable</strong> characteristics</p>
-<h3 id="C3-Positive-and-Negative-Relationships"><a href="#C3-Positive-and-Negative-Relationships" class="headerlink" title="C3 Positive and Negative Relationships"></a>C3 Positive and Negative Relationships</h3><p><strong>clique&#x2F;complete graph:</strong> graph  which an edge connecting each pair of nodes</p>
-<ul>
-<li>Balanced Structure(triangle)<ul>
-<li>Three mutual(相互的) friends</li>
-<li>A third mutual enemy</li>
-</ul>
-</li>
-<li>Unbalanced Structure(triangle)<ul>
-<li>A,和BC 玩的好。BC仇敌。</li>
-<li>All are enermies</li>
-</ul>
-</li>
-</ul>
-<p>A complete graph is <strong>structurally balanced</strong> if its everyone triangle is balanced.</p>
-<h4 id="Balance-Theorem"><a href="#Balance-Theorem" class="headerlink" title="Balance Theorem"></a>Balance Theorem</h4><p>If a labeled complete graph is balanced, then </p>
-<ul>
-<li>either <strong>all</strong> pairs of nodes are <strong>friends</strong>, </li>
-<li>or else the nodes can be divided into <strong>two groups</strong>, X and Y ,</li>
-</ul>
-<h5 id="Weak-Structural-Balance-Property"><a href="#Weak-Structural-Balance-Property" class="headerlink" title="Weak Structural Balance Property:"></a>Weak Structural Balance Property:</h5><p>There is no set of three nodes such that the edges among them consist of exactly two positive edges and one negative edge . ( all are enermy are possible)</p>
-<h4 id="Structural-Balance-in-Arbitrary-Non-Complete-Networks"><a href="#Structural-Balance-in-Arbitrary-Non-Complete-Networks" class="headerlink" title="Structural Balance in Arbitrary (Non-Complete) Networks"></a>Structural Balance in Arbitrary (Non-Complete) Networks</h4><blockquote>
-<p>A signed graph is balanced if and only if it contains no cycle with an <strong>odd number of negative edges</strong>.</p>
-</blockquote>
-<h5 id="Searching-for-balanced-division"><a href="#Searching-for-balanced-division" class="headerlink" title="Searching for balanced division"></a>Searching for balanced division</h5><ul>
-<li>find the connected components using <strong>positive</strong> edges. Declare each component to be a <strong>supernode</strong>.</li>
-<li>the supernodes form the <strong>reduced graph</strong> (negative edges only)</li>
-<li>BFS: <strong>edges</strong> connect two nodes in the <strong>same layer</strong>: a cycle with odd number of nodes</li>
-</ul>
-<h4 id="Generalizing-the-Definition-of-Structural-Balance"><a href="#Generalizing-the-Definition-of-Structural-Balance" class="headerlink" title="Generalizing the Definition of Structural Balance"></a>Generalizing the Definition of Structural Balance</h4><h5 id="Approximately-Balance-Theorem"><a href="#Approximately-Balance-Theorem" class="headerlink" title="Approximately Balance Theorem"></a>Approximately Balance Theorem</h5><p>If at least 99.9% (1-$\epsilon$)of all triangles in a labeled complete graph are balanced, then </p>
-<ul>
-<li>either there is a <strong>set</strong> consisting of at least <strong>90%(1-$\epsilon^{1&#x2F;3}$)of the nodes</strong> in which at least <strong>90% of all pairs</strong> are <strong>friends</strong></li>
-<li>or else the nodes can be divided into two groups, X and Y , <ul>
-<li>at least 90% of the pairs in X like each other</li>
-<li>at least 90% of the pairs in Y like each other, and</li>
-<li>at least 90% of the pairs with one end in X and the other end in Y are enemies.</li>
-</ul>
-</li>
-</ul>
-<h3 id="C4-Information-cascade-17"><a href="#C4-Information-cascade-17" class="headerlink" title="C4 Information cascade 17"></a>C4 Information cascade 17</h3><h5 id="Reasons-why-individual-might-imitate-the-behavior-of-others"><a href="#Reasons-why-individual-might-imitate-the-behavior-of-others" class="headerlink" title="Reasons why individual might imitate the behavior of others"></a>Reasons why individual might imitate the behavior of others</h5><ul>
-<li><p>– Informational effect :</p>
-<ul>
-<li>The behavior of others conveys information about what they know</li>
-<li>Peer pressure</li>
-<li>Imitate what others (e.g. idols) are doing</li>
-</ul>
-</li>
-<li><p>Network effect (direct benefit effect) :(C5) </p>
-<p>you incur an explicit benefit when you align behavior with the behavior of others.</p>
-</li>
-</ul>
-<h4 id="Bayes-Rule"><a href="#Bayes-Rule" class="headerlink" title="Bayes Rule"></a>Bayes Rule</h4><p>$P(A|B) &#x3D; \frac{A\cap B}{B}&#x3D;\frac{P(A)P(B|A)}{P(B)}$, 一般 ，pa, p(b|a)题目都给了。问题是求pb：</p>
-<p>若A好算:$p(b) &#x3D; P(A)P(B|A)+P(A^c)P(B|A^C)$</p>
-<h4 id="A-Simple-General-Cascade-Model-17"><a href="#A-Simple-General-Cascade-Model-17" class="headerlink" title="A Simple General Cascade Model 17"></a>A Simple General Cascade Model 17</h4><ul>
-<li><p><strong>States:</strong> G(Good) with probability p, and B with 1-p</p>
-</li>
-<li><p><strong>Accepting</strong> select which state</p>
-</li>
-<li><p><strong>Private information</strong></p>
-</li>
-<li><p><strong>Signal</strong> H(High)  before making decision: accepting is a good idea, L(Low) : bad idea</p>
-<p>P(H|G) &#x3D; q &gt; 0.5, P(L|G) &#x3D; 1-q &lt; 0.5 </p>
-</li>
-<li><p><strong>Payoff</strong>: 0 reject. Vg: accepting a good option Vb: accept a bad option</p>
-</li>
-</ul>
-<p>Suppose one receives a H signal</p>
-<ul>
-<li>Expected payoff &#x3D; Vg * P(G|H) + Vb *P(B|H)</li>
-<li>P(G|H) &#x3D; $\frac{p(G)p(H|G)}{p(G)p(H|G)+p(B)p(H|B)}&#x3D; \frac{pq}{pq+(1-p)(1-q)} &gt;p$</li>
-</ul>
-<h5 id="Multiple-signals"><a href="#Multiple-signals" class="headerlink" title="Multiple signals"></a>Multiple signals</h5><p>S &#x3D; a high signals + b low signals</p>
-<ul>
-<li>posterior probability Pr [G | S] is greater than the prior Pr [G] (p) when a &gt; b;</li>
-</ul>
-<h3 id="C5-Network-Effects"><a href="#C5-Network-Effects" class="headerlink" title="C5 Network Effects"></a>C5 Network Effects</h3><h4 id="Externalities（和外部坏境联系的场景-如-交通事故？party）"><a href="#Externalities（和外部坏境联系的场景-如-交通事故？party）" class="headerlink" title="Externalities（和外部坏境联系的场景 如 交通事故？party）"></a>Externalities（和外部坏境联系的场景 如 交通事故？party）</h4><p>situation that the welfare of an individual is affected by the actions of other individuals</p>
-<ul>
-<li>Positive: welfare increases when others are joining</li>
-<li>Negative: 相反。</li>
-</ul>
-<h4 id="Without-network-effect-only-consider-Reservation-price"><a href="#Without-network-effect-only-consider-Reservation-price" class="headerlink" title="Without network effect, only consider Reservation price"></a>Without network effect, only consider Reservation price</h4><p>the max amount one is willing to pay for one unit of the good.  If consumer x (0 ≤ x ≤ 1) has a <strong>higher reservation price</strong> <strong>r(x)</strong> than consumer y, then <strong>x &lt; y</strong>. </p>
-<p>**r: strictly decreasing **</p>
-<p>p’:  production cost of one unit of the good (the minimum price a producer is willing to accept to sell a good)</p>
-<p>x’:  equilibrium quantity of the good  so that <strong>r(x’) &#x3D; p’</strong></p>
-<h4 id="The-Economy-with-Network-Effects"><a href="#The-Economy-with-Network-Effects" class="headerlink" title="The Economy with Network Effects"></a>The Economy with Network Effects</h4><ul>
-<li><p>intrinsic interest. r(x). eg. r(1 ) &#x3D; 0</p>
-</li>
-<li><p>the no. of other people using the good</p>
-<ul>
-<li>( z: fraction of people in use).</li>
-<li>f(z) measures the benefit to each consumer from those who use the good.f(z) is <strong>increasing</strong> in z, f(0) &#x3D; 0</li>
-</ul>
-</li>
-<li><p>reservation price of consumer x &#x3D; <strong>r(x)f(z)</strong> . here z is the fraction <strong>expected</strong> by x</p>
-</li>
-<li><p><strong>self-fulfilling expectations equilibrium</strong> p’ &#x3D; r(z)f(z)</p>
-</li>
-</ul>
-<h5 id="Stability-Instability-and-Tipping-Points"><a href="#Stability-Instability-and-Tipping-Points" class="headerlink" title="Stability, Instability, and Tipping Points"></a>Stability, Instability, and Tipping Points</h5><p><img src="/..%5Cimages%5C1524728773(1).jpg" alt="1524728773(1)"></p>
-<ul>
-<li>0 &lt; z &lt; z’ 买家不想买。“<strong>downward pressure”</strong> on the consumption of the good : this would push demand downward.</li>
-<li>z’ &lt; z &lt; z” 买家想买。 <strong>“upward pressure”</strong> on the consumption of the<br>good: this would drive demand upward</li>
-<li>z” &lt; z &lt; 1  “<strong>downward pressure”</strong> </li>
-<li>z’ : <strong>critical point</strong>&#x2F;tipping point</li>
-</ul>
-<h5 id="A-Dynamic-View-of-the-Market"><a href="#A-Dynamic-View-of-the-Market" class="headerlink" title="A Dynamic View of the Market"></a>A Dynamic View of the Market</h5><p>z^: fraction of population who buy the product (actual buyer)</p>
-<p>r(z^)f(z) &#x3D; p &#x3D; &gt;</p>
-<p>z^ &#x3D; $r^{-1}(p&#x2F;f(z))$ &#x3D; g(z)</p>
-<p><strong>For goods with network effects, the equilibria are typically not social optimal.</strong>(社会所有人的总利益) </p>
-<p>Being the first to reach this tipping point is more important than being “best”.</p>
-<h4 id="Mixing-Individual-Effects-with-Population-Level-Effects"><a href="#Mixing-Individual-Effects-with-Population-Level-Effects" class="headerlink" title="Mixing Individual Effects with Population-Level Effects"></a>Mixing Individual Effects with Population-Level Effects</h4><p>f(Z) &#x3D; 1 + az^2</p>
-<p>r(X) &#x3D; 1-x</p>
-<h3 id="C6-Power-Laws-and-Rich-Get-Richer-Models-17"><a href="#C6-Power-Laws-and-Rich-Get-Richer-Models-17" class="headerlink" title="C6 Power Laws and Rich-Get-Richer Models 17"></a>C6 Power Laws and Rich-Get-Richer Models 17</h3><p> <strong>Central Limit Theorem</strong>  says that if we take any sequence of small independent random quantities, then in the limit their sum (or average) will be distributed according to the <strong>normal distribution.</strong></p>
-<p>A function that <strong>decreases</strong> as k to some fixed power, such as 1&#x2F;k 2(fraction) is called a <strong>power law</strong></p>
-<h4 id="Rich-Get-Richer-Models"><a href="#Rich-Get-Richer-Models" class="headerlink" title="Rich-Get-Richer Models"></a>Rich-Get-Richer Models</h4><p>Model the growth of the popularity.</p>
-<ul>
-<li>Created pages in order : 1, 2, 3, . . . , j.</li>
-<li>When j is created, With <strong>probability p</strong>, page j, chooses <strong>a page i</strong> uniformly at random from among all earlier pages, and creates a link to this page i.</li>
-<li>With <strong>probability 1-p</strong>, page j creates a link to the page that <strong>i links to</strong>. (i also uniformly random distributed)<ul>
-<li>new version:with probability 1 − p, page j chooses a page l with probability<br>proportional to l ’s current number of in-links, and creates a link to l.</li>
-</ul>
-</li>
-</ul>
-<p><strong>preferential attachment</strong>: : “preferentially” to pages that already have high <strong>popularity</strong>. (人们更愿意打开已经火了的页面,copy别人的)</p>
-<p>No. of in-links of node j &#x3D; $x_j &#x3D; p&#x2F;q[(t&#x2F;j)^q-1]$ . t: simulated steps. q &#x3D; 1-p</p>
-<p>At time t, we have nodes x1, x2, … xt. The fraction of nodes with at least k links is</p>
-<p>$[\frac{q}{p}k +1]^{-1&#x2F;q}$</p>
-<p>f(k) &#x3D; the fraction of nodes with exactly k links &#x3D; $1&#x2F;p [1+\frac{1-p}{p}k]^{-(1+\frac{1}{1-p})}$. when p -0, power law exponent is 2.</p>
-<h5 id="The-long-tail"><a href="#The-long-tail" class="headerlink" title="The long tail"></a>The long tail</h5><p>a <strong>small set</strong> of items that are enormously <strong>popular</strong></p>
-<p> <strong>Zipf’s Law</strong> : the frequency of the j th most common word in English (or most other widespread human languages) is proportional to 1&#x2F;j.</p>
-<h3 id="C6-Cascading-behavior-in-networks-17"><a href="#C6-Cascading-behavior-in-networks-17" class="headerlink" title="C6 Cascading behavior in networks 17"></a>C6 Cascading behavior in networks 17</h3><p>Structure of the network and how individuals are influenced by their particular <strong>network neighbors</strong> (instead of everyone else in C5)</p>
-<h5 id="Why-an-innovation-can-fail-to-spread-through-a-population"><a href="#Why-an-innovation-can-fail-to-spread-through-a-population" class="headerlink" title="Why an innovation can fail to spread through a population ?"></a>Why an innovation can fail to spread through a population ?</h5><ul>
-<li>tightly-knit(严密) social community;</li>
-<li>complexity</li>
-<li>observability observe别人也在用</li>
-<li>trialability 可试验性。（一步一步慢慢来）</li>
-<li>compatibility with social system</li>
-</ul>
-<p>the set of initial adopters causes a <strong>complete cascade</strong> at threshold q(大于百分之多少才换）.</p>
-<h5 id="cluster-of-density-p"><a href="#cluster-of-density-p" class="headerlink" title="cluster of density p"></a>cluster of density p</h5><p><strong>cluster of density p</strong> &#x3D; a set of nodes such tha<strong>t each node</strong> in the set has at least a <strong>p fraction</strong> of its network <strong>neighbors in the set.</strong></p>
-<p>cluster of density 1: </p>
-<h5 id="The-Relationship-between-Clusters-and-Cascades"><a href="#The-Relationship-between-Clusters-and-Cascades" class="headerlink" title="The Relationship between Clusters and Cascades"></a>The Relationship between Clusters and Cascades</h5><ul>
-<li>If the <strong>remaining network</strong> contains a <strong>cluster</strong> of <strong>density</strong> greater than <strong>1 − q</strong>, then the set of initial adopters will <strong>not</strong> cause a complete cascade.(cluster 是cascade的阻碍 必要条件)</li>
-<li>Moreover, whenever a set of initial adopters does not cause a complete cascade with threshold q, the remaining network must contain a cluster of density greater than 1 − q（充分条件）</li>
-</ul>
-<h4 id="Extensions-of-the-Basic-Cascade-Model-17"><a href="#Extensions-of-the-Basic-Cascade-Model-17" class="headerlink" title="Extensions of the Basic Cascade Model 17"></a>Extensions of the Basic Cascade Model 17</h4><p><strong>Heterogeneous Thresholds</strong>： each node has a specific payoff and hence threshold</p>
-<p>A <strong>blocking cluster</strong> in the network is a set of nodes for which each node v has more than a 1 − qv fraction of its friends also in the set.</p>
-<p> <strong>cascade capacity</strong> of the network: 有限初始集能造成complete cascade的最大threshold</p>
-<p>最大值：1&#x2F;2</p>
-<p>proof  number of AB edges is decreasing when switching w from B to A</p>
-<p>payoff from choosing A &#x3D; a’（两边都是A&#x2F;AB) 则double a<br>payoff from choosing B &#x3D; b’<br>payoff from choosing AB&#x3D; a’+b’-c</p>
-<h3 id="C7-Small-World-Phenomenon"><a href="#C7-Small-World-Phenomenon" class="headerlink" title="C7 Small World Phenomenon"></a>C7 Small World Phenomenon</h3><h4 id="Watts-Strogatz-model"><a href="#Watts-Strogatz-model" class="headerlink" title="Watts-Strogatz model"></a>Watts-Strogatz model</h4><p>Two type of links:</p>
-<p> Homophily(和其他r个小格内点相连的link)and </p>
-<p>Weak ties(剩余的k 个远link).</p>
-<ul>
-<li>d(v, w) :the number of grid steps between nodes v and w</li>
-<li>Probability of an edge is proportional to d(v, w)^-q (Small q, more long distances edges)</li>
-</ul>
-<p>time: at most a2(log n)^2</p>
-<h5 id="A-Rough-Calculation-Motivating-the-Inverse-Square-Network"><a href="#A-Rough-Calculation-Motivating-the-Inverse-Square-Network" class="headerlink" title="A Rough Calculation Motivating the Inverse-Square Network"></a>A Rough Calculation Motivating the Inverse-Square Network</h5><p>The probability that a <strong>random edge</strong> from center point v links into any node in this group is approximately independent of the value of d. ( in d - 2d circles)</p>
-<h5 id="Rank-Based-Friendship"><a href="#Rank-Based-Friendship" class="headerlink" title="Rank-Based Friendship"></a>Rank-Based Friendship</h5><p>rank(w) &#x3D; the number of other nodes that are <strong>closer to v</strong> than w is. (比w 还离v近一点的)</p>
-<h5 id="social-distance"><a href="#social-distance" class="headerlink" title="social distance"></a>social distance</h5><p>dist(v, w) &#x3D; the social distance between nodes v and w &#x3D; the size of the <strong>smallest focus</strong> that contains both v and w</p>
-<p>A link between each pair of nodes v and w with probability <strong>proportional</strong> to <strong>dist(v,w)^-p</strong></p>
-<p>Efficient <strong>decentralized search</strong> when p &#x3D; 1. 17</p>
-<h3 id="C8-Epidemics"><a href="#C8-Epidemics" class="headerlink" title="C8 Epidemics"></a>C8 Epidemics</h3><p>•The basic <strong>reproductive number</strong> ( R0) &#x3D; the expected number of new cases of the disease caused by a single individual &#x3D; p(probability)k(new meet num). </p>
-<p><strong>Percolation</strong> : static view of the model. edge v-w is open is w is infected by v</p>
-<p>SIR . susceptible infectious removed</p>
-<p>SIS  susceptible infectious  back_TO_susceptile</p>
-<p>SIRS susceptible infectious 免疫期 back_TO_susceptile</p>
-<p><strong>transient contacts</strong> — contact networks in which each edge is annotated with the period of time during which it existed</p>
-<h4 id="Analysis-of-Branching-Processes"><a href="#Analysis-of-Branching-Processes" class="headerlink" title="Analysis of Branching Processes"></a>Analysis of Branching Processes</h4><p>qn &#x3D; the probability that the epidemic survives for at least n waves</p>
-<p>q∗ &#x3D; qn when n is infinite &#x3D; the probability that the epidemic persists indefinitely. </p>
-<h4 id="Wright-Fisher-model"><a href="#Wright-Fisher-model" class="headerlink" title="Wright-Fisher model"></a>Wright-Fisher model</h4><ol>
-<li>每一代 N个人</li>
-<li>每个孩子都只有一个家长。一个家长可以有多个孩子也可能没有。</li>
-</ol>
-<p>consider the time that k个个体是一个祖先</p>
-<h3 id="C9-Link-Analysis-and-Web-Search"><a href="#C9-Link-Analysis-and-Web-Search" class="headerlink" title="C9 Link Analysis and Web Search"></a>C9 Link Analysis and Web Search</h3><h4 id="•-Ranking-of-web-pages"><a href="#•-Ranking-of-web-pages" class="headerlink" title="• Ranking of web pages"></a>• Ranking of web pages</h4><h5 id="Information-Retrieval"><a href="#Information-Retrieval" class="headerlink" title="Information Retrieval"></a>Information Retrieval</h5><p>1960s: Search repositories of newspaper articles, scientific papers, patents, legal abstracts, and other document collections in response to keyword queries.</p>
-<p><strong>vote by link</strong> 缺点：offtopic, criticism, advertisement</p>
-<p>each page有两种score</p>
-<p><strong>authorities 权威网站</strong> 更新： 所有指向他的page的hub score和</p>
-<p><strong>hub 首页</strong> 更新 类似</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">initial are score = 1</span><br><span class="line">select k steps</span><br><span class="line">for i in k:</span><br><span class="line">	update auth</span><br><span class="line">	update hub</span><br><span class="line">normalize hub and auth</span><br></pre></td></tr></table></figure>
-
-<p>(A-\lamda I)x &#x3D; 0</p>
-<p>\lamda &#x3D; eigenvalue</p>
-<p>x &#x3D; eigenvector</p>
-<h4 id="pagerank"><a href="#pagerank" class="headerlink" title="pagerank"></a>pagerank</h4><p>每个node指出k个，其value平均分k，到新的node。</p>
-<p>最后把收到的value sum。</p>
-<h5 id="Scaling-Factor"><a href="#Scaling-Factor" class="headerlink" title="Scaling Factor"></a><strong>Scaling Factor</strong></h5><p>sum之后乘以一个factor 。 然后把factor多出来的那一部分均匀分给每个人。</p>
-<h5 id="Random-walks"><a href="#Random-walks" class="headerlink" title="Random walks"></a>Random walks</h5><p>随便选一个。然后继续选out-going的。和pagerank思路一样。停在哪个page的概率和pagerank概率一样。</p>
-<ul>
-<li>有相关text的超链接权重更高。</li>
-<li>用户点击数据 更能反映是否相关。</li>
-</ul>
-<h3 id="C10-Sponsored-Search-Market"><a href="#C10-Sponsored-Search-Market" class="headerlink" title="C10 Sponsored Search Market"></a>C10 Sponsored Search Market</h3><p>SPONSORED SEARCH AD:关键词</p>
-<p>branding ad ：直接投放在网站上</p>
-<p>contextual ad： 根据用户特征投放广告</p>
-<h4 id="拍卖"><a href="#拍卖" class="headerlink" title="拍卖"></a>拍卖</h4><ul>
-<li><strong>The Second Price Sealed Auction</strong> 由出价最高的买家获得物品，但他只需要支付所有投标者中的第二高价。</li>
-</ul>
-<p><strong>click-through rates</strong>：（r_i) The number of clicks per hour it will receive</p>
-<p><strong>revenue</strong>(收入) v_j per click of advertiser j,</p>
-<p>ri*vj &#x3D; <strong>benifit</strong></p>
-<h4 id="Matching-Market"><a href="#Matching-Market" class="headerlink" title="Matching Market"></a>Matching Market</h4><p>if the search engine knew all the advertisers’ valuations for clicks</p>
-<p>For buyer:</p>
-<p>$v_{ij}$  &#x3D; valuation for item i by buyer j</p>
-<p>$p_i$ &#x3D; price announced by the seller</p>
-<p>v- p 就是买家收益。</p>
-<p><strong>Market clearing prices</strong> 所有买家选到最赚的而且不冲突</p>
-<h5 id="Constructing-the-set-of-market-clearing-price"><a href="#Constructing-the-set-of-market-clearing-price" class="headerlink" title="Constructing the set of market clearing price"></a>Constructing the set of market clearing price</h5><p>price先重置为0</p>
-<p>将最多人要买的slot price 加一</p>
-<p>重新计算</p>
-<p>重新加一</p>
-<p>直到可以market clearing</p>
-<h4 id="Vickrey-Clarke-Groves-VCG-mechanism"><a href="#Vickrey-Clarke-Groves-VCG-mechanism" class="headerlink" title="Vickrey-Clarke-Groves (VCG) mechanism"></a>Vickrey-Clarke-Groves (VCG) mechanism</h4><p>the advertisers’ <strong>valuations</strong> are <strong>not known</strong></p>
-<p>算没有 A 后 BC 收益。比如600</p>
-<p>有A后BC收益 比如 200</p>
-<p>那么A 需要支付 600-200</p>
-<h4 id="GSP"><a href="#GSP" class="headerlink" title="GSP"></a>GSP</h4><p>bi bids per click</p>
-<p>GSP charges a cumulative price of ri bi+1 for slot i. </p>
-<h5 id="Nash-equilibrium"><a href="#Nash-equilibrium" class="headerlink" title="Nash equilibrium"></a>Nash equilibrium</h5><p>The pair of strategies (S; T) is a <strong>Nash equilibrium</strong> if S is a best response to T, and T is a best response to S.</p>
-<p><strong>Best response</strong>: $P_1(S,T)&gt;&#x3D; P_1(S’,T)$ T: stratage of 2</p>
-<p>STrict: 没有等于。</p>
-<p><strong>Dominant strategy</strong>： a strategy that is a best response to every strategy of Player 2.</p>
-<p>A strictly dominant strategy .</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1861,7 +1801,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">146</span>
+          <span class="site-state-item-count">147</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -1926,7 +1866,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2024</span>
+  <span itemprop="copyrightYear">2025</span>
   <span class="with-love">
     <i class="user"></i>
   </span>

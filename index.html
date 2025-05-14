@@ -213,6 +213,130 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2025/01/25/2025-Survey-of-Netlist-Graph-Encoder/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/liwei3.jpg">
+      <meta itemprop="name" content="Li Wei">
+      <meta itemprop="description" content="人生注定是一个人的旅行，但就算孤独也要做一直前行的人啊">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="NEWAY">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2025/01/25/2025-Survey-of-Netlist-Graph-Encoder/" class="post-title-link" itemprop="url">Circuit Fusion Read Note</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2025-01-25 12:52:02" itemprop="dateCreated datePublished" datetime="2025-01-25T12:52:02-05:00">2025-01-25</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2025-01-31 13:36:41" itemprop="dateModified" datetime="2025-01-31T13:36:41-05:00">2025-01-31</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/study/" itemprop="url" rel="index"><span itemprop="name">study</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2025/01/25/2025-Survey-of-Netlist-Graph-Encoder/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2025/01/25/2025-Survey-of-Netlist-Graph-Encoder/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Circuit-Fusion"><a href="#Circuit-Fusion" class="headerlink" title="Circuit Fusion"></a>Circuit Fusion</h1><p>Basic idea: learn a fusion circuit embedding by fusing different modalities: RTL code, function description, netlist graph, RTL AST.</p>
+<h2 id="Data"><a href="#Data" class="headerlink" title="Data"></a>Data</h2><p>41 RTL designs - 7,166 RTL sub-circuits - generating same function 57,328 sub-circuits (Each with 8 sub-circuits)</p>
+<p>summary - coming from GPT4 (prompt input is the verilog code)<br>code - existing<br>graph - obtained by code. nodes are operators. </p>
+<h3 id="How-circuit-is-divided-into-sub-circuits"><a href="#How-circuit-is-divided-into-sub-circuits" class="headerlink" title="How circuit is divided into sub-circuits?"></a>How circuit is divided into sub-circuits?</h3><h2 id="Training-details"><a href="#Training-details" class="headerlink" title="Training details"></a>Training details</h2><h3 id="Intra-modal-learning"><a href="#Intra-modal-learning" class="headerlink" title="Intra-modal learning"></a>Intra-modal learning</h3><ol>
+<li>mask circuit graph nodes (operators, e.g., AND, XOR, MUX) and predict the masked nodes</li>
+<li>intra-modal contrastive learning: positive sample - sub-circuits with the same functionality <ol>
+<li>Q: How to create same functionality and ensure it is correct? A: using open-source tools, Yosys and ABC</li>
+</ol>
+</li>
+</ol>
+<h3 id="Cross-modal-alignment"><a href="#Cross-modal-alignment" class="headerlink" title="Cross-modal alignment"></a>Cross-modal alignment</h3><h3 id="Multi-modal-fusion"><a href="#Multi-modal-fusion" class="headerlink" title="Multi-modal fusion"></a>Multi-modal fusion</h3><ol>
+<li>Mask summary modeling</li>
+</ol>
+<p>Query: Masked summary embedding (randomly masking parts of high-level summary)</p>
+<p>Key, Value: Mix-up of code-graph</p>
+<blockquote>
+<p>Q: why not simply mix-up everything and feed into a transformer (self-attention)</p>
+</blockquote>
+<ol start="2">
+<li>Summary and mix-embedding matching</li>
+</ol>
+<h3 id="Alignment-w-Netlist-RTL"><a href="#Alignment-w-Netlist-RTL" class="headerlink" title="Alignment w. Netlist - RTL"></a>Alignment w. Netlist - RTL</h3><h2 id="What-is-RAG-inference-here"><a href="#What-is-RAG-inference-here" class="headerlink" title="What is RAG inference here?"></a>What is RAG inference here?</h2><h2 id="Evaluation-what-tasks"><a href="#Evaluation-what-tasks" class="headerlink" title="Evaluation: what tasks?"></a>Evaluation: what tasks?</h2><ol>
+<li>predicting slack for each individual register (sub-circuit level)</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">slack calcuation example (thanks deepseek)</span><br><span class="line"></span><br><span class="line">假设一个设计中：</span><br><span class="line"></span><br><span class="line">目标时钟周期：1ns（1GHz）</span><br><span class="line"></span><br><span class="line">组合逻辑延迟：0.7ns</span><br><span class="line"></span><br><span class="line">寄存器Setup Time：0.1ns</span><br><span class="line"></span><br><span class="line">CLK to Q</span><br><span class="line">D input</span><br><span class="line">Q OUTPUT</span><br><span class="line"></span><br><span class="line">时钟Skew：0.05ns</span><br><span class="line"></span><br><span class="line">计算Setup Slack：</span><br><span class="line"></span><br><span class="line">Copy</span><br><span class="line">Slack = (1ns - 0.05ns) - (0.7ns + 0.1ns) = 0.95ns - 0.8ns = 0.15ns  </span><br><span class="line">Slack为正，满足时序要求。若组合逻辑延迟增加到0.9ns，则Slack为-0.05ns（时序违例）。</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>worst negative slack (WNS) prediction</li>
+<li>total negative slack (TNS) prediction</li>
+<li>power prediction</li>
+<li>area prediction</li>
+</ol>
+<p>The four above is circuit level</p>
+<blockquote>
+<p>Q: how to use sub-circuit emebeddings to do circuit level predictions? Concat? If concat, how to handle the number of sub-circuits that changes for each design? A: They add them up. And then concat with some design-level features (what is included in their exp), and then use a regression model.<br>Q: This compares with SNS v2, but it seems to not publish the code?</p>
+</blockquote>
+<p>Note: in circuit-level tasks, they include design level features, e.g., number of different operator types. We need to figure out what features they use. </p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2024/10/23/Autograder%E7%AE%80%E5%8D%95%E7%9A%84%E4%B8%AD%E6%96%87%E6%95%99%E7%A8%8B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1179,96 +1303,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2023/07/14/DAC23%E4%B9%8B%E5%90%8E%E7%9A%84%E4%B8%80%E4%BA%9B%E7%A2%8E%E7%A2%8E%E5%BF%B5/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/liwei3.jpg">
-      <meta itemprop="name" content="Li Wei">
-      <meta itemprop="description" content="人生注定是一个人的旅行，但就算孤独也要做一直前行的人啊">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="NEWAY">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2023/07/14/DAC23%E4%B9%8B%E5%90%8E%E7%9A%84%E4%B8%80%E4%BA%9B%E7%A2%8E%E7%A2%8E%E5%BF%B5/" class="post-title-link" itemprop="url">DAC23之后的一些碎碎念</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2023-07-14 00:21:31 / Modified: 04:02:02" itemprop="dateCreated datePublished" datetime="2023-07-14T00:21:31-04:00">2023-07-14</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/life/" itemprop="url" rel="index"><span itemprop="name">life</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine: </span>
-    
-    <a title="valine" href="/2023/07/14/DAC23%E4%B9%8B%E5%90%8E%E7%9A%84%E4%B8%80%E4%BA%9B%E7%A2%8E%E7%A2%8E%E5%BF%B5/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2023/07/14/DAC23%E4%B9%8B%E5%90%8E%E7%9A%84%E4%B8%80%E4%BA%9B%E7%A2%8E%E7%A2%8E%E5%BF%B5/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>Hey Neway, 现在是加州的凌晨0点22分，度过了一周的DAC，本来应该困顿的我现在特别清醒。所以干脆还是写点什么记录一下这次DAC。</p>
-<p>该死的疫情总算死了，我也得以见到好多在香港时的好友。有些人似乎没有变、有些人却经历了一些难过和挫折。每当有这些负面经历时，我都会安慰自己：就当是一种人生新体验好了。但是对他们我却不太会拿这个原因来安慰他们，我只是和他们一样觉得难过、觉得惋惜，同时也觉得人生的残酷：它永远这么长河般的向前流、而平凡的我们却很难做那个掌舵手、只能被岁月推着往任意方向前行。</p>
-<p>很擅长optimization的我们，貌似很难optimize我们自己的人生，哪怕只是一点点。</p>
-<p>说回这次DAC吧。Presen的时候感觉自己还是因为紧张 说的太快了，之前在Apple的时候Mark就给我建议presen前深呼吸、注意自己的语速。结果我只记得上半句，诶。不过除了说了快一点、公式放的有点多之外，其他的似乎一切都好，我也不知道什么时候，好像有了《哪怕紧张 也会“看起来”很自信》的天赋，挺好的。确实得自信一点，这是自己的work，自己几个月的心血，自己都没底气的话，那也太对不起work的那个自己了吧。</p>
-<p>线下的这种会议对于开拓眼界真挺有用的。感觉这几天看到的EDA、PD比我过去一年看到的都多：从前一直都像是盲人摸象般，而在这能去到不同的session、能了解各个组最新的work，这种机会不是arxiv、google scholar看paper能比拟的。虽然无法避免的会有一些peer pressure，但是更多的还是感悟、学习、和收获吧。</p>
-<p>BTW。这次还见到了许多paper里才看得到的老师，真有点像小虾米第一次参加武林大会时见各个门派的掌门的感觉哈哈哈哈。从这个角度看学术圈还真挺像武侠世界的。那些很有影响力的paper时降龙十八掌、六脉神剑、而我发的paper暂时还只是“花拳绣腿”、“王八拳”，哈哈。（那去公司是不是就是去镖局之类的上班 XD</p>
-<blockquote>
-<p>每次写这种文章的时候，我都会打开Hey Kong单曲循环。我也好想知道未来的你在做什么，想听到未来的你对我说的话。但不管怎样，希望你和大家都能一切如意。</p>
-</blockquote>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1339,7 +1373,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">146</span>
+          <span class="site-state-item-count">147</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -1404,7 +1438,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2024</span>
+  <span itemprop="copyrightYear">2025</span>
   <span class="with-love">
     <i class="user"></i>
   </span>

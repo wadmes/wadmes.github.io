@@ -213,6 +213,120 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2018/08/27/Advesarial%20study/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/liwei3.jpg">
+      <meta itemprop="name" content="Li Wei">
+      <meta itemprop="description" content="人生注定是一个人的旅行，但就算孤独也要做一直前行的人啊">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="NEWAY">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/08/27/Advesarial%20study/" class="post-title-link" itemprop="url">Adversarial attack</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2018-08-27 17:50:29" itemprop="dateCreated datePublished" datetime="2018-08-27T17:50:29-04:00">2018-08-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-03-21 09:18:19" itemprop="dateModified" datetime="2019-03-21T09:18:19-04:00">2019-03-21</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/study/" itemprop="url" rel="index"><span itemprop="name">study</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2018/08/27/Advesarial%20study/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2018/08/27/Advesarial%20study/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="攻击神经网络"><a href="#攻击神经网络" class="headerlink" title="攻击神经网络"></a>攻击神经网络</h3><h4 id="Fast-Gradient-Method-Explaining-amp-Harnessing-Adversarial-Examples"><a href="#Fast-Gradient-Method-Explaining-amp-Harnessing-Adversarial-Examples" class="headerlink" title="Fast Gradient Method (Explaining &amp; Harnessing Adversarial Examples)"></a>Fast Gradient Method (Explaining &amp; Harnessing Adversarial Examples)</h4><h5 id="linear-model"><a href="#linear-model" class="headerlink" title="linear model:"></a>linear model:</h5><p>$$<br>y’&#x3D;w^Tx’ &#x3D; w^Tx+w^T\sigma<br>$$</p>
+<p>where $\sigma$ is the change of original input x, and we have:<br>$$<br>\sigma &#x3D; \varepsilon sign(w)<br>$$<br>理解： 在保持$|\sigma|$ 不变情况下，y’ 变化最大只可能 使 $w^T\sigma &#x3D; |w|_1$</p>
+<p>DNN<br>$$<br>\sigma &#x3D; \varepsilon sign (\triangledown_xJ(\theta,x,y_{true}))<br>$$</p>
+<p>where J is the loss function. In most cases (soft-max as classifier layer)</p>
+<p>理解： 要让y’变化最大，及 应向loss 变大的方向变化。 即若$(\triangledown_xJ(\theta,x,y))$ 为负数（loss 与 x 的gradient）则 x应变小 （$\sigma$需为负数）</p>
+<h4 id="Iterative-method"><a href="#Iterative-method" class="headerlink" title="Iterative method"></a>Iterative method</h4><h5 id="Basic-iterative-method"><a href="#Basic-iterative-method" class="headerlink" title="Basic iterative method"></a>Basic iterative method</h5><p>update equation (1) $x_2’ &#x3D; x_1’ + \sigma$</p>
+<h5 id="Targeted"><a href="#Targeted" class="headerlink" title="Targeted"></a>Targeted</h5><p>(3) becomes:<br>$$<br>\sigma &#x3D; -\varepsilon sign (\triangledown_xJ(\theta,x,y_{targeted}))<br>$$</p>
+<h4 id="Our-Method"><a href="#Our-Method" class="headerlink" title="Our Method"></a>Our Method</h4><h5 id="What-we-have-known-and-what-we-can-obtained-now"><a href="#What-we-have-known-and-what-we-can-obtained-now" class="headerlink" title="What we have known and what we can obtained now?"></a>What we have known and what we can obtained now?</h5><ul>
+<li><p>Printable image size:</p>
+<p>$P(i,j)$ as the indexed boxes with size: Black&#x2F;white box: $P_h\times P_w$</p>
+</li>
+<li><p>Actual image ($100\times 100$) per frame.  </p>
+<p>$S_I$: starting index of the billboard for each frame.</p>
+<p>$R_I$: range of the billboard for each frame.</p>
+<p>$G_I$: gradient of each pixel in the bill board&#x2F;</p>
+</li>
+</ul>
+<h5 id="What-we-need-to-calculate"><a href="#What-we-need-to-calculate" class="headerlink" title="What we need to calculate"></a>What we need to calculate</h5><p>$G_P$ :gradient of each box in P.</p>
+<h5 id="How"><a href="#How" class="headerlink" title="How?"></a>How?</h5><p>Transform:</p>
+<ul>
+<li><p>Nearest </p>
+</li>
+<li><p>SPP:   </p>
+</li>
+<li><p>Binary</p>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2018/07/28/EIE/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1173,348 +1287,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2018/03/08/ENGG5189-fuzzy-query/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/liwei3.jpg">
-      <meta itemprop="name" content="Li Wei">
-      <meta itemprop="description" content="人生注定是一个人的旅行，但就算孤独也要做一直前行的人啊">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="NEWAY">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/03/08/ENGG5189-fuzzy-query/" class="post-title-link" itemprop="url">ENGG5189 fuzzy query</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2018-03-08 17:07:09" itemprop="dateCreated datePublished" datetime="2018-03-08T17:07:09-05:00">2018-03-08</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-03-21 09:31:21" itemprop="dateModified" datetime="2019-03-21T09:31:21-04:00">2019-03-21</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/study/" itemprop="url" rel="index"><span itemprop="name">study</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine: </span>
-    
-    <a title="valine" href="/2018/03/08/ENGG5189-fuzzy-query/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2018/03/08/ENGG5189-fuzzy-query/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>NAME: Li Wei</p>
-<p>SID: 1155062148</p>
-<h4 id="Criteria-design"><a href="#Criteria-design" class="headerlink" title="Criteria design"></a>Criteria design</h4><p>In this section, I will introduce and justify my criteria and state my assumptions I make when designing this kind of criteria. Typically, <strong>fuzzy criteria will be highlighted</strong>.</p>
-<ul>
-<li><p>The stock with highest PE in same type will be excluded. This criteria is inspired by the introduction of PE in the specification: </p>
-<blockquote>
-<p> PE(Price-Earning Ratio) &#x3D; Market price &#x2F; EPS(earning per share). Usually lower is better, but it depends on the PE ratio of the similar stocks. (However, if some types contain only one stock in the database, then this special stock won’t be excluded.)</p>
-</blockquote>
-</li>
-<li><p><strong>high buying level</strong>. High buying level means more stable and has less risk. The following is the corresponding fuzzy membership function.</p>
-<table>
-<thead>
-<tr>
-<th align="center">Buying level</th>
-<th>1</th>
-<th>2</th>
-<th>3</th>
-<th>4</th>
-<th>5</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">$\mu_{high_buy_lv}$</td>
-<td>0.1</td>
-<td>0.3</td>
-<td>0.5</td>
-<td>0.7</td>
-<td>0.9</td>
-</tr>
-</tbody></table>
-</li>
-<li><p><strong>high difference</strong>. High difference level means that the stock may have more profit but also more risk. The following is the corresponding fuzzy membership function. However, the difference between ‘too high’ and ‘very high’ is not huge. Therefore the fuzzy memebership function is not linear. </p>
-<table>
-<thead>
-<tr>
-<th align="center">Difference</th>
-<th>0</th>
-<th>25</th>
-<th>50</th>
-<th>75</th>
-<th>100</th>
-<th>125</th>
-<th>150</th>
-<th>175</th>
-<th>200</th>
-<th>225</th>
-<th>250</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">$\mu_{high_diff}$</td>
-<td>0.0</td>
-<td>0.2</td>
-<td>0.4</td>
-<td>0.6</td>
-<td>0.75</td>
-<td>0.8</td>
-<td>0.85</td>
-<td>0.9</td>
-<td>0.95</td>
-<td>0.98</td>
-<td>1.0</td>
-</tr>
-</tbody></table>
-</li>
-</ul>
-<h4 id="Query"><a href="#Query" class="headerlink" title="Query"></a>Query</h4><p>This section is to introduce the query we design:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">STOCK_CLASS(NAME) (<span class="keyword">or</span> ((<span class="keyword">and</span> (= <span class="type">Type</span> SEMI) (&lt; PE <span class="number">31</span>))</span><br><span class="line">                       (<span class="keyword">and</span> (= <span class="type">Type</span> WWW) (&lt; PE <span class="number">66.4</span>))</span><br><span class="line">                       (= <span class="type">Type</span> TECH)</span><br><span class="line">                       (= <span class="type">Type</span> FOOD)</span><br><span class="line">                       (= <span class="type">Type</span> GAME)</span><br><span class="line">                   )</span><br><span class="line">                   (<span class="keyword">and</span> </span><br><span class="line">                   	   (High_BUY_LV</span><br><span class="line">                       (<span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">4</span> <span class="number">5</span>)</span><br><span class="line">                       (<span class="number">0.1</span> <span class="number">0.3</span> <span class="number">0.5</span> <span class="number">0.7</span> <span class="number">0.9</span>)<span class="number">1</span>)</span><br><span class="line">                   	   (High_DIFF_LV</span><br><span class="line">                       (<span class="number">0</span> <span class="number">25</span> <span class="number">50</span> <span class="number">75</span> <span class="number">100</span> <span class="number">125</span> <span class="number">150</span> <span class="number">175</span> <span class="number">200</span> <span class="number">225</span> <span class="number">250</span>)</span><br><span class="line">                       (<span class="number">0.0</span>	<span class="number">0.2</span>	<span class="number">0.4</span> <span class="number">0.6</span> <span class="number">0.75</span> <span class="number">0.8</span> <span class="number">0.85</span> <span class="number">0.9</span> <span class="number">0.95</span> <span class="number">0.98</span> <span class="number">1.0</span>)<span class="number">1</span>)</span><br><span class="line">                   )</span><br></pre></td></tr></table></figure>
-
-<h4 id="Calculation"><a href="#Calculation" class="headerlink" title="Calculation"></a>Calculation</h4><h5 id="Non-fuzzy-criteria"><a href="#Non-fuzzy-criteria" class="headerlink" title="Non-fuzzy criteria"></a>Non-fuzzy criteria</h5><p>The stock with highest PE in same type will be excluded. </p>
-<table>
-<thead>
-<tr>
-<th>NAME</th>
-<th>PRICE</th>
-<th>ORIGI N</th>
-<th>TYPE</th>
-<th>PE</th>
-<th>PE_LV</th>
-<th>BUY_LV</th>
-<th>DIFF</th>
-<th>DIFF_LV</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>AAPL</td>
-<td>167</td>
-<td>US</td>
-<td>TECH</td>
-<td>18</td>
-<td>1</td>
-<td>4</td>
-<td>33</td>
-<td>2</td>
-</tr>
-<tr>
-<td><strong><del>TXN</del></strong></td>
-<td>110</td>
-<td>US</td>
-<td><strong><del>SEMI</del></strong></td>
-<td>31</td>
-<td>2</td>
-<td>4</td>
-<td>47</td>
-<td>2</td>
-</tr>
-<tr>
-<td>FB</td>
-<td>187</td>
-<td>US</td>
-<td>WWW</td>
-<td>35</td>
-<td>2</td>
-<td>5</td>
-<td>43</td>
-<td>2</td>
-</tr>
-<tr>
-<td>MU</td>
-<td>44</td>
-<td>US</td>
-<td>SEMI</td>
-<td>7</td>
-<td>1</td>
-<td>5</td>
-<td>80</td>
-<td>3</td>
-</tr>
-<tr>
-<td>BABA</td>
-<td>205</td>
-<td>CHN</td>
-<td>WWW</td>
-<td>55</td>
-<td>4</td>
-<td>5</td>
-<td>101</td>
-<td>4</td>
-</tr>
-<tr>
-<td>KM</td>
-<td>120</td>
-<td>CHN</td>
-<td>FOOD</td>
-<td>39</td>
-<td>3</td>
-<td>4</td>
-<td>220</td>
-<td>5</td>
-</tr>
-<tr>
-<td>SAMSUNG</td>
-<td>2325</td>
-<td>KOR</td>
-<td>SEMI</td>
-<td>9.53</td>
-<td>1</td>
-<td>4</td>
-<td>25</td>
-<td>1</td>
-</tr>
-<tr>
-<td>NINTENDO</td>
-<td>440</td>
-<td>JPN</td>
-<td>GAME</td>
-<td>50</td>
-<td>3</td>
-<td>4</td>
-<td>200</td>
-<td>5</td>
-</tr>
-<tr>
-<td>TENCENT</td>
-<td>59</td>
-<td>CHN</td>
-<td>WWW</td>
-<td>58</td>
-<td>4</td>
-<td>4</td>
-<td>230</td>
-<td>5</td>
-</tr>
-<tr>
-<td><strong><del>PYPL</del></strong></td>
-<td>85</td>
-<td>US</td>
-<td><strong><del>WWW</del></strong></td>
-<td>66.4</td>
-<td>5</td>
-<td>3</td>
-<td>90</td>
-<td>4</td>
-</tr>
-</tbody></table>
-<h5 id="Fuzzy-criteria"><a href="#Fuzzy-criteria" class="headerlink" title="Fuzzy criteria"></a>Fuzzy criteria</h5><p>high buying level and high difference level.</p>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Buying level</th>
-<th>Difference level</th>
-<th>Membership(min)</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>AAPL</td>
-<td>$\mu_{high_buy_lv}(4) &#x3D; 0.7$</td>
-<td>$\mu_{high_diff}(33)&#x3D;0.2$</td>
-<td>0.2</td>
-</tr>
-<tr>
-<td>FB</td>
-<td>$\mu_{high_buy_lv}(5) &#x3D; 0.9$</td>
-<td>$\mu_{high_diff}(43)&#x3D;0.2$</td>
-<td>0.2</td>
-</tr>
-<tr>
-<td>MU</td>
-<td>$\mu_{high_buy_lv}(5) &#x3D; 0.9$</td>
-<td>$\mu_{high_diff}(80)&#x3D;0.6$</td>
-<td>0.6</td>
-</tr>
-<tr>
-<td>BABA</td>
-<td>$\mu_{high_buy_lv}(5) &#x3D; 0.9$</td>
-<td>$\mu_{high_diff}(101)&#x3D;0.75$</td>
-<td>0.75</td>
-</tr>
-<tr>
-<td>KM</td>
-<td>$\mu_{high_buy_lv}(4) &#x3D; 0.7$</td>
-<td>$\mu_{high_diff}(220)&#x3D;0.95$</td>
-<td>0.7</td>
-</tr>
-<tr>
-<td>SAMSUNG</td>
-<td>$\mu_{high_buy_lv}(4) &#x3D; 0.7$</td>
-<td>$\mu_{high_diff}(25)&#x3D;0.2$</td>
-<td>0.2</td>
-</tr>
-<tr>
-<td>MINTENDO</td>
-<td>$\mu_{high_buy_lv}(4) &#x3D; 0.7$</td>
-<td>$\mu_{high_diff}(200)&#x3D;0.95$</td>
-<td>0.7</td>
-</tr>
-<tr>
-<td>TENCENT</td>
-<td>$\mu_{high_buy_lv}(4) &#x3D; 0.7$</td>
-<td>$\mu_{high_diff}(230)&#x3D;0.9$</td>
-<td>0.7</td>
-</tr>
-</tbody></table>
-<h4 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h4><p>Therefore, the system will select BABA to buy from our calculation.</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1585,7 +1357,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">146</span>
+          <span class="site-state-item-count">147</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -1650,7 +1422,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2024</span>
+  <span itemprop="copyrightYear">2025</span>
   <span class="with-love">
     <i class="user"></i>
   </span>
