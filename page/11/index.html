@@ -213,6 +213,99 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2019/02/28/c-predicate/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/liwei3.jpg">
+      <meta itemprop="name" content="Li Wei">
+      <meta itemprop="description" content="人生注定是一个人的旅行，但就算孤独也要做一直前行的人啊">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="NEWAY">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/02/28/c-predicate/" class="post-title-link" itemprop="url">c++:predicate</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-02-28 22:53:34" itemprop="dateCreated datePublished" datetime="2019-02-28T22:53:34-05:00">2019-02-28</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-03-21 09:19:01" itemprop="dateModified" datetime="2019-03-21T09:19:01-04:00">2019-03-21</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/code/" itemprop="url" rel="index"><span itemprop="name">code</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2019/02/28/c-predicate/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/02/28/c-predicate/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>个人也是初学根本就不了解谓词是什么意思，通过下面的例子大家自己体会吧。</p>
+<p> </p>
+<p>下面程序演示了count_if();</p>
+<p>该程序创建一个包含数字1-19的矢量，然后统计能够被3整除的元素个数。</p>
+<h2 id="为了达到这个目的，程序首先创建了一个称为dividesby3-的一元谓词，如果谓词的参数能够被3整除，该谓词返回ture"><a href="#为了达到这个目的，程序首先创建了一个称为dividesby3-的一元谓词，如果谓词的参数能够被3整除，该谓词返回ture" class="headerlink" title="为了达到这个目的，程序首先创建了一个称为dividesby3()的一元谓词，如果谓词的参数能够被3整除，该谓词返回ture"></a>为了达到这个目的，程序首先创建了一个称为dividesby3()的一元谓词，如果谓词的参数能够被3整除，该谓词返回ture</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">dividesby3</span><span class="params">(<span class="type">int</span> i)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">if</span>((i%<span class="number">3</span>)==<span class="number">0</span>)<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"> vector&lt;<span class="type">int</span>&gt; v;</span><br><span class="line"> <span class="type">int</span> i;</span><br><span class="line"> <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="number">20</span>;i++)v.<span class="built_in">push_back</span>(i);</span><br><span class="line"> cout &lt;&lt; <span class="string">&quot;Sequence:/n&quot;</span>;</span><br><span class="line"> <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;v.<span class="built_in">size</span>();i++)cout &lt;&lt; v[i] &lt;&lt;<span class="string">&quot; &quot;</span>;</span><br><span class="line"> cout &lt;&lt; endl;</span><br><span class="line"> i=<span class="built_in">cout_if</span>(v.<span class="built_in">begin</span>(),v.<span class="built_in">end</span>(),dividesby3);<span class="comment">//谓词就在这里被用到了</span></span><br><span class="line"> cout &lt;&lt;　ｉ　&lt;&lt;<span class="string">&quot; numbers are divisible by 3./n&quot;</span>;</span><br><span class="line"> <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2019/02/14/CUDA-analysis-tool/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1093,100 +1186,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2018/08/28/superNeuron/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/liwei3.jpg">
-      <meta itemprop="name" content="Li Wei">
-      <meta itemprop="description" content="人生注定是一个人的旅行，但就算孤独也要做一直前行的人啊">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="NEWAY">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/08/28/superNeuron/" class="post-title-link" itemprop="url">DeepXplore</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2018-08-28 17:50:29" itemprop="dateCreated datePublished" datetime="2018-08-28T17:50:29-04:00">2018-08-28</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-03-21 09:36:34" itemprop="dateModified" datetime="2019-03-21T09:36:34-04:00">2019-03-21</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/paper/" itemprop="url" rel="index"><span itemprop="name">paper</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine: </span>
-    
-    <a title="valine" href="/2018/08/28/superNeuron/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2018/08/28/superNeuron/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="SuperNeurons-Dynamic-GPU-Memory-Management-for-Training-Deep-Neural-Networks"><a href="#SuperNeurons-Dynamic-GPU-Memory-Management-for-Training-Deep-Neural-Networks" class="headerlink" title="SuperNeurons: Dynamic GPU Memory Management for Training Deep Neural Networks"></a>SuperNeurons: Dynamic GPU Memory Management for Training Deep Neural Networks</h1><h2 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h2><p>Memory optimization of  <strong>single DNN</strong> <strong>training</strong> work in <strong>single GPU</strong></p>
-<h3 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h3><ul>
-<li><strong>Liveness Analysis</strong> 只保存未来会用到的tensors</li>
-<li><strong>Unified Tensor Pool</strong> communication tools for GPU-CPU memory using Least Recent Used tensor replacement policy and a Tensor cache. （只有conv 这种co mputation-intensive的才放到cpu去）</li>
-<li><strong>Cost-Aware Re-computation</strong>  只要不高于peak memory 都不recompute，否则除了conv 都recompute（pool,activation…）</li>
-<li><strong>Selective convolution algorithm</strong> 基于此刻与peak memory的差值选择convolution 方法（eg。 FFT需要额外的convolution space）</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1257,7 +1256,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">147</span>
+          <span class="site-state-item-count">148</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

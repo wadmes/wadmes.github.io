@@ -213,6 +213,100 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2018/08/28/superNeuron/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/liwei3.jpg">
+      <meta itemprop="name" content="Li Wei">
+      <meta itemprop="description" content="人生注定是一个人的旅行，但就算孤独也要做一直前行的人啊">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="NEWAY">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/08/28/superNeuron/" class="post-title-link" itemprop="url">DeepXplore</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2018-08-28 17:50:29" itemprop="dateCreated datePublished" datetime="2018-08-28T17:50:29-04:00">2018-08-28</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-03-21 09:36:34" itemprop="dateModified" datetime="2019-03-21T09:36:34-04:00">2019-03-21</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/paper/" itemprop="url" rel="index"><span itemprop="name">paper</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2018/08/28/superNeuron/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2018/08/28/superNeuron/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="SuperNeurons-Dynamic-GPU-Memory-Management-for-Training-Deep-Neural-Networks"><a href="#SuperNeurons-Dynamic-GPU-Memory-Management-for-Training-Deep-Neural-Networks" class="headerlink" title="SuperNeurons: Dynamic GPU Memory Management for Training Deep Neural Networks"></a>SuperNeurons: Dynamic GPU Memory Management for Training Deep Neural Networks</h1><h2 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h2><p>Memory optimization of  <strong>single DNN</strong> <strong>training</strong> work in <strong>single GPU</strong></p>
+<h3 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h3><ul>
+<li><strong>Liveness Analysis</strong> 只保存未来会用到的tensors</li>
+<li><strong>Unified Tensor Pool</strong> communication tools for GPU-CPU memory using Least Recent Used tensor replacement policy and a Tensor cache. （只有conv 这种co mputation-intensive的才放到cpu去）</li>
+<li><strong>Cost-Aware Re-computation</strong>  只要不高于peak memory 都不recompute，否则除了conv 都recompute（pool,activation…）</li>
+<li><strong>Selective convolution algorithm</strong> 基于此刻与peak memory的差值选择convolution 方法（eg。 FFT需要额外的convolution space）</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2018/08/27/Advesarial%20study/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1191,102 +1285,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2018/03/14/%E5%B9%B3%E5%87%A1%E7%9A%84%E4%B8%96%E7%95%8C/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/liwei3.jpg">
-      <meta itemprop="name" content="Li Wei">
-      <meta itemprop="description" content="人生注定是一个人的旅行，但就算孤独也要做一直前行的人啊">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="NEWAY">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/03/14/%E5%B9%B3%E5%87%A1%E7%9A%84%E4%B8%96%E7%95%8C/" class="post-title-link" itemprop="url">平凡的世界</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2018-03-14 23:36:20" itemprop="dateCreated datePublished" datetime="2018-03-14T23:36:20-04:00">2018-03-14</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-02-22 03:33:43" itemprop="dateModified" datetime="2020-02-22T03:33:43-05:00">2020-02-22</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/life/" itemprop="url" rel="index"><span itemprop="name">life</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine: </span>
-    
-    <a title="valine" href="/2018/03/14/%E5%B9%B3%E5%87%A1%E7%9A%84%E4%B8%96%E7%95%8C/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2018/03/14/%E5%B9%B3%E5%87%A1%E7%9A%84%E4%B8%96%E7%95%8C/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h5 id="河南人"><a href="#河南人" class="headerlink" title="河南人"></a>河南人</h5><p>河南人是中国的吉普赛人，全国任何地方都可以看见这些不择生活条件的劳动者。试想，如果出国就象出省一样容易的话，那么全世界也会到处遍布河南人的足迹。他们和吉普赛人不一样。吉普赛人只爱飘泊，不爱劳动。但河南人除过个别不务正业者之外，不论走到哪里，都用自己的劳动技能来换取报酬。</p>
-<h5 id="润叶和少安的故事"><a href="#润叶和少安的故事" class="headerlink" title="润叶和少安的故事"></a>润叶和少安的故事</h5><p>有一次，同学们在校院里玩“找朋友”的游戏。他不敢到人圈里去，因为他屁股后面的补钉又绽开了，肉都露在了外面。他看别人玩，自己脊背紧贴着教室墙，连动也不就动。有一个男孩子大概早发现他裤子破了，这时就串通几个人一扑上来，把他拉在了人圈里。所有的男娃娃都指着他的屁股蛋“噢”一声喊叫起来，并且起哄唱起了那首农村的儿歌：烂裤裤，没媳妇，尻子里吊个水鸪鸪……女娃娃们都已经到了懂得害羞的年龄，红着脸四散跑了。 　　他又难受又委屈。下午放学后，也没回家去。他一个人转到金家祖坟后面的一个土圪崂里，睡在地上哭了一鼻子。土圪崂上面就是高高的神仙山。他想起了老人们常说的那个下凡的仙女；也想起了那个痛哭而死的男人——那男人的眼泪就流成了脚下的哭咽河。哭咽河，哭咽河，男人的眼泪流成的河…… 　　他突然听见润叶轻轻地喊他。他慌忙坐起来，臊得满脸通红。润叶站在他旁边，说：“我回家里拿了针线，让我给你把补钉缝一缝……” 　　“你不会做针钱！”他不愿让润叶缝那块补钉——因为那是个丢人地方。 　　“我学会做针线了，让我试一下！”润叶说着便蹲在他身边，硬掀转他的身子，便笨拙地给他缝起来了。那时润叶才十岁，说不上会做针线，只是胡串了几针，让原来的补钉能遮住羞丑。她的针不时扎在他的屁股蛋上，疼得他直叫唤。她在后面笑个不停。勉强缝完后，她让他站起来走一走。 　　他刚站起来走了几步，就听见后面“嘶”的一声——又破了！ 　　润叶捂住嘴，笑得前伏后仰，说：“没顶事！让我再缝！”他赶忙说：“算了！我回去叫我妈缝……”</p>
-<h5 id="少安放弃求学"><a href="#少安放弃求学" class="headerlink" title="少安放弃求学"></a>少安放弃求学</h5><p>对父亲说：“爸爸，我回来劳动呀。我已经上到了高小，这也不容易了，多少算有了点文化。就是以后在村里劳动，也不睁眼睛受罪了。我回来，咱们两个人劳动，一定要把少平和兰香的书供成。只要他两个有本事，能考到哪里，咱们就把他们供到哪里。哪怕他们出国留洋。咱们也挣命供他们吧！他们念成了，和我念成一样。不过，爸爸，我只是想进一回初中的考场；我要给村里村外的人证明，我不上中学，不是因为我考不上！”</p>
-<h5 id="少平的人生感想"><a href="#少平的人生感想" class="headerlink" title="少平的人生感想"></a>少平的人生感想</h5><p>他现在认识到，他是一个普普通通的人，应该按照普通人的条件正正常常的生活，而不要做太多的非分之想。当然，普通并不等于庸俗。他也许一辈子就是个普通人，但他要做一个不平庸的人。在许许多多平平常常的事情中，应该表现出不平常的看法和做法来。比如，象顾养民这家伙，挨了别人的打，但不报复打他的人——尽管按常情来说，谁挨了打也不会平平静静，但人家的做法就和一般人不一样。这件事就值得他好好思量思量。这期间，少平获得了一个非常重要的认识：在最平常的事情中都可以显示出一个人人格的伟大来！</p>
-<h5 id="知识的力量"><a href="#知识的力量" class="headerlink" title="知识的力量"></a>知识的力量</h5><p>顾养民渐渐觉得，孙少平身上有一种说不清楚的吸引力——这在农村来的学生中是很少见的。他后来又慢慢琢磨，才意识到，除过性格以外，最主要的是这人爱看书。知识就是力量——他父亲告诉他说，这句话是著名英国哲学家培根说的。是的，知识这种力量可以改变一个人，甚至可以重新塑造一个人。养民自己出身知识分子家庭，因此很能理解这一点。</p>
-<h5 id="懂事的兰香"><a href="#懂事的兰香" class="headerlink" title="懂事的兰香"></a>懂事的兰香</h5><p>村里来了工作干部轮上他们管饭，家里总要把少得可怜的白面拿出来一点，给公家人做一顿好吃的。客人不会都吃完，最后总要剩那么一两碗。这样的时候，家里人就找不见兰香，她早已经找借口躲出去了，她知道，剩下的这点好饭，应该让奶奶吃。就是奶奶不吃，也应该让爸爸和哥哥吃——他们出山劳动，活苦重</p>
-<h5 id="八十年代人民心中的毛主席"><a href="#八十年代人民心中的毛主席" class="headerlink" title="八十年代人民心中的毛主席"></a>八十年代人民心中的毛主席</h5><p>孙兰香站在这悲伤的人群中哭着。她想起奶奶和爸爸常给她说的，是毛主席把他们这样的穷人从旧社会的苦海中救了出来。从她记事开始，要是哪一年有了灾害，他们家都要吃国家的救济粮。奶奶和爸爸说，这都是毛主席老人家给他们的！要是旧社会，遇到年馑，不知要饿死多少人呢！他们全家都深深热爱大救星毛主席。每年过春节，穷得哪怕什么也不买，但总要买一张毛主席像贴在墙壁上。现在，没有了毛主席，以后可怎么办呀？</p>
-<h5 id="润叶的屈服"><a href="#润叶的屈服" class="headerlink" title="润叶的屈服"></a>润叶的屈服</h5><p>她开始动摇了。她的力量使她无法支撑如此巨大的精神压力。当然，除过客观的压力以外，她主观上的素养本来也不够深厚。是的，她现在还不能从更高意义上来理解自身和社会。尽管她是一个正直善良的人，懂事，甚至也有较鲜明的个性，但并不具有深刻的思想和广阔的眼界。因此，最终她还是不能掌握自己的命运。 　　于是，她的所有局限性就导致她做出了违背自己心愿的决定：由于对爱情的绝望，加上对二爸的热爱，她最后终于答应了这门亲事……</p>
-<p>从古到今，人世间有过多少这样的阴差阳错！这类生活悲剧的演出，不能简单地归结为一个人的命运，而常常是当时社会的各种矛盾所造成的。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1357,7 +1355,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">147</span>
+          <span class="site-state-item-count">148</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

@@ -213,6 +213,105 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2019/12/30/attention/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/liwei3.jpg">
+      <meta itemprop="name" content="Li Wei">
+      <meta itemprop="description" content="人生注定是一个人的旅行，但就算孤独也要做一直前行的人啊">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="NEWAY">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/12/30/attention/" class="post-title-link" itemprop="url">attention</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-12-30 11:21:51" itemprop="dateCreated datePublished" datetime="2019-12-30T11:21:51-05:00">2019-12-30</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-04-12 00:23:40" itemprop="dateModified" datetime="2022-04-12T00:23:40-04:00">2022-04-12</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/study/" itemprop="url" rel="index"><span itemprop="name">study</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2019/12/30/attention/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/12/30/attention/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>和yuzhe讨论了下一个我看来奇怪的attention公式</p>
+<p>$e_{ij}&#x3D; a^T * [h_i||h_j]$</p>
+<p>这里的$e_{ij}$ 代表the importance between meta-path based node pairs (即两点i<strong>对</strong>j的重要性), $||$是concat符号。$h_i$代表点i的feature，$a$即为 attention vector （trainable）</p>
+<p>但是这样的e能代表的重要性关系其实为：</p>
+<ul>
+<li>$a_0 * h_i$ 越大，代表点i“重要性”越大，即不分相对关系，不管你是j1，j2还是j3，对于i1，i2，只要$a_0 * h_{i1}&gt;a_0 * h_{i2}$,，则 $e_{i1j} &gt; e_{i2j}$。不论j是哪个点。但这真的能代表某些网络间的attention关系吗？</li>
+</ul>
+<p>后面又看了google的那篇 what you need is attention，明显可解释性就强多了。</p>
+<p>UPDATE:</p>
+<p>DAmn, 这个bug被比我聪明的人发paper了</p>
+<p>HOW ATTENTIVE ARE GRAPH ATTENTION NETWORKS?</p>
+<p><a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2105.14491.pdf">https://arxiv.org/pdf/2105.14491.pdf</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2019/12/29/%E5%B9%B4%E6%9C%AB%E9%9A%8F%E7%AC%94/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1330,98 +1429,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2019/09/17/CUHK-apt-get-proxy-problem/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/liwei3.jpg">
-      <meta itemprop="name" content="Li Wei">
-      <meta itemprop="description" content="人生注定是一个人的旅行，但就算孤独也要做一直前行的人啊">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="NEWAY">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/09/17/CUHK-apt-get-proxy-problem/" class="post-title-link" itemprop="url">CUHK apt-get proxy problem</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2019-09-17 17:39:26 / Modified: 05:57:33" itemprop="dateCreated datePublished" datetime="2019-09-17T17:39:26-04:00">2019-09-17</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/life/" itemprop="url" rel="index"><span itemprop="name">life</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine: </span>
-    
-    <a title="valine" href="/2019/09/17/CUHK-apt-get-proxy-problem/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/09/17/CUHK-apt-get-proxy-problem/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>中大CS的office台式是需要proxy才可以连接外网。但是ubuntu现在apt默认不是用的全局proxy，现在记下这些操作，以方便后人。</p>
-<p>首先添加proxy到apt config</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/apt/apt.conf.d/proxy.conf</span><br></pre></td></tr></table></figure>
-
-<p>在新建prox.conf中添加CUHK CSE proxy：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">注意一定是http://proxy...而不是proxy..</span></span><br><span class="line">Acquire::http::Proxy &quot;http://proxy.cse.cuhk.edu.hk:8000&quot;;</span><br><span class="line">Acquire::https::Proxy &quot;http://proxy.cse.cuhk.edu.hk:8000&quot;;</span><br></pre></td></tr></table></figure>
-
-<p>接着实际添加源的时候</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo -E add-apt-repository ppa:xxx</span><br></pre></td></tr></table></figure>
-
-<p>-E: 保留当前的环境变量而不被重置（不加的话 http_proxy这些都不可以了)</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1492,7 +1499,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">147</span>
+          <span class="site-state-item-count">148</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
