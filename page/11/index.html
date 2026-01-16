@@ -213,6 +213,143 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2019/03/11/Optimally-Scheduling-CNN-Convolutions-forEfficient-Memory-Access/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/liwei3.jpg">
+      <meta itemprop="name" content="Li Wei">
+      <meta itemprop="description" content="人生注定是一个人的旅行，但就算孤独也要做一直前行的人啊">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="NEWAY">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/03/11/Optimally-Scheduling-CNN-Convolutions-forEfficient-Memory-Access/" class="post-title-link" itemprop="url">Optimally Scheduling CNN Convolutions for Efficient Memory Access</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-03-11 13:03:57" itemprop="dateCreated datePublished" datetime="2019-03-11T13:03:57-04:00">2019-03-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-03-23 00:11:07" itemprop="dateModified" datetime="2019-03-23T00:11:07-04:00">2019-03-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/paper/" itemprop="url" rel="index"><span itemprop="name">paper</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2019/03/11/Optimally-Scheduling-CNN-Convolutions-forEfficient-Memory-Access/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/03/11/Optimally-Scheduling-CNN-Convolutions-forEfficient-Memory-Access/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><h3 id="problem"><a href="#problem" class="headerlink" title="problem"></a><strong>problem</strong></h3><p>difficult to simultaneously buffer the input feature maps, the output feature maps, and the filter weights in limited internal accelerator memory.</p>
+<h3 id="Previous-method"><a href="#Previous-method" class="headerlink" title="Previous method"></a>Previous method</h3><p>use large SRAM buffers (up to a few MBytes may be used). <strong>drawback</strong>: large amounts of memory are not affordable.</p>
+<h3 id="Another-point-x2F-direction"><a href="#Another-point-x2F-direction" class="headerlink" title="Another point&#x2F;direction:"></a><strong>Another point&#x2F;direction</strong>:</h3><ul>
+<li><p>data <strong>reuse</strong> , is determined by the <strong>dataflow schedule</strong> of computatio</p>
+<ul>
+<li><p><strong>Previous work</strong>: the working set of these innermost loops fits the available internal storage</p>
+<p><strong>drawback</strong>: existing models have not been adapted to explicitly <strong>application managed buffers,</strong> which constitute by far the most common memory architecture template for CNN accelerators, therefore, overestimate internal storage requirements</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="Contribution-of-this-work"><a href="#Contribution-of-this-work" class="headerlink" title="Contribution of this work:"></a>Contribution of this work:</h3><ul>
+<li>new analytical memory performance model to evaluate dataflow schedules</li>
+<li>best dataflow schedules </li>
+<li>applied it on the case study of the design of a flexible CNN accelerator for deeply embedded Systems-on-Chip.</li>
+</ul>
+<h2 id="Background"><a href="#Background" class="headerlink" title="Background"></a>Background</h2><h3 id="Convolution-loop-nest"><a href="#Convolution-loop-nest" class="headerlink" title="Convolution loop-nest"></a>Convolution loop-nest</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// M output fmaps loop</span></span><br><span class="line">LOF: <span class="keyword">for</span> (m = <span class="number">0</span>; m &lt; M; m++)</span><br><span class="line"><span class="comment">// C input fmaps loop</span></span><br><span class="line">	LIF: <span class="keyword">for</span> (c = <span class="number">0</span>; c &lt; C; c++)</span><br><span class="line"><span class="comment">// spatial loops (ExE)</span></span><br><span class="line">		LSY: <span class="keyword">for</span> (y = <span class="number">0</span>; y &lt; E; y++)</span><br><span class="line">			LSX: <span class="keyword">for</span> (x = <span class="number">0</span>; x &lt; E; x++)</span><br><span class="line"><span class="comment">// filter loops (RxR, stride S)</span></span><br><span class="line">				LFY: <span class="keyword">for</span> (k = <span class="number">0</span>; k &lt; R; k++)</span><br><span class="line">                    LFX: <span class="keyword">for</span> (l = <span class="number">0</span>; l &lt; R; l++)</span><br><span class="line">                    &#123;</span><br><span class="line">                    p = I[c][y*S+k][x*S+l];</span><br><span class="line">                    w = W[m][c][k][l];</span><br><span class="line">                    O[m][y][x] += p*w;</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="Goal"><a href="#Goal" class="headerlink" title="Goal"></a>Goal</h3><p>The problem consists in <strong>minimizing the number of memory accesses to the off-accelerator memory</strong> given a limited local buffer capacity.</p>
+<h3 id="Reuse-in-convolution"><a href="#Reuse-in-convolution" class="headerlink" title="Reuse in convolution"></a>Reuse in convolution</h3><ul>
+<li>Input feature maps</li>
+<li>Output feature maps</li>
+<li>Weight</li>
+</ul>
+<p>the reuse of a reference is <strong>carried</strong> by a loop if the same memory location is used by different iterations of that loop</p>
+<p>However, unless the entire working set fits the local buffer, this reuse cannot be taken full advantage of.</p>
+<h3 id="Reuse-buffer"><a href="#Reuse-buffer" class="headerlink" title="Reuse buffer"></a>Reuse buffer</h3><ul>
+<li><p>Data cache</p>
+</li>
+<li><p>Application-managed scratchpad memories</p>
+<p><strong>partitioning</strong> the local reuse buffer in a set of application-managed buffers,</p>
+</li>
+</ul>
+<h3 id="Data-Locality-Optimization"><a href="#Data-Locality-Optimization" class="headerlink" title="Data Locality Optimization"></a>Data Locality Optimization</h3><ul>
+<li><p>reordring</p>
+</li>
+<li><p>titling</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// output fmaps -- loop on tiles</span></span><br><span class="line">LTOF: <span class="keyword">for</span> (mm = <span class="number">0</span>; mm &lt; M; mm += mss)</span><br><span class="line">    <span class="comment">// input fmaps -- loop on tiles</span></span><br><span class="line">    LTIF: <span class="keyword">for</span> (cc = <span class="number">0</span>; cc &lt; C; cc += css)</span><br><span class="line">    <span class="comment">// spatial -- loops on tiles</span></span><br><span class="line">        LTSY: <span class="keyword">for</span> (yy = <span class="number">0</span>; yy &lt; E; yy += iss)</span><br><span class="line">            LTSX: <span class="keyword">for</span> (xx = <span class="number">0</span>; xx &lt; E; xx += jss)</span><br><span class="line">            <span class="comment">// output fmaps -- tile loop</span></span><br><span class="line">                LOF: <span class="keyword">for</span> (m=mm; m&lt;min(mm+mss,M); m++)</span><br><span class="line">                <span class="comment">// input fmaps -- tile loop</span></span><br><span class="line">                    LIF: <span class="keyword">for</span> (c=cc; c&lt;min(cc+css,C); c++)</span><br><span class="line">                    <span class="comment">// spatial -- tile loops</span></span><br><span class="line">                        LSY: <span class="keyword">for</span> (y=yy; y&lt;min(yy+iss,E); y++)</span><br><span class="line">                            LSX: <span class="keyword">for</span> (x=xx; x&lt;min(xx+jss,E); x++)</span><br><span class="line">                            <span class="comment">// kernel -- tile loops</span></span><br><span class="line">                                LFY: <span class="keyword">for</span> (k=<span class="number">0</span>; k&lt;R; k++)</span><br><span class="line">                                    LFX: <span class="keyword">for</span> (l=<span class="number">0</span>; l&lt;R; l++)</span><br><span class="line">                                    &#123;</span><br><span class="line">                                    p = I[c][y*S+k][x*S+l];</span><br><span class="line">                                    w = W[m][c][k][l];</span><br><span class="line">                                    O[m][y][x] += p*w;</span><br><span class="line">                                    &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h2><h3 id="Analytical-model-for-evaluating-the-dataflow-schedules"><a href="#Analytical-model-for-evaluating-the-dataflow-schedules" class="headerlink" title="Analytical model for evaluating the dataflow schedules"></a>Analytical model for evaluating the dataflow schedules</h3><h4 id="Distance-d-X-L"><a href="#Distance-d-X-L" class="headerlink" title="Distance $d_X(L)$"></a>Distance $d_X(L)$</h4><p>The number of loop iterations in the loop L , that separates two consecutive accesses to the same data element X</p>
+<p>(d次iteration后，再也不会access到这次access的data element)</p>
+<h4 id="footprint-F-X-L-i"><a href="#footprint-F-X-L-i" class="headerlink" title="footprint $F_X(L_i)$"></a>footprint $F_X(L_i)$</h4><p>the footprint of array X in loop L measures <strong>the number of distinct elements of X</strong> used inside L. </p>
+<p><img src="/images/1552309141092.png" alt="1552309141092"></p>
+<p>n(L) : loop L 的interation数目， L0 代表最里面的inner loop</p>
+<p>the actual required size for the application-managed buffer is computed as follows:</p>
+<p><img src="/images/1552309773395.png" alt="1552309773395"></p>
+<h4 id="memory-traffic-T-X"><a href="#memory-traffic-T-X" class="headerlink" title="memory traffic $T_X$"></a>memory traffic $T_X$</h4><p>number of bytes accessed in off-accelerator memory for array X</p>
+<p><img src="/images/1552309887178.png" alt="1552309887178"></p>
+<p>PX the numerical precision (in bytes) used for its storage.</p>
+<p>It should be noticed that i here is actually defined on maximal B(Li) that fits the size of buffer</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2019/02/28/c-predicate/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1078,114 +1215,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2018/08/28/SOSP2017DeepXplore/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/liwei3.jpg">
-      <meta itemprop="name" content="Li Wei">
-      <meta itemprop="description" content="人生注定是一个人的旅行，但就算孤独也要做一直前行的人啊">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="NEWAY">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/08/28/SOSP2017DeepXplore/" class="post-title-link" itemprop="url">DeepXplore</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2018-08-28 17:50:29" itemprop="dateCreated datePublished" datetime="2018-08-28T17:50:29-04:00">2018-08-28</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-03-21 09:36:06" itemprop="dateModified" datetime="2019-03-21T09:36:06-04:00">2019-03-21</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/paper/" itemprop="url" rel="index"><span itemprop="name">paper</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine: </span>
-    
-    <a title="valine" href="/2018/08/28/SOSP2017DeepXplore/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2018/08/28/SOSP2017DeepXplore/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="SOSP2017"><a href="#SOSP2017" class="headerlink" title="SOSP2017"></a>SOSP2017</h1><h2 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h2><p>automated and systematic <strong>testing</strong> of large-scale, real-world DL systems with thousands of neurons and millions of parameters for all corner cases is extremely challenging. </p>
-<p>如何准确评估一个DL系统的好坏？</p>
-<h3 id="Background"><a href="#Background" class="headerlink" title="Background"></a>Background</h3><ul>
-<li><strong>adversarial deep learning</strong> have demonstrated that carefully crafted synthetic images by adding <strong>minimal perturbations扰动</strong> to an existing image can fool state-of-the-art DL systems.（像素攻击）<ul>
-<li>limit: it must limit its perturbations to tiny invisible changes or require manual checks.</li>
-</ul>
-</li>
-<li>Challenges:<ul>
-<li>how to generate inputs that trigger different parts of a DL system’s logic and uncover different types of erroneous behaviors,  </li>
-<li>how to identify erroneous behaviors of a DL system w<strong>ithout manual labeling&#x2F;checking.</strong></li>
-</ul>
-</li>
-<li>This work<ul>
-<li>neuron coverage (the number of neurons activated)</li>
-<li>multiple DL systems finish same work. (traditional software engineering technical)</li>
-<li>how to use gradient to solve the problem(test more neuron coverage and as many differential behaviors as possible)</li>
-</ul>
-</li>
-</ul>
-<h3 id="Details"><a href="#Details" class="headerlink" title="Details"></a>Details</h3><p>input: unlabeled test inputs</p>
-<p>output:  new tests that cover a large number of neurons  </p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1256,7 +1285,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">148</span>
+          <span class="site-state-item-count">149</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -1321,7 +1350,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2025</span>
+  <span itemprop="copyrightYear">2026</span>
   <span class="with-love">
     <i class="user"></i>
   </span>

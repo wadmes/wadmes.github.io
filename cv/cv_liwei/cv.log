@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.4.8)  5 DEC 2025 12:45
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.4.8)  14 JAN 2026 20:38
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -339,46 +339,16 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <7> on input line 20.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <5> on input line 20.
-(./doc/interest.tex) (./doc/education.tex) (./doc/experience.tex
-Underfull \hbox (badness 10000) in paragraph at lines 46--50
+(./doc/publication.tex [1
 
- []
-
-[1
-
-]
-Underfull \hbox (badness 10000) in paragraph at lines 65--66
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 78--79
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 103--104
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 110--111
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 124--125
-
- []
-
-) (./doc/teach.tex [2]) (./doc/award.tex [3]) (./doc/publication.tex [4] [5]) (./doc/skill.tex) [6] (./cv.aux) ) 
+]) [2] (./cv.aux) ) 
 Here is how much of TeX's memory you used:
- 6783 strings out of 476683
- 186695 string characters out of 5804048
- 1864018 words of memory out of 5000000
- 26970 multiletter control sequences out of 15000+600000
- 512949 words of font info for 47 fonts, out of 8000000 for 9000
+ 6740 strings out of 476683
+ 185880 string characters out of 5804048
+ 1861018 words of memory out of 5000000
+ 26947 multiletter control sequences out of 15000+600000
+ 512941 words of font info for 46 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 70i,9n,81p,657b,331s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 70i,5n,81p,657b,331s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on cv.pdf (6 pages).
+Output written on cv.pdf (2 pages).

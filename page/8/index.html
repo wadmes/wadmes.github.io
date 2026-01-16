@@ -213,6 +213,105 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2020/01/12/Graph-Isomorphsim-Network-Illustration/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/liwei3.jpg">
+      <meta itemprop="name" content="Li Wei">
+      <meta itemprop="description" content="人生注定是一个人的旅行，但就算孤独也要做一直前行的人啊">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="NEWAY">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/01/12/Graph-Isomorphsim-Network-Illustration/" class="post-title-link" itemprop="url">Graph Isomorphsim Network Illustration</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-01-12 13:04:07 / Modified: 07:47:05" itemprop="dateCreated datePublished" datetime="2020-01-12T13:04:07-05:00">2020-01-12</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/study/" itemprop="url" rel="index"><span itemprop="name">study</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2020/01/12/Graph-Isomorphsim-Network-Illustration/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/01/12/Graph-Isomorphsim-Network-Illustration/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1810.00826.pdf">Graph Isomorphism Network</a> 从数学理论的角度证明了，在验证graph是否同构(isomorphism)上，aggregation based gcn的能力不可能超过WL test。并以此提出了一个简单的graph isomorphism network，实现了能力范围内的最大效果。</p>
+<p>本文是对知乎大佬<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/62006729">论文解析</a>的补充。</p>
+<h2 id="WL-test"><a href="#WL-test" class="headerlink" title="WL test"></a>WL test</h2><ul>
+<li>The initial label of each node also influences the isomorphism. For example, $G_1$ and $G_2$ are graphs with same structure while $v^i_1,v^i_2$ has different labels, then the two graphs should be determined as non-isomorphism.</li>
+</ul>
+<h2 id="Lemma-2"><a href="#Lemma-2" class="headerlink" title="Lemma 2"></a>Lemma 2</h2><blockquote>
+<p>若aggregation based gcn将异构两图map到不同的embedding(即成功分辨为不同构)，则WL test也一定可以将该两图判定为不同构。</p>
+</blockquote>
+<p>该定理为了证明aggregation based gcn的能力不可能超过WL test，其实还有一个是</p>
+<blockquote>
+<p>若aggregation based gcn将同构两图map到相同的embedding(即成功分辨为同构)，则WL test也一定可以将该两图判定为同构。</p>
+</blockquote>
+<p>但这个是obvious的。。。</p>
+<p>大概证明思路。</p>
+<p>想象存在这样的两个异构图，使得gcn的embedding不一样，而WL test最后也无法判定（即最后output node label multiset 也一样）。</p>
+<p>那么我们可以从WL无法判定的方向证明:</p>
+<p>证明若WL 第i层node label一样，则gcn 第i层 node feature也肯定一样。</p>
+<p>这个证明通过归纳法推得。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2019/12/30/attention/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1333,102 +1432,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2019/09/18/Linux%E8%A3%85%E6%9C%BA%E8%AE%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/liwei3.jpg">
-      <meta itemprop="name" content="Li Wei">
-      <meta itemprop="description" content="人生注定是一个人的旅行，但就算孤独也要做一直前行的人啊">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="NEWAY">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/09/18/Linux%E8%A3%85%E6%9C%BA%E8%AE%B0/" class="post-title-link" itemprop="url">Linux装机记</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2019-09-18 16:18:21" itemprop="dateCreated datePublished" datetime="2019-09-18T16:18:21-04:00">2019-09-18</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-11-04 08:41:42" itemprop="dateModified" datetime="2019-11-04T08:41:42-05:00">2019-11-04</time>
-              </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine: </span>
-    
-    <a title="valine" href="/2019/09/18/Linux%E8%A3%85%E6%9C%BA%E8%AE%B0/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/09/18/Linux%E8%A3%85%E6%9C%BA%E8%AE%B0/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>今天固态到了，于是想着把系统装到固态里面，可谓一波三折，装了许多linux发行版，都记录下把</p>
-<h2 id="ubuntu18"><a href="#ubuntu18" class="headerlink" title="ubuntu18"></a>ubuntu18</h2><p>Gnome: 还是有cpu占用率 50%+的bug，</p>
-<h2 id="Manjaro-KDE"><a href="#Manjaro-KDE" class="headerlink" title="Manjaro KDE"></a>Manjaro KDE</h2><p>漂亮是漂亮，但是各种常用按键都要自己设定？？？（包括但不限于workspace切换，快捷打开terminal）</p>
-<h2 id="Manjaro-xKDE（忘名字了）"><a href="#Manjaro-xKDE（忘名字了）" class="headerlink" title="Manjaro xKDE（忘名字了）"></a>Manjaro xKDE（忘名字了）</h2><p>高分屏极度不友好。醉了。</p>
-<h2 id="Manjaro-clinnama"><a href="#Manjaro-clinnama" class="headerlink" title="Manjaro clinnama"></a>Manjaro clinnama</h2><p>高分屏友好 按键可以设定 算是比较满意的了。。但是dock不方便实现，也是醉了。</p>
-<h2 id="Deepin"><a href="#Deepin" class="headerlink" title="Deepin"></a>Deepin</h2><p>确实挺漂亮的。但是没有wifi（所有debian based通病）+ 不方便安装显卡驱动（官方的不可以安装，可能是proxy问题？）</p>
-<h2 id="阶段性总结"><a href="#阶段性总结" class="headerlink" title="阶段性总结"></a>阶段性总结</h2><p>一天下来还是没有满意的，明天打算尝试 manjaro + gnome + macOS ，不行就manjaro + deepin</p>
-<p>总之几个痛点是一定要满足的</p>
-<ul>
-<li>WIFI（不然学校的proxy实在是太。。。）</li>
-<li>高分屏适配</li>
-<li>workspace，terminal等快捷键</li>
-<li>其他的比如dock这种美观的就没办法了。哎做人真难，谁让我有强迫症呢</li>
-</ul>
-<h2 id="折腾之终章"><a href="#折腾之终章" class="headerlink" title="折腾之终章"></a>折腾之终章</h2><p>这是两个月后的总结：</p>
-<p>windows 万岁。</p>
-<p>另外附一个win10 修改全局字体为苹方的链接吧 (苹方实在是太适合高分屏了)</p>
-<p><a target="_blank" rel="noopener" href="https://www.iplaysoft.com/windows-replace-pingfang.html">戳我</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1499,7 +1502,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">148</span>
+          <span class="site-state-item-count">149</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -1564,7 +1567,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2025</span>
+  <span itemprop="copyrightYear">2026</span>
   <span class="with-love">
     <i class="user"></i>
   </span>

@@ -21,7 +21,7 @@
                <div class="menu-item"><a href="reward.html">Rewards</a></div>
             </td>
             <td id="layout-content">
-               <table class="imgtable">
+               <!-- <table class="imgtable">
                   <tr>
                      <td style="vertical-align: top;">
                         <h2>Category by topics</h2>
@@ -66,181 +66,208 @@
                         </ul>
                      </td>
                   </tr>
-               </table>
+               </table> -->
+               <h1>Research Summary</h1>
+               My research is dedicated to realizing Autonomous EDA, which relies on three necessities (they might not be the sufficient conditions):
+
+               <li> 
+                  <b><a href="#thrust-perception">Multi-modal Perception (The Brain & Eyes):</a></b> 
+                  The strategic agent must comprehend complex, multi-modal design contexts—bridging symbolic RTL semantics with spatial netlist topologies.
+              </li>
+              
+              <li> 
+                  <b><a href="#thrust-optimization">Analytical and Differentiable Optimization (The Hands):</a></b> 
+                  The tools invoked by the agent must ensure superior PPA for billion-transistor circuits through scalable, differentiable optimization and analytical solvers.
+              </li>
+              
+              <li> 
+                  <b><a href="#thrust-robustness">Grounding (The Foundation):</a></b> 
+                  To ensure manufacturability, autonomous designs must be grounded in physical reality via layout-aware testing and silicon-to-model feedback.
+              </li>
+               <br><br>
+               <section id="thrust-perception">
+                  <h2>Thrust 1: Multi-Modal Perception for EDA (The “Eyes”)</h2>
+                  Autonomous EDA begins with perception, the capability for AI to understand the design context. However,
+design context presents unique challenges to standard AI models due to its complex, highly structured, and
+multi-modal nature. My research asks: How can we enable AI to perceive the complex, multi-modal nature
+of integrated circuits?
+<br><br>
+                  <section id="T1-1">
+                      <h3>1.1 Multi-Modal Representations in EDA tasks</h3>
+                      <table class="imgtable">
+                          <tr>
+                              <td>
+                                  <img src="./img/ASPDAC21.png" alt="Representation" width="500px" />&nbsp;
+                              </td>
+                              <td style="vertical-align: top;">
+                                  <h4>Related Publication(s)</h4>
+                                  <b>Wei Li</b>, Jialu Xia, Yuzhe Ma, Jialu Li, Yibo Lin, Bei Yu, 
+                                  “Adaptive Layout Decomposition with Graph Embedding Neural Networks”, 
+                                  ACM/IEEE Design Automation Conference (<b>DAC</b>), San Francisco, July 19-23, 2020. 
+                                  (<a href="./raw/DAC20.pdf" target="_blank">preprint</a>).
+                                  <br><br>
+                                  <b>Wei Li</b>, Yuxiao Qu, Gengjie Chen, Yuzhe Ma, Bei Yu, 
+                                  “TreeNet: Deep Point Cloud Embedding for Routing Tree Construction”, 
+                                  IEEE/ACM Asian and South Pacific Design Automation Conference (<b>ASP-DAC</b>), 2021 
+                                  <b><font color="red">(Best Paper Award)</font></b>.
+                                  (<a href="./raw/ASPDAC21-TreeNet.pdf" target="_blank">preprint</a>).
+                                  <br><br>
+                                  <h4>Highlight(s)</h4>
+                                  <li>Designed Graph Neural Networks specifically for layout decomposition and routing tree construction.</li>
+                                  <li>Formalized point cloud properties for EDA routing with theoretical proofs.</li>
+                              </td>
+                          </tr>
+                      </table>
+                  </section>
+                  <br>
+              
+                  <section id="T1-2">
+                      <h3>1.2 Theoretical Limits of Graph Learning</h3>
+                      <table class="imgtable">
+                          <tr>
+                              <td>
+                                  <img src="./img/MLCAD23.png" alt="Graph Limits" width="500px" />&nbsp;
+                              </td>
+                              <td style="vertical-align: top;">
+                                  <h4>Related Publication(s)</h4>
+                                  <b>Wei Li</b>, Ruben Purdy, Jose Moura, Shawn Blanton, 
+                                  “Characterize the ability of GNNs in attacking logic locking”, 
+                                  ACM/IEEE Workshop on Machine Learning for CAD (<b>MLCAD</b>), 2023. 
+                                  (<a href="./raw/MLCAD23.pdf" target="_blank">preprint</a>).
+                                  <br><br>
+                                  <b>Wei Li</b>, Ruxuan Li, Yuzhe Ma, Siu On Chan, David Pan, Bei Yu, et al. “Rethinking Graph Neural Networks for the Graph Coloring Problem.” (<a href = "https://arxiv.org/pdf/2208.06975.pdf"target=&ldquo;blank&rdquo;>arXiv</a>, <a href = "./raw/color-appendix.pdf"target=&ldquo;blank&rdquo;>appendix</a>)
+                                  <br><br>
+                                  <h4>Highlight(s)</h4>
+                                  <li>Proved that GNNs are upper bounded by the heterogeneous Weisfeiler-Lehman test in netlist isomorphism.</li>
+                                  <li>Explored the theoretical boundaries of graph learning in solving combinatorial optimization.</li>
+                              </td>
+                          </tr>
+                      </table>
+                  </section>
+                  <br>
+              
+                  <section id="T1-3">
+                      <h3>1.3 Multi-modal Large Language Models</h3>
+                      <table class="imgtable">
+                          <tr>
+                              <td>
+                                 <img src="./img/BRIDGES.png" alt="Graph Limits" width="500px" />&nbsp;
+                              </td>
+                              <td style="vertical-align: top;">
+                                  <h4>Related Project(s)</h4>
+                                  <b>Wei Li</b>, Yang Zou, Christopher Ellis, Ruben Purdy, Shawn Blanton and José Moura, “BRIDGE: Bridging Graph and Large Language Models in EDA”, IEEE International Conference on LLM-Aided Design (<b>ICLAD</b>), 2025. <b><font color="red">(Best Paper Honorable Mention Award, 1/94)</font></b>.
+                                  <br><br>
+                                  <h4>Highlight(s)</h4>
+                                  <li>Integrating textual reasoning of LLMs with structural inductive biases of GNNs.</li>
+                                  <li>A unified perception framework for heterogeneous EDA data.</li>
+                              </td>
+                          </tr>
+                      </table>
+                  </section>
+              </section>
+              
+              <br><br>
+              
+              <section id="thrust-optimization">
+                  <h2>Thrust 2: Analytical and Differentiable Optimization (The “Hands”)</h2>
+                  Most EDA tasks are combinatorial optimization problems plagued by discrete constraints (e.g., binary digits).
+                  My approach maps discrete problems into continuous landscapes, and the global gradients can guide the
+                  optimization out of local minima.
+                  <br><br>
+                  <section id="T2-1">
+                      <h3>2.1 Analytical Optimizations</h3>
+                      <table class="imgtable">
+                          <tr>
+                              <td>
+                                  <img src="./img/DAC23.gif" alt="Optimization" width="500px" />&nbsp;
+                              </td>
+                              <td style="vertical-align: top;">
+                                  <h4>Related Publication(s)</h4>
+                                  <b>Wei Li</b>, et al. “OpenMPL: An Open Source Layout Decomposer”, 
+                                  IEEE Transactions on Computer-Aided Design of Integrated Circuits and Systems (<b>TCAD</b>).
+                                  (<a href="https://github.com/limbo018/OpenMPL" target="_blank">code</a>).
+                                  <br><br>
+                                  <b>Wei Li</b>, Fangzhou Wang, Jose Moura, Shawn Blanton, 
+                                  “Global floorplanning via semidefinite programming”, 
+                                  ACM/IEEE Design Automation Conference (<b>DAC</b>), 2023.
+                                  <br><br>
+                                  <h4>Highlight(s)</h4>
+                                  <li><b>OpenMPL:</b> A comprehensive open-source framework for layout decomposition.</li>
+                                  <li><b>SDP Floorplanning:</b> A novel Semidefinite Programming approach for module placement.</li>
+                              </td>
+                          </tr>
+                      </table>
+                  </section>
+                  <br>
+              
+                  <section id="T2-2">
+                      <h3>2.2 Differentiable Programming</h3>
+                      <h4>Differentiable Global Routing</h4>
+                      <table class="imgtable">
+                          <tr>
+                              <td>
+                                  <img src="./img/DGR.png" alt="Differentiable" width="500px" />&nbsp;
+                              </td>
+                              <td style="vertical-align: top;">
+                                  <h4>Related Publication(s)</h4>
+                                  <b>Wei Li</b>, et al. “DGR: Differentiable Global Routing”, 
+                                  ACM/IEEE Design Automation Conference (<b>DAC</b>), San Francisco, 2024.
+                                  <br><br>
+                                  <h4>Highlight(s)</h4>
+                                  <li>Developed a differentiable global router for concurrent optimization of millions of nets.</li>
+                              </td>
+                          </tr>
+                      </table>
+                      <h4>Differentiable Automatic Test Pattern Generation</h4>
+                      <table class="imgtable">
+                          <tr>
+                              <td>
+                                  <img src="./img/DEFT.png" alt="Differentiable" width="700px" />&nbsp;
+                              </td>
+                              <td style="vertical-align: top;">
+                                  <h4>Related Publication(s)</h4>
+                                  <b>Wei Li</b>, Yang Zou, Yixin Liang, Shawn Blanton and José Moura, “DEFT: Differentiable Automatic Test Pattern Generation”, <a href = "https://arxiv.org/abs/2512.23746"target=&ldquo;blank&rdquo;>arXiv</a>.
+                                  <br><br>
+                                  <h4>Highlight(s)</h4>
+                                  <li>Reformulated ATPG as a differentiable optimization with a new reparameterization</li>
+                                  <li>Custom CUDA kernel achieves 4×–26× speedup on industrial circuits</li>
+                                  <li>Improved HTD detection by 21%–49% under the same pattern budget</li>
+                                  
+
+                              </td>
+                          </tr>
+                      </table>
+                  </section>
+              </section>
+              
+              <br><br>
+              
+              <section id="thrust-robustness">
+                  <h2>Thrust 3: Robustness Under Physical Uncertainty</h2>
+                  A design is good only if grounded in reality. My research philosophy is that robustness must be verified not
+just in abstract models, but under the stochastic uncertainty of the physical world.
+                  <br><br>
+                  <table class="imgtable">
+                      <tr>
+                          <td>
+                              <img src="./img/ITC22.gif" alt="Robustness" width="500px" />&nbsp;
+                          </td>
+                          <td style="vertical-align: top;">
+                              <h4>Related Publication(s)</h4>
+                              <b>Wei Li</b>, et al. “PEPR: Pseudo-Exhaustive Physical Region Testing”, 
+                              IEEE International Test Conference (<b>ITC</b>), 2022.
+                              <br><br>
+                              Chris Nigh, <b>Wei Li</b>, et al. “Faulty Function Extraction for Defective Circuits”, 
+                              IEEE European Test Symposium (<b>ETS</b>) 2024.
+                              <br><br>
+                              <h4>Highlight(s)</h4>
+                              <li>Addressed Silent Data Corruption (SDC) through cross-layer analysis.</li>
+                              <li>Comprehensively analyze layout and netlist to identify sub-circuits for testing.</li>
+                          </td>
+                      </tr>
+                  </table>
+              </section>
 
 
-
-               <h1>Projects</h1>
-               <br>
-               <section id="DAC24">
-                  <h2>Global Routing</h2>
-                  <table class="imgtable">
-                     <tr>
-                        <td>
-                           <img src="./img/DGR.png" alt="" width="500px" />&nbsp;
-                        </td>
-                        <td style="vertical-align: top;">
-                           <h3>Publication(s)</h3>
-                           <b>Wei Li</b>, Rongjian Liang, Anthony Agnesina, Haoyu Yang, Chia-Tung Ho, Anand Rajaram, Haoxing Ren, “DGR: Differentiable Global Routing”, ACM/IEEE Design Automation Conference (<b>DAC</b>), San Francisco, 2024.
-                           (<a href = "./raw/DAC24.pdf"target=&ldquo;blank&rdquo;>preprint</a>).
-                           <br>
-                           <br>
-                           <b>Much appreciation for the guidance and assistance provided by <a href = "https://engineering.tamu.edu/electrical/profiles/jhu.html"target=&ldquo;blank&rdquo;>Prof. Hu Jiang</a> on this project.</b>
-                           <br>
-                           <br>
-                           <h3>Highlight(s)</h3>
-                           <li> A differentiable global router capable of concurrent optimization for millions of nets.</li>
-                           <li> Significantly reduce the number of nets that require maze-routing.</li>
-                        </td>
-                     </tr>
-                  </table>
-               </section>
-               <br>
-               <br>
-               <section id="MLCAD23">
-                  <h2>Graph Representation for Netlist</h2>
-                  <table class="imgtable">
-                     <tr>
-                        <td>
-                           <img src="./img/MLCAD23.png" alt="" width="500px" />&nbsp;
-                        </td>
-                        <td style="vertical-align: top;">
-                           <h3>Publication(s)</h3>
-                           <b>Wei Li</b>, Ruben Purdy, Jose Moura, Shawn Blanton, “Characterize the ability of GNNs in attacking logic locking”, ACM/IEEE Workshop on Machine Learning for CAD (<b>MLCAD</b>), Snowbird, Utah, Sep. 11–13, 2023. 
-                           (<a href = "./raw/MLCAD23.pdf"target=&ldquo;blank&rdquo;>preprint</a>, <a href = "./raw/MLCAD23-appendix.pdf"target=&ldquo;blank&rdquo;>appendix</a>).
-                           <br>
-                           <!-- new line -->
-                           <br>
-                           <h3>Highlight(s)</h3>
-                           <li> Showed that <b>GNNs are always upper bounded by heterogeneous Weisfeiler Lehman test</b> in deciding the netlist
-                              isomorphism, and gave the conditions when GNNs reach the bound.
-                           </li>
-                           <li> Second highest reviewer score among all submissions.</li>
-                        </td>
-                     </tr>
-                  </table>
-               </section>
-               <br>
-               <br>
-               <section id="DAC23">
-                  <h2>Global Floorplanning</h2>
-                  <table class="imgtable">
-                     <tr>
-                        <td>
-                           <img src="./img/DAC23.gif" alt="" width="500px" />&nbsp;
-                        </td>
-                        <td style="vertical-align: top;">
-                           <h3>Publication(s)</h3>
-                           <b>Wei Li</b>, Fangzhou Wang, Jose Moura, Shawn Blanton, “Global floorplanning via semidefinite programming”, ACM/IEEE Design Automation Conference (<b>DAC</b>), San Francisco, July 9-13, 2023.
-                           (<a href = "./raw/DAC23.pdf"target=&ldquo;blank&rdquo;>preprint</a>, <a href = "./raw/DAC23-appendix.pdf"target=&ldquo;blank&rdquo;>appendix</a>).
-                           <br>
-                           <!-- new line -->
-                           <br>
-                           <h3>Highlight(s)</h3>
-                           <li> A brand new SDP-based method for finding the locations of modules in a chip</li>
-                           <li> The average wirelength is reduced by at least from 3.02% to 20.01%</li>
-                        </td>
-                     </tr>
-                  </table>
-               </section>
-               <br>
-               <br>
-               <section id="ITC22">
-                  <h2>Next-generation Testing Metric</h2>
-                  <table class="imgtable">
-                     <tr>
-                        <td>
-                           <img src="./img/ITC22.gif" alt="" width="500px" />&nbsp;
-                        </td>
-                        <td style="vertical-align: top;">
-                           <h3>Publication(s)</h3>
-                           <b>Wei Li</b>, Chris Nigh, Danielle Duvalsaint, Subhasish Mitra, R.D. Blanton, “PEPR: Pseudo-Exhaustive Physical Region Testing”, IEEE International Test Conference (<b>ITC</b>), Sep. 25 - Sep. 30, 2022.
-                           (<a href = "./raw/ITC22.pdf"target=&ldquo;blank&rdquo;>preprint</a>).
-                           <br>
-                           <br>
-                           Chris Nigh, Ruben Purdy, <b>Wei Li</b>, Subhasish Mitra, R.D. Blanton, “Faulty Function Extraction for Defective Circuits”, IEEE European Test Symposium (<b>ETS</b>) 2024.
-                           (<a href = "./raw/ETS24.pdf"target=&ldquo;blank&rdquo;>preprint</a>).
-                           <br>
-                           <!-- new line -->
-                           <br>
-                           <h3>Highlight(s)</h3>
-                           <li> Solution to silent data corruption.</li>
-                           <li> Comprehensively analyze both the physical layout and the logic netlist to identify single- or multi-output
-                              sub-circuits.
-                           </li>
-                        </td>
-                     </tr>
-                  </table>
-               </section>
-               <br>
-               <br>
-               <section id="ASPDAC21">
-                  <h2>Routing Tree Construction</h2>
-                  <table class="imgtable">
-                     <tr>
-                        <td>
-                           <img src="./img/ASPDAC21.png" alt="" width="500px" />&nbsp;
-                        </td>
-                        <td style="vertical-align: top;">
-                           <h3>Publication(s)</h3>
-                           <b>Wei Li</b>, Yuxiao Qu, Gengjie Chen, Yuzhe Ma, Bei Yu,
-                           “TreeNet: Deep Point Cloud Embedding for Routing Tree Construction”,
-                           IEEE/ACM Asian and South Pacific Design Automation Conference (<b>ASP-DAC</b>), Tokyo, Jan. 18–21, 2021 <b><font color="red">(Best Paper Award)</font></b>.
-                           (<a href = "./raw/ASPDAC21-TreeNet.pdf"target=&ldquo;blank&rdquo;>preprint</a>).
-                           <br>
-                           <!-- new line -->
-                           <br>
-                           <h3>Highlight(s)</h3>
-                           <li> Formalized special properties of the point cloud for the routing tree construction with theoretical proof.</li>
-                        </td>
-                     </tr>
-                  </table>
-               </section>
-               <br>
-               <br>
-               <section id="DAC21">
-                  <h2>Layout Decomposition</h2>
-                  <table class="imgtable">
-                     <tr>
-                        <td>
-                           <img src="./img/DAC21.gif" alt="" width="500px" />&nbsp;
-                        </td>
-                        <td style="vertical-align: top;">
-                           <h3>Publication(s)</h3>
-                           <b>Wei Li</b>, Yuzhe Ma, Qi Sun, Zhang Lu, Yibo Lin, Iris Hui-Ru Jiang, Bei Yu, David Z. Pan,
-                           “OpenMPL: An Open Source Layout Decomposer”,
-                           IEEE Transactions on Computer-Aided Design of Integrated Circuits and Systems (<b>TCAD</b>).
-                           (<a href = "./raw/TCAD-OpenMPL.pdf"target=&ldquo;blank&rdquo;>preprint</a>, <a href = "https://github.com/limbo018/OpenMPL"target=&ldquo;blank&rdquo;>code</a>).
-                           <br>
-                           <br>
-                           <b>Wei Li</b>, Jialu Xia, Yuzhe Ma, Jialu Li, Yibo Lin, Bei Yu,
-                           “Adaptive Layout Decomposition with Graph Embedding Neural Networks”,
-                           ACM/IEEE Design Automation Conference (<b>DAC</b>), San Francisco, July 19-23, 2020.
-                           (<a href = "./raw/DAC20.pdf"target=&ldquo;blank&rdquo;>preprint</a>).
-                           <br>
-                           <br>
-                           <b>Wei Li</b>, Yuzhe Ma, Qi Sun, Yibo Lin, Iris Hui-Ru Jiang, Bei Yu, David Z. Pan, 
-                           “OpenMPL: An Open Source Layout Decomposer”, IEEE International Conference on ASIC (<b>ASICON</b>), Chongqing, China, Oct. 29–Nov. 1, 2019. (Invited Paper)
-                           (<a href = "./raw/ASICON19.pdf"target=&ldquo;blank&rdquo;>preprint</a>)
-                           <br>
-                           <!-- new line -->
-                           <br>
-                           <h3>Highlight(s)</h3>
-                           <li> Presented an open-source layout decomposition framework, with efficient implementations of various state-ofthe-art simplification and decomposition algorithms.</li>
-                           <li> Proposed an adaptive workflow for efficient decomposer selection and graph matching using graph embeddings</li>
-                           <li> Designed a Graph Neural Network especially for layout decomposition.</li>
-                        </td>
-                     </tr>
-                  </table>
-               </section>
-               
-               <!-- <div id="footer">
-                  <div id="footer-text">
-                     Page generated 2021-05-19 22:20:09 PDT, by <a href="https://github.com/wsshin/jemdoc_mathjax" target="blank">jemdoc+MathJax</a>.
-                  </div>
-               </div> -->
-            </td>
-         </tr>
-      </table>
    </body>
 </html>
