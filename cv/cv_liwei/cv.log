@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.4.8)  16 FEB 2026 11:33
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.4.8)  21 FEB 2026 21:18
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -457,10 +457,7 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <7> on input line 28.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <5> on input line 28.
-(./doc/education.tex) (./doc/award.tex
-Missing character: There is no ∂ (U+2202) in font [lmroman10-regular]:mapping=tex-text;!
-Missing character: There is no ∂ (U+2202) in font [lmroman10-regular]:mapping=tex-text;!
-) (./doc/publication.tex [1
+(./doc/education.tex) (./doc/award.tex) (./doc/publication.tex [1
 
 ] [2]) (./doc/experience.tex [3]
 Underfull \hbox (badness 10000) in paragraph at lines 46--50
