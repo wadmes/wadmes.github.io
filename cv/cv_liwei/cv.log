@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.4.8)  22 FEB 2026 17:02
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.4.8)  22 FEB 2026 17:12
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -491,5 +491,8 @@ Here is how much of TeX's memory you used:
  513333 words of font info for 51 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  70i,5n,81p,657b,525s stack positions out of 10000i,1000n,20000p,200000b,200000s
+
+Output written on cv.pdf (6 pages).
+,20000p,200000b,200000s
 
 Output written on cv.pdf (6 pages).
