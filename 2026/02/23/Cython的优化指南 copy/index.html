@@ -23,17 +23,21 @@
     var CONFIG = {"hostname":"wadmes.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"buttons","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"./public/search.xml"};
   </script>
 
-  <meta name="description" content="人生注定是一个人的旅行，但就算孤独也要做一直前行的人啊">
-<meta property="og:type" content="website">
-<meta property="og:title" content="NEWAY">
-<meta property="og:url" content="http://wadmes.github.io/archives/2026/01/index.html">
+  <meta name="description" content="知道DEFT被DAC拒了后，化悲愤为动力，作此文P.S. 什么样的结局。才配得上这一路颠沛流离。。。以后起标题建议用FAKER，MJ 之类的名字。  自从大模型之后，这样的技术博客逐渐丧失了它的原本意义。Gemini总结的比我好多了，你甚至可以让它给你写一份给洗脚城大爷科普的文章。之所以还要在这记下我的一些拙见，主要还是一个inspire的作用 - 也许有人读了这文章后发现这玩意有点意思，有点启">
+<meta property="og:type" content="article">
+<meta property="og:title" content="多任务优化的那些事 - Study on Multi-task Optimization">
+<meta property="og:url" content="http://wadmes.github.io/2026/02/23/Cython%E7%9A%84%E4%BC%98%E5%8C%96%E6%8C%87%E5%8D%97%20copy/index.html">
 <meta property="og:site_name" content="NEWAY">
-<meta property="og:description" content="人生注定是一个人的旅行，但就算孤独也要做一直前行的人啊">
+<meta property="og:description" content="知道DEFT被DAC拒了后，化悲愤为动力，作此文P.S. 什么样的结局。才配得上这一路颠沛流离。。。以后起标题建议用FAKER，MJ 之类的名字。  自从大模型之后，这样的技术博客逐渐丧失了它的原本意义。Gemini总结的比我好多了，你甚至可以让它给你写一份给洗脚城大爷科普的文章。之所以还要在这记下我的一些拙见，主要还是一个inspire的作用 - 也许有人读了这文章后发现这玩意有点意思，有点启">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://wadmes.github.io/assets/17718741324524.jpg">
+<meta property="article:published_time" content="2026-02-24T01:29:50.000Z">
+<meta property="article:modified_time" content="2026-03-05T04:46:10.525Z">
 <meta property="article:author" content="Li Wei">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://wadmes.github.io/assets/17718741324524.jpg">
 
-<link rel="canonical" href="http://wadmes.github.io/archives/2026/01/">
+<link rel="canonical" href="http://wadmes.github.io/2026/02/23/Cython%E7%9A%84%E4%BC%98%E5%8C%96%E6%8C%87%E5%8D%97%20copy/">
 
 
 <script id="page-configurations">
@@ -41,12 +45,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'en'
   };
 </script>
 
-  <title>Archive | NEWAY</title>
+  <title>多任务优化的那些事 - Study on Multi-task Optimization | NEWAY</title>
   
 
 
@@ -207,57 +211,145 @@
         <div class="content-wrap">
           
 
-          <div class="content archive">
+          <div class="content post posts-expand">
             
 
+    
   
   
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2026/02/23/Cython%E7%9A%84%E4%BC%98%E5%8C%96%E6%8C%87%E5%8D%97%20copy/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/liwei3.jpg">
+      <meta itemprop="name" content="Li Wei">
+      <meta itemprop="description" content="人生注定是一个人的旅行，但就算孤独也要做一直前行的人啊">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="NEWAY">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          多任务优化的那些事 - Study on Multi-task Optimization
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2026-02-23 20:29:50" itemprop="dateCreated datePublished" datetime="2026-02-23T20:29:50-05:00">2026-02-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2026-03-04 23:46:10" itemprop="dateModified" datetime="2026-03-04T23:46:10-05:00">2026-03-04</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/study/" itemprop="url" rel="index"><span itemprop="name">study</span></a>
+                </span>
+            </span>
+
+          
   
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        
-        <span class="collection-header">Great! 149 posts in total. Keep on posting.</span>
-      </div>
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2026/02/23/Cython%E7%9A%84%E4%BC%98%E5%8C%96%E6%8C%87%E5%8D%97%20copy/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2026/02/23/Cython%E7%9A%84%E4%BC%98%E5%8C%96%E6%8C%87%E5%8D%97%20copy/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <span class="collection-header">2026</span>
+        <blockquote>
+<p>知道DEFT被DAC拒了后，化悲愤为动力，作此文<br>P.S. 什么样的结局。才配得上这一路颠沛流离。。。以后起标题建议用FAKER，MJ 之类的名字。</p>
+</blockquote>
+<p>自从大模型之后，这样的技术博客逐渐丧失了它的原本意义。Gemini总结的比我好多了，你甚至可以让它给你写一份给洗脚城大爷科普的文章。之所以还要在这记下我的一些拙见，主要还是一个inspire的作用 - 也许有人读了这文章后发现这玩意有点意思，有点启发呢。至少对我来说，这对differentiable programming很重要。（at least Gemini is a passive chatbot now)</p>
+<p>当我们需要优化多个任务，而这些任务很多时候conflict的时候，理论上我们直接取gradient平均值就好了。但是当landscape曲率过大的时候，这种step更新的backpropagation就会导致一个问题 - 高估了我沿着dominating task走的benefit，低估了给dominated task带来的伤害。(cite: Gradient Surgery for Multi-Task Learning)</p>
+<p>那么我们有请解决这个问题的选手们入场</p>
+<ol>
+<li>PCGrad （Gradient Surgery for Multi-Task Learning)</li>
+</ol>
+<p>这位选手指出 把所有task的gradient 都project到和他conflict的task的gradient的normal plane上，这样就没有conflict了！大概如下：<br><img src="/assets/17718741324524.jpg"></p>
+<ol>
+<li>FAMO: Fast Adaptive Multitask Optimization</li>
+</ol>
+<p>这位选手指出，我们使所有任务在对数空间下的下降速率对齐。（这个背景是表达有一些任务被under-optimized了）</p>
+<p>它维护一个辅助变量 $z_i$（可以看作是权重的 logit 值），根据 Loss 的变化进行更新：</p>
+<p>$$z_i^{(t)} &#x3D; z_i^{(t-1)} + \gamma \left( \log L_i(\theta_t) - \log L_i(\theta_{t-1}) \right)$$</p>
+<blockquote>
+<p>直观理解： &gt; * 如果任务 $i$ 的 Loss 在这一步上升了（或者下降得比别人慢），$\log L_i$ 的变化量就是正的或者较大的。这会导致 $z_i$ 增大，从而在下一步中增加该任务的权重。</p>
+</blockquote>
+<ol start="3">
+<li>Nash-MTL:</li>
+</ol>
+<p>将多任务优化看作一个纳什议价问题（Nash Bargaining Problem）。它的出发点非常硬核：不再强行投影梯度，而是让各个任务通过“谈判”达成一个大家都满意的更新方向。核心逻辑想象 $K$ 个任务在分一块名为“参数更新”的蛋糕。每个任务都希望梯度更新方向 $\Delta \theta$ 尽可能靠近自己的梯度 $g_i$。Nash-MTL 寻找一个方向，使得所有任务获得的改善（Utility）的乘积最大化。其目标函数定义为：</p>
+<p>$$\max_{\Delta \theta} \prod_{i&#x3D;1}^K \langle g_i, \Delta \theta \rangle \quad \text{s.t.} \quad |\Delta \theta| \le \epsilon$$</p>
+<p>转换为对数形式后，这等价于：$$\max \sum_{i&#x3D;1}^K \log(\langle g_i, \Delta \theta \rangle)$$</p>
+<p>为什么它比 PCGrad 高级？尺度不变性 (Scale Invariance)： 这是 Nash-MTL 最杀手锏的特性。即便任务 A 的梯度量级是任务 B 的 1000 倍，在对数空间下，这种量级差异被消解了。这完美解决了你之前提到的“大梯度主导平均梯度”的问题。帕累托最优保证： 数学上可以证明，纳什议价解必然落在帕累托前沿（Pareto Front）上，这意味着在这个方向下，不损害其他任务就无法进一步提升某个任务。解法： 在实际实现中，它通过求解对偶问题，将 $\Delta \theta$ 写成各任务梯度的加权和 $g &#x3D; \sum \alpha_i g_i$，并动态迭代计算权重 $\alpha_i$。</p>
+<blockquote>
+<p>我发现Gemini比我总结的好多了。。。</p>
+</blockquote>
+<p>Hint - 可以发现这些work 他们想要解决的multi-task的issue都是不一样的（虽然都是解决Multi-task问题）。对应到我们concern的问题上，可以发现ML community关注的点是所有任务都要雨露均沾(fairness)，他们的底层假设都是 “共赢” (Collaboration)，但你的任务真的是这样的么？</p>
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+    
+    
+    
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2026-01-15T17:07:43-05:00"
-              content="2026-01-15">
-          01-15
-        </time>
-      </div>
+      <footer class="post-footer">
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2026/01/15/2026%E5%B9%B41%E6%9C%88/" itemprop="url">
-            <span itemprop="name">2026年一月的随笔</span>
-          </a>
-      </div>
+        
 
-    </header>
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2025/09/30/%E7%BB%99%E4%BD%A0%E7%9A%84%E4%BF%A1/" rel="prev" title="2025年九月的随笔">
+      <i class="fa fa-chevron-left"></i> 2025年九月的随笔
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2026/03/09/2026%E5%B9%B41%E6%9C%88/" rel="next" title="放弃了去startup之后">
+      放弃了去startup之后 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
   </article>
-
-
-    </div>
-  </div>
   
   
-  
-
   
 
 
 
           </div>
           
+    <div class="comments" id="valine-comments"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -318,7 +410,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">149</span>
+          <span class="site-state-item-count">150</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
