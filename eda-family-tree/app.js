@@ -45,16 +45,32 @@
   function rebuildIndexes(){byId=new Map(nodes.map(n=>[n.id,n]));children=new Map();for(const n of nodes){if(!n.parentId)continue;const a=children.get(n.parentId)||[];a.push(n);children.set(n.parentId,a)}roots=nodes.filter(n=>!n.parentId)}
   function rootOf(node){let n=node;while(n&&n.parentId)n=byId.get(n.parentId);return n}
   function descendants(id){const out=[];(function walk(x){const n=byId.get(x);if(!n)return;out.push(n);(children.get(x)||[]).forEach(c=>walk(c.id))})(id);return out}
+  function spreadAngles(members,targets,radius){
+    if(members.length<2)return;
+    const ordered=[...members].sort((a,b)=>(targets.get(a.id)||0)-(targets.get(b.id)||0));
+    const separation=2*Math.asin(Math.min(.98,(CARD_W+30)/(2*radius)));
+    const blocks=[];
+    ordered.forEach((node,i)=>{
+      const value=(targets.get(node.id)||0)-i*separation;
+      blocks.push({start:i,end:i,sum:value,count:1,mean:value});
+      while(blocks.length>1&&blocks[blocks.length-2].mean>blocks[blocks.length-1].mean){
+        const right=blocks.pop(),left=blocks.pop(),sum=left.sum+right.sum,count=left.count+right.count;
+        blocks.push({start:left.start,end:right.end,sum,count,mean:sum/count});
+      }
+    });
+    const adjusted=[];blocks.forEach(block=>{for(let i=block.start;i<=block.end;i++)adjusted[i]=block.mean+i*separation});
+    const drift=ordered.reduce((sum,node,i)=>sum+(targets.get(node.id)||0)-adjusted[i],0)/ordered.length;
+    ordered.forEach((node,i)=>targets.set(node.id,adjusted[i]+drift));
+  }
   function radialLayout(branch){
-    const branchSet=new Set(branch.map(n=>n.id)),leafOrder=[];
-    function collect(id){const kids=(children.get(id)||[]).filter(n=>branchSet.has(n.id));if(!kids.length){leafOrder.push(id);return}kids.forEach(k=>collect(k.id))}
-    collect(rootId);const leafAngle=new Map(leafOrder.map((id,i)=>[id,-Math.PI/2+(i/Math.max(leafOrder.length,1))*TAU]));
-    const angles=new Map();
-    function angle(id){if(angles.has(id))return angles.get(id);const kids=(children.get(id)||[]).filter(n=>branchSet.has(n.id));let a;if(!kids.length)a=leafAngle.get(id)||0;else{const vals=kids.map(k=>angle(k.id));let sx=0,sy=0;vals.forEach(v=>{sx+=Math.cos(v);sy+=Math.sin(v)});a=Math.atan2(sy,sx)}angles.set(id,a);return a}
-    angle(rootId);
+    const branchSet=new Set(branch.map(n=>n.id)),ranges=new Map();let leafCursor=0;
+    function assignRange(id){const kids=(children.get(id)||[]).filter(n=>branchSet.has(n.id));let range;if(!kids.length){range={start:leafCursor,end:leafCursor};leafCursor++}else{const rootGap=id===rootId&&kids.length>1?5:0;if(rootGap)leafCursor+=rootGap/2;const childRanges=[];kids.forEach((kid,i)=>{childRanges.push(assignRange(kid.id));if(rootGap&&i<kids.length-1)leafCursor+=rootGap});if(rootGap)leafCursor+=rootGap/2;range={start:childRanges[0].start,end:childRanges[childRanges.length-1].end}}ranges.set(id,range);return range}
+    assignRange(rootId);const leafCount=Math.max(leafCursor,1),slot=TAU/leafCount,offset=-Math.PI/2;
+    const angles=new Map();branch.forEach(n=>{const range=ranges.get(n.id);angles.set(n.id,n.id===rootId?offset:offset+((range.start+range.end+1)/2)*slot)});
+    branch.forEach(parent=>{const kids=(children.get(parent.id)||[]).filter(n=>branchSet.has(n.id));if(kids.length<2||kids.some(k=>(children.get(k.id)||[]).some(n=>branchSet.has(n.id))))return;const center=angles.get(parent.id)||0;kids.forEach((kid,i)=>{const step=i===0?0:(i%2?Math.ceil(i/2):-Math.ceil(i/2));angles.set(kid.id,center+step*slot)})});
     const levels=new Map();branch.forEach(n=>{const d=relativeDepth(n);const a=levels.get(d)||[];a.push(n);levels.set(d,a)});
-    const radii=new Map([[0,0]]);let prev=0;[...levels.keys()].sort((a,b)=>a-b).forEach(d=>{if(!d)return;const count=levels.get(d).length;const needed=count*(CARD_W+34)/TAU;prev=Math.max(prev+245,needed,260);radii.set(d,prev)});
-    levels.forEach((members,d)=>{if(!d||members.length<2)return;const ordered=[...members].sort((a,b)=>((angles.get(a.id)+TAU)%TAU)-((angles.get(b.id)+TAU)%TAU));const step=TAU/ordered.length;let sx=0,sy=0;ordered.forEach((n,i)=>{const delta=(angles.get(n.id)||0)-i*step;sx+=Math.cos(delta);sy+=Math.sin(delta)});const offset=Math.atan2(sy,sx);ordered.forEach((n,i)=>angles.set(n.id,offset+i*step))});
+    const topBranch=id=>{let n=byId.get(id);while(n&&n.parentId&&n.parentId!==rootId)n=byId.get(n.parentId);return n?.id||id};
+    const radii=new Map([[0,0]]);let prev=0;[...levels.keys()].sort((a,b)=>a-b).forEach(d=>{if(!d)return;const count=levels.get(d).length;prev=Math.max(prev+340,count*(CARD_W+34)/TAU,340);radii.set(d,prev);const groups=new Map();levels.get(d).forEach(n=>{const key=topBranch(n.id),group=groups.get(key)||[];group.push(n);groups.set(key,group)});groups.forEach(group=>spreadAngles(group,angles,prev))});
     const maxR=Math.max(...radii.values(),0),size=Math.ceil(maxR*2+520),cx=size/2,cy=size/2;const positioned=[];
     branch.forEach(n=>{const d=relativeDepth(n),a=angles.get(n.id)||0,r=radii.get(d)||0;positioned.push({...n,x:cx+Math.cos(a)*r,y:cy+Math.sin(a)*r,angle:a,ring:r,relativeDepth:d})});
     return {nodes:positioned,size,cx,cy,radii:[...radii.entries()].filter(([d])=>d>0).map(([,r])=>r)};
@@ -64,7 +80,7 @@
   function render(){
     const branch=descendants(rootId);layout=radialLayout(branch);els.branchCount.textContent=branch.length;els.canvas.style.width=`${layout.size}px`;els.canvas.style.height=`${layout.size}px`;els.rings.setAttribute("viewBox",`0 0 ${layout.size} ${layout.size}`);els.edges.setAttribute("viewBox",`0 0 ${layout.size} ${layout.size}`);
     els.rings.innerHTML=layout.radii.map(r=>`<circle cx="${layout.cx}" cy="${layout.cy}" r="${r}"></circle>`).join("");const pos=new Map(layout.nodes.map(n=>[n.id,n]));const pathIds=ancestorIds(selectedId);
-    els.edges.innerHTML=layout.nodes.filter(n=>n.parentId&&pos.has(n.parentId)).map(n=>{const p=pos.get(n.parentId),active=n.id===selectedId||pathIds.has(n.id)||pathIds.has(p.id);const mx=(p.x+n.x)/2,my=(p.y+n.y)/2;const controlX=layout.cx+(mx-layout.cx)*.64,controlY=layout.cy+(my-layout.cy)*.64;return `<path class="${n.relation} ${active?"active":""}" d="M ${p.x} ${p.y} Q ${controlX} ${controlY} ${n.x} ${n.y}"></path>`}).join("");
+    els.edges.innerHTML=layout.nodes.filter(n=>n.parentId&&pos.has(n.parentId)).map(n=>{const p=pos.get(n.parentId),active=n.id===selectedId||pathIds.has(n.id)||pathIds.has(p.id),span=n.ring-p.ring,parentAngle=p.ring===0?n.angle:p.angle,c1r=p.ring+span*.48,c2r=n.ring-span*.35,c1x=layout.cx+Math.cos(parentAngle)*c1r,c1y=layout.cy+Math.sin(parentAngle)*c1r,c2x=layout.cx+Math.cos(n.angle)*c2r,c2y=layout.cy+Math.sin(n.angle)*c2r;return `<path data-parent="${p.id}" data-child="${n.id}" class="${n.relation} ${active?"active":""}" d="M ${p.x} ${p.y} C ${c1x} ${c1y}, ${c2x} ${c2y}, ${n.x} ${n.y}"></path>`}).join("");
     els.nodes.innerHTML=layout.nodes.map(n=>cardHtml(n,pathIds)).join("");els.canvas.style.transform=`scale(${scale})`;els.zoom.textContent=`${Math.round(scale*100)}%`;renderTabs();requestAnimationFrame(()=>centerCanvas(false));
   }
   function cardHtml(n,pathIds){const logoInstitution=institutionDomain(n.affiliation)?n.affiliation:n.degreeInstitution,logo=logoUrl(logoInstitution),fallback=initials(logoInstitution||n.name);return `<button type="button" class="scholar-card ${n.id===rootId?"root-card":""} ${n.id===selectedId?"selected":""} ${pathIds.has(n.id)?"in-path":""}" data-id="${n.id}" style="left:${n.x}px;top:${n.y}px"><span class="institution-mark">${logo?`<img src="${logo}" alt="" loading="lazy" onerror="this.className='failed';this.nextElementSibling.hidden=false"><b hidden>${esc(fallback)}</b>`:`<b>${esc(fallback)}</b>`}</span><span class="card-copy"><strong>${esc(n.name)}</strong><small>${esc(n.affiliation||n.degreeInstitution)}</small></span></button>`}
