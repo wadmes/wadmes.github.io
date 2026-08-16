@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="An interactive academic genealogy of electronic design automation, VLSI CAD, formal methods, and semiconductor testing.">
+  <meta property="og:title" content="EDA Family Tree">
+  <meta property="og:description" content="Trace the academic lineages behind electronic design automation.">
+  <meta property="og:image" content="https://wadmes.github.io/eda-family-tree/og.png">
+  <title>EDA Family Tree · NEWAY</title>
+  <link rel="preconnect" href="https://www.google.com">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="/" aria-label="Back to NEWAY"><span class="brand-tree" aria-hidden="true"><i></i><i></i><i></i></span><span><strong>EDA</strong> Family Tree</span></a>
+    <nav aria-label="Primary navigation">
+      <a href="#explorer">Explore</a>
+      <a href="#method">Method</a>
+      <a class="nav-cta" id="general-contribution" href="https://github.com/wadmes/wadmes.github.io/issues/new">Suggest an update <span>↗</span></a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow"><span></span> Academic genealogy · <b id="scholar-count">150</b> scholars</p>
+        <h1>Ideas travel<br>through <em>people.</em></h1>
+        <p class="lede">Explore the advisor–student lineages behind electronic design automation, VLSI CAD, formal methods, and semiconductor testing.</p>
+        <a class="hero-link" href="#explorer">Enter the orbit <span>↓</span></a>
+      </div>
+      <div class="hero-orbit" aria-hidden="true">
+        <span class="orbit orbit-a"></span><span class="orbit orbit-b"></span><span class="orbit orbit-c"></span>
+        <span class="pulse p1"></span><span class="pulse p2"></span><span class="pulse p3"></span><span class="pulse p4"></span>
+        <span class="hero-center">EDA</span>
+      </div>
+    </section>
+
+    <section class="explorer" id="explorer">
+      <header class="section-heading">
+        <div><span class="section-no">01</span><h2>Explore the orbit</h2></div>
+        <div class="legend"><span><i class="edge-key phd"></i>Ph.D.</span><span><i class="edge-key mphil"></i>M.Phil.</span><span><i class="edge-key postdoc"></i>Postdoc</span></div>
+      </header>
+
+      <div class="toolbar">
+        <div class="search-wrap">
+          <label for="scholar-search">Find a scholar or university</label>
+          <div class="search-box"><span aria-hidden="true">⌕</span><input id="scholar-search" type="search" autocomplete="off" placeholder="Try Bei Yu, CMU, testing…"></div>
+          <div class="search-results" id="search-results" hidden></div>
+        </div>
+        <div class="branch-meta"><span id="branch-count">—</span><small>people in this branch</small></div>
+        <div class="zoom-controls" aria-label="Zoom controls"><button id="zoom-out" type="button" aria-label="Zoom out">−</button><output id="zoom-level">85%</output><button id="zoom-in" type="button" aria-label="Zoom in">+</button><button id="fit-view" type="button">Fit</button></div>
+      </div>
+
+      <div class="branch-tabs" id="branch-tabs" role="tablist" aria-label="Founding branches"></div>
+
+      <div class="radial-frame">
+        <div class="radial-stage" id="radial-stage" tabindex="0" aria-label="Interactive radial academic genealogy">
+          <div class="radial-canvas" id="radial-canvas">
+            <svg class="orbit-rings" id="orbit-rings" aria-hidden="true"></svg>
+            <svg class="tree-edges" id="tree-edges" aria-hidden="true"></svg>
+            <div class="tree-nodes" id="tree-nodes"></div>
+          </div>
+        </div>
+        <aside class="profile-panel" id="profile-panel" aria-live="polite">
+          <button class="panel-close" id="panel-close" type="button" aria-label="Close scholar profile">×</button>
+          <div class="profile-logo" id="profile-logo"></div>
+          <p class="panel-kicker">Scholar profile</p>
+          <h3 id="profile-name">Select a scholar</h3>
+          <p class="profile-affiliation" id="profile-affiliation"></p>
+          <dl id="profile-details"></dl>
+          <div class="profile-actions">
+            <a id="profile-link" href="#" target="_blank" rel="noreferrer">Verified profile <span>↗</span></a>
+            <a id="suggest-link" href="#" target="_blank" rel="noreferrer">Suggest a correction</a>
+          </div>
+          <p class="profile-note">Institution marks come from each university’s public website icon and are shown for identification.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="method" id="method">
+      <div><span class="section-no">02</span><p class="eyebrow"><span></span> A living scholarly record</p><h2>Evidence first.<br><em>Publication after review.</em></h2></div>
+      <div class="method-copy">
+        <p>Researchers may propose a missing scholar, advisor relationship, affiliation change, or correction. Every proposal must include a public source. Submissions open as GitHub issues and do not change this page automatically.</p>
+        <ol><li><strong>01</strong><span>Submit a sourced proposal</span></li><li><strong>02</strong><span>Wei Li reviews the evidence</span></li><li><strong>03</strong><span>Only approved edits are published</span></li></ol>
+        <a id="method-contribution" href="https://github.com/wadmes/wadmes.github.io/issues/new" target="_blank" rel="noreferrer">Propose an update <span>→</span></a>
+      </div>
+    </section>
+  </main>
+
+  <footer><a class="brand" href="/"><span class="brand-tree"><i></i><i></i><i></i></span><span><strong>EDA</strong> Family Tree</span></a><p>A selected, evidence-backed academic genealogy.</p><p>Curated by Wei Li · NUS</p></footer>
+  <script src="./app.js" defer></script>
+</body>
+</html>

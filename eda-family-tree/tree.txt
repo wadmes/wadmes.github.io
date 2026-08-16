@@ -1,0 +1,222 @@
+---
+title: EDA family tree
+date: 2019-12-11 19:11:53
+last_modified_at: 2026-08-16
+tags:
+- EDA
+---
+
+This is a selected academic genealogy of the electronic design automation (EDA), VLSI CAD, testing, and adjacent computer-engineering communities. It began as a tree compiled by my supervisor and me, with particular attention to Chinese scholars, and has since been expanded using university biographies, dissertation archives, and faculty alumni pages.
+
+> **How to read the tree.** Indentation denotes a doctoral-advisor relationship unless the entry explicitly says **M.Phil.**, **co-advised**, or **postdoc**. The institution and year before the first arrow are the degree institution and degree year; later institutions summarize the scholar's career path. The tree is necessarily selective: EDA has many overlapping roots, co-advised degrees, and researchers who bridge multiple subfields.
+
+> **Update 2026.08.** Expanded the tree beyond the Wei Li branch; added the Edward McCluskey, Donald Pederson/A. Richard Newton, Robert Brayton/Sharad Malik, and major testing/DFT lineages; refreshed descendants of Jason Cong, David Pan, Bei Yu, Kaushik Roy, and Sanjit Seshia; and corrected several older attributions. This revision favors substantial academic branches with verified faculty descendants over isolated lists of famous researchers. In particular, Andrew Kahng is placed under T. C. Hu, and Dennis Sylvester under Chenming Hu. A scholar can appear twice when two independently useful lineages converge.
+
+## C. L. Liu lineage
+
++ [C. L. Liu](https://www.internethalloffame.org/inductee/chung-laung-liu/) (MIT → UIUC → NTHU)
+  + [Jason Cong](https://vast.cs.ucla.edu/people/faculty/jason-cong) (UIUC Ph.D. ’90 → UCLA)
+    + [Patrick H. Madden](https://www.cs.binghamton.edu/~pmadden/) (UCLA Ph.D. ’96 → Binghamton)
+    + [Cheng-Kok Koh](https://engineering.purdue.edu/~chengkok/) (UCLA Ph.D. ’98 → Purdue)
+    + [Lei He](https://www.ee.ucla.edu/lei-he/) (UCLA Ph.D. ’99 → Wisconsin → UCLA)
+      + [Hao Yu](https://faculty.sustech.edu.cn/yuh3/en/) (UCLA Ph.D. ’07 → NTU → SUSTech)
+      + [Yiyu Shi](https://www3.nd.edu/~scl/index.html) (UCLA Ph.D. ’09 → Notre Dame)
+    + [David Z. Pan](https://users.ece.utexas.edu/~dpan/) (UCLA Ph.D. ’00 → IBM → UT Austin)
+      + [Bei Yu](https://www.cse.cuhk.edu.hk/~byu/) (UT Austin Ph.D. ’14 → CUHK)
+        + [Yuzhe Ma](https://yuzhe630.github.io/) (CUHK Ph.D. ’20 → Huawei → HKUST(GZ))
+        + [Hao Geng](https://true-genghao.github.io/genghao/) (CUHK Ph.D. ’21 → CUHK postdoc → ShanghaiTech)
+        + [Tinghuan Chen](https://plutochen1990.github.io/) (CUHK Ph.D. ’21 → CUHK postdoc → CUHK-Shenzhen)
+        + [Wei Li](https://www.comp.nus.edu.sg/cs/people/weili/) (CUHK M.Phil. ’21 → CMU Ph.D. ’26 → NUS; M.Phil. co-advised by Michael R. Lyu)
+        + [Qi Sun](https://sqposeidon.github.io/) (CUHK Ph.D. ’22 → Cornell postdoc → Zhejiang University)
+        + [Zhuolun (Leon) He](https://zleonhe.github.io/) (CUHK Ph.D. ’23 → CUHK postdoc → Tsinghua)
+        + [Chen Bai](https://baichen318.github.io/) (CUHK Ph.D. ’24 → HKUST postdoc → Fudan)
+        + [Yuxuan Zhao](https://bonjuor-zyx.github.io/) (CUHK Ph.D. ’25 → CUHK postdoc → CUHK-Shenzhen)
+        + [Xinyun Zhang](https://yxgnahz.github.io/) (CUHK Ph.D. ’25 → ShanghaiTech)
+        + [Zixiao Wang](https://shiningsord.github.io/) (CUHK Ph.D. ’26 → HKUST(GZ))
+      + [Yibo Lin](https://yibolin.com/) (UT Austin Ph.D. ’18 → Peking University)
+      + [Meng Li](https://mengliweb.github.io/) (UT Austin Ph.D. ’18 → Meta → Peking University)
+      + [Jiaqi Gu](https://www.jqgu.net/) (UT Austin Ph.D. ’23 → Arizona State)
+    + [Sung-Kyu Lim](https://limsk.ece.gatech.edu/) (UCLA Ph.D. ’00 → Georgia Tech)
+    + [Deming Chen](https://dchen.ece.illinois.edu/) (UCLA Ph.D. ’05 → UIUC)
+    + [Zhiru Zhang](https://www.csl.cornell.edu/~zhiruz/) (UCLA Ph.D. ’07 → AutoESL/Xilinx → Cornell)
+    + [Guojie Luo](https://ceca.pku.edu.cn/people/faculty/lgj/) (UCLA Ph.D. ’11 → Peking University)
+    + [Peipei Zhou](https://vast.cs.ucla.edu/people/alumni/peipei-zhou) (UCLA Ph.D. ’19 → Pittsburgh)
+  + [Martin D. F. Wong](https://www.cse.cuhk.edu.hk/~mdfwong/) (UIUC Ph.D. → UT Austin → UIUC → CUHK)
+    + [Ting-Chi Wang](https://www.cs.nthu.edu.tw/~tcwang/) (UT Austin Ph.D. ’94 → NTHU)
+    + [Yao-Wen Chang](https://cc.ee.ntu.edu.tw/~ywchang/) (UT Austin Ph.D. ’96 → NCTU → NTU)
+      + [Iris Hui-Ru Jiang](https://www.ee.ntu.edu.tw/profile1?id=1060726) (NTU Ph.D. ’05 → NCTU → NTU)
+      + [Tsung-Yi Ho](https://www.cs.nthu.edu.tw/~tyho/) (NTU Ph.D. ’06 → NCKU → NTHU)
+      + [Shao-Yun Fang](https://www.csie.ntu.edu.tw/~syfang/) (NTU Ph.D. → NTUST)
+    + [Wai-Kei Mak](https://www.cs.nthu.edu.tw/~wkmak/) (UT Austin Ph.D. ’98 → Simon Fraser → NTHU)
+    + [Evangeline F. Y. Young](https://www.cse.cuhk.edu.hk/~fyyoung/) (UT Austin Ph.D. ’99 → CUHK)
+      + [Chiu-Wing (Bruce) Sham](https://www.cs.auckland.ac.nz/~csha092/frontpage.htm) (CUHK Ph.D. ’06 → Hong Kong Polytechnic → Auckland)
+        + [Sean Longyu Ma](https://profiles.auckland.ac.nz/sean-ma) (Auckland Ph.D. ’23 → Auckland)
+      + [Xu He](https://csee.hnu.edu.cn/people/hexu) (CUHK Ph.D. → Hunan University)
+      + [Jinwei Liu](https://anticold.github.io/) (CUHK Ph.D. ’22 → Hong Kong Baptist University)
+      + [Shiju Lin](https://facultyprofiles.hkust-gz.edu.cn/faculty-personal-page/Lin-Shiju/shijulin) (CUHK Ph.D. ’24 → HKUST(GZ))
+    + [Hai Zhou](https://users.eecs.northwestern.edu/~haizhou/) (UT Austin Ph.D. ’99 → Northwestern)
+      + [Jia Wang](https://www.ece.iit.edu/~jwang/) (Northwestern Ph.D. ’08 → Illinois Tech)
+    + [Chris Chu](https://home.engineering.iastate.edu/~cnchu/) (UT Austin Ph.D. ’99 → Iowa State)
+    + [Tsung-Wei Huang](https://tsung-wei-huang.github.io/) (UIUC Ph.D. ’17 → Utah)
+
+## Edward J. McCluskey lineage: testing and dependable computing
+
++ [Edward J. McCluskey](https://engineering.stanford.edu/news/pioneering-stanford-computer-researcher-and-educator-edward-mccluskey-dies) (MIT Sc.D. ’56 → Princeton → Stanford)
+  + [Daniel P. Siewiorek](https://www.cmu.edu/engineering/ece/people/faculty/daniel-siewiorek.html) (Stanford Ph.D. ’72 → Carnegie Mellon)
+  + [Jacob A. Abraham](https://www.cerc.utexas.edu/~jaa/) (Stanford Ph.D. ’74 → UIUC → UT Austin)
+    + [Kaushik Roy](https://engineering.purdue.edu/ECE/People/ptProfile?resource_id=3085) (UIUC Ph.D. ’90 → Purdue)
+      + [Hai (Helen) Li](https://ece.duke.edu/faculty/hai-helen-li) (Purdue Ph.D. ’04 → NYU → Pittsburgh → Duke)
+      + [Yiran Chen](https://ece.duke.edu/faculty/yiran-chen) (Purdue Ph.D. ’05 → Seagate → Pittsburgh → Duke)
+      + [Hamid Mahmoodi](https://faculty.sfsu.edu/~mahmoodi/) (Purdue Ph.D. ’05 → San Francisco State)
+      + [Saibal Mukhopadhyay](https://ece.gatech.edu/directory/saibal-mukhopadhyay) (Purdue Ph.D. ’06 → IBM → Georgia Tech)
+      + [Arijit Raychowdhury](https://ece.gatech.edu/directory/arijit-raychowdhury) (Purdue Ph.D. ’07 → Intel → Georgia Tech)
+      + [Sumeet Kumar Gupta](https://www.eecs.psu.edu/departments/directory-detail-g.aspx?q=sug10) (Purdue Ph.D. ’12 → Penn State)
+      + [Deliang Fan](https://sites.google.com/view/deliangfan/) (Purdue Ph.D. ’15 → UCF → Arizona State)
+    + [Shobha Vasudevan](https://shobhav.ece.illinois.edu/) (UT Austin Ph.D. ’07 → UIUC)
+  + [Nur A. Touba](https://users.ece.utexas.edu/~touba/) (Stanford Ph.D. ’96 → UT Austin)
+    + [Eric MacDonald](https://hb2504.utep.edu/Home/Profile?username=emac) (UT Austin Ph.D. ’02 → UTEP)
+    + [Kartik Mohanram](https://www.engineering.pitt.edu/people/faculty/kartik-mohanram/) (UT Austin Ph.D. ’03 → Rice → Pittsburgh)
+    + [Joon-Sung Yang](https://dates.yonsei.ac.kr/people) (UT Austin Ph.D. ’09 → Sungkyunkwan → Yonsei)
+  + [Jacob Savir](https://web.njit.edu/~savir/savir.htm) (Stanford Ph.D. ’78 → IBM → NJIT)
+  + [Subhasish Mitra](https://profiles.stanford.edu/subhasish-mitra) (Stanford Ph.D. ’00 → Intel → Stanford)
+
+## Berkeley CAD lineages
+
+### Donald O. Pederson → A. Richard Newton
+
++ [Donald O. Pederson](https://www2.eecs.berkeley.edu/Faculty/Homepages/pederson.html) (Stanford Ph.D. ’51 → Berkeley)
+  + [A. Richard Newton](https://senate.universityofcalifornia.edu/_files/inmemoriam/html/arichardnewton.htm) (Berkeley Ph.D. ’78 → Berkeley)
+    + [Resve A. Saleh](https://ece.ubc.ca/resve-saleh/) (Berkeley Ph.D. ’87 → UIUC → UBC)
+    + [Srinivas Devadas](https://www.csail.mit.edu/person/srinivas-devadas) (Berkeley Ph.D. ’88 → MIT)
+    + [Bill Lin](https://www.ece.ucsd.edu/faculty-research/ece-faculty/william-bill-lin) (Berkeley Ph.D. ’91 → UC San Diego)
+
+### Robert K. Brayton
+
++ [Robert K. Brayton](https://www2.eecs.berkeley.edu/Faculty/Homepages/brayton.html) (MIT Ph.D. ’61 → Berkeley)
+  + [Sharad Malik](https://www.princeton.edu/~sharad/) (Berkeley Ph.D. ’90 → Princeton)
+    + [Guido Araújo](https://portal.dados.unicamp.br/perfil?docente=331316) (Princeton Ph.D. ’97 → UNICAMP)
+    + [Pramod Subramanyan](https://www.cse.iitk.ac.in/users/pramod/) (Princeton Ph.D. ’16 → Berkeley postdoc → IIT Kanpur)
+    + [Hongce Zhang](https://hongcezh.people.ust.hk/) (Princeton Ph.D. ’21 → HKUST(GZ))
+  + [Jie-Hong Roland Jiang](https://cc.ee.ntu.edu.tw/~jhjiang/) (Berkeley Ph.D. ’04 → NTU)
+  + [Alan Mishchenko](https://people.eecs.berkeley.edu/~alanmi/) (Institute of Control Sciences Ph.D. ’02 → Berkeley)
+
+### Ernest S. Kuh
+
++ [Ernest S. Kuh](https://www2.eecs.berkeley.edu/Faculty/Homepages/kuh.html) (Stanford Ph.D. ’52 → Berkeley)
+  + [Ronald A. Rohrer](https://computerhistory.org/profile/ron-rohrer/) (Berkeley Ph.D. ’63 → Carnegie Mellon)
+    + [Lawrence Pileggi](https://www.ece.cmu.edu/directory/bios/pileggi-larry.html) (Carnegie Mellon Ph.D. ’89 → UT Austin → Carnegie Mellon)
+      + [Peng Li](https://engineering.ucsb.edu/people/peng-li) (Carnegie Mellon Ph.D. ’04 → Texas A&M → UCSB)
+      + [Xin Li](https://ece.duke.edu/faculty/xin-li) (Carnegie Mellon Ph.D. ’05 → Carnegie Mellon → Duke)
+  + [C. K. Cheng](https://cseweb.ucsd.edu/~kuan/) (Berkeley Ph.D. ’84 → UC San Diego)
+  + [Kwang-Ting (Tim) Cheng](https://seng.ust.hk/about/people/faculty/kwang-ting-tim-cheng) (Berkeley Ph.D. ’88 → UCSB → HKUST)
+  + [Massoud Pedram](https://sites.usc.edu/massoudpedram/) (Berkeley Ph.D. ’91 → USC)
+    + [Radu Marculescu](https://www.ece.utexas.edu/people/faculty/radu-marculescu) (USC Ph.D. ’98 → Carnegie Mellon → UT Austin)
+    + [Diana Marculescu](https://www.ece.utexas.edu/people/faculty/diana-marculescu) (USC Ph.D. ’98 → Carnegie Mellon → UT Austin)
+    + [Payam Heydari](https://engineering.uci.edu/users/payam-heydari) (USC Ph.D. ’01 → UC Irvine)
+    + [Qinru Qiu](https://ecs.syracuse.edu/faculty-staff/qinru-qiu) (USC Ph.D. ’01 → Syracuse)
+    + [Yanzhi Wang](https://coe.northeastern.edu/people/wang-yanzhi/) (USC Ph.D. ’14 → Northeastern)
+    + [Xue Lin](https://coe.northeastern.edu/people/lin-xue/) (USC Ph.D. ’16 → Northeastern)
+  + [Malgorzata Marek-Sadowska](https://iee.ucsb.edu/people/malgorzata-marek-sadowska) (Berkeley Ph.D. → UCSB)
+    + [David Wu](https://www.easylogic.hk/about) (UCSB Ph.D. ’93 → CUHK → Easy-Logic)
+    + [Shih-Chieh Chang](https://www.cs.nthu.edu.tw/~scchang/) (UCSB Ph.D. ’94 → NTHU)
+
+### Chenming Hu
+
++ [Chenming Hu](https://www2.eecs.berkeley.edu/Faculty/Homepages/hu.html) (Berkeley Ph.D. ’73 → Berkeley)
+  + [Dennis Sylvester](https://eecs.engin.umich.edu/people/sylvester/) (Berkeley Ph.D. ’99 → Michigan)
+    + [Matt Guthaus](https://users.soe.ucsc.edu/~mrg/) (Michigan Ph.D. ’06 → UC Santa Cruz)
+    + [Jae-sun Seo](https://faculty.engineering.asu.edu/jseo/) (Michigan Ph.D. ’10 → IBM → Arizona State)
+    + [Mingoo Seok](https://www.ee.columbia.edu/mingoo-seok) (Michigan Ph.D. ’11 → Columbia)
+  + [Kaustav Banerjee](https://engineering.ucsb.edu/people/kaustav-banerjee) (Berkeley Ph.D. ’99 → UCSB)
+  + [Michael Orshansky](https://users.ece.utexas.edu/~michael/) (Berkeley Ph.D. ’01 → UT Austin)
+  + [Yu Cao](https://search.asu.edu/profile/749044) (Berkeley Ph.D. ’02 → Arizona State)
+
+### Alberto Sangiovanni-Vincentelli
+
++ [Alberto L. Sangiovanni-Vincentelli](https://www2.eecs.berkeley.edu/Faculty/Homepages/sangiovanni-vicentelli.html) (Politecnico di Milano → Berkeley)
+  + [Giovanni De Micheli](https://si2.epfl.ch/~demichel/) (Berkeley Ph.D. ’83 → Stanford → EPFL)
+    + [Rajesh Gupta](https://cse.ucsd.edu/people/faculty-profiles/rajesh-gupta) (Stanford Ph.D. ’93 → UC Irvine → UC San Diego)
+    + [Claudionor José Nunes Coelho Jr.](https://homepages.dcc.ufmg.br/~coelho/) (Stanford Ph.D. ’96 → UFMG)
+    + [Vincent J. Mooney III](https://users.ece.gatech.edu/~mooney/) (Stanford Ph.D. ’97 → Georgia Tech)
+    + [Luca Benini](https://ee.ethz.ch/the-department/people-a-z/person-detail.MTk0MjM0.TGlzdC8zMjc5LC0xNjUwNTg5ODIw.html) (Stanford Ph.D. ’97 → Bologna → ETH Zürich)
+    + [Tajana Rosing](https://cseweb.ucsd.edu/~trosing/) (Stanford Ph.D. ’01 → UC San Diego)
+    + [Yung-Hsiang Lu](https://engineering.purdue.edu/ECE/People/ptProfile?resource_id=3355) (Stanford Ph.D. ’02 → Purdue)
+    + [Eui-Young Chung](https://dtl.yonsei.ac.kr/) (Stanford Ph.D. ’02 → Yonsei)
+    + [Sungroh Yoon](https://data.snu.ac.kr/) (Stanford Ph.D. ’04 → Seoul National University)
+  + [Jacob K. White](https://www.rle.mit.edu/people/jacob-white/) (Berkeley Ph.D. ’85 → MIT)
+  + [Giorgio Casinovi](https://casinovi.ece.gatech.edu/) (Berkeley Ph.D. → Georgia Tech)
+  + [Jyuo-Min Shyu](https://www.ece.ntu.edu.tw/en/teacher/index.php?teacher_id=91) (Berkeley Ph.D. ’88 → NTU)
+  + [Luca Carloni](https://www.cs.columbia.edu/~luca/) (Berkeley Ph.D. → Columbia)
+  + [Luca Daniel](https://www.mit.edu/~dluca/) (Berkeley Ph.D. ’03 → MIT)
+    + [Zheng Zhang](https://engineering.ucsb.edu/people/zheng-zhang) (MIT Ph.D. ’15 → UCSB)
+  + [Qi Zhu](https://www.mccormick.northwestern.edu/research-faculty/directory/profiles/zhu-qi.html) (Berkeley Ph.D. ’08 → UC Riverside → Northwestern)
+  + [Haibo Zeng](https://ece.vt.edu/people/profile/zeng) (Berkeley Ph.D. ’08 → Virginia Tech)
+  + [Douglas Densmore](https://www.bu.edu/eng/profile/douglas-densmore/) (Berkeley Ph.D. → Boston University)
+  + [Pierluigi Nuzzo](https://viterbi.usc.edu/directory/faculty/Nuzzo/Pierluigi) (Berkeley Ph.D. → USC)
+
+### T. C. Hu
+
++ [T. C. Hu](https://cse.ucsd.edu/about/department-history/t-c-hu) (UIUC Ph.D. ’56 → Berkeley → Wisconsin → UC San Diego)
+  + [Andrew B. Kahng](https://vlsicad.ucsd.edu/~abk/) (UC San Diego Ph.D. ’89 → UCLA → UC San Diego)
+    + [Gabriel Robins](https://www.cs.virginia.edu/~robins/) (UCLA Ph.D. ’92 → Virginia)
+    + [Igor L. Markov](https://web.eecs.umich.edu/~imarkov/) (UCLA Ph.D. ’01 → Michigan → industry)
+    + [Sherief Reda](https://vivo.brown.edu/display/sreda) (UC San Diego Ph.D. ’06 → Brown)
+
+## Carnegie Mellon and Berkeley formal-methods lineage
+
++ [Randal E. Bryant](https://www.cs.cmu.edu/~bryant/) (MIT Ph.D. ’81 → Carnegie Mellon)
+  + [Sanjit A. Seshia](https://people.eecs.berkeley.edu/~sseshia/) (Carnegie Mellon Ph.D. ’05 → Berkeley)
+    + [Wenchao Li](https://www.bu.edu/eng/profile/wenchao-li/) (Berkeley Ph.D. ’13 → Boston University)
+    + [Dorsa Sadigh](https://dorsa.fyi/) (Berkeley Ph.D. → Stanford; co-advised by S. Shankar Sastry)
+    + [Daniel J. Fremont](https://people.ucsc.edu/~dfremont/) (Berkeley Ph.D. → UC Santa Cruz)
+    + [Federico Mora](https://uwaterloo.ca/embedded-software-group/profiles/federico-mora) (Berkeley Ph.D. → Waterloo)
+
+## John P. Hayes lineage: testing, diagnosis, and dependable systems
+
++ [John P. Hayes](https://cse.engin.umich.edu/stories/prof-john-p-hayes-retires-after-half-a-century-in-computer-architecture) (UIUC Ph.D. ’70 → USC → Michigan)
+  + [Shantanu Dutt](https://www.cs.uic.edu/~dutt/) (Michigan Ph.D. ’90 → UIC)
+  + [Krishnendu Chakrabarty](https://search.asu.edu/profile/4669916) (Michigan Ph.D. ’95 → Duke → Arizona State)
+    + [Mohamed Ibrahim](https://ece.utdallas.edu/people/tenure-system-faculty/ibrahim-mohamed/) (Duke Ph.D. ’18 → Berkeley postdoc → Georgia Tech → UT Dallas)
+  + [Shawn Blanton](https://engineering.cmu.edu/directory/bios/blanton-shawn.html) (Michigan Ph.D. ’95 → Carnegie Mellon)
+    + [Wei Li](https://www.comp.nus.edu.sg/cs/people/weili/) (Carnegie Mellon Ph.D. ’26 → NUS; co-advised by José M. F. Moura)
+  + [Hussain Al-Asaad](https://faculty.engineering.ucdavis.edu/alasaad/) (Michigan Ph.D. ’98 → UC Davis)
+  + [HyungWon Kim](https://sites.google.com/site/hwkimcbu/) (Michigan Ph.D. ’99 → Chungbuk National University)
+  + [Joonhwan Yi](https://sites.google.com/view/joonhwanyi/) (Michigan Ph.D. ’02 → Kwangwoon University)
+  + [Smita Krishnaswamy](https://krishnaswamylab.org/) (Michigan Ph.D. ’08 → Yale; co-advised by Igor Markov)
+
+## Other established EDA lineages
+
++ [Marilyn C. Wolf](https://mwolf.unl.edu/marilyn-c-wolf) (Stanford Ph.D. ’84 → Princeton → Georgia Tech → Nebraska)
+  + [Yuan Xie](https://web.ece.ucsb.edu/~yuanxie/) (Princeton Ph.D. ’02 → IBM → Penn State → UCSB)
+    + [Guangyu Sun](https://eecs.pku.edu.cn/info/1504/6956.htm) (Penn State Ph.D. ’11 → Peking University)
+    + [Jishen Zhao](https://cseweb.ucsd.edu/~jzhao/) (Penn State Ph.D. ’14 → HP Labs → UC San Diego)
+  + [Jiang Xu](https://eexu.home.ece.ust.hk/) (Princeton Ph.D. ’05 → HKUST)
+    + [Yaoyao Ye](https://english.seiee.sjtu.edu.cn/english/detail/2128_1921.htm) (HKUST Ph.D. ’13 → Huawei → Shanghai Jiao Tong)
+    + [Weichen Liu](https://www.ntu.edu.sg/home/liu/) (HKUST Ph.D. → Chongqing University → NTU Singapore)
+
++ [Sachin S. Sapatnekar](https://people.ece.umn.edu/~sachin/) (UIUC Ph.D. ’92 → Iowa State → Minnesota)
+  + [Jiang Hu](https://cesg.tamu.edu/faculty/jiang-hu/) (Minnesota Ph.D. ’00 → Texas A&M)
+    + [Pingqiang Zhou](https://sist.shanghaitech.edu.cn/zhoupq/) (Minnesota Ph.D. ’13 → ShanghaiTech)
+
+## Notes and corrections
+
+- This is an **academic genealogy**, not a ranking or a complete list of EDA researchers.
+- Degree years and placements can change as public biographies are updated. Please send corrections to `weili3@andrew.cmu.edu`.
+- Dennis Sylvester's dissertation advisor was Chenming Hu. Kurt Keutzer's own alumni page describes Sylvester affectionately as part of his group while explicitly noting that Hu was the dissertation advisor; the formal tree therefore places Sylvester under Hu.
+- Andrew Kahng's doctoral advisor was T. C. Hu, so the Kahng branch has been moved from the Ernest Kuh branch.
+- The Wei Li node appears in both the Bei Yu and Shawn Blanton branches because the two paths document different degrees. His CUHK M.Phil. was co-advised by Bei Yu and Michael R. Lyu; his Carnegie Mellon Ph.D. was co-advised by Shawn Blanton and José M. F. Moura.
+- All twenty scholars in the two Hall-of-Fame lists supplied in August 2026 were checked for doctoral descendants in academia. Melvin Breuer, Vishwani Agrawal, Janusz Rajski, Yervant Zorian, Miron Abramovici, Sudhakar Reddy, and Mary Jane Irwin are not shown merely to satisfy a checklist: the publicly verifiable lines found for them are isolated or end after only a few people without a continuing academic branch. Industrial mentorship and co-authorship are likewise not converted into doctoral edges without thesis evidence.
+
+## Principal verification sources
+
+- [UC Berkeley Design Methodology Automation alumni](https://people.eecs.berkeley.edu/~jr/DMA/alumni.html) and [Berkeley dissertation-advisor index](https://www2.eecs.berkeley.edu/Pubs/Dissertations/)
+- [UCLA VAST alumni](https://vast.cs.ucla.edu/people/alumni)
+- [Bei Yu's official student and alumni list](https://www.cse.cuhk.edu.hk/~byu/students.html)
+- [Evangeline Young's official student and alumni list](https://www.cse.cuhk.edu.hk/~fyyoung/student.html)
+- [University of Michigan CSE alumni in academia](https://cse.engin.umich.edu/alumni/alumni-in-academia/)
+- [Sanjit Seshia's official group alumni](https://people.eecs.berkeley.edu/~sseshia/)
+- [Sharad Malik's official graduate-student alumni list](https://www.princeton.edu/~sharad/grad.html)
+- [Nur Touba's official doctoral-alumni list](https://users.ece.utexas.edu/~touba/research/students.html)
+- [Wei Li's NUS profile](https://www.comp.nus.edu.sg/cs/people/weili/)
+- [Duke's dissertation record for Mohamed Ibrahim](https://gradschool.duke.edu/about/news/engineering-phd-graduate-receives-dissertation-award/)
+- [USC ECE's academic-alumni advisor index](https://minghsiehece.usc.edu/alumni-profile-electrical-engineering/)
