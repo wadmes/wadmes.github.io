@@ -213,6 +213,112 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2023/05/04/GNN%20reviews%202023/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/liwei3.jpg">
+      <meta itemprop="name" content="Li Wei">
+      <meta itemprop="description" content="人生注定是一个人的旅行，但就算孤独也要做一直前行的人啊">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="NEWAY">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/05/04/GNN%20reviews%202023/" class="post-title-link" itemprop="url">Advantages of ReLU</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2023-05-04 17:50:29" itemprop="dateCreated datePublished" datetime="2023-05-04T17:50:29+08:00">2023-05-04</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2025-02-09 05:25:02" itemprop="dateModified" datetime="2025-02-09T05:25:02+08:00">2025-02-09</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/study/" itemprop="url" rel="index"><span itemprop="name">study</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2023/05/04/GNN%20reviews%202023/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2023/05/04/GNN%20reviews%202023/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="STRATEGIES-FOR-PRE-TRAINING-GRAPH-NEURAL-NETWORS"><a href="#STRATEGIES-FOR-PRE-TRAINING-GRAPH-NEURAL-NETWORS" class="headerlink" title="STRATEGIES FOR PRE-TRAINING GRAPH NEURAL NETWORS"></a>STRATEGIES FOR PRE-TRAINING GRAPH NEURAL NETWORS</h2><p>Motivation: Naïve pre-training strategies (graph-level multi-task supervised pre-training) can lead to negative transfer on many downstream tasks.</p>
+<h3 id="Pre-train-Method"><a href="#Pre-train-Method" class="headerlink" title="Pre-train Method"></a>Pre-train Method</h3><h4 id="NODE-Context-prediction：探索graph-structure-information"><a href="#NODE-Context-prediction：探索graph-structure-information" class="headerlink" title="NODE: Context prediction：探索graph structure information"></a>NODE: Context prediction：探索graph structure information</h4><p><strong>context graph</strong>: for each node, the subgraph between $r_1$-hop and $r_2$-hop.<br><strong>context anchor nodes</strong>: 假设GNN是r-hop，context anchor nodes就说context graph和r-hop overlap的点。（也就是r1 到 r 之间的点）</p>
+<ol>
+<li>获取context embedding<ol>
+<li>用GNN获取context graph 上的node embedding</li>
+<li>average embeddings of context anchor nodes to obtain a fixed-length context embedding.</li>
+</ol>
+</li>
+<li>context embedding和对应的r-hop 的node embeeding的inner product接近1 （prior that the two embeddings must be similar when they come from the same neighborhood)</li>
+</ol>
+<h4 id="NODE-also-applies-to-GRAPH-level-Mask-attributes-and-predict-them"><a href="#NODE-also-applies-to-GRAPH-level-Mask-attributes-and-predict-them" class="headerlink" title="NODE (also applies to GRAPH level): Mask attributes and predict them"></a>NODE (also applies to GRAPH level): Mask attributes and predict them</h4><h2 id="Principal-Neighbourhood-Aggregation-for-Graph-Nets"><a href="#Principal-Neighbourhood-Aggregation-for-Graph-Nets" class="headerlink" title="Principal Neighbourhood Aggregation for Graph Nets"></a>Principal Neighbourhood Aggregation for Graph Nets</h2><p>单个aggregator不行，需要combine多种不同aggregator<br><img src="/assets/16837591769134.jpg"><br>这里的S 是基于degree的一个额外系数：<br><img src="/assets/16837593665863.jpg"><br>alpha pos时，node的degree（d）越大，S值就越大，于是feature值越大。（amplification）<br>反之则为 attenuation</p>
+<h2 id="Global-Self-Attention-as-a-Replacement-for-Graph-Convolution"><a href="#Global-Self-Attention-as-a-Replacement-for-Graph-Convolution" class="headerlink" title="Global Self-Attention as a Replacement for Graph Convolution"></a>Global Self-Attention as a Replacement for Graph Convolution</h2><p><img src="/assets/17390495359066.jpg"></p>
+<p>The basic idea is, rather than pre-defined functionality of edges, which introduce inductive bias. Let transformer learns it by itself.</p>
+<p>here, edge information used in:</p>
+<ol>
+<li>$G$ is linear projection from edge embeedings. Will be a gate contriolling the attention. (Eq 4)</li>
+<li>$E$ is a linear projection from edge embeddings. Directly influence attention. (Eq 5)</li>
+<li>$E$ SVD on adj mat A, and use left and right singular vectors as positional encoding.</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2023/04/10/%E7%BB%A7%E6%89%BF%E4%B8%8E%E5%8F%9B%E9%80%86/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1191,103 +1297,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2022/03/03/some-pytorch-python-linux-tips/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/liwei3.jpg">
-      <meta itemprop="name" content="Li Wei">
-      <meta itemprop="description" content="人生注定是一个人的旅行，但就算孤独也要做一直前行的人啊">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="NEWAY">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/03/03/some-pytorch-python-linux-tips/" class="post-title-link" itemprop="url">some pytorch & python & linux tips</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2022-03-03 16:19:47" itemprop="dateCreated datePublished" datetime="2022-03-03T16:19:47+08:00">2022-03-03</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-03-17 04:13:48" itemprop="dateModified" datetime="2022-03-17T04:13:48+08:00">2022-03-17</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/code/" itemprop="url" rel="index"><span itemprop="name">code</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine: </span>
-    
-    <a title="valine" href="/2022/03/03/some-pytorch-python-linux-tips/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2022/03/03/some-pytorch-python-linux-tips/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <blockquote>
-<p>A cheatsheet for some common operations I may need to ask Google again and again…</p>
-</blockquote>
-<h1 id="Pytorch"><a href="#Pytorch" class="headerlink" title="Pytorch"></a>Pytorch</h1><h2 id="Select-rows-based-on-conditions-of-column-values"><a href="#Select-rows-based-on-conditions-of-column-values" class="headerlink" title="Select rows based on conditions of column values"></a>Select rows based on conditions of column values</h2><p>Basic idea is to <strong>use conditions to find all true index</strong>, and <strong>select the row&#x2F;column based on index</strong></p>
-<p>For example, return rows whose column 1 value is exactly 2:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a[:,a[:, 0] == 2]</span><br></pre></td></tr></table></figure>
-
-<p>Another example is (selct rows whose column values are all larger than 0)</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a[(a &gt; 0).all(1)]</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1358,7 +1367,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">151</span>
+          <span class="site-state-item-count">153</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -1396,7 +1405,7 @@
     </div>
     <ul class="links-of-blogroll-list">
         <li class="links-of-blogroll-item">
-          <a href="https://wadmes.github.io/2019/12/11/EDA-family-tree/" title="https:&#x2F;&#x2F;wadmes.github.io&#x2F;2019&#x2F;12&#x2F;11&#x2F;EDA-family-tree&#x2F;">EDA family tree</a>
+          <a href="https://wadmes.github.io/eda-family-tree/index.html" title="https:&#x2F;&#x2F;wadmes.github.io&#x2F;eda-family-tree&#x2F;index.html">EDA family tree</a>
         </li>
         <li class="links-of-blogroll-item">
           <a href="https://wenku.baidu.com/view/f5cdb37aeff9aef8951e0673" title="https:&#x2F;&#x2F;wenku.baidu.com&#x2F;view&#x2F;f5cdb37aeff9aef8951e0673" rel="noopener" target="_blank">小爷当年的高考满分作文</a>

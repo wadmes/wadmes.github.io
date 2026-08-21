@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noto Serif SC:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|EB Garamond:300,300italic,400,400italic,700,700italic|Source Code Pro:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"wadmes.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"buttons","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"./public/search.xml"};
+  </script>
+
+  <meta name="description" content="This is a selected academic genealogy of the electronic design automation (EDA), VLSI CAD, testing, and adjacent computer-engineering communities. It began as a tree compiled by my supervisor and me,">
+<meta property="og:type" content="website">
+<meta property="og:title" content="EDA family tree">
+<meta property="og:url" content="http://wadmes.github.io/assets/EDA-family-tree.html">
+<meta property="og:site_name" content="NEWAY">
+<meta property="og:description" content="This is a selected academic genealogy of the electronic design automation (EDA), VLSI CAD, testing, and adjacent computer-engineering communities. It began as a tree compiled by my supervisor and me,">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2019-12-11T11:11:53.000Z">
+<meta property="article:modified_time" content="2026-08-17T02:43:30.143Z">
+<meta property="article:author" content="Li Wei">
+<meta property="article:tag" content="EDA">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://wadmes.github.io/assets/EDA-family-tree">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : false,
+    lang   : 'en'
+  };
+</script>
+
+  <title>EDA family tree | NEWAY
+</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --></head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">NEWAY</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">愿识乾坤大，仍怜草木青</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+        <li class="menu-item menu-item-reading-notes">
+
+    <a href="/notes" rel="section"><i class="fas fa-book-reader fa-fw"></i>Reading notes</a>
+
+  </li>
+        <li class="menu-item menu-item-about-me">
+
+    <a href="/about" rel="section"><i class="fas fa-user fa-fw"></i>About me</a>
+
+  </li>
+        <li class="menu-item menu-item-official-about-me">
+
+    <a href="/cv" rel="section"><i class="fas fa-user-secret fa-fw"></i>Official About me</a>
+
+  </li>
+        <li class="menu-item menu-item-resume">
+
+    <a href="/cv/cv_liwei/cv.pdf" rel="section"><i class="fas fa-file fa-fw"></i>Resume</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+  
+  
+
+          <div class="content page posts-expand">
+            
+
+    
+    
+    
+    <div class="post-block" lang="en">
+      <header class="post-header">
+
+<h1 class="post-title" itemprop="name headline">EDA family tree
+</h1>
+
+<div class="post-meta">
+  
+
+</div>
+
+</header>
+
+      
+      
+      
+      <div class="post-body">
+          <p>This is a selected academic genealogy of the electronic design automation (EDA), VLSI CAD, testing, and adjacent computer-engineering communities. It began as a tree compiled by my supervisor and me, with particular attention to Chinese scholars, and has since been expanded using university biographies, dissertation archives, and faculty alumni pages.</p>
+<div style="margin:1.8rem 0 2.2rem;padding:1.25rem 1.4rem;border-left:4px solid #f26b3f;background:#f4efe5">
+  <strong style="display:block;margin-bottom:.45rem">Explore the interactive EDA Family Tree</strong>
+  The radial view makes advisor–student branches, universities, and academic generations easier to follow.
+  <a href="https://wadmes.github.io/eda-family-tree/" style="display:inline-block;margin-left:.45rem">Open the visualization →</a>
+</div>
+
+<blockquote>
+<p><strong>How to read the tree.</strong> Indentation denotes a doctoral-advisor relationship unless the entry explicitly says <strong>M.Phil.</strong>, <strong>co-advised</strong>, or <strong>postdoc</strong>. The institution and year before the first arrow are the degree institution and degree year; later institutions summarize the scholar’s career path. The tree is necessarily selective: EDA has many overlapping roots, co-advised degrees, and researchers who bridge multiple subfields.</p>
+</blockquote>
+<blockquote>
+<p><strong>Update 2026.08.</strong> Expanded the tree beyond the Wei Li branch; added the Edward McCluskey, Donald Pederson&#x2F;A. Richard Newton, Robert Brayton&#x2F;Sharad Malik, and major testing&#x2F;DFT lineages; refreshed descendants of Jason Cong, David Pan, Bei Yu, Kaushik Roy, Sanjit Seshia, Ronald Rohrer&#x2F;Lawrence Pileggi, and Andrew Kahng; and corrected several older attributions. This revision favors substantial academic branches with verified faculty descendants over isolated lists of famous researchers. In particular, Andrew Kahng is placed under T. C. Hu, and Dennis Sylvester under Chenming Hu. A scholar can appear twice when two independently useful lineages converge.</p>
+</blockquote>
+<h2 id="C-L-Liu-lineage"><a href="#C-L-Liu-lineage" class="headerlink" title="C. L. Liu lineage"></a>C. L. Liu lineage</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://www.internethalloffame.org/inductee/chung-laung-liu/">C. L. Liu</a> (MIT → UIUC → NTHU)<ul>
+<li><a target="_blank" rel="noopener" href="https://vast.cs.ucla.edu/people/faculty/jason-cong">Jason Cong</a> (UIUC Ph.D. ’90 → UCLA)<ul>
+<li><a target="_blank" rel="noopener" href="https://www.cs.binghamton.edu/~pmadden/">Patrick H. Madden</a> (UCLA Ph.D. ’96 → Binghamton)</li>
+<li><a target="_blank" rel="noopener" href="https://engineering.purdue.edu/~chengkok/">Cheng-Kok Koh</a> (UCLA Ph.D. ’98 → Purdue)</li>
+<li><a target="_blank" rel="noopener" href="https://www.ee.ucla.edu/lei-he/">Lei He</a> (UCLA Ph.D. ’99 → Wisconsin → UCLA)<ul>
+<li><a target="_blank" rel="noopener" href="https://faculty.sustech.edu.cn/yuh3/en/">Hao Yu</a> (UCLA Ph.D. ’07 → NTU → SUSTech)</li>
+<li><a target="_blank" rel="noopener" href="https://www3.nd.edu/~scl/index.html">Yiyu Shi</a> (UCLA Ph.D. ’09 → Notre Dame)</li>
+</ul>
+</li>
+<li><a target="_blank" rel="noopener" href="https://users.ece.utexas.edu/~dpan/">David Z. Pan</a> (UCLA Ph.D. ’00 → IBM → UT Austin)<ul>
+<li><a target="_blank" rel="noopener" href="https://www.cse.cuhk.edu.hk/~byu/">Bei Yu</a> (UT Austin Ph.D. ’14 → CUHK)<ul>
+<li><a target="_blank" rel="noopener" href="https://yuzhe630.github.io/">Yuzhe Ma</a> (CUHK Ph.D. ’20 → Huawei → HKUST(GZ))</li>
+<li><a target="_blank" rel="noopener" href="https://true-genghao.github.io/genghao/">Hao Geng</a> (CUHK Ph.D. ’21 → CUHK postdoc → ShanghaiTech)</li>
+<li><a target="_blank" rel="noopener" href="https://plutochen1990.github.io/">Tinghuan Chen</a> (CUHK Ph.D. ’21 → CUHK postdoc → CUHK-Shenzhen)</li>
+<li><a target="_blank" rel="noopener" href="https://www.comp.nus.edu.sg/cs/people/weili/">Wei Li</a> (CUHK M.Phil. ’21 → CMU Ph.D. ’26 → NUS; M.Phil. co-advised by Michael R. Lyu)</li>
+<li><a target="_blank" rel="noopener" href="https://sqposeidon.github.io/">Qi Sun</a> (CUHK Ph.D. ’22 → Cornell postdoc → Zhejiang University)</li>
+<li><a target="_blank" rel="noopener" href="https://zleonhe.github.io/">Zhuolun (Leon) He</a> (CUHK Ph.D. ’23 → CUHK postdoc → Tsinghua)</li>
+<li><a target="_blank" rel="noopener" href="https://baichen318.github.io/">Chen Bai</a> (CUHK Ph.D. ’24 → HKUST postdoc → Fudan)</li>
+<li><a target="_blank" rel="noopener" href="https://bonjuor-zyx.github.io/">Yuxuan Zhao</a> (CUHK Ph.D. ’25 → CUHK postdoc → CUHK-Shenzhen)</li>
+<li><a target="_blank" rel="noopener" href="https://yxgnahz.github.io/">Xinyun Zhang</a> (CUHK Ph.D. ’25 → ShanghaiTech)</li>
+<li><a target="_blank" rel="noopener" href="https://shiningsord.github.io/">Zixiao Wang</a> (CUHK Ph.D. ’26 → HKUST(GZ))</li>
+</ul>
+</li>
+<li><a target="_blank" rel="noopener" href="https://yibolin.com/">Yibo Lin</a> (UT Austin Ph.D. ’18 → Peking University)</li>
+<li><a target="_blank" rel="noopener" href="https://mengliweb.github.io/">Meng Li</a> (UT Austin Ph.D. ’18 → Meta → Peking University)</li>
+<li><a target="_blank" rel="noopener" href="https://www.jqgu.net/">Jiaqi Gu</a> (UT Austin Ph.D. ’23 → Arizona State)</li>
+</ul>
+</li>
+<li><a target="_blank" rel="noopener" href="https://limsk.ece.gatech.edu/">Sung-Kyu Lim</a> (UCLA Ph.D. ’00 → Georgia Tech)</li>
+<li><a target="_blank" rel="noopener" href="https://dchen.ece.illinois.edu/">Deming Chen</a> (UCLA Ph.D. ’05 → UIUC)</li>
+<li><a target="_blank" rel="noopener" href="https://www.csl.cornell.edu/~zhiruz/">Zhiru Zhang</a> (UCLA Ph.D. ’07 → AutoESL&#x2F;Xilinx → Cornell)</li>
+<li><a target="_blank" rel="noopener" href="https://ceca.pku.edu.cn/people/faculty/lgj/">Guojie Luo</a> (UCLA Ph.D. ’11 → Peking University)</li>
+<li><a target="_blank" rel="noopener" href="https://vast.cs.ucla.edu/people/alumni/peipei-zhou">Peipei Zhou</a> (UCLA Ph.D. ’19 → Pittsburgh)</li>
+</ul>
+</li>
+<li><a target="_blank" rel="noopener" href="https://www.cse.cuhk.edu.hk/~mdfwong/">Martin D. F. Wong</a> (UIUC Ph.D. → UT Austin → UIUC → CUHK)<ul>
+<li><a target="_blank" rel="noopener" href="https://www.cs.nthu.edu.tw/~tcwang/">Ting-Chi Wang</a> (UT Austin Ph.D. ’94 → NTHU)</li>
+<li><a target="_blank" rel="noopener" href="https://cc.ee.ntu.edu.tw/~ywchang/">Yao-Wen Chang</a> (UT Austin Ph.D. ’96 → NCTU → NTU)<ul>
+<li><a target="_blank" rel="noopener" href="https://www.ee.ntu.edu.tw/profile1?id=1060726">Iris Hui-Ru Jiang</a> (NTU Ph.D. ’05 → NCTU → NTU)</li>
+<li><a target="_blank" rel="noopener" href="https://www.cs.nthu.edu.tw/~tyho/">Tsung-Yi Ho</a> (NTU Ph.D. ’06 → NCKU → NTHU)</li>
+<li><a target="_blank" rel="noopener" href="https://www.csie.ntu.edu.tw/~syfang/">Shao-Yun Fang</a> (NTU Ph.D. → NTUST)</li>
+</ul>
+</li>
+<li><a target="_blank" rel="noopener" href="https://www.cs.nthu.edu.tw/~wkmak/">Wai-Kei Mak</a> (UT Austin Ph.D. ’98 → Simon Fraser → NTHU)</li>
+<li><a target="_blank" rel="noopener" href="https://www.cse.cuhk.edu.hk/~fyyoung/">Evangeline F. Y. Young</a> (UT Austin Ph.D. ’99 → CUHK)<ul>
+<li><a target="_blank" rel="noopener" href="https://www.cs.auckland.ac.nz/~csha092/frontpage.htm">Chiu-Wing (Bruce) Sham</a> (CUHK Ph.D. ’06 → Hong Kong Polytechnic → Auckland)<ul>
+<li><a target="_blank" rel="noopener" href="https://profiles.auckland.ac.nz/sean-ma">Sean Longyu Ma</a> (Auckland Ph.D. ’23 → Auckland)</li>
+</ul>
+</li>
+<li><a target="_blank" rel="noopener" href="https://csee.hnu.edu.cn/people/hexu">Xu He</a> (CUHK Ph.D. → Hunan University)</li>
+<li><a target="_blank" rel="noopener" href="https://anticold.github.io/">Jinwei Liu</a> (CUHK Ph.D. ’22 → Hong Kong Baptist University)</li>
+<li><a target="_blank" rel="noopener" href="https://facultyprofiles.hkust-gz.edu.cn/faculty-personal-page/Lin-Shiju/shijulin">Shiju Lin</a> (CUHK Ph.D. ’24 → HKUST(GZ))</li>
+</ul>
+</li>
+<li><a target="_blank" rel="noopener" href="https://users.eecs.northwestern.edu/~haizhou/">Hai Zhou</a> (UT Austin Ph.D. ’99 → Northwestern)<ul>
+<li><a target="_blank" rel="noopener" href="https://www.ece.iit.edu/~jwang/">Jia Wang</a> (Northwestern Ph.D. ’08 → Illinois Tech)</li>
+</ul>
+</li>
+<li><a target="_blank" rel="noopener" href="https://home.engineering.iastate.edu/~cnchu/">Chris Chu</a> (UT Austin Ph.D. ’99 → Iowa State)</li>
+<li><a target="_blank" rel="noopener" href="https://tsung-wei-huang.github.io/">Tsung-Wei Huang</a> (UIUC Ph.D. ’17 → Utah)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="Edward-J-McCluskey-lineage-testing-and-dependable-computing"><a href="#Edward-J-McCluskey-lineage-testing-and-dependable-computing" class="headerlink" title="Edward J. McCluskey lineage: testing and dependable computing"></a>Edward J. McCluskey lineage: testing and dependable computing</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://engineering.stanford.edu/news/pioneering-stanford-computer-researcher-and-educator-edward-mccluskey-dies">Edward J. McCluskey</a> (MIT Sc.D. ’56 → Princeton → Stanford)<ul>
+<li><a target="_blank" rel="noopener" href="https://www.cmu.edu/engineering/ece/people/faculty/daniel-siewiorek.html">Daniel P. Siewiorek</a> (Stanford Ph.D. ’72 → Carnegie Mellon)</li>
+<li><a target="_blank" rel="noopener" href="https://www.cerc.utexas.edu/~jaa/">Jacob A. Abraham</a> (Stanford Ph.D. ’74 → UIUC → UT Austin)<ul>
+<li><a target="_blank" rel="noopener" href="https://engineering.purdue.edu/ECE/People/ptProfile?resource_id=3085">Kaushik Roy</a> (UIUC Ph.D. ’90 → Purdue)<ul>
+<li><a target="_blank" rel="noopener" href="https://ece.duke.edu/faculty/hai-helen-li">Hai (Helen) Li</a> (Purdue Ph.D. ’04 → NYU → Pittsburgh → Duke)</li>
+<li><a target="_blank" rel="noopener" href="https://ece.duke.edu/faculty/yiran-chen">Yiran Chen</a> (Purdue Ph.D. ’05 → Seagate → Pittsburgh → Duke)</li>
+<li><a target="_blank" rel="noopener" href="https://faculty.sfsu.edu/~mahmoodi/">Hamid Mahmoodi</a> (Purdue Ph.D. ’05 → San Francisco State)</li>
+<li><a target="_blank" rel="noopener" href="https://ece.gatech.edu/directory/saibal-mukhopadhyay">Saibal Mukhopadhyay</a> (Purdue Ph.D. ’06 → IBM → Georgia Tech)</li>
+<li><a target="_blank" rel="noopener" href="https://ece.gatech.edu/directory/arijit-raychowdhury">Arijit Raychowdhury</a> (Purdue Ph.D. ’07 → Intel → Georgia Tech)</li>
+<li><a target="_blank" rel="noopener" href="https://www.eecs.psu.edu/departments/directory-detail-g.aspx?q=sug10">Sumeet Kumar Gupta</a> (Purdue Ph.D. ’12 → Penn State)</li>
+<li><a target="_blank" rel="noopener" href="https://sites.google.com/view/deliangfan/">Deliang Fan</a> (Purdue Ph.D. ’15 → UCF → Arizona State)</li>
+</ul>
+</li>
+<li><a target="_blank" rel="noopener" href="https://shobhav.ece.illinois.edu/">Shobha Vasudevan</a> (UT Austin Ph.D. ’07 → UIUC)</li>
+</ul>
+</li>
+<li><a target="_blank" rel="noopener" href="https://users.ece.utexas.edu/~touba/">Nur A. Touba</a> (Stanford Ph.D. ’96 → UT Austin)<ul>
+<li><a target="_blank" rel="noopener" href="https://hb2504.utep.edu/Home/Profile?username=emac">Eric MacDonald</a> (UT Austin Ph.D. ’02 → UTEP)</li>
+<li><a target="_blank" rel="noopener" href="https://www.engineering.pitt.edu/people/faculty/kartik-mohanram/">Kartik Mohanram</a> (UT Austin Ph.D. ’03 → Rice → Pittsburgh)</li>
+<li><a target="_blank" rel="noopener" href="https://dates.yonsei.ac.kr/people">Joon-Sung Yang</a> (UT Austin Ph.D. ’09 → Sungkyunkwan → Yonsei)</li>
+</ul>
+</li>
+<li><a target="_blank" rel="noopener" href="https://web.njit.edu/~savir/savir.htm">Jacob Savir</a> (Stanford Ph.D. ’78 → IBM → NJIT)</li>
+<li><a target="_blank" rel="noopener" href="https://profiles.stanford.edu/subhasish-mitra">Subhasish Mitra</a> (Stanford Ph.D. ’00 → Intel → Stanford)</li>
+</ul>
+</li>
+</ul>
+<h2 id="Berkeley-CAD-lineages"><a href="#Berkeley-CAD-lineages" class="headerlink" title="Berkeley CAD lineages"></a>Berkeley CAD lineages</h2><h3 id="Donald-O-Pederson-→-A-Richard-Newton"><a href="#Donald-O-Pederson-→-A-Richard-Newton" class="headerlink" title="Donald O. Pederson → A. Richard Newton"></a>Donald O. Pederson → A. Richard Newton</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://www2.eecs.berkeley.edu/Faculty/Homepages/pederson.html">Donald O. Pederson</a> (Stanford Ph.D. ’51 → Berkeley)<ul>
+<li><a target="_blank" rel="noopener" href="https://senate.universityofcalifornia.edu/_files/inmemoriam/html/arichardnewton.htm">A. Richard Newton</a> (Berkeley Ph.D. ’78 → Berkeley)<ul>
+<li><a target="_blank" rel="noopener" href="https://ece.ubc.ca/resve-saleh/">Resve A. Saleh</a> (Berkeley Ph.D. ’87 → UIUC → UBC)</li>
+<li><a target="_blank" rel="noopener" href="https://www.csail.mit.edu/person/srinivas-devadas">Srinivas Devadas</a> (Berkeley Ph.D. ’88 → MIT)</li>
+<li><a target="_blank" rel="noopener" href="https://www.ece.ucsd.edu/faculty-research/ece-faculty/william-bill-lin">Bill Lin</a> (Berkeley Ph.D. ’91 → UC San Diego)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="Robert-K-Brayton"><a href="#Robert-K-Brayton" class="headerlink" title="Robert K. Brayton"></a>Robert K. Brayton</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://www2.eecs.berkeley.edu/Faculty/Homepages/brayton.html">Robert K. Brayton</a> (MIT Ph.D. ’61 → Berkeley)<ul>
+<li><a target="_blank" rel="noopener" href="https://www.princeton.edu/~sharad/">Sharad Malik</a> (Berkeley Ph.D. ’90 → Princeton)<ul>
+<li><a target="_blank" rel="noopener" href="https://portal.dados.unicamp.br/perfil?docente=331316">Guido Araújo</a> (Princeton Ph.D. ’97 → UNICAMP)</li>
+<li><a target="_blank" rel="noopener" href="https://www.cse.iitk.ac.in/users/pramod/">Pramod Subramanyan</a> (Princeton Ph.D. ’16 → Berkeley postdoc → IIT Kanpur)</li>
+<li><a target="_blank" rel="noopener" href="https://hongcezh.people.ust.hk/">Hongce Zhang</a> (Princeton Ph.D. ’21 → HKUST(GZ))</li>
+</ul>
+</li>
+<li><a target="_blank" rel="noopener" href="https://cc.ee.ntu.edu.tw/~jhjiang/">Jie-Hong Roland Jiang</a> (Berkeley Ph.D. ’04 → NTU)</li>
+<li><a target="_blank" rel="noopener" href="https://people.eecs.berkeley.edu/~alanmi/">Alan Mishchenko</a> (Institute of Control Sciences Ph.D. ’02 → Berkeley)</li>
+</ul>
+</li>
+</ul>
+<h3 id="Ernest-S-Kuh"><a href="#Ernest-S-Kuh" class="headerlink" title="Ernest S. Kuh"></a>Ernest S. Kuh</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://www2.eecs.berkeley.edu/Faculty/Homepages/kuh.html">Ernest S. Kuh</a> (Stanford Ph.D. ’52 → Berkeley)<ul>
+<li><a target="_blank" rel="noopener" href="https://computerhistory.org/profile/ron-rohrer/">Ronald A. Rohrer</a> (Berkeley Ph.D. ’63 → Carnegie Mellon)<ul>
+<li><a target="_blank" rel="noopener" href="https://www2.eecs.berkeley.edu/Faculty/Homepages/chua.html">Leon O. Chua</a> (UIUC Ph.D. ’64 → Purdue → Berkeley)</li>
+<li><a target="_blank" rel="noopener" href="https://www2.eecs.berkeley.edu/Pubs/Dissertations/Years/1968.html">Stephen W. Director</a> (Berkeley Ph.D. ’68 → Florida → Carnegie Mellon → Michigan)</li>
+<li><a target="_blank" rel="noopener" href="https://www.synopsys.com/authors/aart-de-geus.html">Aart de Geus</a> (SMU Ph.D. ’85 → General Electric → Synopsys)</li>
+<li><a target="_blank" rel="noopener" href="https://www.ece.cmu.edu/directory/bios/pileggi-larry.html">Lawrence T. Pileggi</a> (Carnegie Mellon Ph.D. ’89 → UT Austin → Carnegie Mellon)<ul>
+<li><a target="_blank" rel="noopener" href="https://engineering.ucsb.edu/people/peng-li">Peng Li</a> (Carnegie Mellon Ph.D. ’03 → Texas A&amp;M → UCSB)<ul>
+<li><a target="_blank" rel="noopener" href="https://www.stevens.edu/profile/zfeng12">Zhuo Feng</a> (Texas A&amp;M Ph.D. ’09 → Michigan Tech → Stevens)</li>
+<li><a target="_blank" rel="noopener" href="https://research.knu.ac.kr/en/persons/yongtae-kim/">Yongtae Kim</a> (Texas A&amp;M Ph.D. ’13 → Intel → Kyungpook National University)</li>
+</ul>
+</li>
+<li><a target="_blank" rel="noopener" href="https://ece.duke.edu/people/xin-li/">Xin Li</a> (Carnegie Mellon Ph.D. ’05 → Carnegie Mellon → Duke &#x2F; Duke Kunshan)</li>
+<li><a target="_blank" rel="noopener" href="https://www.uvm.edu/cems/ebe/profile/amritanshu-pandey">Amritanshu Pandey</a> (Carnegie Mellon Ph.D. ’18 → Carnegie Mellon → Vermont)</li>
+<li><a target="_blank" rel="noopener" href="https://engineering.buffalo.edu/ee/faculty/faculty_directory.host.html/content/shared/engineering/ee/profiles/Li-shimiao.detail.publications.html">Shimiao (Cindy) Li</a> (Carnegie Mellon Ph.D. ’24 → Buffalo)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a target="_blank" rel="noopener" href="https://cseweb.ucsd.edu/~kuan/">C. K. Cheng</a> (Berkeley Ph.D. ’84 → UC San Diego)</li>
+<li><a target="_blank" rel="noopener" href="https://seng.ust.hk/about/people/faculty/kwang-ting-tim-cheng">Kwang-Ting (Tim) Cheng</a> (Berkeley Ph.D. ’88 → UCSB → HKUST)</li>
+<li><a target="_blank" rel="noopener" href="https://sites.usc.edu/massoudpedram/">Massoud Pedram</a> (Berkeley Ph.D. ’91 → USC)<ul>
+<li><a target="_blank" rel="noopener" href="https://www.ece.utexas.edu/people/faculty/radu-marculescu">Radu Marculescu</a> (USC Ph.D. ’98 → Carnegie Mellon → UT Austin)</li>
+<li><a target="_blank" rel="noopener" href="https://www.ece.utexas.edu/people/faculty/diana-marculescu">Diana Marculescu</a> (USC Ph.D. ’98 → Carnegie Mellon → UT Austin)</li>
+<li><a target="_blank" rel="noopener" href="https://engineering.uci.edu/users/payam-heydari">Payam Heydari</a> (USC Ph.D. ’01 → UC Irvine)</li>
+<li><a target="_blank" rel="noopener" href="https://ecs.syracuse.edu/faculty-staff/qinru-qiu">Qinru Qiu</a> (USC Ph.D. ’01 → Syracuse)</li>
+<li><a target="_blank" rel="noopener" href="https://coe.northeastern.edu/people/wang-yanzhi/">Yanzhi Wang</a> (USC Ph.D. ’14 → Northeastern)</li>
+<li><a target="_blank" rel="noopener" href="https://coe.northeastern.edu/people/lin-xue/">Xue Lin</a> (USC Ph.D. ’16 → Northeastern)</li>
+</ul>
+</li>
+<li><a target="_blank" rel="noopener" href="https://iee.ucsb.edu/people/malgorzata-marek-sadowska">Malgorzata Marek-Sadowska</a> (Berkeley Ph.D. → UCSB)<ul>
+<li><a target="_blank" rel="noopener" href="https://www.easylogic.hk/about">David Wu</a> (UCSB Ph.D. ’93 → CUHK → Easy-Logic)</li>
+<li><a target="_blank" rel="noopener" href="https://www.cs.nthu.edu.tw/~scchang/">Shih-Chieh Chang</a> (UCSB Ph.D. ’94 → NTHU)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="Chenming-Hu"><a href="#Chenming-Hu" class="headerlink" title="Chenming Hu"></a>Chenming Hu</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://www2.eecs.berkeley.edu/Faculty/Homepages/hu.html">Chenming Hu</a> (Berkeley Ph.D. ’73 → Berkeley)<ul>
+<li><a target="_blank" rel="noopener" href="https://eecs.engin.umich.edu/people/sylvester/">Dennis Sylvester</a> (Berkeley Ph.D. ’99 → Michigan)<ul>
+<li><a target="_blank" rel="noopener" href="https://users.soe.ucsc.edu/~mrg/">Matt Guthaus</a> (Michigan Ph.D. ’06 → UC Santa Cruz)</li>
+<li><a target="_blank" rel="noopener" href="https://faculty.engineering.asu.edu/jseo/">Jae-sun Seo</a> (Michigan Ph.D. ’10 → IBM → Arizona State)</li>
+<li><a target="_blank" rel="noopener" href="https://www.ee.columbia.edu/mingoo-seok">Mingoo Seok</a> (Michigan Ph.D. ’11 → Columbia)</li>
+</ul>
+</li>
+<li><a target="_blank" rel="noopener" href="https://engineering.ucsb.edu/people/kaustav-banerjee">Kaustav Banerjee</a> (Berkeley Ph.D. ’99 → UCSB)</li>
+<li><a target="_blank" rel="noopener" href="https://users.ece.utexas.edu/~michael/">Michael Orshansky</a> (Berkeley Ph.D. ’01 → UT Austin)</li>
+<li><a target="_blank" rel="noopener" href="https://search.asu.edu/profile/749044">Yu Cao</a> (Berkeley Ph.D. ’02 → Arizona State)</li>
+</ul>
+</li>
+</ul>
+<h3 id="Alberto-Sangiovanni-Vincentelli"><a href="#Alberto-Sangiovanni-Vincentelli" class="headerlink" title="Alberto Sangiovanni-Vincentelli"></a>Alberto Sangiovanni-Vincentelli</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://www2.eecs.berkeley.edu/Faculty/Homepages/sangiovanni-vicentelli.html">Alberto L. Sangiovanni-Vincentelli</a> (Politecnico di Milano → Berkeley)<ul>
+<li><a target="_blank" rel="noopener" href="https://si2.epfl.ch/~demichel/">Giovanni De Micheli</a> (Berkeley Ph.D. ’83 → Stanford → EPFL)<ul>
+<li><a target="_blank" rel="noopener" href="https://cse.ucsd.edu/people/faculty-profiles/rajesh-gupta">Rajesh Gupta</a> (Stanford Ph.D. ’93 → UC Irvine → UC San Diego)</li>
+<li><a target="_blank" rel="noopener" href="https://homepages.dcc.ufmg.br/~coelho/">Claudionor José Nunes Coelho Jr.</a> (Stanford Ph.D. ’96 → UFMG)</li>
+<li><a target="_blank" rel="noopener" href="https://users.ece.gatech.edu/~mooney/">Vincent J. Mooney III</a> (Stanford Ph.D. ’97 → Georgia Tech)</li>
+<li><a target="_blank" rel="noopener" href="https://ee.ethz.ch/the-department/people-a-z/person-detail.MTk0MjM0.TGlzdC8zMjc5LC0xNjUwNTg5ODIw.html">Luca Benini</a> (Stanford Ph.D. ’97 → Bologna → ETH Zürich)</li>
+<li><a target="_blank" rel="noopener" href="https://cseweb.ucsd.edu/~trosing/">Tajana Rosing</a> (Stanford Ph.D. ’01 → UC San Diego)</li>
+<li><a target="_blank" rel="noopener" href="https://engineering.purdue.edu/ECE/People/ptProfile?resource_id=3355">Yung-Hsiang Lu</a> (Stanford Ph.D. ’02 → Purdue)</li>
+<li><a target="_blank" rel="noopener" href="https://dtl.yonsei.ac.kr/">Eui-Young Chung</a> (Stanford Ph.D. ’02 → Yonsei)</li>
+<li><a target="_blank" rel="noopener" href="https://data.snu.ac.kr/">Sungroh Yoon</a> (Stanford Ph.D. ’04 → Seoul National University)</li>
+</ul>
+</li>
+<li><a target="_blank" rel="noopener" href="https://www.rle.mit.edu/people/jacob-white/">Jacob K. White</a> (Berkeley Ph.D. ’85 → MIT)</li>
+<li><a target="_blank" rel="noopener" href="https://casinovi.ece.gatech.edu/">Giorgio Casinovi</a> (Berkeley Ph.D. → Georgia Tech)</li>
+<li><a target="_blank" rel="noopener" href="https://www.ece.ntu.edu.tw/en/teacher/index.php?teacher_id=91">Jyuo-Min Shyu</a> (Berkeley Ph.D. ’88 → NTU)</li>
+<li><a target="_blank" rel="noopener" href="https://www.cs.columbia.edu/~luca/">Luca Carloni</a> (Berkeley Ph.D. → Columbia)</li>
+<li><a target="_blank" rel="noopener" href="https://www.mit.edu/~dluca/">Luca Daniel</a> (Berkeley Ph.D. ’03 → MIT)<ul>
+<li><a target="_blank" rel="noopener" href="https://engineering.ucsb.edu/people/zheng-zhang">Zheng Zhang</a> (MIT Ph.D. ’15 → UCSB)</li>
+</ul>
+</li>
+<li><a target="_blank" rel="noopener" href="https://www.mccormick.northwestern.edu/research-faculty/directory/profiles/zhu-qi.html">Qi Zhu</a> (Berkeley Ph.D. ’08 → UC Riverside → Northwestern)</li>
+<li><a target="_blank" rel="noopener" href="https://ece.vt.edu/people/profile/zeng">Haibo Zeng</a> (Berkeley Ph.D. ’08 → Virginia Tech)</li>
+<li><a target="_blank" rel="noopener" href="https://www.bu.edu/eng/profile/douglas-densmore/">Douglas Densmore</a> (Berkeley Ph.D. → Boston University)</li>
+<li><a target="_blank" rel="noopener" href="https://viterbi.usc.edu/directory/faculty/Nuzzo/Pierluigi">Pierluigi Nuzzo</a> (Berkeley Ph.D. → USC)</li>
+</ul>
+</li>
+</ul>
+<h3 id="T-C-Hu"><a href="#T-C-Hu" class="headerlink" title="T. C. Hu"></a>T. C. Hu</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://cse.ucsd.edu/about/department-history/t-c-hu">T. C. Hu</a> (UIUC Ph.D. ’56 → Berkeley → Wisconsin → UC San Diego)<ul>
+<li><a target="_blank" rel="noopener" href="https://vlsicad.ucsd.edu/~abk/">Andrew B. Kahng</a> (UC San Diego Ph.D. ’89 → UCLA → UC San Diego)<ul>
+<li><a target="_blank" rel="noopener" href="https://www.cs.virginia.edu/~robins/">Gabriel Robins</a> (UCLA Ph.D. ’92 → Virginia)</li>
+<li><a target="_blank" rel="noopener" href="https://web.eecs.umich.edu/~imarkov/">Igor L. Markov</a> (UCLA Ph.D. ’01 → Michigan → industry)</li>
+<li><a target="_blank" rel="noopener" href="https://vivo.brown.edu/display/sreda">Sherief Reda</a> (UC San Diego Ph.D. ’06 → Brown)</li>
+<li><a target="_blank" rel="noopener" href="https://samueli.ucla.edu/people/puneet-gupta/">Puneet Gupta</a> (UC San Diego Ph.D. ’07 → UCLA)</li>
+<li><a target="_blank" rel="noopener" href="https://eee.postech.ac.kr/en-people/en-professor/view.php?id=5663">Seokhyeong Kang</a> (UC San Diego Ph.D. ’13 → UNIST → POSTECH)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="Carnegie-Mellon-and-Berkeley-formal-methods-lineage"><a href="#Carnegie-Mellon-and-Berkeley-formal-methods-lineage" class="headerlink" title="Carnegie Mellon and Berkeley formal-methods lineage"></a>Carnegie Mellon and Berkeley formal-methods lineage</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://www.cs.cmu.edu/~bryant/">Randal E. Bryant</a> (MIT Ph.D. ’81 → Carnegie Mellon)<ul>
+<li><a target="_blank" rel="noopener" href="https://people.eecs.berkeley.edu/~sseshia/">Sanjit A. Seshia</a> (Carnegie Mellon Ph.D. ’05 → Berkeley)<ul>
+<li><a target="_blank" rel="noopener" href="https://www.bu.edu/eng/profile/wenchao-li/">Wenchao Li</a> (Berkeley Ph.D. ’13 → Boston University)</li>
+<li><a target="_blank" rel="noopener" href="https://dorsa.fyi/">Dorsa Sadigh</a> (Berkeley Ph.D. → Stanford; co-advised by S. Shankar Sastry)</li>
+<li><a target="_blank" rel="noopener" href="https://people.ucsc.edu/~dfremont/">Daniel J. Fremont</a> (Berkeley Ph.D. → UC Santa Cruz)</li>
+<li><a target="_blank" rel="noopener" href="https://uwaterloo.ca/embedded-software-group/profiles/federico-mora">Federico Mora</a> (Berkeley Ph.D. → Waterloo)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="John-P-Hayes-lineage-testing-diagnosis-and-dependable-systems"><a href="#John-P-Hayes-lineage-testing-diagnosis-and-dependable-systems" class="headerlink" title="John P. Hayes lineage: testing, diagnosis, and dependable systems"></a>John P. Hayes lineage: testing, diagnosis, and dependable systems</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://cse.engin.umich.edu/stories/prof-john-p-hayes-retires-after-half-a-century-in-computer-architecture">John P. Hayes</a> (UIUC Ph.D. ’70 → USC → Michigan)<ul>
+<li><a target="_blank" rel="noopener" href="https://www.cs.uic.edu/~dutt/">Shantanu Dutt</a> (Michigan Ph.D. ’90 → UIC)</li>
+<li><a target="_blank" rel="noopener" href="https://search.asu.edu/profile/4669916">Krishnendu Chakrabarty</a> (Michigan Ph.D. ’95 → Duke → Arizona State)<ul>
+<li><a target="_blank" rel="noopener" href="https://ece.utdallas.edu/people/tenure-system-faculty/ibrahim-mohamed/">Mohamed Ibrahim</a> (Duke Ph.D. ’18 → Berkeley postdoc → Georgia Tech → UT Dallas)</li>
+</ul>
+</li>
+<li><a target="_blank" rel="noopener" href="https://engineering.cmu.edu/directory/bios/blanton-shawn.html">Shawn Blanton</a> (Michigan Ph.D. ’95 → Carnegie Mellon)<ul>
+<li><a target="_blank" rel="noopener" href="https://www.comp.nus.edu.sg/cs/people/weili/">Wei Li</a> (Carnegie Mellon Ph.D. ’26 → NUS; co-advised by José M. F. Moura)</li>
+</ul>
+</li>
+<li><a target="_blank" rel="noopener" href="https://faculty.engineering.ucdavis.edu/alasaad/">Hussain Al-Asaad</a> (Michigan Ph.D. ’98 → UC Davis)</li>
+<li><a target="_blank" rel="noopener" href="https://sites.google.com/site/hwkimcbu/">HyungWon Kim</a> (Michigan Ph.D. ’99 → Chungbuk National University)</li>
+<li><a target="_blank" rel="noopener" href="https://sites.google.com/view/joonhwanyi/">Joonhwan Yi</a> (Michigan Ph.D. ’02 → Kwangwoon University)</li>
+<li><a target="_blank" rel="noopener" href="https://krishnaswamylab.org/">Smita Krishnaswamy</a> (Michigan Ph.D. ’08 → Yale; co-advised by Igor Markov)</li>
+</ul>
+</li>
+</ul>
+<h2 id="Other-established-EDA-lineages"><a href="#Other-established-EDA-lineages" class="headerlink" title="Other established EDA lineages"></a>Other established EDA lineages</h2><ul>
+<li><p><a target="_blank" rel="noopener" href="https://mwolf.unl.edu/marilyn-c-wolf">Marilyn C. Wolf</a> (Stanford Ph.D. ’84 → Princeton → Georgia Tech → Nebraska)</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://web.ece.ucsb.edu/~yuanxie/">Yuan Xie</a> (Princeton Ph.D. ’02 → IBM → Penn State → UCSB)<ul>
+<li><a target="_blank" rel="noopener" href="https://eecs.pku.edu.cn/info/1504/6956.htm">Guangyu Sun</a> (Penn State Ph.D. ’11 → Peking University)</li>
+<li><a target="_blank" rel="noopener" href="https://cseweb.ucsd.edu/~jzhao/">Jishen Zhao</a> (Penn State Ph.D. ’14 → HP Labs → UC San Diego)</li>
+</ul>
+</li>
+<li><a target="_blank" rel="noopener" href="https://eexu.home.ece.ust.hk/">Jiang Xu</a> (Princeton Ph.D. ’05 → HKUST)<ul>
+<li><a target="_blank" rel="noopener" href="https://english.seiee.sjtu.edu.cn/english/detail/2128_1921.htm">Yaoyao Ye</a> (HKUST Ph.D. ’13 → Huawei → Shanghai Jiao Tong)</li>
+<li><a target="_blank" rel="noopener" href="https://www.ntu.edu.sg/home/liu/">Weichen Liu</a> (HKUST Ph.D. → Chongqing University → NTU Singapore)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://people.ece.umn.edu/~sachin/">Sachin S. Sapatnekar</a> (UIUC Ph.D. ’92 → Iowa State → Minnesota)</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://cesg.tamu.edu/faculty/jiang-hu/">Jiang Hu</a> (Minnesota Ph.D. ’00 → Texas A&amp;M)<ul>
+<li><a target="_blank" rel="noopener" href="https://sist.shanghaitech.edu.cn/zhoupq/">Pingqiang Zhou</a> (Minnesota Ph.D. ’13 → ShanghaiTech)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="Notes-and-corrections"><a href="#Notes-and-corrections" class="headerlink" title="Notes and corrections"></a>Notes and corrections</h2><ul>
+<li>This is an <strong>academic genealogy</strong>, not a ranking or a complete list of EDA researchers.</li>
+<li>Degree years and placements can change as public biographies are updated. Please send corrections to <code>weili3@andrew.cmu.edu</code>.</li>
+<li>Dennis Sylvester’s dissertation advisor was Chenming Hu. Kurt Keutzer’s own alumni page describes Sylvester affectionately as part of his group while explicitly noting that Hu was the dissertation advisor; the formal tree therefore places Sylvester under Hu.</li>
+<li>Andrew Kahng’s doctoral advisor was T. C. Hu, so the Kahng branch has been moved from the Ernest Kuh branch.</li>
+<li>The Wei Li node appears in both the Bei Yu and Shawn Blanton branches because the two paths document different degrees. His CUHK M.Phil. was co-advised by Bei Yu and Michael R. Lyu; his Carnegie Mellon Ph.D. was co-advised by Shawn Blanton and José M. F. Moura.</li>
+<li>All twenty scholars in the two Hall-of-Fame lists supplied in August 2026 were checked for doctoral descendants in academia. Melvin Breuer, Vishwani Agrawal, Janusz Rajski, Yervant Zorian, Miron Abramovici, Sudhakar Reddy, and Mary Jane Irwin are not shown merely to satisfy a checklist: the publicly verifiable lines found for them are isolated or end after only a few people without a continuing academic branch. Industrial mentorship and co-authorship are likewise not converted into doctoral edges without thesis evidence.</li>
+</ul>
+<h2 id="Principal-verification-sources"><a href="#Principal-verification-sources" class="headerlink" title="Principal verification sources"></a>Principal verification sources</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://people.eecs.berkeley.edu/~jr/DMA/alumni.html">UC Berkeley Design Methodology Automation alumni</a> and <a target="_blank" rel="noopener" href="https://www2.eecs.berkeley.edu/Pubs/Dissertations/">Berkeley dissertation-advisor index</a></li>
+<li><a target="_blank" rel="noopener" href="https://vast.cs.ucla.edu/people/alumni">UCLA VAST alumni</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.cse.cuhk.edu.hk/~byu/students.html">Bei Yu’s official student and alumni list</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.cse.cuhk.edu.hk/~fyyoung/student.html">Evangeline Young’s official student and alumni list</a></li>
+<li><a target="_blank" rel="noopener" href="https://cse.engin.umich.edu/alumni/alumni-in-academia/">University of Michigan CSE alumni in academia</a></li>
+<li><a target="_blank" rel="noopener" href="https://people.eecs.berkeley.edu/~sseshia/">Sanjit Seshia’s official group alumni</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.princeton.edu/~sharad/grad.html">Sharad Malik’s official graduate-student alumni list</a></li>
+<li><a target="_blank" rel="noopener" href="https://users.ece.utexas.edu/~touba/research/students.html">Nur Touba’s official doctoral-alumni list</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.comp.nus.edu.sg/cs/people/weili/">Wei Li’s NUS profile</a></li>
+<li><a target="_blank" rel="noopener" href="https://gradschool.duke.edu/about/news/engineering-phd-graduate-receives-dissertation-award/">Duke’s dissertation record for Mohamed Ibrahim</a></li>
+<li><a target="_blank" rel="noopener" href="https://minghsiehece.usc.edu/alumni-profile-electrical-engineering/">USC ECE’s academic-alumni advisor index</a></li>
+</ul>
+
+      </div>
+      
+      
+      
+    </div>
+    
+
+    
+    
+    
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#C-L-Liu-lineage"><span class="nav-number">1.</span> <span class="nav-text">C. L. Liu lineage</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Edward-J-McCluskey-lineage-testing-and-dependable-computing"><span class="nav-number">2.</span> <span class="nav-text">Edward J. McCluskey lineage: testing and dependable computing</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Berkeley-CAD-lineages"><span class="nav-number">3.</span> <span class="nav-text">Berkeley CAD lineages</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Donald-O-Pederson-%E2%86%92-A-Richard-Newton"><span class="nav-number">3.1.</span> <span class="nav-text">Donald O. Pederson → A. Richard Newton</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Robert-K-Brayton"><span class="nav-number">3.2.</span> <span class="nav-text">Robert K. Brayton</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Ernest-S-Kuh"><span class="nav-number">3.3.</span> <span class="nav-text">Ernest S. Kuh</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Chenming-Hu"><span class="nav-number">3.4.</span> <span class="nav-text">Chenming Hu</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Alberto-Sangiovanni-Vincentelli"><span class="nav-number">3.5.</span> <span class="nav-text">Alberto Sangiovanni-Vincentelli</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#T-C-Hu"><span class="nav-number">3.6.</span> <span class="nav-text">T. C. Hu</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Carnegie-Mellon-and-Berkeley-formal-methods-lineage"><span class="nav-number">4.</span> <span class="nav-text">Carnegie Mellon and Berkeley formal-methods lineage</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#John-P-Hayes-lineage-testing-diagnosis-and-dependable-systems"><span class="nav-number">5.</span> <span class="nav-text">John P. Hayes lineage: testing, diagnosis, and dependable systems</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Other-established-EDA-lineages"><span class="nav-number">6.</span> <span class="nav-text">Other established EDA lineages</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Notes-and-corrections"><span class="nav-number">7.</span> <span class="nav-text">Notes and corrections</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Principal-verification-sources"><span class="nav-number">8.</span> <span class="nav-text">Principal verification sources</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Li Wei"
+      src="/images/liwei3.jpg">
+  <p class="site-author-name" itemprop="name">Li Wei</p>
+  <div class="site-description" itemprop="description">人生注定是一个人的旅行，但就算孤独也要做一直前行的人啊</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">153</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">29</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/wadmes" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;wadmes" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:werry715@gmail.com" title="E-Mail → mailto:werry715@gmail.com" rel="noopener" target="_blank"><i class="fas fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://music.163.com/#/playlist?id=49000450" title="Music → https:&#x2F;&#x2F;music.163.com&#x2F;#&#x2F;playlist?id&#x3D;49000450" rel="noopener" target="_blank"><i class="fas fa-music fa-fw"></i>Music</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://steamcommunity.com/id/wadmes/" title="Steam → https:&#x2F;&#x2F;steamcommunity.com&#x2F;id&#x2F;wadmes&#x2F;" rel="noopener" target="_blank"><i class="fab fa-steam fa-fw"></i>Steam</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="link fa-fw"></i>
+      Interesting links!
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://wadmes.github.io/eda-family-tree/index.html" title="https:&#x2F;&#x2F;wadmes.github.io&#x2F;eda-family-tree&#x2F;index.html">EDA family tree</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://wenku.baidu.com/view/f5cdb37aeff9aef8951e0673" title="https:&#x2F;&#x2F;wenku.baidu.com&#x2F;view&#x2F;f5cdb37aeff9aef8951e0673" rel="noopener" target="_blank">小爷当年的高考满分作文</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2026</span>
+  <span class="with-love">
+    <i class="user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Li Wei</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='50' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : true,
+      appId      : 'NmNqnbed4p8koRJWwGm6SdrW-gzGzoHsz',
+      appKey     : 'ECnYjjxnwouXPYlJjrjLJhv9',
+      placeholder: "Just go go",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>

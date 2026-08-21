@@ -66,6 +66,15 @@
     color: #2e7d32;
     font-weight: bold;
   }
+  .advising-question {
+    color: #224b8d;
+    margin-bottom: 0.25em;
+    margin-top: 1.1em;
+  }
+  .fine-print {
+    color: #666666;
+    font-size: 90%;
+  }
 </style>
 </head>
 <body>
@@ -121,6 +130,7 @@
   <li><a href="#research-about">What Is My Research About?</a></li>
   <li><a href="#research-directions">Research Directions</a>: better solvers, autonomous EDA, robust AI hardware, and future hardware.</li>
   <li><a href="#what-i-provide">What I Can Provide</a>: industry path, academic path, and AI research bridges.</li>
+  <li><a href="#advising-style">My Advising Style</a>: what I value and how we will work together.</li>
   <li><a href="#who-should-reach-out">Who Should Reach Out?</a></li>
   <li><a href="#how-to-contact">How to Contact Me</a></li>
 </ul>
@@ -153,6 +163,27 @@ to keep up with the speed of AI architecture evolution.
   <img src="./img/crisis.jpg" alt="AI hardware demand crisis" />
   <div class="caption">AI demand is accelerating, while chip development remains slow, expensive, and human-intensive. For your reference, USD 667B is roughly FOUR entire NBA leagues.</div>
 </div>
+
+<p>
+The pressure is no longer coming only from traditional semiconductor companies. The “new money” of AI—hyperscalers and frontier-model companies—is increasingly
+moving down the stack and building custom silicon for its own workloads. For example, Meta has developed and deployed its
+<a href="https://engineering.fb.com/2025/09/29/data-infrastructure/metas-infrastructure-evolution-and-the-advent-of-ai/" target="_blank">MTIA accelerators</a>,
+while OpenAI and Broadcom have announced a collaboration to deploy
+<a href="https://openai.com/index/openai-and-broadcom-announce-strategic-collaboration/" target="_blank">OpenAI-designed AI accelerators</a>.
+At the scale of modern AI, hardware specialized for the actual workload can improve performance, energy efficiency, and total cost. Chip design is therefore becoming
+a core strategic capability for AI companies, not just something purchased from the traditional semiconductor supply chain.
+</p>
+
+<div class="figure">
+  <a href="./img/custom-chips-ai-frontier.png" target="_blank"><img src="./img/custom-chips-ai-frontier.png" alt="AI companies investing in custom chips" /></a>
+  <div class="caption">AI's next frontier is increasingly full-stack: companies building frontier models are also investing in chips optimized for their own workloads.</div>
+</div>
+
+<p>
+This makes faster and better chip design even more important. A custom accelerator is useful only if its design can keep pace with the models and systems it is meant
+to serve. If each new chip still takes years to develop, the hardware risks arriving for yesterday's AI. Faster solvers, more automated design flows, and tighter
+hardware-software co-design are becoming essential to making advanced AI scalable and affordable.
+</p>
 
 <div class="figure">
   <img src="./img/apple.png" alt="Lag between AI architectures and Apple Neural Engine generations" />
@@ -341,16 +372,103 @@ I see great opportunities to bring one-step generation into the chip world, and 
   <div class="caption">A snapshot of academic and industrial collaborators around my research.</div>
 </div>
 
-<h2 id="who-should-reach-out">Who Should Reach Out?</h2>
+<h2 id="advising-style">My Advising Style</h2>
+
+<h3>Why Your Advisor Matters</h3>
 <p>
-Please reach out if you are a prospective Ph.D. student, master's student, undergraduate researcher, or visiting student who is excited by one or more of the following:
+As your Ph.D. advisor, I will wear two hats: as a supervisor, I evaluate your progress toward the degree; as a mentor, I help you grow into the researcher and person
+you want to become. I will also promote you and your work, both during your Ph.D. and after you graduate. Once you graduate, I hope our relationship will evolve into
+one between colleagues (recommendation letters aside).
 </p>
-<ul>
-  <li>EDA, chip design automation, physical design, RTL, verification, or testing.</li>
-  <li>AI for EDA, graph learning, reinforcement learning, differentiable optimization, or LLM agents.</li>
-  <li>Hardware reliability, diagnosis, silent data corruption, and robust AI systems.</li>
-  <li>Future hardware such as photonics, compute-in-memory, 3D integration, and post-von-Neumann architectures.</li>
-</ul>
+<p>
+An advisor can have a lasting impact on your academic life, so you should choose one carefully. People sometimes compare choosing an advisor to choosing a spouse.
+The analogy is imperfect, but the underlying point is right: expertise matters, and so does whether you feel comfortable working with the person. Personality and
+communication fit are often underestimated. This section is here to help you decide whether my style is a good fit for you; you should also talk with current group
+members whenever possible.
+</p>
+
+<div class="note" id="researcher-goals">
+  <p><b>By graduation, I hope my Ph.D. students will have grown into researchers who:</b></p>
+  <ol>
+    <li><b>Have a signature contribution.</b> You should have one project, or a coherent body of work, that you understand deeply and that people associate with you.</li>
+    <li><b>Can explain ideas clearly.</b> You should be able to present your work to both a general audience and experts in your field.</li>
+    <li><b>Are part of a research community.</b> You do not need to be a celebrity, but researchers in your area should recognize your expertise and be happy to work with you. I will introduce you to people, but maintaining those relationships will be your responsibility.</li>
+    <li><b>Can recover from setbacks.</b> Rejection, revision, and resubmission are normal parts of research. I hope you will develop a sustainable way to regulate your emotions, make decisions, and form a philosophy of research and life that is genuinely your own. That, to me, is part of becoming a Doctor of Philosophy.</li>
+  </ol>
+  <p>These are goals for graduation, not expectations at admission. I would be very happy to see you develop these abilities during your Ph.D.</p>
+</div>
+
+<h3>How We Will Work Together: Common Questions</h3>
+
+<h4 class="advising-question">How should we communicate?</h4>
+<p>
+Directly, efficiently, and with basic courtesy (a quick “Hi” is always nice). If an issue is difficult or emotionally charged, I strongly encourage you to state your
+view explicitly. For example, if you are tired of a project, hints such as sighing, body language, or “maybe we should have more variety” may take me a long time to
+understand. Saying “I want to work on something else” gives us a much better chance to discuss the real problem and find a solution. You can disagree with me; I just
+need to know what you actually think.
+</p>
+
+<h4 class="advising-question">What are regular meetings for?</h4>
+<p>
+We will normally meet once a week. Treat these meetings as opportunities to ask for advice, not as an obligation to prove that you have made progress. Skipping a
+meeting because you are stuck is usually counterproductive: the moment when you have made no progress may be exactly when my help is most useful. Bring unfinished
+ideas, confusing results, failed experiments, and questions—not only polished slides.
+</p>
+
+<h4 class="advising-question">How do you think about projects?</h4>
+<p>
+When teaching duties are light, I will generally suggest keeping two projects active. This reduces the chance that one blocked project brings all momentum—and your
+morale—to a halt. Early in the Ph.D., I may suggest concrete, manageable projects so that you can learn the research process and, ideally, receive some early positive
+feedback through publication. Later, you should increasingly decide what you want your Ph.D. to be known for. That choice will shape your dissertation, your research
+identity, and often your career direction, so I expect you to take ownership of it and go deep.
+</p>
+
+<h4 class="advising-question">Do you encourage internships?</h4>
+<p>
+Yes—strongly. In AI and chip research, I believe that experience in industry is far more valuable than spending every summer in the lab. I will encourage you to pursue
+internships and actively help you compete for good opportunities, including recommending you through my professional connections when appropriate.
+</p>
+<p>
+An internship can provide useful income during your Ph.D. and make research possible with data, computing resources, tools, or infrastructure that only industry can
+offer. Just as importantly, it can help you understand how industry currently solves problems, which needs are genuinely urgent, and how industrial teams work. It
+also gives you the chance to build professional relationships that belong to you, independent of your advisor's network. If you learn to notice and make good use of
+these opportunities, you will naturally be developing into the kind of <a href="#researcher-goals">excellent researcher I hope my students will become</a>.
+</p>
+
+<h4 class="advising-question">Do I need to worry about funding?</h4>
+<p>
+For students supported by the NUS Research Scholarship, the standard first four years of funding are provided through the university. If a fifth year becomes
+necessary, I will take responsibility for working to secure appropriate support. Finding funding is my responsibility, not yours.
+</p>
+
+<h4 class="advising-question">What are your expectations for graduation?</h4>
+<p>
+Beyond the formal School requirements, such as completing teaching duties and passing the qualifying examination, I do not want to define graduation by a rigid
+publication count. A hard numerical target can push students toward optimizing for quantity rather than quality, which I believe is harmful to long-term career
+development. The more important test is this: when you enter the job market, whether in industry or academia, people should recognize your signature work and know that
+you have done something excellent in a particular area.
+</p>
+<p>
+I also understand that students often want a quantitative reference point for judging their progress. If we absolutely must translate my expectations into a number,
+three substantial first-author papers would normally represent a solid body of work for an NUS Computing Ph.D. Again, quality matters much more than quantity. One
+pioneering or genuinely influential paper may already demonstrate more than several conventional publications, and I would consider that accordingly rather than
+counting papers mechanically.
+</p>
+
+<h4 class="advising-question">How long should the Ph.D. take?</h4>
+<p>
+In NUS Computing, a Ph.D. commonly takes around five years. If you meet the graduation expectations above earlier, I will be happy to support an earlier graduation.
+However, except in truly exceptional cases, I would not encourage graduating in fewer than four years solely because a publication count has been reached. I do not
+want a short timeline to reward research that is merely easier to publish at the expense of work that could have real impact on industry, the research community, or
+society.
+</p>
+
+<p class="fine-print">
+I am still early in my career and have limited formal advising experience. This description is partly a commitment to the kind of mentor I will work to become.
+Many ideas here were inspired by <a href="https://favonia.org/advising.html" target="_blank">Favonia's advising statement</a>, with which I strongly agree.
+</p>
+
+<h2 id="who-should-reach-out">Who Should Reach Out?</h2>
 <p>
 You do not need to already know EDA (and please do not be scared by these terms!). Some of my favorite students are people who arrive from AI, algorithms, systems,
 or architecture, then discover that chips are an absurdly good playground for their taste (including me: my undergraduate major was computer science, and I knew almost
