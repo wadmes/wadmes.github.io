@@ -477,6 +477,48 @@ nothing about EDA or testing before I started research). TBH, I even believe chi
 What matters most is curiosity, discipline, and the courage to work on problems that are larger than one person.
 </p>
 
+<h3>I Come from AI/CS and Have No Hardware Background. Can I Really Do This?</h3>
+<p>
+<b>Yes.</b> Your concern is reasonable, but I do not think the lack of a traditional hardware background is a major obstacle for the kind of research I want to do.
+At the beginning, your background in AI, algorithms, or computer science may actually be more important. Many chip-design problems can be abstracted as optimization,
+graph, generative-modeling, reinforcement-learning, or agentic decision-making problems.
+</p>
+<p>
+You will need to learn enough domain knowledge to understand the problem formulation, constraints, and evaluation. However, I would not expect you to become an expert
+in circuits or hardware design before you can contribute. The more effective approach is to learn the relevant hardware concepts alongside a concrete research problem.
+</p>
+
+<p><b>A simple roadmap I would suggest:</b></p>
+<ol>
+  <li>
+    <b>Start with one specific chip-design problem, not all of VLSI.</b> Placement is a good example: learn what cells, macros, and nets are; what wirelength,
+    congestion, and timing mean; and what makes a placement “good.”
+  </li>
+  <li>
+    <b>Study how different AI methods enter the problem.</b> Compare reinforcement-learning-based placement, learning-enabled differentiable placement, diffusion-based
+    placement, and more recent LLM- or agent-based approaches. Try to understand not only what model was used, but how the original engineering problem was reformulated.
+  </li>
+  <li>
+    <b>Think critically from the AI perspective.</b> Why does a method work here? What assumptions does it make? Where does it fail? Most importantly, does this
+    chip-design problem require genuinely new AI methodology, rather than simply applying an existing model to a new dataset?
+  </li>
+</ol>
+
+<p><b>A short reading path:</b></p>
+<ol>
+  <li><a href="https://arxiv.org/abs/2004.10746" target="_blank">Chip Placement with Deep Reinforcement Learning</a>: an early representative example of applying RL to chip placement.</li>
+  <li><a href="https://github.com/limbo018/DREAMPlace" target="_blank">DREAMPlace</a>: useful for seeing how a classical placement problem can become differentiable optimization accelerated by modern deep-learning toolkits.</li>
+  <li><a href="https://arxiv.org/abs/2407.12282" target="_blank">Chip Placement with Diffusion</a>: an example of using a modern generative model to place macros simultaneously.</li>
+  <li><a href="https://arxiv.org/abs/2606.08904" target="_blank">Order Matters: Unveiling the Hidden Impact of Macro Placement Sequences via Proxy-Guided LLM Evolution</a>: a recent example of bringing LLM-based search and reasoning into placement.</li>
+  <li><a href="https://research.nvidia.com/publication/2023-10_chipnemo-domain-adapted-llms-chip-design" target="_blank">ChipNeMo</a>: a representative industrial example of domain-adapted LLMs for chip-design tasks.</li>
+</ol>
+
+<p>
+You do not need to understand every technical detail at this stage. Read these works with the help of AI tools and ask yourself a simpler question: <i>Do I find these
+problems interesting enough that I want to understand why existing AI methods are insufficient—and develop better ones?</i> If the answer is yes, your current background
+is sufficient to get started. The domain-specific knowledge can be learned gradually during the Ph.D.
+</p>
+
 <h2 id="how-to-contact">How to Contact Me</h2>
 <p>
 If you are interested, please email me at <b><a href="mailto:weili3@nus.edu.sg">weili3<span>&#64;</span>nus.edu.sg</a></b>. A helpful email includes your CV, transcript if available, a short description of
