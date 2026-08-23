@@ -1,16 +1,16 @@
 ---
 title: EDA family tree
 date: 2019-12-11 19:11:53
-last_modified_at: 2026-08-16
+last_modified_at: 2026-08-17
 tags:
 - EDA
 ---
 
 This is a selected academic genealogy of the electronic design automation (EDA), VLSI CAD, testing, and adjacent computer-engineering communities. It began as a tree compiled by my supervisor and me, with particular attention to Chinese scholars, and has since been expanded using university biographies, dissertation archives, and faculty alumni pages.
 
-> **How to read the tree.** Indentation denotes a doctoral-advisor relationship unless the entry explicitly says **M.Phil.**, **co-advised**, or **postdoc**. The institution and year before the first arrow are the degree institution and degree year; later institutions summarize the scholar's career path. The tree is necessarily selective: EDA has many overlapping roots, co-advised degrees, and researchers who bridge multiple subfields.
+> **How to read the genealogy.** Indentation records an advisor–student edge unless the entry explicitly says **M.Phil.**, **co-advised**, **postdoc**, or **intellectual collaboration**. Repeated names are merged into one node by the interactive website, so a scholar may have multiple incoming advisors and may connect sections that look separate in Markdown. The institution and year before the first arrow are the degree institution and degree year; later institutions summarize the scholar's career path.
 
-> **Update 2026.08.** Expanded the tree beyond the Wei Li branch; added the Edward McCluskey, Donald Pederson/A. Richard Newton, Robert Brayton/Sharad Malik, and major testing/DFT lineages; refreshed descendants of Jason Cong, David Pan, Bei Yu, Kaushik Roy, Sanjit Seshia, Ronald Rohrer/Lawrence Pileggi, and Andrew Kahng; and corrected several older attributions. This revision favors substantial academic branches with verified faculty descendants over isolated lists of famous researchers. In particular, Andrew Kahng is placed under T. C. Hu, and Dennis Sylvester under Chenming Hu. A scholar can appear twice when two independently useful lineages converge.
+> **Update 2026.08.** Expanded the genealogy beyond the Wei Li branch; added major EDA and testing/DFT lineages; and connected previously separate sections through Vannevar Bush, Samuel Caldwell, David Huffman, Frederick Terman, Joseph Pettit, Dean Arden, Jack Dennis, Mac Van Valkenburg, Leon Chua, and Sung-Mo Kang. The interactive version is now a single mergeable DAG rather than a set of isolated trees. Mead–Conway is explicitly marked as an intellectual collaboration, not a doctoral edge.
 
 ## C. L. Liu lineage
 
@@ -38,7 +38,12 @@ This is a selected academic genealogy of the electronic design automation (EDA),
       + [Jiaqi Gu](https://www.jqgu.net/) (UT Austin Ph.D. ’23 → Arizona State)
     + [Sung-Kyu Lim](https://limsk.ece.gatech.edu/) (UCLA Ph.D. ’00 → Georgia Tech)
     + [Deming Chen](https://dchen.ece.illinois.edu/) (UCLA Ph.D. ’05 → UIUC)
+      + [Sitao Huang](https://engineering.uci.edu/users/sitao-huang) (UIUC Ph.D. ’21 → UC Irvine; co-advised by Wen-mei Hwu)
+      + [Cong (Callie) Hao](https://ece.gatech.edu/directory/callie-hao) (UIUC postdoc → Georgia Tech)
     + [Zhiru Zhang](https://www.csl.cornell.edu/~zhiruz/) (UCLA Ph.D. ’07 → AutoESL/Xilinx → Cornell)
+      + [Cunxi Yu](https://ece.umd.edu/clark/faculty/1834/Cunxi-Yu) (Cornell postdoc ’18–’19 → Utah → Maryland)
+      + [Debjit Pal](https://ece.uic.edu/profiles/pal-debjit/) (Cornell postdoc ’19–’22 → UIC)
+      + [Qi Sun](https://qisunchn.top/) (Cornell postdoc ’22–’23 → Zhejiang University)
     + [Guojie Luo](https://ceca.pku.edu.cn/people/faculty/lgj/) (UCLA Ph.D. ’11 → Peking University)
     + [Peipei Zhou](https://vast.cs.ucla.edu/people/alumni/peipei-zhou) (UCLA Ph.D. ’19 → Pittsburgh)
   + [Martin D. F. Wong](https://www.cse.cuhk.edu.hk/~mdfwong/) (UIUC Ph.D. → UT Austin → UIUC → CUHK)
@@ -73,6 +78,7 @@ This is a selected academic genealogy of the electronic design automation (EDA),
       + [Sumeet Kumar Gupta](https://www.eecs.psu.edu/departments/directory-detail-g.aspx?q=sug10) (Purdue Ph.D. ’12 → Penn State)
       + [Deliang Fan](https://sites.google.com/view/deliangfan/) (Purdue Ph.D. ’15 → UCF → Arizona State)
     + [Shobha Vasudevan](https://shobhav.ece.illinois.edu/) (UT Austin Ph.D. ’07 → UIUC)
+    + [David Blaauw](https://blaauw.engin.umich.edu/) (UIUC Ph.D. ’91 → Michigan)
   + [Nur A. Touba](https://users.ece.utexas.edu/~touba/) (Stanford Ph.D. ’96 → UT Austin)
     + [Eric MacDonald](https://hb2504.utep.edu/Home/Profile?username=emac) (UT Austin Ph.D. ’02 → UTEP)
     + [Kartik Mohanram](https://www.engineering.pitt.edu/people/faculty/kartik-mohanram/) (UT Austin Ph.D. ’03 → Rice → Pittsburgh)
@@ -104,7 +110,6 @@ This is a selected academic genealogy of the electronic design automation (EDA),
 
 + [Ernest S. Kuh](https://www2.eecs.berkeley.edu/Faculty/Homepages/kuh.html) (Stanford Ph.D. ’52 → Berkeley)
   + [Ronald A. Rohrer](https://computerhistory.org/profile/ron-rohrer/) (Berkeley Ph.D. ’63 → Carnegie Mellon)
-    + [Leon O. Chua](https://www2.eecs.berkeley.edu/Faculty/Homepages/chua.html) (UIUC Ph.D. ’64 → Purdue → Berkeley)
     + [Stephen W. Director](https://www2.eecs.berkeley.edu/Pubs/Dissertations/Years/1968.html) (Berkeley Ph.D. ’68 → Florida → Carnegie Mellon → Michigan)
     + [Aart de Geus](https://www.synopsys.com/authors/aart-de-geus.html) (SMU Ph.D. ’85 → General Electric → Synopsys)
     + [Lawrence T. Pileggi](https://www.ece.cmu.edu/directory/bios/pileggi-larry.html) (Carnegie Mellon Ph.D. ’89 → UT Austin → Carnegie Mellon)
@@ -130,13 +135,25 @@ This is a selected academic genealogy of the electronic design automation (EDA),
 ### Chenming Hu
 
 + [Chenming Hu](https://www2.eecs.berkeley.edu/Faculty/Homepages/hu.html) (Berkeley Ph.D. ’73 → Berkeley)
+  + [Bing J. Sheu](https://csie.asia.edu.tw/zh_tw/associate_professors_2/%E8%A8%B1%E7%82%B3%E5%A0%85-Bing-Jay-Sheu-9696599) (Berkeley Ph.D. ’85 → USC → Synopsys → TSMC → Asia University; co-advised by Ping K. Ko and Donald O. Pederson)
+  + [Jack C.-Y. Lee](https://ece.utexas.edu/people/faculty/jack-lee) (Berkeley Ph.D. ’88 → UT Austin)
+  + [Elyse Rosenbaum](https://csl.illinois.edu/directory/faculty/elyse) (Berkeley Ph.D. ’92 → UIUC)
+  + [Hyungcheol Shin](https://ece.snu.ac.kr/en/research-faculty/faculty/fulltime?md=view&profid=p059) (Berkeley Ph.D. ’93 → KAIST → Seoul National University)
+  + [Jone F. Chen](https://www.ee.ncku.edu.tw/en/teacher/index2.php?teacher_id=62) (Berkeley Ph.D. ’98 → TSMC → National Cheng Kung University)
   + [Dennis Sylvester](https://eecs.engin.umich.edu/people/sylvester/) (Berkeley Ph.D. ’99 → Michigan)
     + [Matt Guthaus](https://users.soe.ucsc.edu/~mrg/) (Michigan Ph.D. ’06 → UC Santa Cruz)
     + [Jae-sun Seo](https://faculty.engineering.asu.edu/jseo/) (Michigan Ph.D. ’10 → IBM → Arizona State)
     + [Mingoo Seok](https://www.ee.columbia.edu/mingoo-seok) (Michigan Ph.D. ’11 → Columbia)
   + [Kaustav Banerjee](https://engineering.ucsb.edu/people/kaustav-banerjee) (Berkeley Ph.D. ’99 → UCSB)
   + [Michael Orshansky](https://users.ece.utexas.edu/~michael/) (Berkeley Ph.D. ’01 → UT Austin)
+  + [Yang-Kyu Choi](https://ee.kaist.ac.kr/professor/12290/) (Berkeley Ph.D. ’01 → KAIST)
+  + [Pin Su](https://dee.nycu.edu.tw/teachers.php?locale=en&pa=getItem&teacher_id=73) (Berkeley Ph.D. ’02 → NCTU / NYCU)
+  + [Yee-Chia Yeo](https://cde.nus.edu.sg/ece/staff/yeo-yee-chia/) (Berkeley Ph.D. ’02 → TSMC → NUS)
   + [Yu Cao](https://search.asu.edu/profile/749044) (Berkeley Ph.D. ’02 → Arizona State)
+  + [Darsen Lu](https://www.ee.ncku.edu.tw/en/teacher/index2.php?teacher_id=160) (Berkeley Ph.D. ’11 → IBM → National Cheng Kung University)
+
++ [Ping K. Ko](https://ece.hkust.edu.hk/pingko) (Berkeley Ph.D. ’82 → Berkeley → HKUST)
+  + [Bing J. Sheu](https://csie.asia.edu.tw/zh_tw/associate_professors_2/%E8%A8%B1%E7%82%B3%E5%A0%85-Bing-Jay-Sheu-9696599) (Berkeley Ph.D. ’85 → USC → Synopsys → TSMC → Asia University; co-advised by Chenming Hu and Donald O. Pederson)
 
 ### Alberto Sangiovanni-Vincentelli
 
@@ -163,13 +180,15 @@ This is a selected academic genealogy of the electronic design automation (EDA),
 
 ### T. C. Hu
 
-+ [T. C. Hu](https://cse.ucsd.edu/about/department-history/t-c-hu) (UIUC Ph.D. ’56 → Berkeley → Wisconsin → UC San Diego)
++ [T. C. Hu](https://cseweb.ucsd.edu/~hu/) (NTU B.S. ’53 → UIUC M.S. ’56 → Brown Ph.D. ’60 → IBM → Wisconsin → UC San Diego)
   + [Andrew B. Kahng](https://vlsicad.ucsd.edu/~abk/) (UC San Diego Ph.D. ’89 → UCLA → UC San Diego)
     + [Gabriel Robins](https://www.cs.virginia.edu/~robins/) (UCLA Ph.D. ’92 → Virginia)
     + [Igor L. Markov](https://web.eecs.umich.edu/~imarkov/) (UCLA Ph.D. ’01 → Michigan → industry)
+      + [Smita Krishnaswamy](https://krishnaswamylab.org/) (Michigan Ph.D. ’08 → Yale; co-advised by John P. Hayes)
     + [Sherief Reda](https://vivo.brown.edu/display/sreda) (UC San Diego Ph.D. ’06 → Brown)
     + [Puneet Gupta](https://samueli.ucla.edu/people/puneet-gupta/) (UC San Diego Ph.D. ’07 → UCLA)
     + [Seokhyeong Kang](https://eee.postech.ac.kr/en-people/en-professor/view.php?id=5663) (UC San Diego Ph.D. ’13 → UNIST → POSTECH)
+  + [Frank Ruskey](https://webhome.cs.uvic.ca/~ruskey/) (UC San Diego Ph.D. → University of Victoria)
 
 ## Carnegie Mellon and Berkeley formal-methods lineage
 
@@ -192,13 +211,20 @@ This is a selected academic genealogy of the electronic design automation (EDA),
   + [HyungWon Kim](https://sites.google.com/site/hwkimcbu/) (Michigan Ph.D. ’99 → Chungbuk National University)
   + [Joonhwan Yi](https://sites.google.com/view/joonhwanyi/) (Michigan Ph.D. ’02 → Kwangwoon University)
   + [Smita Krishnaswamy](https://krishnaswamylab.org/) (Michigan Ph.D. ’08 → Yale; co-advised by Igor Markov)
+  + [John P. Shen](https://www.ece.cmu.edu/directory/bios/shen-john.html) (Carnegie Mellon Ph.D. ’81 → Carnegie Mellon → Intel)
 
 ## Other established EDA lineages
 
 + [Marilyn C. Wolf](https://mwolf.unl.edu/marilyn-c-wolf) (Stanford Ph.D. ’84 → Princeton → Georgia Tech → Nebraska)
-  + [Yuan Xie](https://web.ece.ucsb.edu/~yuanxie/) (Princeton Ph.D. ’02 → IBM → Penn State → UCSB)
+  + [Yuan Xie](https://ece.hkust.edu.hk/yuanxie) (Princeton Ph.D. ’02 → IBM → Penn State → UCSB → HKUST)
+    + [Yu Wang](https://web.ee.tsinghua.edu.cn/wangyu/en/index/2145/list/index.htm) (Tsinghua Ph.D. ’07 → Tsinghua; co-advised by Huazhong Yang)
     + [Guangyu Sun](https://eecs.pku.edu.cn/info/1504/6956.htm) (Penn State Ph.D. ’11 → Peking University)
     + [Jishen Zhao](https://cseweb.ucsd.edu/~jzhao/) (Penn State Ph.D. ’14 → HP Labs → UC San Diego)
+    + [Hsiang-Yun Cheng](https://homepage.citi.sinica.edu.tw/pages/hycheng/vita_en.html) (Penn State Ph.D. ’16 → Academia Sinica)
+    + [Kaisheng Ma](https://iiis.tsinghua.edu.cn/rydw1/qzjs/makaisheng.htm) (Penn State Ph.D. ’18 → Tsinghua; co-advised by Vijaykrishnan Narayanan and Jack Sampson)
+    + [Yongsoo Joo](https://yongsoojoo.github.io/) (Penn State postdoc ’09–’10 → Ewha → Kookmin University)
+    + [Xing Hu](https://novel.ict.ac.cn/xhu/) (UCSB postdoc ’17–’20 → Chinese Academy of Sciences)
+    + [Jiayi Huang](https://jyhuang91.github.io/) (UCSB postdoc → Alibaba → HKUST(GZ))
   + [Jiang Xu](https://eexu.home.ece.ust.hk/) (Princeton Ph.D. ’05 → HKUST)
     + [Yaoyao Ye](https://english.seiee.sjtu.edu.cn/english/detail/2128_1921.htm) (HKUST Ph.D. ’13 → Huawei → Shanghai Jiao Tong)
     + [Weichen Liu](https://www.ntu.edu.sg/home/liu/) (HKUST Ph.D. → Chongqing University → NTU Singapore)
@@ -206,6 +232,80 @@ This is a selected academic genealogy of the electronic design automation (EDA),
 + [Sachin S. Sapatnekar](https://people.ece.umn.edu/~sachin/) (UIUC Ph.D. ’92 → Iowa State → Minnesota)
   + [Jiang Hu](https://cesg.tamu.edu/faculty/jiang-hu/) (Minnesota Ph.D. ’00 → Texas A&M)
     + [Pingqiang Zhou](https://sist.shanghaitech.edu.cn/zhoupq/) (Minnesota Ph.D. ’13 → ShanghaiTech)
+    + [Shiyan Hu](https://www.dase.hku.hk/people/s-y-hu) (Texas A&M Ph.D. ’08 → Michigan Tech → Hong Kong)
+
+## Deep roots and connecting lineages
+
++ [Vannevar Bush](https://lemelson.mit.edu/resources/vannevar-bush) (MIT D.Eng. ’16 → MIT → Carnegie Institution)
+  + [Samuel H. Caldwell](https://cdn.libraries.mit.edu/dissemination/diponline/AC0069_NewReleases/NewsRelease_1960/AC0069_1960/AC0069_196010_011.pdf) (MIT Sc.D. ’33 → MIT)
+    + [David A. Huffman](https://www.computer.org/profiles/david-huffman) (MIT Sc.D. ’53 → MIT → UC Santa Cruz)
+    + [Edward J. McCluskey](https://engineering.stanford.edu/news/pioneering-stanford-computer-researcher-and-educator-edward-mccluskey-dies) (MIT Sc.D. ’56 → Princeton → Stanford)
+  + [Frederick E. Terman](https://library.stanford.edu/news/frederick-emmons-terman-book-collection) (MIT Sc.D. ’24 → Stanford)
+    + [Joseph M. Pettit](https://chic.caltech.edu/genealogy/joseph-m-pettit/) (Stanford Ph.D. ’42 → Stanford → Georgia Tech)
+      + [Donald O. Pederson](https://www2.eecs.berkeley.edu/Faculty/Homepages/pederson.html) (Stanford Ph.D. ’51 → Berkeley)
+        + [Bing J. Sheu](https://csie.asia.edu.tw/zh_tw/associate_professors_2/%E8%A8%B1%E7%82%B3%E5%A0%85-Bing-Jay-Sheu-9696599) (Berkeley Ph.D. ’85 → USC → Synopsys → TSMC → Asia University; co-advised by Chenming Hu and Ping K. Ko)
+      + [R. David Middlebrook](https://chic.caltech.edu/genealogy/david-middlebrook/) (Stanford Ph.D. ’55 → Caltech)
+        + [Richard S. Muller](https://www2.eecs.berkeley.edu/Faculty/Homepages/muller.html) (Stanford Ph.D. → Berkeley)
+          + [Robert W. Dutton](https://chic.caltech.edu/genealogy/robert-dutton/) (Berkeley Ph.D. ’70 → Stanford)
+            + [Mark Horowitz](https://profiles.stanford.edu/mark-horowitz) (Stanford Ph.D. ’84 → Stanford)
+              + [Azita Emami](https://www.ee.caltech.edu/people/azita-emami) (Stanford Ph.D. ’04 → Caltech)
+              + [Elad Alon](https://www2.eecs.berkeley.edu/Faculty/Homepages/elad.html) (Stanford Ph.D. ’06 → Berkeley)
+              + [Michael D. Smith](https://seas.harvard.edu/person/michael-smith) (Stanford Ph.D. ’93 → Harvard; co-advised by Monica Lam)
+              + [Vladimir Stojanović](https://vcresearch.berkeley.edu/faculty/vladimir-stojanovic) (Stanford Ph.D. ’05 → MIT → Berkeley)
+              + [Jaeha Kim](https://ece.snu.ac.kr/en/research-faculty/faculty/fulltime?md=view&profid=p071) (Stanford Ph.D. ’03 → Seoul National University)
+
++ [Monica S. Lam](https://profiles.stanford.edu/monica-lam) (Carnegie Mellon Ph.D. ’87 → Stanford)
+  + [Michael D. Smith](https://seas.harvard.edu/person/michael-smith) (Stanford Ph.D. ’93 → Harvard; co-advised by Mark Horowitz)
+
+### Seshu–Metze lineage: testing, architecture, and CAD
+
++ [Sundaram Seshu](https://csiflabs.cs.ucdavis.edu/~cjnitta/ancestrychronology.pdf) (UIUC Ph.D. ’55 → UIUC)
+  + [Gernot A. Metze](https://csiflabs.cs.ucdavis.edu/~cjnitta/ancestrychronology.pdf) (UIUC Ph.D. ’58 → UIUC → Michigan)
+    + [John P. Hayes](https://cse.engin.umich.edu/stories/prof-john-p-hayes-retires-after-half-a-century-in-computer-architecture) (UIUC Ph.D. ’70 → USC → Michigan)
+    + [Trevor N. Mudge](https://eecs.engin.umich.edu/stories/prof-trevor-mudge-retires-after-46-years-in-computer-architecture) (UIUC Ph.D. ’77 → Michigan)
+      + [Rob A. Rutenbar](https://www.ece.cmu.edu/directory/bios/rutenbar-rob.html) (Michigan Ph.D. ’84 → Carnegie Mellon → Illinois → Pittsburgh; co-advised by Daniel E. Atkins)
+        + [Ramesh Harjani](https://users.ece.cmu.edu/~rutenbar/people/alumni.html) (Carnegie Mellon Ph.D. ’89 → Minnesota)
+
++ [Daniel E. Atkins](https://eecs.engin.umich.edu/stories/prof-trevor-mudge-retires-after-46-years-in-computer-architecture) (Michigan → Michigan)
+  + [Rob A. Rutenbar](https://www.ece.cmu.edu/directory/bios/rutenbar-rob.html) (Michigan Ph.D. ’84 → Carnegie Mellon → Illinois → Pittsburgh; co-advised by Trevor N. Mudge)
+    + [Ramesh Harjani](https://users.ece.cmu.edu/~rutenbar/people/alumni.html) (Carnegie Mellon Ph.D. ’89 → Minnesota)
+
+### KU Leuven / IMEC EDA lineage
+
++ [Hugo De Man](https://people.eecs.berkeley.edu/~newton/presentations/Kaufman/HDMPresent.html) (KU Leuven Ph.D. ’68 → KU Leuven → IMEC)
+  + [Jan M. Rabaey](https://people.eecs.berkeley.edu/~newton/presentations/Kaufman/HDMPresent.html) (KU Leuven Ph.D. ’83 → Berkeley)
+  + [Ingrid Verbauwhede](https://homes.esat.kuleuven.be/~iverbauw/bio3pagesforGOASept09.pdf) (KU Leuven Ph.D. ’91 → UCLA → KU Leuven; co-advised by Joos Vandewalle)
+
++ [Joos Vandewalle](https://homes.esat.kuleuven.be/~iverbauw/bio3pagesforGOASept09.pdf) (KU Leuven Ph.D. → KU Leuven)
+  + [Ingrid Verbauwhede](https://homes.esat.kuleuven.be/~iverbauw/bio3pagesforGOASept09.pdf) (KU Leuven Ph.D. ’91 → UCLA → KU Leuven; co-advised by Hugo De Man)
+
+### Carr–Gajski lineage: high-level and system design
+
++ [John Weber Carr III](https://history.computer.org/carr.html) (MIT Ph.D. ’51 → Pennsylvania)
+  + [Daniel D. Gajski](https://mathgenealogy.com/id.php?id=105032) (Pennsylvania Ph.D. ’75 → UC Irvine)
+    + [Nikil Dutt](https://mathgenealogy.com/id.php?id=105032) (UIUC Ph.D. ’89 → UC Irvine)
+      + [Preeti Ranjan Panda](https://ics.uci.edu/~dutt/students-visitors.htm) (UC Irvine Ph.D. ’98 → IIT Delhi)
+      + [Prabhat Mishra](https://ics.uci.edu/~dutt/students-visitors.htm) (UC Irvine Ph.D. ’04 → Florida)
+      + [Aviral Shrivastava](https://ics.uci.edu/~dutt/students-visitors.htm) (UC Irvine Ph.D. ’06 → Arizona State)
+      + [Sudeep Pasricha](https://duttgroup.ics.uci.edu/group-members/) (UC Irvine Ph.D. → Colorado State)
+      + [Kyoungwoo Lee](https://duttgroup.ics.uci.edu/group-members/) (UC Irvine Ph.D. → Yonsei)
+    + [Forrest Brewer](https://mathgenealogy.com/id.php?id=105032) (UIUC Ph.D. ’88 → UC Santa Barbara)
+    + [Andreas Gerstlauer](https://mathgenealogy.com/id.php?id=105032) (UC Irvine Ph.D. ’04 → UT Austin)
+
++ [Dean Norman Arden](https://archive.computerhistory.org/resources/access/text/2015/06/102739932-05-01-acc.pdf) (MIT → University of Michigan)
+  + [C. L. Liu](https://www.internethalloffame.org/inductee/chung-laung-liu/) (MIT Sc.D. ’62 → UIUC → NTHU)
+  + [Jack B. Dennis](https://news.mit.edu/2026/jack-dennis-pioneering-developer-dataflow-models-of-computation-dies-0410) (MIT Sc.D. ’58 → MIT)
+    + [Randal E. Bryant](https://www.cs.cmu.edu/~bryant/) (MIT Ph.D. ’81 → Carnegie Mellon)
+
++ [M. E. Van Valkenburg](https://grainger.illinois.edu/alumni/hall-of-fame/mac-van-valkenburg) (Stanford Ph.D. ’52 → UIUC)
+  + [Leon O. Chua](https://www2.eecs.berkeley.edu/Faculty/Homepages/chua.html) (UIUC Ph.D. ’64 → Purdue → Berkeley)
+    + [Sung-Mo Kang](https://engineering.berkeley.edu/news/2008/05/wired-for-success/) (Berkeley Ph.D. ’75 → UIUC → UC Santa Cruz → KAIST)
+      + [Sachin S. Sapatnekar](https://people.ece.umn.edu/~sachin/) (UIUC Ph.D. ’92 → Iowa State → Minnesota)
+    + [Stephen P. Boyd](https://profiles.stanford.edu/stephen-boyd) (Berkeley Ph.D. ’85 → Stanford)
+    + [Orla Feely](https://www.ucd.ie/president/) (Berkeley Ph.D. ’92 → University College Dublin)
+
++ [Carver Mead](https://computerhistory.org/profile/carver-mead/) (Caltech Ph.D. ’60 → Caltech)
+  + [Lynn Conway](https://computerhistory.org/profile/lynn-conway/) (Columbia M.S. ’63 → Xerox PARC → Michigan; intellectual collaboration with Carver Mead)
 
 ## Notes and corrections
 
@@ -213,7 +313,7 @@ This is a selected academic genealogy of the electronic design automation (EDA),
 - Degree years and placements can change as public biographies are updated. Please send corrections to `weili3@andrew.cmu.edu`.
 - Dennis Sylvester's dissertation advisor was Chenming Hu. Kurt Keutzer's own alumni page describes Sylvester affectionately as part of his group while explicitly noting that Hu was the dissertation advisor; the formal tree therefore places Sylvester under Hu.
 - Andrew Kahng's doctoral advisor was T. C. Hu, so the Kahng branch has been moved from the Ernest Kuh branch.
-- The Wei Li node appears in both the Bei Yu and Shawn Blanton branches because the two paths document different degrees. His CUHK M.Phil. was co-advised by Bei Yu and Michael R. Lyu; his Carnegie Mellon Ph.D. was co-advised by Shawn Blanton and José M. F. Moura.
+- Wei Li has one merged website node with incoming edges from both the Bei Yu and Shawn Blanton branches. His CUHK M.Phil. was co-advised by Bei Yu and Michael R. Lyu; his Carnegie Mellon Ph.D. was co-advised by Shawn Blanton and José M. F. Moura.
 - All twenty scholars in the two Hall-of-Fame lists supplied in August 2026 were checked for doctoral descendants in academia. Melvin Breuer, Vishwani Agrawal, Janusz Rajski, Yervant Zorian, Miron Abramovici, Sudhakar Reddy, and Mary Jane Irwin are not shown merely to satisfy a checklist: the publicly verifiable lines found for them are isolated or end after only a few people without a continuing academic branch. Industrial mentorship and co-authorship are likewise not converted into doctoral edges without thesis evidence.
 
 ## Principal verification sources

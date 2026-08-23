@@ -1,0 +1,1339 @@
+{
+  "C. L. Liu": {
+    "file": "./portraits/c-l-liu.webp",
+    "source": "https://siebelschool.illinois.edu/news/remembering-dave-liu-renowned-illinois-cs-professor",
+    "imageSource": "https://siebelschool.illinois.edu/_sitemanager/viewphoto.aspx?id=34474&s=1200",
+    "status": "verified"
+  },
+  "Jason Cong": {
+    "file": "./portraits/jason-cong.webp",
+    "source": "https://vast.cs.ucla.edu/people/faculty/jason-cong",
+    "imageSource": "https://vast.cs.ucla.edu/sites/default/files/styles/person_full/public/person_images/cong_2019.jpg?itok=9bTpD9aR",
+    "status": "verified"
+  },
+  "Patrick H. Madden": {
+    "file": "./portraits/patrick-h-madden.webp",
+    "source": "https://www.cs.binghamton.edu/~pmadden/",
+    "imageSource": "https://www.cs.binghamton.edu/~pmadden/GFX/PHM-chaco-headshot.png",
+    "status": "verified"
+  },
+  "Cheng-Kok Koh": {
+    "file": "./portraits/cheng-kok-koh.webp",
+    "source": "https://engineering.purdue.edu/semiconductors/faculty",
+    "imageSource": "https://engineering.purdue.edu/ResourceDB/ResourceFiles/image110917/alter?box=0%2C0%2C189%2C252&height=600&width=450",
+    "status": "verified"
+  },
+  "Lei He": {
+    "file": "./portraits/lei-he.webp",
+    "source": "https://www.ee.ucla.edu/lei-he/",
+    "imageSource": "https://www.ee.ucla.edu/wp-content/uploads/ee/Lei_He.jpg",
+    "status": "verified"
+  },
+  "Hao Yu": {
+    "file": "./portraits/hao-yu.webp",
+    "source": "https://lsc.ieee.org/2018/hao-yu/",
+    "imageSource": "https://lsc.ieee.org/2018/wp-content/uploads/sites/41/2018/05/Hao-Yu-150.jpg",
+    "status": "verified"
+  },
+  "Yiyu Shi": {
+    "file": "./portraits/yiyu-shi.webp",
+    "source": "https://engineering.nd.edu/news/yiyu-shi-named-top-innovator-in-dacs-under-40-innovator-awards/",
+    "imageSource": "https://healthcare-in-europe.com/media/story_section_text/19373/image-01-yiyu-shi_hires.jpg",
+    "status": "verified"
+  },
+  "David Z. Pan": {
+    "file": "./portraits/david-z-pan.webp",
+    "source": "https://users.ece.utexas.edu/~dpan/",
+    "imageSource": "https://users.ece.utexas.edu/~dpan/picture/pan_recent.jpg",
+    "status": "verified"
+  },
+  "Bei Yu": {
+    "file": "./portraits/bei-yu.webp",
+    "source": "https://www.cse.cuhk.edu.hk/~byu/",
+    "imageSource": "https://www.cse.cuhk.edu.hk/~byu/img/2024-SZ.jpg",
+    "status": "verified"
+  },
+  "Yuzhe Ma": {
+    "file": "./portraits/yuzhe-ma.webp",
+    "source": "https://yuzhe630.github.io/",
+    "imageSource": "https://www.yuzhe-ma.com/assets/img/yuzhe-photo.jpg",
+    "status": "verified"
+  },
+  "Hao Geng": {
+    "file": "./portraits/hao-geng.webp",
+    "source": "https://true-genghao.github.io/genghao/",
+    "imageSource": "https://true-genghao.github.io/genghao/img/image.jpg",
+    "status": "verified"
+  },
+  "Tinghuan Chen": {
+    "file": "./portraits/tinghuan-chen.webp",
+    "source": "https://mypage.cuhk.edu.cn/academics/chentinghuan/",
+    "imageSource": "https://mypage.cuhk.edu.cn/academics/chentinghuan/photos/thchen.jpg",
+    "status": "verified"
+  },
+  "Wei Li": {
+    "file": "./portraits/wei-li.webp",
+    "source": "https://www.comp.nus.edu.sg/cs/people/weili/",
+    "imageSource": "https://www.comp.nus.edu.sg/~sochr/www/stfphotos/weili.jpg",
+    "status": "verified"
+  },
+  "Qi Sun": {
+    "file": "./portraits/qi-sun.webp",
+    "source": "https://qisunchn.top/",
+    "imageSource": "https://qisunchn.top/images/qsun.jpeg",
+    "status": "verified"
+  },
+  "Zhuolun (Leon) He": {
+    "file": "./portraits/zhuolun-leon-he.webp",
+    "source": "https://zleonhe.github.io/",
+    "imageSource": "https://zleonhe.github.io/images/about.jpg",
+    "status": "verified"
+  },
+  "Chen Bai": {
+    "file": "./portraits/chen-bai.webp",
+    "source": "https://baichen318.github.io/",
+    "imageSource": "https://baichen318.github.io/baichen-v2.jpg",
+    "status": "verified"
+  },
+  "Yuxuan Zhao": {
+    "file": "./portraits/yuxuan-zhao.webp",
+    "source": "https://bonjuor-zyx.github.io/",
+    "imageSource": "https://bonjuor-zyx.github.io/photo.jpeg",
+    "status": "verified"
+  },
+  "Xinyun Zhang": {
+    "file": "./portraits/xinyun-zhang.webp",
+    "source": "https://yxgnahz.github.io/",
+    "imageSource": "https://yxgnahz.github.io/zxy_files/portrait.jpg",
+    "status": "verified"
+  },
+  "Zixiao Wang": {
+    "file": "./portraits/zixiao-wang.webp",
+    "source": "https://shiningsord.github.io/",
+    "imageSource": "https://shiningsord.github.io/zixiao2025.png",
+    "status": "verified"
+  },
+  "Yibo Lin": {
+    "file": "./portraits/yibo-lin.webp",
+    "source": "https://yibolin.com/",
+    "imageSource": "https://limbo018.github.io/images/YiboLin_himo.jpg",
+    "status": "verified"
+  },
+  "Meng Li": {
+    "file": "./portraits/meng-li.webp",
+    "source": "https://accessts.hkust.edu.hk/2023/speakers",
+    "imageSource": "https://accessts.hkust.edu.hk/sites/default/files/2023-05/RP4%20-%20Prof.%20Meng%20LI.png",
+    "status": "verified"
+  },
+  "Jiaqi Gu": {
+    "file": "./portraits/jiaqi-gu.webp",
+    "source": "https://fullcircle.asu.edu/welcome/jiaqi-gu/",
+    "imageSource": "https://fullcircle.asu.edu/wp-content/uploads/2023/08/Jiaqi-Gu-19a.jpg",
+    "status": "verified"
+  },
+  "Sung-Kyu Lim": {
+    "file": "./portraits/sung-kyu-lim.webp",
+    "source": "https://ece.gatech.edu/directory/sung-kyu-lim",
+    "imageSource": "https://ece.gatech.edu/sites/default/files/styles/gtcoe_wide/public/profile/2023/04/Sung-Kyu%20Lim.png?itok=b2PF4zxq",
+    "status": "verified"
+  },
+  "Deming Chen": {
+    "file": "./portraits/deming-chen.webp",
+    "source": "https://dchen.ece.illinois.edu/",
+    "imageSource": "https://dchen.ece.illinois.edu/DC-2025.png",
+    "status": "verified"
+  },
+  "Sitao Huang": {
+    "file": "./portraits/sitao-huang.webp",
+    "source": "https://engineering.uci.edu/users/sitao-huang",
+    "imageSource": "https://engineering.uci.edu/files/styles/scale_and_crop_192x192/public/sitao-huang.png?itok=ABqNXPKH",
+    "status": "verified"
+  },
+  "Cong (Callie) Hao": {
+    "file": "./portraits/cong-callie-hao.webp",
+    "source": "https://ece.gatech.edu/directory/callie-hao",
+    "imageSource": "https://ece.gatech.edu/sites/default/files/styles/gtcoe_wide/public/profile/2023/02/callie_hao_gatech.jpeg?itok=5cFF-P43",
+    "status": "verified"
+  },
+  "Zhiru Zhang": {
+    "file": "./portraits/zhiru-zhang.webp",
+    "source": "https://www.csl.cornell.edu/~zhiruz/",
+    "imageSource": "https://www.csl.cornell.edu/~zhiruz/imgs/zhang-photo.png",
+    "status": "verified"
+  },
+  "Cunxi Yu": {
+    "file": "./portraits/cunxi-yu.webp",
+    "source": "https://ece.umd.edu/clark/faculty/1834/Cunxi-Yu",
+    "imageSource": "https://faculty.eng.umd.edu/sites/faculty.eng.umd.edu/files/profile_images/cunxi%20yu.jpg",
+    "status": "verified"
+  },
+  "Debjit Pal": {
+    "file": "./portraits/debjit-pal.webp",
+    "source": "https://ece.uic.edu/profiles/pal-debjit/",
+    "imageSource": "https://ece.uic.edu/wp-content/uploads/sites/351/2022/08/Pal-1-157x180.jpg",
+    "status": "verified"
+  },
+  "Guojie Luo": {
+    "file": "./portraits/guojie-luo.webp",
+    "source": "https://ceca.pku.edu.cn/people/faculty/lgj/",
+    "imageSource": "https://ceca.pku.edu.cn/images/content/2018-12/20181211165420150076.jpg",
+    "status": "verified"
+  },
+  "Peipei Zhou": {
+    "file": "./portraits/peipei-zhou.webp",
+    "source": "https://vast.cs.ucla.edu/people/alumni/peipei-zhou",
+    "imageSource": "https://vast.cs.ucla.edu/sites/default/files/styles/person_full/public/person_images/20200712_peipei_crop.png?itok=ieWMpiw-",
+    "status": "verified"
+  },
+  "Martin D. F. Wong": {
+    "file": "./portraits/martin-d-f-wong.jpg",
+    "source": "https://conference2021.cefar.cuhk.edu.hk/guests-of-honour/",
+    "status": "verified"
+  },
+  "Ting-Chi Wang": {
+    "file": "./portraits/ting-chi-wang.webp",
+    "source": "https://dcs.site.nthu.edu.tw/p/406-1174-174461%2Cr6969.php",
+    "imageSource": "https://dcs.site.nthu.edu.tw/var/file/174/1174/pictures/849/m/mczh-tw1134x500_small174461_614609392703.jpg",
+    "status": "verified"
+  },
+  "Yao-Wen Chang": {
+    "file": "./portraits/yao-wen-chang.webp",
+    "source": "https://cc.ee.ntu.edu.tw/~ywchang/",
+    "imageSource": "https://cc.ee.ntu.edu.tw/~ywchang/Pictures/YaoWenChang.JPG",
+    "status": "verified"
+  },
+  "Iris Hui-Ru Jiang": {
+    "file": "./portraits/iris-hui-ru-jiang.webp",
+    "source": "https://www.ee.ntu.edu.tw/bio1.php?id=1060726",
+    "imageSource": "https://www.ee.ntu.edu.tw/img/prof/huirujiang_l.jpg",
+    "status": "verified"
+  },
+  "Tsung-Yi Ho": {
+    "file": "./portraits/tsung-yi-ho.webp",
+    "source": "https://www.cs.nthu.edu.tw/~tyho/",
+    "imageSource": "https://www.cs.nthu.edu.tw/~tyho/img/tyho.jpg",
+    "status": "verified"
+  },
+  "Shao-Yun Fang": {
+    "file": "./portraits/shao-yun-fang.webp",
+    "source": "https://ieee-ceda.org/contact/shao-yun-fang",
+    "imageSource": "https://ieee-ceda.org/files/ieeeceda/styles/responsive_4_5_760w/public/images/contacts/headshot_syfang.jpg?h=60e92e4a&itok=nuc8n96w",
+    "status": "verified"
+  },
+  "Wai-Kei Mak": {
+    "file": "./portraits/wai-kei-mak.webp",
+    "source": "https://www.cs.nthu.edu.tw/~wkmak/",
+    "imageSource": "https://www.cs.nthu.edu.tw/~wkmak/image001.png",
+    "status": "verified"
+  },
+  "Evangeline F. Y. Young": {
+    "file": "./portraits/evangeline-f-y-young.webp",
+    "source": "https://www.cse.cuhk.edu.hk/~fyyoung/",
+    "imageSource": "https://www.cse.cuhk.edu.hk/~fyyoung/yu2.JPG",
+    "status": "verified"
+  },
+  "Chiu-Wing (Bruce) Sham": {
+    "file": "./portraits/chiu-wing-bruce-sham.webp",
+    "source": "https://www.cs.auckland.ac.nz/~csha092/frontpage.htm",
+    "imageSource": "https://www.cs.auckland.ac.nz/~csha092/image/Bruce%20_201810_01.jpg",
+    "status": "verified"
+  },
+  "Sean Longyu Ma": {
+    "file": "./portraits/sean-longyu-ma.webp",
+    "source": "https://leo06051212.github.io/",
+    "imageSource": "https://leo06051212.github.io/media/authors/me_hu_ab3e9d052501ef7d.webp",
+    "status": "verified"
+  },
+  "Xu He": {
+    "file": "./portraits/xu-he.webp",
+    "source": "https://csee.hnu.edu.cn/people/hexu",
+    "imageSource": "https://csee.hnu.edu.cn/Content/UploadFiles/ryjbxx/c1098a12-cb2d-4686-ab9b-660a6488c7ec.jpg",
+    "status": "verified"
+  },
+  "Jinwei Liu": {
+    "file": "./portraits/jinwei-liu.webp",
+    "source": "https://anticold.github.io/",
+    "imageSource": "https://anticold.github.io/photo.jpg",
+    "status": "verified"
+  },
+  "Shiju Lin": {
+    "file": "./portraits/shiju-lin.webp",
+    "source": "https://facultyprofiles.hkust-gz.edu.cn/faculty-personal-page/Lin-Shiju/shijulin",
+    "imageSource": "https://hrapi.hkust-gz.edu.cn/photo/img?key=00011A100000000245RW",
+    "status": "verified"
+  },
+  "Hai Zhou": {
+    "file": "./portraits/hai-zhou.webp",
+    "source": "https://users.eecs.northwestern.edu/~haizhou/",
+    "imageSource": "https://users.eecs.northwestern.edu/~haizhou/haizhou.jpg",
+    "status": "verified"
+  },
+  "Jia Wang": {
+    "file": "./portraits/jia-wang.webp",
+    "source": "https://www.ece.iit.edu/~jwang/",
+    "imageSource": "https://www.ece.iit.edu/~jwang/wj.jpg",
+    "status": "verified"
+  },
+  "Chris Chu": {
+    "file": "./portraits/chris-chu.webp",
+    "source": "https://class.ece.iastate.edu/vlsi2/docs/Papers%20Done/2009-9-INTEG-SL.pdf",
+    "imageSource": "https://class.ece.iastate.edu/vlsi2/docs/Papers%20Done/2009-9-INTEG-SL.pdf#page=8",
+    "status": "verified"
+  },
+  "Tsung-Wei Huang": {
+    "file": "./portraits/tsung-wei-huang.webp",
+    "source": "https://www.ece.utah.edu/2022/03/04/accelerating-static-timing-analysis/",
+    "imageSource": "https://www.ece.utah.edu/wp-content/uploads/2021/07/Tsung-WeiHuang.jpeg",
+    "status": "verified"
+  },
+  "Edward J. McCluskey": {
+    "file": "./portraits/edward-j-mccluskey.webp",
+    "source": "https://engineering.stanford.edu/news/pioneering-stanford-computer-researcher-and-educator-edward-mccluskey-dies",
+    "imageSource": "https://engineering.stanford.edu/sites/default/files/styles/card_1192x596/public/images/news/mccluskey-200x299.jpg?h=bf372811&itok=8Pu3y3wM",
+    "status": "verified"
+  },
+  "Daniel P. Siewiorek": {
+    "file": "./portraits/daniel-p-siewiorek.webp",
+    "source": "https://www.ece.cmu.edu/directory/bios/siewiorek-daniel.html",
+    "imageSource": "https://www.ece.cmu.edu/directory/images/faculty/S/daniel-siewiorek-800x800.png",
+    "status": "verified"
+  },
+  "Jacob A. Abraham": {
+    "file": "./portraits/jacob-a-abraham.webp",
+    "source": "https://www.ece.utexas.edu/people/faculty/jacob-abraham",
+    "imageSource": "https://www.ece.utexas.edu/sites/default/files/portraits/Abraham-Jacob.jpg",
+    "status": "verified"
+  },
+  "Kaushik Roy": {
+    "file": "./portraits/kaushik-roy.webp",
+    "source": "https://engineering.purdue.edu/ECE/People/ptProfile?resource_id=3085",
+    "imageSource": "https://engineering.purdue.edu/ResourceDB/ResourceFiles/image328505",
+    "status": "verified"
+  },
+  "Hai (Helen) Li": {
+    "file": "./portraits/hai-helen-li.webp",
+    "source": "https://ece.duke.edu/faculty/hai-helen-li",
+    "imageSource": "https://scholars.duke.edu/profile-images/thumbnail500/0729421.jpg",
+    "status": "verified"
+  },
+  "Yiran Chen": {
+    "file": "./portraits/yiran-chen.webp",
+    "source": "https://ece.duke.edu/faculty/yiran-chen",
+    "imageSource": "https://scholars.duke.edu/profile-images/thumbnail500/0729402.jpg",
+    "status": "verified"
+  },
+  "Hamid Mahmoodi": {
+    "file": "./portraits/hamid-mahmoodi.webp",
+    "source": "https://faculty.sfsu.edu/~mahmoodi/",
+    "imageSource": "https://faculty.sfsu.edu/sites/default/files/styles/sf_state_300x300/public/images/Hamid_1x1.jpg?h=07a49c3e&itok=_YC_lNiF",
+    "status": "verified"
+  },
+  "Saibal Mukhopadhyay": {
+    "file": "./portraits/saibal-mukhopadhyay.webp",
+    "source": "https://ece.gatech.edu/directory/saibal-mukhopadhyay",
+    "imageSource": "https://ece.gatech.edu/sites/default/files/styles/gtcoe_wide/public/profile/2023/02/saibal_mukhopadyay_2136.jpg?itok=53J53ekd",
+    "status": "verified"
+  },
+  "Arijit Raychowdhury": {
+    "file": "./portraits/arijit-raychowdhury.webp",
+    "source": "https://ece.gatech.edu/directory/arijit-raychowdhury",
+    "imageSource": "https://ece.gatech.edu/sites/default/files/styles/gtcoe_wide/public/profile/2023/02/img_3554.jpg?itok=IDGmphhW",
+    "status": "verified"
+  },
+  "Sumeet Kumar Gupta": {
+    "file": "./portraits/sumeet-kumar-gupta.webp",
+    "source": "https://www.eecs.psu.edu/departments/directory-detail-g.aspx?q=sug10",
+    "imageSource": "https://www.eecs.psu.edu/webappl/fs-photos/aus2206.jpg",
+    "status": "verified"
+  },
+  "Deliang Fan": {
+    "file": "./portraits/deliang-fan.webp",
+    "source": "https://fullcircle.asu.edu/faculty/broadening-horizons-of-cutting-edge-computing/",
+    "imageSource": "https://fullcircle.asu.edu/wp-content/uploads/2022/04/Deliang-Fan-2022-EG-9227a2-scaled.jpg",
+    "status": "verified"
+  },
+  "Shobha Vasudevan": {
+    "file": "./portraits/shobha-vasudevan.webp",
+    "source": "https://ccbgm.illinois.edu/people/shobha-vasudevan/",
+    "imageSource": "https://ccbgm.illinois.edu/files/2015/02/Vasudevan-Shobha_web.jpg",
+    "status": "verified"
+  },
+  "Nur A. Touba": {
+    "file": "./portraits/nur-a-touba.webp",
+    "source": "https://users.ece.utexas.edu/~touba/",
+    "imageSource": "https://users.ece.utexas.edu/~touba/touba2015.jpg",
+    "status": "verified"
+  },
+  "Eric MacDonald": {
+    "file": "./portraits/eric-macdonald.webp",
+    "source": "https://www.utep.edu/engineering/about-us/meet-our-leaders.html",
+    "imageSource": "https://www.utep.edu/engineering/mechanical/_Files/images/faculty/EricMacDonaldXL.jpg",
+    "status": "verified"
+  },
+  "Kartik Mohanram": {
+    "file": "./portraits/kartik-mohanram.webp",
+    "source": "https://www.engineering.pitt.edu/people/faculty/kartik-mohanram/",
+    "imageSource": "https://www.engineering.pitt.edu/people/faculty/kartik-mohanram/#embedded-headshot",
+    "status": "verified"
+  },
+  "Joon-Sung Yang": {
+    "file": "./portraits/joon-sung-yang.webp",
+    "source": "https://yonsei.elsevierpure.com/en/persons/joon-sung-yang/",
+    "imageSource": "https://yonsei.elsevierpure.com/files-asset/43567412/A00917.jpg?w=640&f=jpg",
+    "status": "verified"
+  },
+  "Jacob Savir": {
+    "file": "./portraits/jacob-savir.webp",
+    "source": "https://web.njit.edu/~savir/savir.htm",
+    "imageSource": "https://web.njit.edu/~savir/savir1.jpg",
+    "status": "verified"
+  },
+  "Subhasish Mitra": {
+    "file": "./portraits/subhasish-mitra.webp",
+    "source": "https://profiles.stanford.edu/subhasish-mitra",
+    "imageSource": "https://profiles.stanford.edu/proxy/api/cap/profiles/41697/resources/profilephoto/350x350.1509543726537.jpg",
+    "status": "verified"
+  },
+  "Donald O. Pederson": {
+    "file": "./portraits/donald-o-pederson.webp",
+    "source": "https://eecs.berkeley.edu/news/don-pederson-creator-spice/",
+    "imageSource": "https://eecs.berkeley.edu/wp-content/uploads/2018/11/pederson.jpg",
+    "status": "verified"
+  },
+  "A. Richard Newton": {
+    "file": "./portraits/a-richard-newton.webp",
+    "source": "https://senate.universityofcalifornia.edu/_files/inmemoriam/html/arichardnewton.htm",
+    "imageSource": "https://senate.universityofcalifornia.edu/_files/inmemoriam/html/images/newton.jpg",
+    "status": "verified"
+  },
+  "Resve A. Saleh": {
+    "file": "./portraits/resve-a-saleh.webp",
+    "source": "https://people.ece.ubc.ca/~res/",
+    "imageSource": "https://people.ece.ubc.ca/~res/images/res2_02.jpg",
+    "status": "verified"
+  },
+  "Srinivas Devadas": {
+    "file": "./portraits/srinivas-devadas.webp",
+    "source": "https://www.aihardware.mit.edu/people/",
+    "imageSource": "https://aihardware.mit.edu/wp-content/uploads/2021/07/8084_Srini_Devadas-photo.0821-17-e1626099326208-uai-665x665.jpg",
+    "status": "verified"
+  },
+  "Bill Lin": {
+    "file": "./portraits/bill-lin.webp",
+    "source": "https://jacobsschool.ucsd.edu/faculty/profile?id=41",
+    "imageSource": "https://jacobsschool.ucsd.edu/sites/default/files/styles/medium/public/groups/jsoe/img/people/faculty-profiles/UCSD-JacobsSchool-2309-Lin_Bill-2-8MP.jpg",
+    "status": "verified"
+  },
+  "Robert K. Brayton": {
+    "file": "./portraits/robert-k-brayton.webp",
+    "source": "https://www2.eecs.berkeley.edu/Faculty/Homepages/brayton.html",
+    "imageSource": "https://www2.eecs.berkeley.edu/Faculty/Photos/Homepages/brayton.jpg",
+    "status": "verified"
+  },
+  "Sharad Malik": {
+    "file": "./portraits/sharad-malik.webp",
+    "source": "https://ece.princeton.edu/people/sharad-malik",
+    "imageSource": "https://ece.princeton.edu/sites/g/files/toruqf1836/files/styles/16x9_750w_422h/public/people/sharad_malik_cropped.jpg?h=619026c9&itok=LB8_4Uha",
+    "status": "verified"
+  },
+  "Guido Araújo": {
+    "file": "./portraits/guido-araujo.webp",
+    "source": "https://portal.dados.unicamp.br/perfil?docente=331316",
+    "imageSource": "https://portal.dados.unicamp.br/perfil?docente=331316#embedded-profile-photo",
+    "status": "verified"
+  },
+  "Pramod Subramanyan": {
+    "file": "./portraits/pramod-subramanyan.webp",
+    "source": "https://www.cse.iitk.ac.in/users/spramod/",
+    "imageSource": "https://www.cse.iitk.ac.in/users/spramod/images/pramod.jpg",
+    "status": "verified"
+  },
+  "Hongce Zhang": {
+    "file": "./portraits/hongce-zhang.webp",
+    "source": "https://emia.hkust.edu.hk/people/hongce-zhang",
+    "imageSource": "https://emia.docker-uat01.ust.hk/sites/default/files/2022-12/Hongce%20ZHANG.jpg",
+    "status": "verified"
+  },
+  "Jie-Hong Roland Jiang": {
+    "file": "./portraits/jie-hong-roland-jiang.webp",
+    "source": "https://alcom.ee.ntu.edu.tw/src/people.html",
+    "imageSource": "https://alcom.ee.ntu.edu.tw/assets/images/people/Roland.jpg",
+    "status": "verified"
+  },
+  "Alan Mishchenko": {
+    "file": "./portraits/alan-mishchenko.webp",
+    "source": "https://people.eecs.berkeley.edu/~alanmi/",
+    "imageSource": "https://people.eecs.berkeley.edu/~alanmi/alan.jpg",
+    "status": "verified"
+  },
+  "Ernest S. Kuh": {
+    "file": "./portraits/ernest-s-kuh.webp",
+    "source": "https://www2.eecs.berkeley.edu/Faculty/Homepages/kuh.html",
+    "imageSource": "https://www2.eecs.berkeley.edu/Faculty/Photos/Homepages/kuh.jpg",
+    "status": "verified"
+  },
+  "Ronald A. Rohrer": {
+    "file": "./portraits/ronald-a-rohrer.webp",
+    "source": "https://www.ece.cmu.edu/directory/bios/rohrer-ronald.html",
+    "imageSource": "https://www.ece.cmu.edu/directory/images/faculty/R/ron-rohrer.png",
+    "status": "verified"
+  },
+  "Leon O. Chua": {
+    "file": "./portraits/leon-o-chua.webp",
+    "source": "https://www2.eecs.berkeley.edu/Faculty/Homepages/chua.html",
+    "imageSource": "https://www2.eecs.berkeley.edu/Faculty/Photos/Homepages/chua.jpg",
+    "status": "verified"
+  },
+  "Stephen W. Director": {
+    "file": "./portraits/stephen-w-director.webp",
+    "source": "https://news.northeastern.edu/2017/04/03/isec-opening-marks-realization-of-provost-emeritus-directors-vision/",
+    "imageSource": "https://news.northeastern.edu/wp-content/uploads/2017/04/ISECDirector_1400.jpg",
+    "status": "verified"
+  },
+  "Aart de Geus": {
+    "file": "./portraits/aart-de-geus.webp",
+    "source": "https://ieee-ceda.org/contact/aart-de-geus",
+    "imageSource": "https://ieee-ceda.org/files/ieeeceda/styles/responsive_4_5_760w/public/images/contacts/2008_Aart_J_de_Geus_Ph.D.jpg?h=c62c8244&itok=ORppZwYk",
+    "status": "verified"
+  },
+  "Lawrence T. Pileggi": {
+    "file": "./portraits/lawrence-t-pileggi.webp",
+    "source": "https://www.ece.cmu.edu/directory/bios/pileggi-larry.html",
+    "imageSource": "https://www.ece.cmu.edu/directory/images/faculty/P/larry-pileggi-official-800x800.png",
+    "status": "verified"
+  },
+  "Peng Li": {
+    "file": "./portraits/peng-li.webp",
+    "source": "https://engineering.ucsb.edu/people/peng-li",
+    "imageSource": "https://engineering.ucsb.edu/sites/default/files/styles/people_thumb_small/public/people/images/peng%20li_2.jpg?itok=mf5LrOiF",
+    "status": "verified"
+  },
+  "Zhuo Feng": {
+    "file": "./portraits/zhuo-feng.webp",
+    "source": "https://www.stevens.edu/profile/zfeng12",
+    "imageSource": "https://www.stevens.edu/_next/image?url=https%3A%2F%2Fimages.stevens.edu%2Fmviowpldu823%2F6b9zI1vU1FEy2sEJOJ7cm0%2F38e029146c13f4b7bfac50f21d3b0ae6%2Fzfeng12.JPG%3Fw%3D400%26h%3D400%26f%3Dfaces%26q%3D80%26fit%3Dfill&w=1024&q=80",
+    "status": "verified"
+  },
+  "Yongtae Kim": {
+    "file": "./portraits/yongtae-kim.webp",
+    "source": "https://research.knu.ac.kr/en/persons/yongtae-kim/",
+    "imageSource": "https://research.knu.ac.kr/files-asset/11595241/2018928.jpg/",
+    "status": "verified"
+  },
+  "Xin Li": {
+    "file": "./portraits/xin-li.webp",
+    "source": "https://ece.duke.edu/people/xin-li/",
+    "imageSource": "https://scholars.duke.edu/profile-images/thumbnail500/0729790.jpg",
+    "status": "verified"
+  },
+  "Amritanshu Pandey": {
+    "file": "./portraits/amritanshu-pandey.webp",
+    "source": "https://www.uvm.edu/cems/ebe/profile/amritanshu-pandey",
+    "imageSource": "https://www.uvm.edu/d10-files/styles/default_1920/public/images/2024-10/Amritanshu_Pandey_1200x1200.jpg.webp?itok=sn1s_dc7",
+    "status": "verified"
+  },
+  "Shimiao (Cindy) Li": {
+    "file": "./portraits/shimiao-cindy-li.webp",
+    "source": "https://engineering.buffalo.edu/ee/faculty/faculty_directory.host.html/content/shared/engineering/ee/profiles/Li-shimiao.detail.publications.html",
+    "imageSource": "https://engineering.buffalo.edu/content/shared/engineering/ee/profiles/Li-shimiao/_jcr_content/profileinfo.img.140.140.z.jpg/1783435968331.jpg",
+    "status": "verified"
+  },
+  "C. K. Cheng": {
+    "file": "./portraits/c-k-cheng.webp",
+    "source": "https://cseweb.ucsd.edu/~kuan/",
+    "imageSource": "https://cseweb.ucsd.edu/~kuan/photo/Cheng24.jpg",
+    "status": "verified"
+  },
+  "Kwang-Ting (Tim) Cheng": {
+    "file": "./portraits/kwang-ting-tim-cheng.webp",
+    "source": "https://risingstarsasia2018.hkust.edu.hk/executive_committee.php",
+    "imageSource": "https://risingstarsasia2018.hkust.edu.hk/images/person/Prof_Tim_Kwang-Ting_Cheng.jpg",
+    "status": "verified"
+  },
+  "Massoud Pedram": {
+    "file": "./portraits/massoud-pedram.webp",
+    "source": "https://viterbischool.usc.edu/news/2022/04/usc-viterbi-led-team-wins-u-s-nsf-expeditions-in-computing-award-to-advance-superconducting-electronics-design/",
+    "imageSource": "https://viterbischool.usc.edu/wp-content/uploads/2022/04/Massoud-Pedram.jpg",
+    "status": "verified"
+  },
+  "Radu Marculescu": {
+    "file": "./portraits/radu-marculescu.webp",
+    "source": "https://www.ece.utexas.edu/people/faculty/radu-marculescu",
+    "imageSource": "https://ece.utexas.edu/sites/default/files/portraits/Marculescu-Radu.jpg",
+    "status": "verified"
+  },
+  "Diana Marculescu": {
+    "file": "./portraits/diana-marculescu.webp",
+    "source": "https://www.ece.utexas.edu/people/faculty/diana-marculescu",
+    "imageSource": "https://ece.utexas.edu/sites/default/files/portraits/Marculescu-Diana.png",
+    "status": "verified"
+  },
+  "Payam Heydari": {
+    "file": "./portraits/payam-heydari.webp",
+    "source": "https://engineering.uci.edu/users/payam-heydari",
+    "imageSource": "https://engineering.uci.edu/files/styles/scale_and_crop_192x192/public/payam-heydari_1.png?itok=thGggUH2",
+    "status": "verified"
+  },
+  "Qinru Qiu": {
+    "file": "./portraits/qinru-qiu.webp",
+    "source": "https://ecs.syracuse.edu/faculty-staff/qinru-qiu",
+    "imageSource": "https://ecs.syracuse.edu/wp-content/uploads/2021/10/qinru.jpg",
+    "status": "verified"
+  },
+  "Yanzhi Wang": {
+    "file": "./portraits/yanzhi-wang.webp",
+    "source": "https://coe.northeastern.edu/people/wang-yanzhi/",
+    "imageSource": "https://coe.northeastern.edu/wp-content/uploads/profiles/ece/wang-y-rect.png",
+    "status": "verified"
+  },
+  "Xue Lin": {
+    "file": "./portraits/xue-lin.webp",
+    "source": "https://ai.northeastern.edu/faculty",
+    "imageSource": "https://cdn.prod.website-files.com/657141b092d019b05ff5788e/657141b092d019b05ff57ac3_Xue-Lin.jpeg",
+    "status": "verified"
+  },
+  "Malgorzata Marek-Sadowska": {
+    "file": "./portraits/malgorzata-marek-sadowska.webp",
+    "source": "https://iee.ucsb.edu/people/faculty/malgorzata-marek-sadowska",
+    "imageSource": "https://iee.ucsb.edu/sites/default/files/styles/person/public/images/people/marek-sadowska_malgorzata_image.jpeg?itok=q-mDINmS",
+    "status": "verified"
+  },
+  "David Wu": {
+    "file": "./portraits/david-wu.webp",
+    "source": "https://www.scribd.com/document/825818073/General-models-and-a-reduction-design-technique-for-FPGA-switch-box-designs",
+    "imageSource": "https://html.scribdassets.com/233sn0hlj4e1ijkh/images/10-8ea1a226d0.jpg",
+    "status": "verified"
+  },
+  "Shih-Chieh Chang": {
+    "file": "./portraits/shih-chieh-chang.webp",
+    "source": "https://www.aita.org.tw/Eng/about/vice_president",
+    "imageSource": "https://www.aita.org.tw/Content/Eng/images/vice_president.jpg",
+    "status": "verified"
+  },
+  "Chenming Hu": {
+    "file": "./portraits/chenming-hu.webp",
+    "source": "https://www2.eecs.berkeley.edu/Faculty/Homepages/hu.html",
+    "imageSource": "https://www2.eecs.berkeley.edu/Faculty/Photos/Homepages/hu.jpg",
+    "status": "verified"
+  },
+  "Dennis Sylvester": {
+    "file": "./portraits/dennis-sylvester.webp",
+    "source": "https://ece.engin.umich.edu/stories/dennis-sylvester-elected-to-national-academy-of-inventors",
+    "imageSource": "https://eecsnews.engin.umich.edu/wp-content/uploads/sites/2/2022/12/sylvester-dennis-portrait-763x1024.jpg",
+    "status": "verified"
+  },
+  "Matt Guthaus": {
+    "file": "./portraits/matt-guthaus.webp",
+    "source": "https://cps.soe.ucsc.edu/cpsrc-faculty",
+    "imageSource": "https://cps.soe.ucsc.edu/sites/default/files/paragraph/MatthewGuthaus.jpg",
+    "status": "verified"
+  },
+  "Jae-sun Seo": {
+    "file": "./portraits/jae-sun-seo.webp",
+    "source": "https://globalfutures.asu.edu/biomimicry-center/affiliated-faculty/",
+    "imageSource": "https://globalfutures.asu.edu/biomimicry-center/wp-content/uploads/sites/24/2024/02/jae-sun-seo.jpeg",
+    "status": "verified"
+  },
+  "Mingoo Seok": {
+    "file": "./portraits/mingoo-seok.webp",
+    "source": "https://cni.columbia.edu/faculty",
+    "imageSource": "https://images.squarespace-cdn.com/content/v1/57b26cc76b8f5b7524bf9ed2/1630423285832-11JEE0OS1Q0HZJ3VKGD5/mingoo_600by600%2B-%2BJPG.jpg",
+    "status": "verified"
+  },
+  "Kaustav Banerjee": {
+    "file": "./portraits/kaustav-banerjee.webp",
+    "source": "https://engineering.ucsb.edu/people/kaustav-banerjee",
+    "imageSource": "https://engineering.ucsb.edu/sites/default/files/styles/people_thumb_small/public/people/images/kaustav.png?itok=yzTCnkSr",
+    "status": "verified"
+  },
+  "Michael Orshansky": {
+    "file": "./portraits/michael-orshansky.webp",
+    "source": "https://users.ece.utexas.edu/~michael/",
+    "imageSource": "https://users.ece.utexas.edu/~michael/img/Orshansky.JPG",
+    "status": "verified"
+  },
+  "Yu Cao": {
+    "file": "./portraits/yu-cao.webp",
+    "source": "https://sparc.asu.edu/people",
+    "imageSource": "https://webapp4.asu.edu/photo-ws/directory_photo/382989",
+    "status": "verified"
+  },
+  "Alberto L. Sangiovanni-Vincentelli": {
+    "file": "./portraits/alberto-l-sangiovanni-vincentelli.webp",
+    "source": "https://www2.eecs.berkeley.edu/Faculty/Homepages/sangiovanni-vicentelli.html",
+    "imageSource": "https://www2.eecs.berkeley.edu/Faculty/Photos/Homepages/sangiovanni-vicentelli.jpg",
+    "status": "verified"
+  },
+  "Giovanni De Micheli": {
+    "file": "./portraits/giovanni-de-micheli.webp",
+    "source": "https://si2.epfl.ch/~demichel/",
+    "imageSource": "https://si2.epfl.ch/~demichel/photos/nanni_pk.jpg",
+    "status": "verified"
+  },
+  "Rajesh Gupta": {
+    "file": "./portraits/rajesh-gupta.webp",
+    "source": "https://cse.ucsd.edu/about/news/two-professors-uc-san-diegos-computer-science-and-engineering-department-named-aaas",
+    "imageSource": "https://cse.ucsd.edu/sites/default/files/news/RajeshGupta_800_0_0.jpg",
+    "status": "verified"
+  },
+  "Claudionor José Nunes Coelho Jr.": {
+    "file": "./portraits/claudionor-jose-nunes-coelho-jr.webp",
+    "source": "https://www.dcc.ufmg.br/especializacao/cei/Docentes/cei_docentes.htm",
+    "imageSource": "https://www.dcc.ufmg.br/especializacao/cei/Docentes/Fotos/coelho.gif",
+    "status": "verified"
+  },
+  "Vincent J. Mooney III": {
+    "file": "./portraits/vincent-j-mooney-iii.webp",
+    "source": "https://users.ece.gatech.edu/~mooney/",
+    "imageSource": "https://mooney.gatech.edu/vincent2023.jpg",
+    "status": "verified"
+  },
+  "Luca Benini": {
+    "file": "./portraits/luca-benini.webp",
+    "source": "https://ee.ethz.ch/de/news-und-veranstaltungen/d-itet-news-channel/2023/02/prof-luca-benini-receives-ieee-2023-edward-j-mccluskey-technical-achievement-award.html",
+    "imageSource": "https://ee.ethz.ch/de/news-und-veranstaltungen/d-itet-news-channel/2023/02/prof-luca-benini-receives-ieee-2023-edward-j-mccluskey-technical-achievement-award/_jcr_content/pageimages/imageCarousel.imageformat.lightbox.190844344.jpg",
+    "status": "verified"
+  },
+  "Tajana Rosing": {
+    "file": "./portraits/tajana-rosing.webp",
+    "source": "https://cseweb.ucsd.edu/~trosing/",
+    "imageSource": "https://cseweb.ucsd.edu/~trosing/images/professor_rosing2.jpg",
+    "status": "verified"
+  },
+  "Yung-Hsiang Lu": {
+    "file": "./portraits/yung-hsiang-lu.webp",
+    "source": "https://engineering.purdue.edu/ECE/People/ptProfile?resource_id=3355",
+    "imageSource": "https://engineering.purdue.edu/ResourceDB/ResourceFiles/image277153",
+    "status": "verified"
+  },
+  "Eui-Young Chung": {
+    "file": "./portraits/eui-young-chung.webp",
+    "source": "https://aieda.kaist.ac.kr/team/",
+    "imageSource": "https://aieda.kaist.ac.kr/wp-content/uploads/2021/10/%EC%A0%95%EC%9C%A0%EC%98%81.jpg",
+    "status": "verified"
+  },
+  "Sungroh Yoon": {
+    "file": "./portraits/sungroh-yoon.webp",
+    "source": "https://snp.snu.ac.kr/snu__professor/%EC%9C%A4%EC%84%B1%EB%A1%9C/",
+    "imageSource": "https://snp.snu.ac.kr/wp-content/uploads/sites/357/2025/09/%EC%9C%A4%EC%84%B1%EB%A1%9C-768x768.jpg",
+    "status": "verified"
+  },
+  "Jacob K. White": {
+    "file": "./portraits/jacob-k-white.webp",
+    "source": "https://commons.wikimedia.org/wiki/File:Jacob_K_White_at_MIT.jpg",
+    "imageSource": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Jacob_K_White_at_MIT.jpg/500px-Jacob_K_White_at_MIT.jpg",
+    "status": "verified"
+  },
+  "Giorgio Casinovi": {
+    "file": "./portraits/giorgio-casinovi.webp",
+    "source": "https://casinovi.ece.gatech.edu/",
+    "imageSource": "https://casinovi.ece.gatech.edu/wp-content/uploads/sites/435/2016/07/GiorgioCasinovi131018AR538_web-199x300.jpg",
+    "status": "verified"
+  },
+  "Jyuo-Min Shyu": {
+    "file": "./portraits/jyuo-min-shyu.webp",
+    "source": "https://dcs-en.site.nthu.edu.tw/p/404-1010-5696.php",
+    "imageSource": "https://dcs-en.site.nthu.edu.tw/var/file/10/1010/img/2661/Jyuo-MinShyu.jpg",
+    "status": "verified"
+  },
+  "Luca Carloni": {
+    "file": "./portraits/luca-carloni.webp",
+    "source": "https://www.engineering.columbia.edu/faculty-staff/directory/luca-carloni",
+    "imageSource": "https://www.engineering.columbia.edu/sites/default/files/styles/faculty_masthead_image/public/2024-04/Faculty-Luca_Carloni-Thumbnail-869x869.jpg?itok=izVX1s09",
+    "status": "verified"
+  },
+  "Luca Daniel": {
+    "file": "./portraits/luca-daniel.webp",
+    "source": "https://www.mit.edu/~dluca/",
+    "imageSource": "http://www.mit.edu/~dluca/pictures/MYPICTURES/playing_guitar.jpg",
+    "status": "verified"
+  },
+  "Zheng Zhang": {
+    "file": "./portraits/zheng-zhang.webp",
+    "source": "https://engineering.ucsb.edu/people/zheng-zhang",
+    "imageSource": "https://engineering.ucsb.edu/sites/default/files/styles/people_thumb_small/public/people/images/Zheng_Zhang_006F.jpg?itok=dlTwlJOZ&c=67dd1fbae4996d0d0bd369bc0f29fe06",
+    "status": "verified"
+  },
+  "Qi Zhu": {
+    "file": "./portraits/qi-zhu.webp",
+    "source": "https://www.mccormick.northwestern.edu/research-faculty/directory/profiles/zhu-qi.html",
+    "imageSource": "https://www.mccormick.northwestern.edu/images/research-and-faculty/directory/zhu-qi.jpg",
+    "status": "verified"
+  },
+  "Haibo Zeng": {
+    "file": "./portraits/haibo-zeng.webp",
+    "source": "https://ece.vt.edu/people/profile/zeng",
+    "imageSource": "https://ece.vt.edu/content/ece_vt_edu/en/people/profile/zeng/_jcr_content/bio-image.transform/m-medium/image.jpg",
+    "status": "verified"
+  },
+  "Douglas Densmore": {
+    "file": "./portraits/douglas-densmore.webp",
+    "source": "https://www.bu.edu/eng/profile/douglas-densmore/",
+    "imageSource": "https://www.bu.edu/eng/files/2024/03/ece.faculty.24.densmore-600x600.jpg",
+    "status": "verified"
+  },
+  "Pierluigi Nuzzo": {
+    "file": "./portraits/pierluigi-nuzzo.webp",
+    "source": "https://viterbi.usc.edu/directory/faculty/Nuzzo/Pierluigi",
+    "imageSource": "https://viterbi.usc.edu/directory/images/da5ec8b71668dd835d63cdb1ef282123.jpg",
+    "status": "verified"
+  },
+  "T. C. Hu": {
+    "file": "./portraits/t-c-hu.webp",
+    "source": "https://www.informs.org/Explore/History-of-O.R.-Excellence/Biographical-Profiles/Hu-Te-Chiang/",
+    "imageSource": "https://www.informs.org/var/ezflow_site/storage/images/media/history-traditions-files/luminary-photos/hu-fellow-portrait/2887477-1-eng-US/Hu-Fellow-Portrait_large.jpg",
+    "status": "verified"
+  },
+  "Andrew B. Kahng": {
+    "file": "./portraits/andrew-b-kahng.webp",
+    "source": "https://vlsicad.ucsd.edu/~abk/",
+    "imageSource": "https://vlsicad.ucsd.edu/~abk/ABKPICTURES/pict_3_lr.JPG",
+    "status": "verified"
+  },
+  "Gabriel Robins": {
+    "file": "./portraits/gabriel-robins.webp",
+    "source": "https://www.cs.virginia.edu/~robins/",
+    "imageSource": "http://www.cs.virginia.edu/~robins/Gabe2005.jpg",
+    "status": "verified"
+  },
+  "Igor L. Markov": {
+    "file": "./portraits/igor-l-markov.webp",
+    "source": "https://web.eecs.umich.edu/~imarkov/",
+    "imageSource": "https://web.eecs.umich.edu/~imarkov/smpx-2018.jpg",
+    "status": "verified"
+  },
+  "Sherief Reda": {
+    "file": "./portraits/sherief-reda.webp",
+    "source": "https://vivo.brown.edu/display/sreda",
+    "imageSource": "https://vivo.brown.edu/profile-images/f51/582/f7b/837/4ff/d8e/e6b/bc1/309/c85/aa/sreda_photo_.jpg",
+    "status": "verified"
+  },
+  "Puneet Gupta": {
+    "file": "./portraits/puneet-gupta.webp",
+    "source": "https://samueli.ucla.edu/people/puneet-gupta/",
+    "imageSource": "https://samueli.ucla.edu/wp-content/uploads/samueli/Puneet_Gupta.jpg",
+    "status": "verified"
+  },
+  "Seokhyeong Kang": {
+    "file": "./portraits/seokhyeong-kang.webp",
+    "source": "https://aieda.kaist.ac.kr/team/",
+    "imageSource": "https://aieda.kaist.ac.kr/wp-content/uploads/2021/10/%EA%B0%95%EC%84%9D%ED%98%95-231x300.jpg",
+    "status": "verified"
+  },
+  "Randal E. Bryant": {
+    "file": "./portraits/randal-e-bryant.webp",
+    "source": "https://www.cs.cmu.edu/~bryant/",
+    "imageSource": "https://www.cs.cmu.edu/~bryant/reb-portrait10.jpg",
+    "status": "verified"
+  },
+  "Sanjit A. Seshia": {
+    "file": "./portraits/sanjit-a-seshia.webp",
+    "source": "https://people.eecs.berkeley.edu/~sseshia/",
+    "imageSource": "https://people.eecs.berkeley.edu/~sseshia/SanjitSeshia_webphoto.jpg",
+    "status": "verified"
+  },
+  "Wenchao Li": {
+    "file": "./portraits/wenchao-li.webp",
+    "source": "https://www.bu.edu/eng/profile/wenchao-li/",
+    "imageSource": "https://www.bu.edu/eng/files/2024/08/ece.faculty.24.li_-600x600.jpg",
+    "status": "verified"
+  },
+  "Dorsa Sadigh": {
+    "file": "./portraits/dorsa-sadigh.webp",
+    "source": "https://dorsa.fyi/",
+    "imageSource": "https://dorsa.fyi/dorsasadigh.jpeg",
+    "status": "verified"
+  },
+  "Daniel J. Fremont": {
+    "file": "./portraits/daniel-j-fremont.webp",
+    "source": "https://people.ucsc.edu/~dfremont/",
+    "imageSource": "https://people.ucsc.edu/~dfremont/images/me.jpg",
+    "status": "verified"
+  },
+  "Federico Mora": {
+    "file": "./portraits/federico-mora.webp",
+    "source": "https://federico.morarocha.ca/",
+    "imageSource": "https://federico.morarocha.ca/images/federico.jpg",
+    "status": "verified"
+  },
+  "John P. Hayes": {
+    "file": "./portraits/john-p-hayes.webp",
+    "source": "https://cse.engin.umich.edu/stories/prof-john-p-hayes-retires-after-half-a-century-in-computer-architecture",
+    "imageSource": "https://eecsnews.engin.umich.edu/wp-content/uploads/sites/2/2023/05/Ann-Arbor-c2017-770x1024.jpg",
+    "status": "verified"
+  },
+  "Shantanu Dutt": {
+    "file": "./portraits/shantanu-dutt.webp",
+    "source": "https://ece.uic.edu/profiles/shantanu-dutt-phd/",
+    "imageSource": "https://ece.uic.edu/wp-content/uploads/sites/351/2018/10/Dutt-500x500-157x180.jpg",
+    "status": "verified"
+  },
+  "Krishnendu Chakrabarty": {
+    "file": "./portraits/krishnendu-chakrabarty.webp",
+    "source": "https://search.asu.edu/profile/4669916",
+    "imageSource": "https://webapp4.asu.edu/photo-ws/directory_photo/kchakra8?size=medium&break=1786934611&blankImage2=1",
+    "status": "verified"
+  },
+  "Mohamed Ibrahim": {
+    "file": "./portraits/mohamed-ibrahim.webp",
+    "source": "https://ece.utdallas.edu/people/tenure-system-faculty/ibrahim-mohamed/",
+    "imageSource": "https://ece.utdallas.edu/files/2025/08/Ibrahim-Finished-edited.jpg",
+    "status": "verified"
+  },
+  "Shawn Blanton": {
+    "file": "./portraits/shawn-blanton.webp",
+    "source": "https://engineering.cmu.edu/directory/bios/blanton-shawn.html",
+    "imageSource": "https://engineering.cmu.edu/_files/images/directory/rblanton.png",
+    "status": "verified"
+  },
+  "Hussain Al-Asaad": {
+    "file": "./portraits/hussain-al-asaad.webp",
+    "source": "https://ece.ucdavis.edu/directory/hussain-al-asaad",
+    "imageSource": "https://ece.ucdavis.edu/sites/g/files/dgvnsk8091/files/styles/sf_profile/public/images/person/al-asaad.jpg?h=0df29379&itok=1IvyHx3F",
+    "status": "verified"
+  },
+  "HyungWon Kim": {
+    "file": "./portraits/hyungwon-kim.webp",
+    "source": "https://www.cbnu.msislab.com/about-me",
+    "imageSource": "https://static.wixstatic.com/media/d550bf_4413fb225627480189ed3a8485a134bd~mv2.jpg",
+    "status": "verified"
+  },
+  "Joonhwan Yi": {
+    "file": "./portraits/joonhwan-yi.webp",
+    "source": "https://semicon.kw.ac.kr/HTML/member/professor.php",
+    "imageSource": "https://ei.kw.ac.kr/data/professorImg/i2311174742976.jpg",
+    "status": "verified"
+  },
+  "Smita Krishnaswamy": {
+    "file": "./portraits/smita-krishnaswamy.webp",
+    "source": "https://ventures.yale.edu/our-team/smita-krishnaswamy-phd",
+    "imageSource": "https://ventures.yale.edu/sites/default/files/2022-01/YMS5815_0241_S_Krishnaswamy.jpeg",
+    "status": "verified"
+  },
+  "Marilyn C. Wolf": {
+    "file": "./portraits/marilyn-c-wolf.webp",
+    "source": "https://computing.unl.edu/person/marilyn-wolf/",
+    "imageSource": "https://computing.unl.edu/sites/unl.edu.engineering.school-of-computing/files/styles/1_1_1920x1920/public/node/person/photo/2024-12/mwolf.jpeg?itok=bEXfx97V",
+    "status": "verified"
+  },
+  "Yuan Xie": {
+    "file": "./portraits/yuan-xie.webp",
+    "source": "https://ece.hkust.edu.hk/yuanxie",
+    "imageSource": "https://ece.hkust.edu.hk/sites/default/files/2023-09/110-yuanxie-XIE-Yuan.jpg",
+    "status": "verified"
+  },
+  "Yu Wang": {
+    "file": "./portraits/yu-wang.webp",
+    "source": "https://web.ee.tsinghua.edu.cn/wangyu/en/index/2145/list/index.htm",
+    "imageSource": "https://web.ee.tsinghua.edu.cn/_tsf/00/07/nMRFjme6fy63.png",
+    "status": "verified"
+  },
+  "Guangyu Sun": {
+    "file": "./portraits/guangyu-sun.webp",
+    "source": "https://gsunpku.github.io/",
+    "imageSource": "https://gsunpku.github.io/images/gsun.png",
+    "status": "verified"
+  },
+  "Jishen Zhao": {
+    "file": "./portraits/jishen-zhao.webp",
+    "source": "https://cseweb.ucsd.edu/~jzhao/",
+    "imageSource": "https://cseweb.ucsd.edu/~jzhao/images/jishen.jpg",
+    "status": "verified"
+  },
+  "Hsiang-Yun Cheng": {
+    "file": "./portraits/hsiang-yun-cheng.webp",
+    "source": "https://homepage.citi.sinica.edu.tw/pages/hycheng/",
+    "imageSource": "https://homepage.citi.sinica.edu.tw/pages/photo/hycheng.jpg",
+    "status": "verified"
+  },
+  "Kaisheng Ma": {
+    "file": "./portraits/kaisheng-ma.webp",
+    "source": "https://iiis.tsinghua.edu.cn/rydw1/qzjs/makaisheng.htm",
+    "imageSource": "https://iiis.tsinghua.edu.cn/zpyx/makaisheng.jpg",
+    "status": "verified"
+  },
+  "Yongsoo Joo": {
+    "file": "./portraits/yongsoo-joo.webp",
+    "source": "https://yongsoojoo.github.io/",
+    "imageSource": "https://yongsoojoo.github.io/img/profile.jpg",
+    "status": "verified"
+  },
+  "Xing Hu": {
+    "file": "./portraits/xing-hu.webp",
+    "source": "https://novel.ict.ac.cn/xhu/",
+    "imageSource": "https://novel.ict.ac.cn/xhu/202205/W020221202548954479713.jpg",
+    "status": "verified"
+  },
+  "Jiayi Huang": {
+    "file": "./portraits/jiayi-huang.webp",
+    "source": "https://jyhuang91.github.io/",
+    "imageSource": "https://jyhuang91.github.io/images/jiayi.jpg",
+    "status": "verified"
+  },
+  "Jiang Xu": {
+    "file": "./portraits/jiang-xu.webp",
+    "source": "https://personal.hkust-gz.edu.cn/jiangxu/",
+    "imageSource": "https://personal.hkust-gz.edu.cn/jiangxu/images/Xujiang.jpg",
+    "status": "verified"
+  },
+  "Yaoyao Ye": {
+    "file": "./portraits/yaoyao-ye.webp",
+    "source": "https://english.seiee.sjtu.edu.cn/english/detail/2128_1921.htm",
+    "imageSource": "https://english.seiee.sjtu.edu.cn/images/2017081202531665.jpg",
+    "status": "verified"
+  },
+  "Weichen Liu": {
+    "file": "./portraits/weichen-liu.webp",
+    "source": "https://researchdata.ntu.edu.sg/dataverse/liuteam",
+    "imageSource": "https://researchdata.ntu.edu.sg/logos/12960/Liu_Weichen_Photo.jpg",
+    "status": "verified"
+  },
+  "Sachin S. Sapatnekar": {
+    "file": "./portraits/sachin-s-sapatnekar.webp",
+    "source": "https://www.weforum.org/people/sachin-s-sapatnekar/",
+    "imageSource": "https://assets.weforum.org/sf_account/image/eNc3Z4YmSIGDjlektAUJz2pd5s_WTpF7ai1etiM_kFM.jpeg",
+    "status": "verified"
+  },
+  "Jiang Hu": {
+    "file": "./portraits/jiang-hu.webp",
+    "source": "https://cesg.tamu.edu/faculty/jiang-hu/",
+    "imageSource": "https://cesg.tamu.edu/wp-content/uploads/sites/244/2023/12/Jiang-Hu-2026-225x300.jpg",
+    "status": "verified"
+  },
+  "Pingqiang Zhou": {
+    "file": "./portraits/pingqiang-zhou.webp",
+    "source": "https://sist.shanghaitech.edu.cn/zhoupq/",
+    "imageSource": "https://sist.shanghaitech.edu.cn/_upload/article/images/da/95/ef7d95aa4b5c9167ce0a1e7f4454/7648fe16-613a-4719-aa21-b6c03bfb4115_s.jpg",
+    "status": "verified"
+  },
+  "Vannevar Bush": {
+    "file": "./portraits/vannevar-bush.jpg",
+    "source": "https://mitmuseum.mit.edu/collections/object/GCP-00003581",
+    "imageSource": "https://assets.mitmuseum.mit.edu/iiifimg3/61209119/full/800%2C/0/default.jpg",
+    "status": "verified"
+  },
+  "David A. Huffman": {
+    "file": "./portraits/david-a-huffman.jpg",
+    "source": "https://www.cise.ufl.edu/~manuel/huffman/press.release.html",
+    "imageSource": "https://www.cise.ufl.edu/~manuel/huffman/david_huffman.jpg",
+    "status": "verified"
+  },
+  "Frederick E. Terman": {
+    "file": "./portraits/frederick-e-terman.jpg",
+    "source": "https://engineering.stanford.edu/about/history",
+    "imageSource": "https://engineering.stanford.edu/sites/default/files/styles/medium/public/media/image/terman_frederick.jpeg",
+    "status": "verified"
+  },
+  "Joseph M. Pettit": {
+    "file": "./portraits/joseph-m-pettit.jpg",
+    "source": "https://engineering.stanford.edu/about/history",
+    "imageSource": "https://engineering.stanford.edu/sites/default/files/styles/medium/public/media/image/pettit_joseph.jpeg",
+    "status": "verified"
+  },
+  "Jack B. Dennis": {
+    "file": "./portraits/jack-b-dennis.jpg",
+    "source": "https://news.mit.edu/2026/jack-dennis-pioneering-developer-dataflow-models-of-computation-dies-0410",
+    "imageSource": "https://news.mit.edu/sites/default/files/images/202604/mit-eecs-Dennis-Jack.jpg",
+    "status": "verified"
+  },
+  "Sung-Mo Kang": {
+    "file": "./portraits/sung-mo-kang.jpg",
+    "source": "https://engineering.berkeley.edu/news/2008/05/wired-for-success/",
+    "imageSource": "https://engineering.berkeley.edu/sites/default/files/images/news/2008/05/wired_1.jpg",
+    "status": "verified"
+  },
+  "Carver Mead": {
+    "file": "./portraits/carver-mead.jpg",
+    "source": "https://www.calyptus.caltech.edu/mead/research.html",
+    "imageSource": "https://www.calyptus.caltech.edu/mead/images/about/Carver-profile.jpg",
+    "status": "verified"
+  },
+  "Lynn Conway": {
+    "file": "./portraits/lynn-conway.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Lynn_Conway_July_2006.jpg",
+    "imageSource": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Lynn%20Conway%20July%202006.jpg?width=800",
+    "status": "verified"
+  },
+  "M. E. Van Valkenburg": {
+    "file": "./portraits/m-e-van-valkenburg.jpg",
+    "source": "https://grainger.illinois.edu/alumni/hall-of-fame/mac-van-valkenburg",
+    "imageSource": "https://ws.engr.illinois.edu/sitemanager/viewphoto.aspx?id=13825&s=350",
+    "status": "verified"
+  },
+  "Bing J. Sheu": {
+    "file": "https://csie.asia.edu.tw/uploads/member_profile/avatar/697c71b8063ca2037bd421d4/bsheu_2023cr.png",
+    "source": "https://csie.asia.edu.tw/zh_tw/associate_professors_2/%E8%A8%B1%E7%82%B3%E5%A0%85-Bing-Jay-Sheu-9696599",
+    "imageSource": "https://csie.asia.edu.tw/uploads/member_profile/avatar/697c71b8063ca2037bd421d4/bsheu_2023cr.png",
+    "status": "verified"
+  },
+  "Jack C.-Y. Lee": {
+    "file": "https://ece.utexas.edu/sites/default/files/portraits/Lee-Jack.jpg",
+    "source": "https://ece.utexas.edu/people/faculty/jack-lee",
+    "imageSource": "https://ece.utexas.edu/sites/default/files/portraits/Lee-Jack.jpg",
+    "status": "verified"
+  },
+  "Elyse Rosenbaum": {
+    "file": "https://ws.engr.illinois.edu/directory/viewphoto.aspx?photo=1087&s=300",
+    "source": "https://csl.illinois.edu/directory/faculty/elyse",
+    "imageSource": "https://ws.engr.illinois.edu/directory/viewphoto.aspx?photo=1087&s=300",
+    "status": "verified"
+  },
+  "Hyungcheol Shin": {
+    "file": "https://ece.snu.ac.kr/webdata/professor/e3bz08bzdd1z4a6zce3zd25z730z2abz0b2zcf5z87.jpg",
+    "source": "https://ece.snu.ac.kr/en/research-faculty/faculty/fulltime?md=view&profid=p059",
+    "imageSource": "https://ece.snu.ac.kr/webdata/professor/e3bz08bzdd1z4a6zce3zd25z730z2abz0b2zcf5z87.jpg",
+    "status": "verified"
+  },
+  "Yang-Kyu Choi": {
+    "file": "https://ee.kaist.ac.kr/wp-content/uploads/drupal/77.%EC%B5%9C%EC%96%91%EA%B7%9C_0.jpg",
+    "source": "https://ee.kaist.ac.kr/professor/12290/",
+    "imageSource": "https://ee.kaist.ac.kr/wp-content/uploads/drupal/77.%EC%B5%9C%EC%96%91%EA%B7%9C_0.jpg",
+    "status": "verified"
+  },
+  "Pin Su": {
+    "file": "https://dee.nycu.edu.tw/upload_files/teacher/1660027072.jpg",
+    "source": "https://dee.nycu.edu.tw/teachers.php?locale=en&pa=getItem&teacher_id=73",
+    "imageSource": "https://dee.nycu.edu.tw/upload_files/teacher/1660027072.jpg",
+    "status": "verified"
+  },
+  "Yee-Chia Yeo": {
+    "file": "https://cde.nus.edu.sg/ece/wp-content/uploads/sites/3/2019/03/yeo-yee-chia.png",
+    "source": "https://cde.nus.edu.sg/ece/staff/yeo-yee-chia/",
+    "imageSource": "https://cde.nus.edu.sg/ece/wp-content/uploads/sites/3/2019/03/yeo-yee-chia.png",
+    "status": "verified"
+  },
+  "Ping K. Ko": {
+    "file": "https://ece.hkust.edu.hk/sites/default/files/2019-12/Ko%20Ping-crop.jpg",
+    "source": "https://ece.hkust.edu.hk/pingko",
+    "imageSource": "https://ece.hkust.edu.hk/sites/default/files/2019-12/Ko%20Ping-crop.jpg",
+    "status": "verified"
+  },
+  "John P. Shen": {
+    "file": "https://www.ece.cmu.edu/directory/images/faculty/S/john-shen-800x800.png",
+    "source": "https://www.ece.cmu.edu/directory/bios/shen-john.html",
+    "imageSource": "https://www.ece.cmu.edu/directory/images/faculty/S/john-shen-800x800.png",
+    "status": "verified"
+  },
+  "Shiyan Hu": {
+    "file": "https://www.dase.hku.hk/f/people/865/139c185/Prof.%20S.Y.%20Hu%202.JPG",
+    "source": "https://www.dase.hku.hk/people/s-y-hu",
+    "imageSource": "https://www.dase.hku.hk/f/people/865/139c185/Prof.%20S.Y.%20Hu%202.JPG",
+    "status": "verified"
+  },
+  "R. David Middlebrook": {
+    "file": "https://chic.caltech.edu/wp-content/uploads/2013/10/David_Middlebrook.jpg",
+    "source": "https://chic.caltech.edu/genealogy/david-middlebrook/",
+    "imageSource": "https://chic.caltech.edu/wp-content/uploads/2013/10/David_Middlebrook.jpg",
+    "status": "verified"
+  },
+  "Richard S. Muller": {
+    "file": "https://www2.eecs.berkeley.edu/Faculty/Photos/Homepages/muller.jpg",
+    "source": "https://www2.eecs.berkeley.edu/Faculty/Homepages/muller.html",
+    "imageSource": "https://www2.eecs.berkeley.edu/Faculty/Photos/Homepages/muller.jpg",
+    "status": "verified"
+  },
+  "Robert W. Dutton": {
+    "file": "https://chic.caltech.edu/wp-content/uploads/2014/03/dutton-e1394904254459.jpg",
+    "source": "https://chic.caltech.edu/genealogy/robert-dutton/",
+    "imageSource": "https://chic.caltech.edu/wp-content/uploads/2014/03/dutton-e1394904254459.jpg",
+    "status": "verified"
+  },
+  "Mark Horowitz": {
+    "file": "https://profiles.stanford.edu/proxy/api/cap/profiles/14300/resources/profilephoto/350x350.1564676348474.jpg",
+    "source": "https://profiles.stanford.edu/mark-horowitz",
+    "imageSource": "https://profiles.stanford.edu/proxy/api/cap/profiles/14300/resources/profilephoto/350x350.1564676348474.jpg",
+    "status": "verified"
+  },
+  "Elad Alon": {
+    "file": "https://www2.eecs.berkeley.edu/Faculty/Photos/Homepages/elad.jpg",
+    "source": "https://www2.eecs.berkeley.edu/Faculty/Homepages/elad.html",
+    "imageSource": "https://www2.eecs.berkeley.edu/Faculty/Photos/Homepages/elad.jpg",
+    "status": "verified"
+  },
+  "Michael D. Smith": {
+    "file": "https://seas.harvard.edu/sites/default/files/styles/news_teaser_small_1x/public/2025-05/MikeSmith_2019_horizontal.jpg?itok=qLf4TqXo",
+    "source": "https://seas.harvard.edu/person/michael-smith",
+    "imageSource": "https://seas.harvard.edu/sites/default/files/styles/news_teaser_small_1x/public/2025-05/MikeSmith_2019_horizontal.jpg?itok=qLf4TqXo",
+    "status": "verified"
+  },
+  "Vladimir Stojanović": {
+    "file": "https://vcresearch.berkeley.edu/sites/default/files/styles/faculty_photo_thumbnail/public/2023-01/vladimir_stojanovic.jpg?h=99a58570&itok=Ug-auYQw",
+    "source": "https://vcresearch.berkeley.edu/faculty/vladimir-stojanovic",
+    "imageSource": "https://vcresearch.berkeley.edu/sites/default/files/styles/faculty_photo_thumbnail/public/2023-01/vladimir_stojanovic.jpg?h=99a58570&itok=Ug-auYQw",
+    "status": "verified"
+  },
+  "Jaeha Kim": {
+    "file": "https://ece.snu.ac.kr/webdata/professor/74cf8af9b589934231b16392c61cd49e.jpg",
+    "source": "https://ece.snu.ac.kr/en/research-faculty/faculty/fulltime?md=view&profid=p071",
+    "imageSource": "https://ece.snu.ac.kr/webdata/professor/74cf8af9b589934231b16392c61cd49e.jpg",
+    "status": "verified"
+  },
+  "Monica S. Lam": {
+    "file": "https://profiles.stanford.edu/proxy/api/cap/profiles/41623/resources/profilephoto/350x350.1509517632815.jpg",
+    "source": "https://profiles.stanford.edu/monica-lam",
+    "imageSource": "https://profiles.stanford.edu/proxy/api/cap/profiles/41623/resources/profilephoto/350x350.1509517632815.jpg",
+    "status": "verified"
+  },
+  "Rob A. Rutenbar": {
+    "file": "https://www.ece.cmu.edu/directory/images/faculty/R/rob-rutenbar-800x800.png",
+    "source": "https://www.ece.cmu.edu/directory/bios/rutenbar-rob.html",
+    "imageSource": "https://www.ece.cmu.edu/directory/images/faculty/R/rob-rutenbar-800x800.png",
+    "status": "verified"
+  },
+  "Hugo De Man": {
+    "file": "https://people.eecs.berkeley.edu/~newton/presentations/Kaufman/HugoDeMan.jpg",
+    "source": "https://people.eecs.berkeley.edu/~newton/presentations/Kaufman/",
+    "imageSource": "https://people.eecs.berkeley.edu/~newton/presentations/Kaufman/HugoDeMan.jpg",
+    "status": "verified"
+  },
+  "Stephen P. Boyd": {
+    "file": "https://profiles.stanford.edu/proxy/api/cap/profiles/18537/resources/profilephoto/350x350.1280300400000.jpg",
+    "source": "https://profiles.stanford.edu/stephen-boyd",
+    "imageSource": "https://profiles.stanford.edu/proxy/api/cap/profiles/18537/resources/profilephoto/350x350.1280300400000.jpg",
+    "status": "verified"
+  },
+  "Orla Feely": {
+    "file": "https://www.ucd.ie/president/t4media/751w-orla-feely.jpg",
+    "source": "https://www.ucd.ie/president/",
+    "imageSource": "https://www.ucd.ie/president/t4media/751w-orla-feely.jpg",
+    "status": "verified"
+  },
+  "David Blaauw": {
+    "file": "https://eecs.engin.umich.edu/wp-content/uploads/2023/11/Blaauw_David2021-web.jpg",
+    "source": "https://eecs.engin.umich.edu/people/blaauw-david-t/",
+    "imageSource": "https://eecs.engin.umich.edu/wp-content/uploads/2023/11/Blaauw_David2021-web.jpg",
+    "status": "verified"
+  },
+  "Azita Emami": {
+    "file": "https://caltechsites-prod-assets.resources.caltech.edu/s2i/images/Azita_sm.2e16d0ba.fill-432x432-c100.jpg",
+    "source": "https://s2i.caltech.edu/people-spotlight",
+    "imageSource": "https://caltechsites-prod-assets.resources.caltech.edu/s2i/images/Azita_sm.2e16d0ba.fill-432x432-c100.jpg",
+    "status": "verified"
+  },
+  "Jan M. Rabaey": {
+    "file": "https://www2.eecs.berkeley.edu/Faculty/Photos/Fullsize/rabaey.jpg",
+    "source": "https://www2.eecs.berkeley.edu/Faculty/Homepages/rabaey.html",
+    "imageSource": "https://www2.eecs.berkeley.edu/Faculty/Photos/Fullsize/rabaey.jpg",
+    "status": "verified"
+  },
+  "Ingrid Verbauwhede": {
+    "file": "https://eng.kuleuven.be/en/news-calendar/news-items/ingrid-verbauwhede-receives-fwo-excellence-prize/%40%40images/image-1200-e9cbfc5e061e20d83056447d23eb5f3b.jpeg",
+    "source": "https://eng.kuleuven.be/en/news-calendar/news-items/ingrid-verbauwhede-receives-fwo-excellence-prize",
+    "imageSource": "https://eng.kuleuven.be/en/news-calendar/news-items/ingrid-verbauwhede-receives-fwo-excellence-prize/%40%40images/image-1200-e9cbfc5e061e20d83056447d23eb5f3b.jpeg",
+    "status": "verified"
+  },
+  "Daniel D. Gajski": {
+    "file": "https://croatia.org/crown/content_images/2007/GAJSKI_DANIEL1.jpg",
+    "source": "https://www.croatia.org/crown/articles/9312/1/ProfDr-Daniel-D-Gajski-a-hero-of-Computer-Science.html",
+    "imageSource": "https://croatia.org/crown/content_images/2007/GAJSKI_DANIEL1.jpg",
+    "status": "verified"
+  },
+  "Preeti Ranjan Panda": {
+    "file": "https://www.cse.iitd.ac.in/~panda/images/PRP.jpg",
+    "source": "https://www.cse.iitd.ac.in/~panda/",
+    "imageSource": "https://www.cse.iitd.ac.in/~panda/images/PRP.jpg",
+    "status": "verified"
+  },
+  "Prabhat Mishra": {
+    "file": "https://www.cise.ufl.edu/~prabhat/Pictures/Prabhat-Mishra-New-1.jpg",
+    "source": "https://www.cise.ufl.edu/~prabhat/",
+    "imageSource": "https://www.cise.ufl.edu/~prabhat/Pictures/Prabhat-Mishra-New-1.jpg",
+    "status": "verified"
+  },
+  "Aviral Shrivastava": {
+    "file": "https://newsroom.asu.edu/sites/g/files/litvpz3676/files/2025-05/20250520%20AviralShrivastava_446.jpg",
+    "source": "https://newsroom.asu.edu/experts/aviral-shrivastava",
+    "imageSource": "https://newsroom.asu.edu/sites/g/files/litvpz3676/files/2025-05/20250520%20AviralShrivastava_446.jpg",
+    "status": "verified"
+  },
+  "Forrest Brewer": {
+    "file": "https://www.ece.ucsb.edu/sites/default/files/styles/medium_square/public/2020-01/Brewer.jpg?itok=6cepcdfR",
+    "source": "https://www.ece.ucsb.edu/people/faculty/forrest-brewer",
+    "imageSource": "https://www.ece.ucsb.edu/sites/default/files/styles/medium_square/public/2020-01/Brewer.jpg?itok=6cepcdfR",
+    "status": "verified"
+  },
+  "Andreas Gerstlauer": {
+    "file": "https://www.ece.utexas.edu/sites/default/files/portraits/Gerstlauer-Andreas.png",
+    "source": "https://www.ece.utexas.edu/people/faculty/andreas-gerstlauer",
+    "imageSource": "https://www.ece.utexas.edu/sites/default/files/portraits/Gerstlauer-Andreas.png",
+    "status": "verified"
+  },
+  "Jone F. Chen": {
+    "file": "https://researchoutput.ncku.edu.tw/files-asset/16415629/8808004.jpg",
+    "source": "https://researchoutput.ncku.edu.tw/en/persons/jone-fang-chen/",
+    "imageSource": "https://researchoutput.ncku.edu.tw/files-asset/16415629/8808004.jpg",
+    "status": "verified"
+  },
+  "Darsen Lu": {
+    "file": "https://researchoutput.ncku.edu.tw/files-asset/16412453/10408109.jpg",
+    "source": "https://researchoutput.ncku.edu.tw/en/persons/darsen-lu/",
+    "imageSource": "https://researchoutput.ncku.edu.tw/files-asset/16412453/10408109.jpg",
+    "status": "verified"
+  },
+  "Nikil Dutt": {
+    "file": "https://engineering.uci.edu/files/styles/scale_and_crop_192x192/public/nikil-dutt.png?itok=KDOv3m2f",
+    "source": "https://engineering.uci.edu/users/nikil-dutt",
+    "imageSource": "https://engineering.uci.edu/files/styles/scale_and_crop_192x192/public/nikil-dutt.png?itok=KDOv3m2f",
+    "status": "verified"
+  },
+  "Frank Ruskey": {
+    "file": "https://webhome.cs.uvic.ca/~ruskey/gifs/Ruskey-F.gif",
+    "source": "https://webhome.cs.uvic.ca/~ruskey/fruskey.html",
+    "imageSource": "https://webhome.cs.uvic.ca/~ruskey/gifs/Ruskey-F.gif",
+    "status": "verified"
+  },
+  "Ramesh Harjani": {
+    "file": "https://cse.umn.edu/sites/cse.umn.edu/files/styles/webp_scaled/public/Ramesh%20Harjani_people%20in%20background.jpg.webp?itok=wGX_Iij6",
+    "source": "https://cse.umn.edu/ece/ramesh-harjani",
+    "imageSource": "https://cse.umn.edu/sites/cse.umn.edu/files/styles/webp_scaled/public/Ramesh%20Harjani_people%20in%20background.jpg.webp?itok=wGX_Iij6",
+    "status": "verified"
+  },
+  "Joos Vandewalle": {
+    "file": "https://www.kuleuven.be/open-science/news/2020/open-science-ambassador-joos-vandewalle-open-science-is-a-very-comprehensive-game-changer/@@images/image-1200-4d573521596d4c0c4af570aef4eacf4f.jpeg",
+    "source": "https://www.kuleuven.be/open-science/news/2020/open-science-ambassador-joos-vandewalle-open-science-is-a-very-comprehensive-game-changer",
+    "imageSource": "https://www.kuleuven.be/open-science/news/2020/open-science-ambassador-joos-vandewalle-open-science-is-a-very-comprehensive-game-changer/@@images/image-1200-4d573521596d4c0c4af570aef4eacf4f.jpeg",
+    "status": "verified"
+  },
+  "Sudeep Pasricha": {
+    "file": "https://www.engr.colostate.edu/ece/wp-content/uploads/2025/04/Sudeep-Pasricha-2025.jpg",
+    "source": "https://www.engr.colostate.edu/ece/people/sudeep-pasricha/",
+    "imageSource": "https://www.engr.colostate.edu/ece/wp-content/uploads/2025/04/Sudeep-Pasricha-2025.jpg",
+    "status": "verified"
+  },
+  "Kyoungwoo Lee": {
+    "file": "https://aie.yonsei.ac.kr/profileImg/thumb_5697e035988a6c764d154a4a657e0b40.jpg",
+    "source": "https://aie.yonsei.ac.kr/faculty/depMember.do?mode=view&userId=Q156oNZL0YuTJIfhTurhTQ%3D%3D",
+    "imageSource": "https://aie.yonsei.ac.kr/profileImg/thumb_5697e035988a6c764d154a4a657e0b40.jpg",
+    "status": "verified"
+  },
+  "Daniel E. Atkins": {
+    "file": "https://www.si.umich.edu/sites/default/files/styles/profile_image/public/profiles/atkins_dan_106-1-689.jpg?itok=LxuLsDoW",
+    "source": "https://www.si.umich.edu/people/daniel-atkins-iii",
+    "imageSource": "https://www.si.umich.edu/sites/default/files/styles/profile_image/public/profiles/atkins_dan_106-1-689.jpg?itok=LxuLsDoW",
+    "status": "verified"
+  },
+  "Dean Norman Arden": {
+    "file": "https://cache.legacy.net/legacy/images/cobrands/legacy/photos/u2bytqdqskwpuqwidcoz.jpgx?h=300&option=3&w=207",
+    "source": "https://www.legacy.com/us/obituaries/legacyremembers/dean-arden-obituary?id=52062751",
+    "imageSource": "https://cache.legacy.net/legacy/images/cobrands/legacy/photos/u2bytqdqskwpuqwidcoz.jpgx?h=300&option=3&w=207",
+    "status": "verified"
+  },
+  "Samuel H. Caldwell": {
+    "file": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnQIOctAN2_ymjIaytnFvlTvNhAtrrjzLSZg6v0SlMCA&s=10",
+    "source": "https://mitmuseum.mit.edu/collections/person/caldwell-samuel-hawks-11350",
+    "imageSource": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnQIOctAN2_ymjIaytnFvlTvNhAtrrjzLSZg6v0SlMCA&s=10",
+    "status": "verified"
+  },
+  "Trevor N. Mudge": {
+    "file": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYbORTGdiOQKN8Xm3cLY5gj1QxijIcL0UJxo--ayXv5w&s=10",
+    "source": "https://cse.engin.umich.edu/stories/prof-trevor-mudge-retires-after-46-years-in-computer-architecture",
+    "imageSource": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYbORTGdiOQKN8Xm3cLY5gj1QxijIcL0UJxo--ayXv5w&s=10",
+    "status": "verified"
+  },
+  "John Weber Carr III": {
+    "file": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBG9cIHFwT01Erocd0htGhFfnUvPjCZm69bbXPxeT7&s=10",
+    "source": "https://almanac.upenn.edu/archive/v43/n30/deaths.html",
+    "imageSource": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBG9cIHFwT01Erocd0htGhFfnUvPjCZm69bbXPxeT7&s=10",
+    "status": "verified"
+  }
+}
