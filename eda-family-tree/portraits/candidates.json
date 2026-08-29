@@ -1,0 +1,1044 @@
+{
+  "generatedAt": "2026-08-20T16:45:31.868Z",
+  "scholars": [
+    {
+      "name": "David Blaauw",
+      "page": "https://blaauw.engin.umich.edu/",
+      "finalPage": "https://blaauw.engin.umich.edu/",
+      "status": 0,
+      "candidates": [],
+      "error": "Command failed: curl -L --fail --max-time 30 -sS -A Mozilla/5.0 (compatible; EDAFamilyTreePortraitAudit/1.0) https://blaauw.engin.umich.edu/\ncurl: (56) The requested URL returned error: 403\n"
+    },
+    {
+      "name": "Bing J. Sheu",
+      "page": "https://csie.asia.edu.tw/zh_tw/associate_professors_2/%E8%A8%B1%E7%82%B3%E5%A0%85-Bing-Jay-Sheu-9696599",
+      "finalPage": "https://csie.asia.edu.tw/zh_tw/associate_professors_2/%E8%A8%B1%E7%82%B3%E5%A0%85-Bing-Jay-Sheu-9696599",
+      "status": 200,
+      "candidates": [
+        {
+          "url": "https://csie.asia.edu.tw/uploads/member_profile/avatar/697c71b8063ca2037bd421d4/bsheu_2023cr.png",
+          "score": 41,
+          "evidence": "img:許炳堅(Bing-Jay Sheu)"
+        },
+        {
+          "url": "https://csie.asia.edu.tw/uploads/site/favicon/603e0dc29bb818ad8200001f/%25E8%25B3%2587%25E5%25B7%25A5%25E7%25B3%25BBLOGO.gif",
+          "score": 35,
+          "evidence": "og:image"
+        },
+        {
+          "url": "https://csie.asia.edu.tw/uploads/site/default_image/603e0dc29bb818ad8200001f/%E6%9C%AA%E5%91%BD%E5%90%8D-1.png",
+          "score": 5,
+          "evidence": "img:奧博科技商標"
+        },
+        {
+          "url": "https://csie.asia.edu.tw/uploads/asset/data/68050b89063ca2428791c5b1/1526_..png",
+          "score": 5,
+          "evidence": "img:1526_"
+        },
+        {
+          "url": "https://csie.asia.edu.tw/uploads/asset/data/674581bc063ca22459854fe9/FB.png",
+          "score": 5,
+          "evidence": "img:FB"
+        },
+        {
+          "url": "https://csie.asia.edu.tw/uploads/asset/data/674583e2063ca2f63b664559/YT.png",
+          "score": 5,
+          "evidence": "img:YT"
+        },
+        {
+          "url": "https://csie.asia.edu.tw/uploads/asset/data/674583e9063ca2f63f517664/IG.png",
+          "score": 5,
+          "evidence": "img:IG"
+        },
+        {
+          "url": "https://www.line-website.com/social-plugins/img/common/line_v3@3x.png",
+          "score": -20,
+          "evidence": "img:Line icon"
+        }
+      ],
+      "error": ""
+    },
+    {
+      "name": "Jack C.-Y. Lee",
+      "page": "https://ece.utexas.edu/people/faculty/jack-lee",
+      "finalPage": "https://ece.utexas.edu/people/faculty/jack-lee",
+      "status": 200,
+      "candidates": [
+        {
+          "url": "https://ece.utexas.edu/sites/default/files/portraits/Lee-Jack.jpg",
+          "score": 41,
+          "evidence": "img:Jack Lee"
+        },
+        {
+          "url": "https://px.ads.linkedin.com/collect/?pid=6656649&fmt=gif",
+          "score": 11,
+          "evidence": "img:unlabelled"
+        },
+        {
+          "url": "https://www.facebook.com/tr?id=886575940028293&ev=PageView&noscript=1",
+          "score": 11,
+          "evidence": "img:unlabelled"
+        }
+      ],
+      "error": ""
+    },
+    {
+      "name": "Elyse Rosenbaum",
+      "page": "https://csl.illinois.edu/directory/faculty/elyse",
+      "finalPage": "https://csl.illinois.edu/directory/faculty/elyse",
+      "status": 200,
+      "candidates": [
+        {
+          "url": "https://ws.engr.illinois.edu/directory/viewphoto.aspx?photo=1087&s=300",
+          "score": 41,
+          "evidence": "img:Elyse Rosenbaum"
+        },
+        {
+          "url": "https://ws.engr.illinois.edu/directory/viewphoto/elyse/1200",
+          "score": 35,
+          "evidence": "og:image"
+        }
+      ],
+      "error": ""
+    },
+    {
+      "name": "Hyungcheol Shin",
+      "page": "https://ece.snu.ac.kr/en/research-faculty/faculty/fulltime?md=view&profid=p059",
+      "finalPage": "https://ece.snu.ac.kr/en/research-faculty/faculty/fulltime?md=view&profid=p059",
+      "status": 200,
+      "candidates": [
+        {
+          "url": "https://ece.snu.ac.kr/webdata/professor/e3bz08bzdd1z4a6zce3zd25z730z2abz0b2zcf5z87.jpg",
+          "score": 35,
+          "evidence": "og:image"
+        },
+        {
+          "url": "https://ece.snu.ac.kr/_skin/en/images/site/logo@2.png?ver=2025-10-28",
+          "score": -20,
+          "evidence": "img:logo-default"
+        },
+        {
+          "url": "https://ece.snu.ac.kr/_skin/en/images/site/logo-dark@2.png?ver=2025-10-28",
+          "score": -20,
+          "evidence": "img:logo-dark"
+        },
+        {
+          "url": "https://ece.snu.ac.kr/_skin/en/images/site/logo-dark@2.png?2024",
+          "score": -20,
+          "evidence": "img:unlabelled"
+        },
+        {
+          "url": "https://ece.snu.ac.kr/_skin/en/images/site/footer-en.png",
+          "score": -20,
+          "evidence": "img:Dept. of Electrical and Computer Engineering, SNU"
+        }
+      ],
+      "error": ""
+    },
+    {
+      "name": "Jone F. Chen",
+      "page": "https://www.ee.ncku.edu.tw/en/teacher/index2.php?teacher_id=62",
+      "finalPage": "https://www.ee.ncku.edu.tw/en/teacher/index2.php?teacher_id=62",
+      "status": 200,
+      "candidates": [
+        {
+          "url": "https://www.ee.ncku.edu.tw/upload/people/php_generated_email_teacher/62.png",
+          "score": 25,
+          "evidence": "img:unlabelled"
+        }
+      ],
+      "error": ""
+    },
+    {
+      "name": "Yang-Kyu Choi",
+      "page": "https://ee.kaist.ac.kr/professor/12290/",
+      "finalPage": "https://ee.kaist.ac.kr/professor/12290/",
+      "status": 200,
+      "candidates": [
+        {
+          "url": "https://ee.kaist.ac.kr/wp-content/uploads/drupal/77.%EC%B5%9C%EC%96%91%EA%B7%9C_0.jpg",
+          "score": 35,
+          "evidence": "og:image"
+        },
+        {
+          "url": "https://ee.kaist.ac.kr/wp-content/uploads/2021/09/2016eebro.jpg",
+          "score": 35,
+          "evidence": "og:image"
+        },
+        {
+          "url": "https://ee.kaist.ac.kr/wp-content/uploads/2021/08/EE_bk21_png.png",
+          "score": 5,
+          "evidence": "img:attachment-full size-full wp-image-130237"
+        },
+        {
+          "url": "https://ee.kaist.ac.kr/wp-content/uploads/2021/08/%EA%B3%B5%EA%B3%BC%EB%8C%80%ED%95%99-%EC%88%98%EC%A0%95-230531-2.png",
+          "score": 5,
+          "evidence": "img:attachment-full size-full wp-image-140081"
+        },
+        {
+          "url": "https://ee.kaist.ac.kr/wp-content/uploads/2021/08/kaist_sse_png.png",
+          "score": 5,
+          "evidence": "img:attachment-full size-full wp-image-130235"
+        },
+        {
+          "url": "https://ee.kaist.ac.kr/wp-content/uploads/2021/08/%EB%B0%98%EB%8F%84%EC%B2%B4%EA%B3%B5%ED%95%99%EB%8C%80%ED%95%99%EC%9B%90-%EC%88%98%EC%A0%95-230531-2.png",
+          "score": 5,
+          "evidence": "img:attachment-full size-full wp-image-140079"
+        },
+        {
+          "url": "https://ee.kaist.ac.kr/wp-content/uploads/2021/08/%EC%9D%B8%EA%B3%B5%EC%A7%80%EB%8A%A5%EB%B0%98%EB%8F%84%EC%B2%B4%EB%8C%80%ED%95%99%EC%9B%90-%EC%88%98%EC%A0%95-230531-2.png",
+          "score": 5,
+          "evidence": "img:attachment-full size-full wp-image-140077"
+        },
+        {
+          "url": "https://ee.kaist.ac.kr/sites/all/themes/kaist/images/pop-close.png",
+          "score": 5,
+          "evidence": "img:unlabelled"
+        }
+      ],
+      "error": ""
+    },
+    {
+      "name": "Pin Su",
+      "page": "https://dee.nycu.edu.tw/teachers.php?locale=en&pa=getItem&teacher_id=73",
+      "finalPage": "https://dee.nycu.edu.tw/teachers.php?locale=en&pa=getItem&teacher_id=73",
+      "status": 200,
+      "candidates": [
+        {
+          "url": "https://dee.nycu.edu.tw/upload_files/teacher/1660027072.jpg",
+          "score": 35,
+          "evidence": "og:image"
+        },
+        {
+          "url": "https://dee.nycu.edu.tw/upload_files/teacher/1660027072.jpg?v=1662624869",
+          "score": 13,
+          "evidence": "img:Su, Pin"
+        },
+        {
+          "url": "https://dee.nycu.edu.tw/includes_en/images/gotop_arrow.png",
+          "score": 5,
+          "evidence": "img:gotop-arrow"
+        },
+        {
+          "url": "https://dee.nycu.edu.tw/includes_en/images/breadcrumb_arrow.png",
+          "score": 5,
+          "evidence": "img:arrow"
+        },
+        {
+          "url": "https://dee.nycu.edu.tw/includes_en/images/page_title_pic.png",
+          "score": 5,
+          "evidence": "img:unlabelled"
+        },
+        {
+          "url": "https://dee.nycu.edu.tw/includes_en/images/header_top_logo.png",
+          "score": -20,
+          "evidence": "img:unlabelled"
+        },
+        {
+          "url": "https://dee.nycu.edu.tw/includes_en/images/header_top_social_icon_fb.png",
+          "score": -20,
+          "evidence": "img:icon"
+        },
+        {
+          "url": "https://dee.nycu.edu.tw/includes_en/images/header_top_social_icon_yt.png",
+          "score": -20,
+          "evidence": "img:icon"
+        }
+      ],
+      "error": ""
+    },
+    {
+      "name": "Yee-Chia Yeo",
+      "page": "https://cde.nus.edu.sg/ece/staff/yeo-yee-chia/",
+      "finalPage": "https://cde.nus.edu.sg/ece/staff/yeo-yee-chia/",
+      "status": 200,
+      "candidates": [
+        {
+          "url": "https://cde.nus.edu.sg/ece/wp-content/uploads/sites/3/2019/03/yeo-yee-chia.png",
+          "score": 41,
+          "evidence": "img:attachment-large size-large wp-post-image"
+        },
+        {
+          "url": "http://cde.nus.edu.sg/wp-content/uploads/2021/12/CDE_for-web-png-1.png",
+          "score": 5,
+          "evidence": "img:wp-image-17"
+        },
+        {
+          "url": "https://cde.nus.edu.sg/wp-content/themes/nus-cde-theme/assets/images/facebook.png",
+          "score": 5,
+          "evidence": "img:unlabelled"
+        },
+        {
+          "url": "https://cde.nus.edu.sg/wp-content/themes/nus-cde-theme/assets/images/instagram.png",
+          "score": 5,
+          "evidence": "img:unlabelled"
+        },
+        {
+          "url": "https://cde.nus.edu.sg/wp-content/themes/nus-cde-theme/assets/images/linkedin.png",
+          "score": 5,
+          "evidence": "img:unlabelled"
+        },
+        {
+          "url": "https://cde.nus.edu.sg/wp-content/themes/nus-cde-theme/assets/images/youtube.png",
+          "score": 5,
+          "evidence": "img:unlabelled"
+        },
+        {
+          "url": "http://cde.nus.edu.sg/wp-content/uploads/2021/12/CDE_for-web-png-2.png",
+          "score": -20,
+          "evidence": "img:Biomedical Engineering"
+        }
+      ],
+      "error": ""
+    },
+    {
+      "name": "Darsen Lu",
+      "page": "https://www.ee.ncku.edu.tw/en/teacher/index2.php?teacher_id=160",
+      "finalPage": "https://www.ee.ncku.edu.tw/en/teacher/index2.php?teacher_id=160",
+      "status": 200,
+      "candidates": [
+        {
+          "url": "https://www.ee.ncku.edu.tw/upload/people/php_generated_email_teacher/160.png",
+          "score": 25,
+          "evidence": "img:unlabelled"
+        }
+      ],
+      "error": ""
+    },
+    {
+      "name": "Ping K. Ko",
+      "page": "https://ece.hkust.edu.hk/pingko",
+      "finalPage": "https://ece.hkust.edu.hk/pingko",
+      "status": 200,
+      "candidates": [
+        {
+          "url": "https://ece.hkust.edu.hk/sites/default/files/2019-12/Ko%20Ping-crop.jpg",
+          "score": 25,
+          "evidence": "img:Thumbnail"
+        },
+        {
+          "url": "https://ece.hkust.edu.hk/profiles/ust/modules/custom/hkust_signature_affiliate/assets/images/5Year_caringLogo-01.png",
+          "score": 0,
+          "evidence": "img:unlabelled"
+        },
+        {
+          "url": "https://ece.hkust.edu.hk/sites/default/files/menu_icons/fb.png",
+          "score": -20,
+          "evidence": "img:Facebook"
+        },
+        {
+          "url": "https://ece.hkust.edu.hk/sites/default/files/menu_icons/linkedin.png",
+          "score": -20,
+          "evidence": "img:LinkedIn"
+        },
+        {
+          "url": "https://ece.hkust.edu.hk/sites/default/files/menu_icons/youtube.png",
+          "score": -20,
+          "evidence": "img:Youtube"
+        },
+        {
+          "url": "https://ece.hkust.edu.hk/sites/default/files/menu_icons/ig.png",
+          "score": -20,
+          "evidence": "img:Instagram"
+        }
+      ],
+      "error": ""
+    },
+    {
+      "name": "Frank Ruskey",
+      "page": "https://webhome.cs.uvic.ca/~ruskey/",
+      "finalPage": "https://webhome.cs.uvic.ca/~ruskey/",
+      "status": 200,
+      "candidates": [
+        {
+          "url": "http://www.wxplotter.com/images/ft/nq.php?val=5780",
+          "score": 25,
+          "evidence": "img:I am nerdier than 93% of all people. Are you nerdier? Click here to find out!"
+        },
+        {
+          "url": "https://webhome.cs.uvic.ca/~ruskey/RuskeyClark.jpg",
+          "score": 13,
+          "evidence": "img:unlabelled"
+        },
+        {
+          "url": "https://webhome.cs.uvic.ca/~ruskey/gifs/Ruskey-F.gif",
+          "score": 13,
+          "evidence": "img:[Picture of F. Ruskey]"
+        },
+        {
+          "url": "https://webhome.cs.uvic.ca/~ruskey/ruskeyuvic25.gif",
+          "score": 13,
+          "evidence": "img:my email gif"
+        },
+        {
+          "url": "https://webhome.cs.uvic.ca/~ruskey/emailed.gif",
+          "score": 11,
+          "evidence": "img:unlabelled"
+        },
+        {
+          "url": "https://webhome.cs.uvic.ca/~ruskey/scolo.gif",
+          "score": 5,
+          "evidence": "img:unlabelled"
+        },
+        {
+          "url": "https://webhome.cs.uvic.ca/~ruskey/JennSalmonVenn.jpg",
+          "score": 5,
+          "evidence": "img:unlabelled"
+        },
+        {
+          "url": "https://webhome.cs.uvic.ca/~ruskey/gray1.gif",
+          "score": 5,
+          "evidence": "img:unlabelled"
+        }
+      ],
+      "error": ""
+    },
+    {
+      "name": "John P. Shen",
+      "page": "https://www.ece.cmu.edu/directory/bios/shen-john.html",
+      "finalPage": "https://www.ece.cmu.edu/directory/bios/shen-john.html",
+      "status": 200,
+      "candidates": [
+        {
+          "url": "https://www.ece.cmu.edu/directory/images/faculty/S/john-shen-800x800.png",
+          "score": 41,
+          "evidence": "img:John Shen"
+        }
+      ],
+      "error": ""
+    },
+    {
+      "name": "Shiyan Hu",
+      "page": "https://www.dase.hku.hk/people/s-y-hu",
+      "finalPage": "https://www.dase.hku.hk/people/s-y-hu",
+      "status": 200,
+      "candidates": [
+        {
+          "url": "https://www.dase.hku.hk/f/people/865/139c185/Prof.%20S.Y.%20Hu%202.JPG",
+          "score": 25,
+          "evidence": "img:unlabelled"
+        },
+        {
+          "url": "https://www.dase.hku.hk/assets/img/logo-115.png",
+          "score": -20,
+          "evidence": "img:HKU 115th anniversary"
+        },
+        {
+          "url": "https://www.dase.hku.hk/f/section_banner/340/1920p240/Form-banner.jpg",
+          "score": -20,
+          "evidence": "img:innerbanner__img"
+        }
+      ],
+      "error": ""
+    },
+    {
+      "name": "Samuel H. Caldwell",
+      "page": "https://cdn.libraries.mit.edu/dissemination/diponline/AC0069_NewReleases/NewsRelease_1960/AC0069_1960/AC0069_196010_011.pdf",
+      "finalPage": "https://cdn.libraries.mit.edu/dissemination/diponline/AC0069_NewReleases/NewsRelease_1960/AC0069_1960/AC0069_196010_011.pdf",
+      "status": 200,
+      "candidates": [],
+      "error": ""
+    },
+    {
+      "name": "R. David Middlebrook",
+      "page": "https://chic.caltech.edu/genealogy/david-middlebrook/",
+      "finalPage": "https://chic.caltech.edu/genealogy/david-middlebrook/",
+      "status": 200,
+      "candidates": [
+        {
+          "url": "https://chic.caltech.edu/wp-content/themes/chic/inc/timthumb.php?src=https://chic.caltech.edu/wp-content/uploads/2013/10/David_Middlebrook.jpg&h=210&w=230",
+          "score": 41,
+          "evidence": "img:mentor photo"
+        },
+        {
+          "url": "https://chic.caltech.edu/wp-content/uploads/2013/10/David_Middlebrook.jpg",
+          "score": 35,
+          "evidence": "og:image"
+        },
+        {
+          "url": "https://chic.caltech.edu/wp-content/themes/chic/inc/timthumb.php?src=https://chic.caltech.edu/wp-content/uploads/2014/03/rsm_clr_rotated_sm-e1394903568282.jpg&h=210&w=230",
+          "score": 25,
+          "evidence": "img:mentor photo"
+        },
+        {
+          "url": "https://chic.caltech.edu/wp-content/themes/chic/inc/timthumb.php?src=https://chic.caltech.edu/wp-content/uploads/2014/04/slobodan-cuk.jpg&h=210&w=230",
+          "score": 25,
+          "evidence": "img:mentor photo"
+        },
+        {
+          "url": "https://chic.caltech.edu/wp-content/themes/chic/inc/timthumb.php?src=https://chic.caltech.edu/wp-content/uploads/2013/10/David_Middlebrook.jpg&h=72&w=72",
+          "score": 21,
+          "evidence": "img:unlabelled"
+        },
+        {
+          "url": "https://chic.caltech.edu/wp-content/themes/chic/inc/timthumb.php?src=https://chic.caltech.edu/wp-content/uploads/2014/03/rsm_clr_rotated_sm-e1394903568282.jpg&h=72&w=72",
+          "score": 5,
+          "evidence": "img:unlabelled"
+        },
+        {
+          "url": "https://chic.caltech.edu/wp-content/themes/chic/inc/timthumb.php?src=https://chic.caltech.edu/wp-content/uploads/2014/04/slobodan-cuk.jpg&h=72&w=72",
+          "score": 5,
+          "evidence": "img:unlabelled"
+        },
+        {
+          "url": "https://chic.caltech.edu/wp-content/uploads/2013/12/chic_background-300x187.jpg",
+          "score": 5,
+          "evidence": "img:fsb_image"
+        }
+      ],
+      "error": ""
+    },
+    {
+      "name": "Richard S. Muller",
+      "page": "https://www2.eecs.berkeley.edu/Faculty/Homepages/muller.html",
+      "finalPage": "https://www2.eecs.berkeley.edu/Faculty/Homepages/muller.html",
+      "status": 200,
+      "candidates": [
+        {
+          "url": "https://www2.eecs.berkeley.edu/Faculty/Photos/Homepages/muller.jpg",
+          "score": 45,
+          "evidence": "img:kb-img wp-image-12979"
+        },
+        {
+          "url": "https://eecs.berkeley.edu/wp-content/uploads/2018/08/interactive-device-design-course-qk4a1884-adjusted-fall2017-photocredit-roland-saekow-jacobs-institute-300x169.jpg",
+          "score": 31,
+          "evidence": "img:interactive-device-design-course-qk4a1884-adjusted-fall2017-photocredit-roland-saekow-jacobs-institute"
+        },
+        {
+          "url": "https://eecs.berkeley.edu/wp-content/uploads/2023/12/DSC_1546-300x200.jpg",
+          "score": 11,
+          "evidence": "img:Two students sit in front of Bancroft Library with the Campanile in the background."
+        },
+        {
+          "url": "https://eecs.berkeley.edu/wp-content/uploads/2023/09/gier-dana-300x169.jpg",
+          "score": 11,
+          "evidence": "img:Artist Dana King poses with the newly unveiled Joseph Thomas Gier Memorial statue on September 20th, 2023."
+        },
+        {
+          "url": "https://eecs.berkeley.edu/wp-content/uploads/2023/04/calday_avl_0907_2-300x193.jpg",
+          "score": 11,
+          "evidence": "img:calday_avl_0907_2"
+        },
+        {
+          "url": "https://eecs.berkeley.edu/wp-content/uploads/2023/04/image2-edited-300x169.jpg",
+          "score": 11,
+          "evidence": "img:image2-edited"
+        }
+      ],
+      "error": ""
+    },
+    {
+      "name": "Robert W. Dutton",
+      "page": "https://chic.caltech.edu/genealogy/robert-dutton/",
+      "finalPage": "https://chic.caltech.edu/genealogy/robert-dutton/",
+      "status": 200,
+      "candidates": [
+        {
+          "url": "https://chic.caltech.edu/wp-content/uploads/2014/03/dutton-e1394904254459.jpg",
+          "score": 35,
+          "evidence": "og:image"
+        },
+        {
+          "url": "https://chic.caltech.edu/wp-content/themes/chic/inc/timthumb.php?src=https://chic.caltech.edu/wp-content/uploads/2014/03/dutton-e1394904254459.jpg&h=210&w=230",
+          "score": 33,
+          "evidence": "img:mentor photo"
+        },
+        {
+          "url": "https://chic.caltech.edu/wp-content/themes/chic/inc/timthumb.php?src=https://chic.caltech.edu/wp-content/uploads/2014/03/220px-Mark_Horowitz_mp3h3778-b-e1395451323347.jpg&h=210&w=230",
+          "score": 25,
+          "evidence": "img:mentor photo"
+        },
+        {
+          "url": "https://chic.caltech.edu/wp-content/themes/chic/inc/timthumb.php?src=https://chic.caltech.edu/wp-content/uploads/2014/03/dutton-e1394904254459.jpg&h=72&w=72",
+          "score": 13,
+          "evidence": "img:unlabelled"
+        },
+        {
+          "url": "https://chic.caltech.edu/wp-content/themes/chic/inc/timthumb.php?src=https://chic.caltech.edu/wp-content/uploads/2014/03/220px-Mark_Horowitz_mp3h3778-b-e1395451323347.jpg&h=72&w=72",
+          "score": 5,
+          "evidence": "img:unlabelled"
+        },
+        {
+          "url": "https://chic.caltech.edu/wp-content/uploads/2013/12/chic_background-300x187.jpg",
+          "score": 5,
+          "evidence": "img:fsb_image"
+        }
+      ],
+      "error": ""
+    },
+    {
+      "name": "Mark Horowitz",
+      "page": "https://profiles.stanford.edu/mark-horowitz",
+      "finalPage": "https://profiles.stanford.edu/mark-horowitz",
+      "status": 200,
+      "candidates": [
+        {
+          "url": "https://profiles.stanford.edu/proxy/api/cap/profiles/14300/resources/profilephoto/350x350.1564676348474.jpg",
+          "score": 41,
+          "evidence": "img:Mark Horowitz"
+        },
+        {
+          "url": "https://profiles.stanford.edu/images/orcid_32x32.png",
+          "score": 5,
+          "evidence": "img:unlabelled"
+        }
+      ],
+      "error": ""
+    },
+    {
+      "name": "Azita Emami",
+      "page": "https://www.ee.caltech.edu/people/azita-emami",
+      "finalPage": "https://www.ee.caltech.edu/people/azita-emami",
+      "status": 0,
+      "candidates": [],
+      "error": "Command failed: curl -L --fail --max-time 30 -sS -A Mozilla/5.0 (compatible; EDAFamilyTreePortraitAudit/1.0) https://www.ee.caltech.edu/people/azita-emami\ncurl: (56) The requested URL returned error: 404\n"
+    },
+    {
+      "name": "Elad Alon",
+      "page": "https://www2.eecs.berkeley.edu/Faculty/Homepages/elad.html",
+      "finalPage": "https://www2.eecs.berkeley.edu/Faculty/Homepages/elad.html",
+      "status": 200,
+      "candidates": [
+        {
+          "url": "https://www2.eecs.berkeley.edu/Faculty/Photos/Homepages/elad.jpg",
+          "score": 45,
+          "evidence": "img:kb-img wp-image-12979"
+        },
+        {
+          "url": "https://eecs.berkeley.edu/wp-content/uploads/2018/08/interactive-device-design-course-qk4a1884-adjusted-fall2017-photocredit-roland-saekow-jacobs-institute-300x169.jpg",
+          "score": 31,
+          "evidence": "img:interactive-device-design-course-qk4a1884-adjusted-fall2017-photocredit-roland-saekow-jacobs-institute"
+        },
+        {
+          "url": "https://eecs.berkeley.edu/wp-content/uploads/2023/12/DSC_1546-300x200.jpg",
+          "score": 11,
+          "evidence": "img:Two students sit in front of Bancroft Library with the Campanile in the background."
+        },
+        {
+          "url": "https://eecs.berkeley.edu/wp-content/uploads/2023/09/gier-dana-300x169.jpg",
+          "score": 11,
+          "evidence": "img:Artist Dana King poses with the newly unveiled Joseph Thomas Gier Memorial statue on September 20th, 2023."
+        },
+        {
+          "url": "https://eecs.berkeley.edu/wp-content/uploads/2023/04/calday_avl_0907_2-300x193.jpg",
+          "score": 11,
+          "evidence": "img:calday_avl_0907_2"
+        },
+        {
+          "url": "https://eecs.berkeley.edu/wp-content/uploads/2023/04/image2-edited-300x169.jpg",
+          "score": 11,
+          "evidence": "img:image2-edited"
+        }
+      ],
+      "error": ""
+    },
+    {
+      "name": "Michael D. Smith",
+      "page": "https://seas.harvard.edu/person/michael-smith",
+      "finalPage": "https://seas.harvard.edu/person/michael-smith",
+      "status": 200,
+      "candidates": [
+        {
+          "url": "https://seas.harvard.edu/sites/default/files/styles/news_teaser_small_1x/public/2025-05/MikeSmith_2019_horizontal.jpg?itok=qLf4TqXo",
+          "score": 27,
+          "evidence": "img:michael smith"
+        }
+      ],
+      "error": ""
+    },
+    {
+      "name": "Vladimir Stojanović",
+      "page": "https://vcresearch.berkeley.edu/faculty/vladimir-stojanovic",
+      "finalPage": "https://vcresearch.berkeley.edu/faculty/vladimir-stojanovic",
+      "status": 200,
+      "candidates": [
+        {
+          "url": "https://vcresearch.berkeley.edu/sites/default/files/styles/faculty_photo_thumbnail/public/2023-01/vladimir_stojanovic.jpg?h=99a58570&itok=Ug-auYQw",
+          "score": 41,
+          "evidence": "img:Vladimir Stojanovic"
+        },
+        {
+          "url": "https://vcresearch.berkeley.edu/sites/default/files/styles/news_teaser_thumbnail/public/news_images/photonic-chip-5_380x468.jpg?h=1e363ec0&itok=lcb2IrHW",
+          "score": 37,
+          "evidence": "img:The electronic-photonic processor chip naturally illuminated by red and green bands of light. (Image by Glenn J. Asakawa, University of Colorado)"
+        }
+      ],
+      "error": ""
+    },
+    {
+      "name": "Jaeha Kim",
+      "page": "https://ece.snu.ac.kr/en/research-faculty/faculty/fulltime?md=view&profid=p071",
+      "finalPage": "https://ece.snu.ac.kr/en/research-faculty/faculty/fulltime?md=view&profid=p071",
+      "status": 200,
+      "candidates": [
+        {
+          "url": "https://ece.snu.ac.kr/webdata/professor/74cf8af9b589934231b16392c61cd49e.jpg",
+          "score": 35,
+          "evidence": "og:image"
+        },
+        {
+          "url": "https://ece.snu.ac.kr/_skin/en/images/site/logo@2.png?ver=2025-10-28",
+          "score": -20,
+          "evidence": "img:logo-default"
+        },
+        {
+          "url": "https://ece.snu.ac.kr/_skin/en/images/site/logo-dark@2.png?ver=2025-10-28",
+          "score": -20,
+          "evidence": "img:logo-dark"
+        },
+        {
+          "url": "https://ece.snu.ac.kr/_skin/en/images/site/logo-dark@2.png?2024",
+          "score": -20,
+          "evidence": "img:unlabelled"
+        },
+        {
+          "url": "https://ece.snu.ac.kr/_skin/en/images/site/footer-en.png",
+          "score": -20,
+          "evidence": "img:Dept. of Electrical and Computer Engineering, SNU"
+        }
+      ],
+      "error": ""
+    },
+    {
+      "name": "Monica S. Lam",
+      "page": "https://profiles.stanford.edu/monica-lam",
+      "finalPage": "https://profiles.stanford.edu/monica-lam",
+      "status": 200,
+      "candidates": [
+        {
+          "url": "https://profiles.stanford.edu/proxy/api/cap/profiles/41623/resources/profilephoto/350x350.1509517632815.jpg",
+          "score": 41,
+          "evidence": "img:Monica Lam"
+        }
+      ],
+      "error": ""
+    },
+    {
+      "name": "Sundaram Seshu",
+      "page": "https://csiflabs.cs.ucdavis.edu/~cjnitta/ancestrychronology.pdf",
+      "finalPage": "https://csiflabs.cs.ucdavis.edu/~cjnitta/ancestrychronology.pdf",
+      "status": 0,
+      "candidates": [],
+      "error": "stdout maxBuffer length exceeded"
+    },
+    {
+      "name": "Gernot A. Metze",
+      "page": "https://csiflabs.cs.ucdavis.edu/~cjnitta/ancestrychronology.pdf",
+      "finalPage": "https://csiflabs.cs.ucdavis.edu/~cjnitta/ancestrychronology.pdf",
+      "status": 0,
+      "candidates": [],
+      "error": "stdout maxBuffer length exceeded"
+    },
+    {
+      "name": "Trevor N. Mudge",
+      "page": "https://eecs.engin.umich.edu/stories/prof-trevor-mudge-retires-after-46-years-in-computer-architecture",
+      "finalPage": "https://eecs.engin.umich.edu/stories/prof-trevor-mudge-retires-after-46-years-in-computer-architecture",
+      "status": 0,
+      "candidates": [],
+      "error": "Command failed: curl -L --fail --max-time 30 -sS -A Mozilla/5.0 (compatible; EDAFamilyTreePortraitAudit/1.0) https://eecs.engin.umich.edu/stories/prof-trevor-mudge-retires-after-46-years-in-computer-architecture\ncurl: (56) The requested URL returned error: 403\n"
+    },
+    {
+      "name": "Rob A. Rutenbar",
+      "page": "https://www.ece.cmu.edu/directory/bios/rutenbar-rob.html",
+      "finalPage": "https://www.ece.cmu.edu/directory/bios/rutenbar-rob.html",
+      "status": 200,
+      "candidates": [
+        {
+          "url": "https://www.ece.cmu.edu/directory/images/faculty/R/rob-rutenbar-800x800.png",
+          "score": 41,
+          "evidence": "img:Rob Rutenbar"
+        }
+      ],
+      "error": ""
+    },
+    {
+      "name": "Ramesh Harjani",
+      "page": "https://users.ece.cmu.edu/~rutenbar/people/alumni.html",
+      "finalPage": "https://users.ece.cmu.edu/~rutenbar/people/alumni.html",
+      "status": 200,
+      "candidates": [
+        {
+          "url": "https://users.ece.cmu.edu/~rutenbar/images/hdr_people.gif",
+          "score": 25,
+          "evidence": "img:unlabelled"
+        },
+        {
+          "url": "https://users.ece.cmu.edu/~rutenbar/images/clear.gif",
+          "score": 11,
+          "evidence": "img:unlabelled"
+        },
+        {
+          "url": "https://users.ece.cmu.edu/~rutenbar/images/int_main.jpg",
+          "score": 5,
+          "evidence": "img:unlabelled"
+        },
+        {
+          "url": "https://users.ece.cmu.edu/~rutenbar/images/int_logo.jpg",
+          "score": -20,
+          "evidence": "img:unlabelled"
+        },
+        {
+          "url": "https://users.ece.cmu.edu/~rutenbar/images/int_logo_right.gif",
+          "score": -20,
+          "evidence": "img:unlabelled"
+        }
+      ],
+      "error": ""
+    },
+    {
+      "name": "Daniel E. Atkins",
+      "page": "https://eecs.engin.umich.edu/stories/prof-trevor-mudge-retires-after-46-years-in-computer-architecture",
+      "finalPage": "https://eecs.engin.umich.edu/stories/prof-trevor-mudge-retires-after-46-years-in-computer-architecture",
+      "status": 0,
+      "candidates": [],
+      "error": "Command failed: curl -L --fail --max-time 30 -sS -A Mozilla/5.0 (compatible; EDAFamilyTreePortraitAudit/1.0) https://eecs.engin.umich.edu/stories/prof-trevor-mudge-retires-after-46-years-in-computer-architecture\ncurl: (56) The requested URL returned error: 403\n"
+    },
+    {
+      "name": "Hugo De Man",
+      "page": "https://people.eecs.berkeley.edu/~newton/presentations/Kaufman/HDMPresent.html",
+      "finalPage": "https://people.eecs.berkeley.edu/~newton/presentations/Kaufman/HDMPresent.html",
+      "status": 200,
+      "candidates": [
+        {
+          "url": "https://people.eecs.berkeley.edu/~newton/presentations/Kaufman/HugoDeMan.jpg",
+          "score": 33,
+          "evidence": "img:unlabelled"
+        }
+      ],
+      "error": ""
+    },
+    {
+      "name": "Jan M. Rabaey",
+      "page": "https://people.eecs.berkeley.edu/~newton/presentations/Kaufman/HDMPresent.html",
+      "finalPage": "https://people.eecs.berkeley.edu/~newton/presentations/Kaufman/HDMPresent.html",
+      "status": 200,
+      "candidates": [
+        {
+          "url": "https://people.eecs.berkeley.edu/~newton/presentations/Kaufman/HugoDeMan.jpg",
+          "score": 17,
+          "evidence": "img:unlabelled"
+        }
+      ],
+      "error": ""
+    },
+    {
+      "name": "Ingrid Verbauwhede",
+      "page": "https://homes.esat.kuleuven.be/~iverbauw/bio3pagesforGOASept09.pdf",
+      "finalPage": "https://homes.esat.kuleuven.be/~iverbauw/bio3pagesforGOASept09.pdf",
+      "status": 200,
+      "candidates": [],
+      "error": ""
+    },
+    {
+      "name": "Joos Vandewalle",
+      "page": "https://homes.esat.kuleuven.be/~iverbauw/bio3pagesforGOASept09.pdf",
+      "finalPage": "https://homes.esat.kuleuven.be/~iverbauw/bio3pagesforGOASept09.pdf",
+      "status": 200,
+      "candidates": [],
+      "error": ""
+    },
+    {
+      "name": "John Weber Carr III",
+      "page": "https://history.computer.org/carr.html",
+      "finalPage": "https://history.computer.org/carr.html",
+      "status": 200,
+      "candidates": [
+        {
+          "url": "https://history.computer.org/images/ieee-90x26.gif",
+          "score": 5,
+          "evidence": "img:IEEE"
+        },
+        {
+          "url": "https://history.computer.org/images/ieeecslogo.gif",
+          "score": -20,
+          "evidence": "img:IEEE-CS"
+        }
+      ],
+      "error": ""
+    },
+    {
+      "name": "Daniel D. Gajski",
+      "page": "https://mathgenealogy.com/id.php?id=105032",
+      "finalPage": "https://mathgenealogy.com/id.php?id=105032",
+      "status": 200,
+      "candidates": [
+        {
+          "url": "https://mathgenealogy.com/images/tree-small.gif",
+          "score": 11,
+          "evidence": "img:Tree"
+        },
+        {
+          "url": "https://mathgenealogy.com/img/flags/UnitedStates.gif",
+          "score": 5,
+          "evidence": "img:UnitedStates"
+        }
+      ],
+      "error": ""
+    },
+    {
+      "name": "Nikil Dutt",
+      "page": "https://mathgenealogy.com/id.php?id=105032",
+      "finalPage": "https://mathgenealogy.com/id.php?id=105032",
+      "status": 200,
+      "candidates": [
+        {
+          "url": "https://mathgenealogy.com/images/tree-small.gif",
+          "score": 11,
+          "evidence": "img:Tree"
+        },
+        {
+          "url": "https://mathgenealogy.com/img/flags/UnitedStates.gif",
+          "score": 5,
+          "evidence": "img:UnitedStates"
+        }
+      ],
+      "error": ""
+    },
+    {
+      "name": "Preeti Ranjan Panda",
+      "page": "https://ics.uci.edu/~dutt/students-visitors.htm",
+      "finalPage": "https://ics.uci.edu/~dutt/students-visitors.htm",
+      "status": 200,
+      "candidates": [],
+      "error": ""
+    },
+    {
+      "name": "Prabhat Mishra",
+      "page": "https://ics.uci.edu/~dutt/students-visitors.htm",
+      "finalPage": "https://ics.uci.edu/~dutt/students-visitors.htm",
+      "status": 200,
+      "candidates": [],
+      "error": ""
+    },
+    {
+      "name": "Aviral Shrivastava",
+      "page": "https://ics.uci.edu/~dutt/students-visitors.htm",
+      "finalPage": "https://ics.uci.edu/~dutt/students-visitors.htm",
+      "status": 200,
+      "candidates": [],
+      "error": ""
+    },
+    {
+      "name": "Sudeep Pasricha",
+      "page": "https://duttgroup.ics.uci.edu/group-members/",
+      "finalPage": "https://duttgroup.ics.uci.edu/group-members/",
+      "status": 200,
+      "candidates": [
+        {
+          "url": "https://duttgroup.ics.uci.edu/wp-content/uploads/2026/07/drg_full_dark_blue-e1785480848874.png",
+          "score": -20,
+          "evidence": "img:custom-logo"
+        }
+      ],
+      "error": ""
+    },
+    {
+      "name": "Kyoungwoo Lee",
+      "page": "https://duttgroup.ics.uci.edu/group-members/",
+      "finalPage": "https://duttgroup.ics.uci.edu/group-members/",
+      "status": 200,
+      "candidates": [
+        {
+          "url": "https://duttgroup.ics.uci.edu/wp-content/uploads/2026/07/drg_full_dark_blue-e1785480848874.png",
+          "score": -20,
+          "evidence": "img:custom-logo"
+        }
+      ],
+      "error": ""
+    },
+    {
+      "name": "Forrest Brewer",
+      "page": "https://mathgenealogy.com/id.php?id=105032",
+      "finalPage": "https://mathgenealogy.com/id.php?id=105032",
+      "status": 200,
+      "candidates": [
+        {
+          "url": "https://mathgenealogy.com/images/tree-small.gif",
+          "score": 11,
+          "evidence": "img:Tree"
+        },
+        {
+          "url": "https://mathgenealogy.com/img/flags/UnitedStates.gif",
+          "score": 5,
+          "evidence": "img:UnitedStates"
+        }
+      ],
+      "error": ""
+    },
+    {
+      "name": "Andreas Gerstlauer",
+      "page": "https://mathgenealogy.com/id.php?id=105032",
+      "finalPage": "https://mathgenealogy.com/id.php?id=105032",
+      "status": 200,
+      "candidates": [
+        {
+          "url": "https://mathgenealogy.com/images/tree-small.gif",
+          "score": 11,
+          "evidence": "img:Tree"
+        },
+        {
+          "url": "https://mathgenealogy.com/img/flags/UnitedStates.gif",
+          "score": 5,
+          "evidence": "img:UnitedStates"
+        }
+      ],
+      "error": ""
+    },
+    {
+      "name": "Dean Norman Arden",
+      "page": "https://archive.computerhistory.org/resources/access/text/2015/06/102739932-05-01-acc.pdf",
+      "finalPage": "https://archive.computerhistory.org/resources/access/text/2015/06/102739932-05-01-acc.pdf",
+      "status": 200,
+      "candidates": [],
+      "error": ""
+    },
+    {
+      "name": "Stephen P. Boyd",
+      "page": "https://profiles.stanford.edu/stephen-boyd",
+      "finalPage": "https://profiles.stanford.edu/stephen-boyd",
+      "status": 200,
+      "candidates": [
+        {
+          "url": "https://profiles.stanford.edu/proxy/api/cap/profiles/18537/resources/profilephoto/350x350.1280300400000.jpg",
+          "score": 41,
+          "evidence": "img:Stephen Boyd"
+        },
+        {
+          "url": "https://profiles.stanford.edu/images/orcid_32x32.png",
+          "score": 5,
+          "evidence": "img:unlabelled"
+        }
+      ],
+      "error": ""
+    },
+    {
+      "name": "Orla Feely",
+      "page": "https://www.ucd.ie/president/",
+      "finalPage": "https://www.ucd.ie/president/",
+      "status": 200,
+      "candidates": [
+        {
+          "url": "https://www.ucd.ie/president/t4media/360w180h-breaking-boundaries.jpg",
+          "score": 25,
+          "evidence": "img:UCD will be most distinctive and ambitious where excellence in teaching and learning meets excellence in research and innovation, both of these fuelled by, and fuelling in turn, our engagement with the major issues confronting people and planet."
+        },
+        {
+          "url": "https://www.ucd.ie/president/t4media/751w-orla-feely.jpg",
+          "score": 21,
+          "evidence": "img:UCD President\\'s Office"
+        },
+        {
+          "url": "https://www.ucd.ie/president/t4media/360x180-annual-report-25.jpg",
+          "score": 5,
+          "evidence": "img:Annual Report"
+        },
+        {
+          "url": "https://www.ucd.ie/president/t4media/360w180h-aerial-campus.jpg",
+          "score": -20,
+          "evidence": "img:Committees are a core part of the governance and decision making of the university. Information on key governance and management committees can be found here. "
+        }
+      ],
+      "error": ""
+    }
+  ]
+}
