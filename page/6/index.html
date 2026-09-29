@@ -213,6 +213,128 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2021/05/03/CS224W-ML-in-graphs-study-notes/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/liwei3.jpg">
+      <meta itemprop="name" content="Li Wei">
+      <meta itemprop="description" content="人生注定是一个人的旅行，但就算孤独也要做一直前行的人啊">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="NEWAY">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/05/03/CS224W-ML-in-graphs-study-notes/" class="post-title-link" itemprop="url">CS224W ML in graphs-study notes</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-05-03 16:30:20" itemprop="dateCreated datePublished" datetime="2021-05-03T16:30:20+08:00">2021-05-03</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2024-01-18 21:32:39" itemprop="dateModified" datetime="2024-01-18T21:32:39+08:00">2024-01-18</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/study/" itemprop="url" rel="index"><span itemprop="name">study</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2021/05/03/CS224W-ML-in-graphs-study-notes/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/05/03/CS224W-ML-in-graphs-study-notes/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="Node-features"><a href="#Node-features" class="headerlink" title="Node features"></a>Node features</h2><p>Importance-based node features &amp; structure-based features</p>
+<h3 id="Node-degree"><a href="#Node-degree" class="headerlink" title="Node degree"></a>Node degree</h3><h3 id="Node-centrality"><a href="#Node-centrality" class="headerlink" title="Node centrality"></a>Node centrality</h3><p>Takes the <strong>node importance</strong> in a graph into account</p>
+<h4 id="Eigenvector-centrality"><a href="#Eigenvector-centrality" class="headerlink" title="Eigenvector centrality"></a>Eigenvector centrality</h4><p>We update the following equation in a recursive manner:</p>
+<p>$c_v &#x3D; 1&#x2F;\lambda \sum_{u\in N(v)} c_u$</p>
+<p>that can be rewritten as:</p>
+<p>$\lambda \textbf{c} &#x3D; \textbf{Ac} $</p>
+<p>Then, the centrality $c$ is the <strong>eigenvector</strong></p>
+<blockquote>
+<p>PageRank is for undirected graph. And the definition is:</p>
+<p>$c_v &#x3D; 1&#x2F;\lambda \times \sum_{u \rightarrow v} c_u&#x2F;\textbf{d_u}$</p>
+<p>That is, pagerank vector is a stationary distribution for the random walk &#x3D; principal eigenvector of storychastic adj matrix (connection equals probabilities)</p>
+<p>Google proposes solution to solve Spider-traps(all goes to one) and Dead-end (no out)</p>
+<ul>
+<li>remove dead-end by adding outs to all nodes</li>
+<li>add a random probabiloty</li>
+</ul>
+</blockquote>
+<h4 id="Betweenness-centrality"><a href="#Betweenness-centrality" class="headerlink" title="Betweenness centrality"></a>Betweenness centrality</h4><p>A node is important if it lies on many shortest paths between other nodes （在其他点的最短路径上面）</p>
+<h4 id="Closeness-centrality"><a href="#Closeness-centrality" class="headerlink" title="Closeness centrality"></a>Closeness centrality</h4><p>A node is important if it has small shortest path lengths to all other nodes. (离所有点都很近)</p>
+<h3 id="Clustering-Coefficient"><a href="#Clustering-Coefficient" class="headerlink" title="Clustering Coefficient"></a>Clustering Coefficient</h3><p>点v的邻点相连的比率, that counts # of triangles (node v, one neighbor of node v, another neighbor of v)</p>
+<h3 id="Graphlets"><a href="#Graphlets" class="headerlink" title="Graphlets"></a>Graphlets</h3><p>count # of graphlets (rooted and connected sub-graph) and use the # as the vector feature.</p>
+<h2 id="Edge-Prediction"><a href="#Edge-Prediction" class="headerlink" title="Edge Prediction"></a>Edge Prediction</h2><p><strong>Katz index</strong>:  count # of paths of all lengths (computed by powers of adj matrix) between a given pair of nodes:</p>
+<p>$S_{v_1v_2} &#x3D; \sum_{l&#x3D;1}^{\inf}\beta ^l A^l_{v_1v_2} $, $\beta$ is a discount factor.</p>
+<p>（越近，即距离越短的，关系越高）</p>
+<p>Then:</p>
+<p>$S &#x3D; \sum \beta^i A^i &#x3D; (I-\beta A)^{-1} -I $</p>
+<p>(According to Geometric series of matrices)</p>
+<h2 id="Graph-level-features"><a href="#Graph-level-features" class="headerlink" title="Graph level features"></a>Graph level features</h2><h3 id="Graph-Kernel"><a href="#Graph-Kernel" class="headerlink" title="Graph Kernel"></a>Graph Kernel</h3><p>Goal: Design graph feature vector, and the feature vector can be calculated for similarity.</p>
+<p>Method: bag of *( simply uses * as features for graphs, and we compare the features), where * can be:</p>
+<ul>
+<li>node labels</li>
+<li>node degree</li>
+<li>graphlets</li>
+<li>color refinement by recursively updating (WL-test)</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2021/04/24/%E9%9D%9E%E6%9A%B4%E5%8A%9B%E6%B2%9F%E9%80%9A%E6%80%BB%E7%BB%93-%E8%AF%BB%E5%90%8E%E6%84%9F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1658,101 +1780,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2020/06/17/How-to-use-grammarly-to-check-your-paper/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/liwei3.jpg">
-      <meta itemprop="name" content="Li Wei">
-      <meta itemprop="description" content="人生注定是一个人的旅行，但就算孤独也要做一直前行的人啊">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="NEWAY">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/06/17/How-to-use-grammarly-to-check-your-paper/" class="post-title-link" itemprop="url">How to use grammarly to check your paper</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2020-06-17 19:12:43 / Modified: 20:17:31" itemprop="dateCreated datePublished" datetime="2020-06-17T19:12:43+08:00">2020-06-17</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/study/" itemprop="url" rel="index"><span itemprop="name">study</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine: </span>
-    
-    <a title="valine" href="/2020/06/17/How-to-use-grammarly-to-check-your-paper/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2020/06/17/How-to-use-grammarly-to-check-your-paper/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>When we finish a paper draft by latex, we may find it difficult to directly use Grammarly to check the grammar since our paper is a .pdf format.</p>
-<p>Here is a simple instruction to use Grammarly for your paper. If you have some other more elegant methods, feel free to leave a comment here.  :)</p>
-<p>Here are the steps:</p>
-<ul>
-<li><p>Copy the text in the paper and paste it into VSCode</p>
-</li>
-<li><p>Replace all “\n” terms into space “ “ terms</p>
-</li>
-<li><p>Copy the processed text in VSCode and paste it into Grammarly</p>
-</li>
-<li><p>Find the error and fix it.</p>
-<p>![截屏2020-06-17 下午7.19.53](&#x2F;figures&#x2F;截屏2020-06-17 下午7.19.53.png)</p>
-</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1823,7 +1850,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">153</span>
+          <span class="site-state-item-count">154</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

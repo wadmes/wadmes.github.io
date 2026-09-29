@@ -213,6 +213,122 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2026/09/04/LLM_benchmark/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/liwei3.jpg">
+      <meta itemprop="name" content="Li Wei">
+      <meta itemprop="description" content="人生注定是一个人的旅行，但就算孤独也要做一直前行的人啊">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="NEWAY">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2026/09/04/LLM_benchmark/" class="post-title-link" itemprop="url">LLM Benchmarks Study</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2026-09-04 17:50:29" itemprop="dateCreated datePublished" datetime="2026-09-04T17:50:29+08:00">2026-09-04</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2026-09-06 18:54:53" itemprop="dateModified" datetime="2026-09-06T18:54:53+08:00">2026-09-06</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/study/" itemprop="url" rel="index"><span itemprop="name">study</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2026/09/04/LLM_benchmark/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2026/09/04/LLM_benchmark/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="ARC-AGI-3"><a href="#ARC-AGI-3" class="headerlink" title="ARC-AGI-3"></a>ARC-AGI-3</h2><p>推理模型enable atomation的两个前提 [ARC-AGI-3]</p>
+<ol>
+<li>base model contains sufficient knowlegde</li>
+<li>domain provides an exact correctness feedback</li>
+</ol>
+<p>需要OOD benchmark design 让model不可以pretrain就学到</p>
+<p>ARC-1&#x2F;2：给你几道例题，让你推断规则。<br>ARC-3：直接把你扔进一个陌生游戏里，不告诉你规则、目标和操作逻辑，你要自己试、自己学、自己规划。</p>
+<p>ARC-3 官方现在有大约 135 个抽象交互环境，都是 turn-based 的二维 grid 世界。Agent 每一步看到当前状态，然后选择一个动作；不同游戏可用动作不同，有的还带坐标。</p>
+<h2 id="AI学习在Minecraft"><a href="#AI学习在Minecraft" class="headerlink" title="AI学习在Minecraft"></a>AI学习在Minecraft</h2><p>Minecraft 没有明确的最终任务。如果只告诉智能体“自由探索”，它很容易：</p>
+<ul>
+<li>重复砍树等简单行为；</li>
+<li>一开始就尝试获取钻石等过难任务；</li>
+<li>不知道什么算“有价值的新进展”。</li>
+</ul>
+<p>它的三个组件分别回答：</p>
+<ol>
+<li>Automatic Curriculum：接下来学什么？使用一个 GPT-4 实例充当“导师”。它每次只提出一个具体、当前可完成但又稍有挑战的目标，(in-context novelty search) <ol>
+<li>有点像tencent的 environment evolution for terminal agents: 让agent永远有“差一点”就会的题 【insight：我们也许需要从简单到复杂的题目】</li>
+</ol>
+</li>
+<li>Iterative Prompting：当前任务怎样通过试错做成？</li>
+<li>Skill Library：做成以后，如何记住并复用？</li>
+</ol>
+<h2 id="CodeBench-ICLR’24"><a href="#CodeBench-ICLR’24" class="headerlink" title="CodeBench (ICLR’24)"></a>CodeBench (ICLR’24)</h2><p>任务包括 </p>
+<ol>
+<li>代码env，OS （Bash，工具使用）， Databse， Knowledge Graph,</li>
+<li>gaming</li>
+<li>web shopping, browsing<br>任务平均需要约 5–35 轮交互。测试集共 1,014 个任务，预计产生约 11,000 次模型调用。</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2026/08/18/PhD%E7%94%B3%E8%AF%B7%E7%9A%84%E5%BB%BA%E8%AE%AE/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1252,118 +1368,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2024/04/08/stable-baselines3%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B0%8F%E6%8A%80%E5%B7%A7/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/liwei3.jpg">
-      <meta itemprop="name" content="Li Wei">
-      <meta itemprop="description" content="人生注定是一个人的旅行，但就算孤独也要做一直前行的人啊">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="NEWAY">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2024/04/08/stable-baselines3%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B0%8F%E6%8A%80%E5%B7%A7/" class="post-title-link" itemprop="url">stable-baselines3的一些小技巧</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2024-04-08 20:29:50" itemprop="dateCreated datePublished" datetime="2024-04-08T20:29:50+08:00">2024-04-08</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-04-30 05:19:20" itemprop="dateModified" datetime="2024-04-30T05:19:20+08:00">2024-04-30</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/study/" itemprop="url" rel="index"><span itemprop="name">study</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine: </span>
-    
-    <a title="valine" href="/2024/04/08/stable-baselines3%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B0%8F%E6%8A%80%E5%B7%A7/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2024/04/08/stable-baselines3%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B0%8F%E6%8A%80%E5%B7%A7/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Use-gym-wrapper"><a href="#Use-gym-wrapper" class="headerlink" title="Use gym wrapper"></a>Use gym wrapper</h1><p>需要重写 <code>reset()</code> and <code>step()</code></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">class TimeLimitWrapper(gym.Wrapper):</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    :param env: (gym.Env) Gym environment that will be wrapped</span><br><span class="line">    :param max_steps: (int) Max number of steps per episode</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line"></span><br><span class="line">    def __init__(self, env, max_steps=100):</span><br><span class="line">        # Call the parent constructor, so we can access self.env later</span><br><span class="line">        super(TimeLimitWrapper, self).__init__(env)</span><br><span class="line">        self.max_steps = max_steps</span><br><span class="line">        # Counter of steps per episode</span><br><span class="line">        self.current_step = 0</span><br><span class="line"></span><br><span class="line">    def reset(self, **kwargs):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        Reset the environment</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        # Reset the counter</span><br><span class="line">        self.current_step = 0</span><br><span class="line">        return self.env.reset(**kwargs)</span><br><span class="line"></span><br><span class="line">    def step(self, action):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        :param action: ([float] or int) Action taken by the agent</span><br><span class="line">        :return: (np.ndarray, float, bool, bool, dict) observation, reward, is the episode over?, additional informations</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        self.current_step += 1</span><br><span class="line">        obs, reward, terminated, truncated, info = self.env.step(action)</span><br><span class="line">        # Overwrite the truncation signal when when the number of steps reaches the maximum</span><br><span class="line">        if self.current_step &gt;= self.max_steps:</span><br><span class="line">            truncated = True</span><br><span class="line">        return obs, reward, terminated, truncated, info</span><br></pre></td></tr></table></figure>
-
-<p>当然，如果自己写<code>enviorment</code> 就不需要 写wrapper了</p>
-<h1 id="logger-中的各种值"><a href="#logger-中的各种值" class="headerlink" title="logger 中的各种值"></a>logger 中的各种值</h1><h2 id="entropy-loss"><a href="#entropy-loss" class="headerlink" title="entropy_loss"></a>entropy_loss</h2><p><code>entropy_loss</code>: 负数值，越小代表预测的越不“自信”</p>
-<p>if probs is [0.1,0.9]</p>
-<p>entropy &#x3D; -0.1ln(0.1) - 0.9ln(0.9) &#x3D;~ 0.325</p>
-<p>entropy_loss &#x3D; -0.325</p>
-<p>if probs is [0.5,0.5]</p>
-<p>entropy &#x3D; -0.5ln(0.5)-0.5ln(0.5) &#x3D;~ 0.69</p>
-<h2 id="explained-variance"><a href="#explained-variance" class="headerlink" title="explained_variance"></a>explained_variance</h2><p><code>explained_variance</code>, 用于计算how well <strong>value function</strong> (or critic in actor-critic methods) match the actual returns<br>~&#x3D; 1: 完美<br>0: 和全预测一个值一样<br>&lt;0: 比简单预测mean还差</p>
-<h1 id="RL-Tricks-I-found-in-internet"><a href="#RL-Tricks-I-found-in-internet" class="headerlink" title="RL Tricks I found in internet"></a>RL Tricks I found in internet</h1><h2 id="http-joschu-net-docs-nuts-and-bolts-pdf"><a href="#http-joschu-net-docs-nuts-and-bolts-pdf" class="headerlink" title="http://joschu.net/docs/nuts-and-bolts.pdf"></a><a target="_blank" rel="noopener" href="http://joschu.net/docs/nuts-and-bolts.pdf">http://joschu.net/docs/nuts-and-bolts.pdf</a></h2><ul>
-<li><p>Premature drop in policy entropy ⇒ no learning</p>
-<ul>
-<li>Alleviate by using <strong>entropy bonus</strong> or KL penalty （鼓励randomness）</li>
-</ul>
-</li>
-<li><p>I was confused as to what action I should take to improve my results after lots of experimentation whether feature engineering, reward shaping, more training steps, or algo hyper-parameter tuning. From lots of experiments, first and foremost look at your <strong>reward function</strong> and validate that the reward value for a given episode is representative for what you actually want to achieve - it took a lot of iterations to finally get this somewhat right. If you’ve checked and double checked your reward function, move to <strong>feature engineering</strong>. In my case, I was able to quickly test with feature answers (e.g. data that included information the policy was suppose to figure out) to realize that my reward function was not executing like it should. To that point, start small and simple and validate while making small changes. Don’t waste your time <strong>hyper-parameter tuning</strong> while you are still in development of your environment, observation space, action space, and reward function. While hyper-parameters make a huge difference, it won’t correct a bad reward function. In my experience, hyper-parameter tuning was able to identify the parameters to get to a higher reward quicker but that didn’t necessarily generalize to a better training experience. I used the hyper-parameter tuning as a starting point and then tweaked things manually from there.</p>
-</li>
-<li><p>Lastly, how much do you need to train - the million dollar question. This is going to significantly vary from problem to problem, I found success when the algo was able to process through any given episode 60+ times. This is the factor of exploration. Some problems&#x2F;environments need less exploration and others need more. The larger the observation space and the larger the action space, the more steps that are needed. For myself, I came up with this function <strong>needed_steps &#x3D; number_distinct_episodes * envs * episode_length</strong> mentioned in #2 based on how many times I wanted a given episode executed. Because my problem is data analytics focused, it was easy to determine how many distinct episodes I had, and then just needed to evaluate how many times I needed&#x2F;wanted a given episode explored. In other problems, there is no clear amount of distinct episodes and the rule of thumb that I followed was run for 1M steps and see how it goes, and then if I’m sure of everything else run for 5M steps, and then for 10M steps - though there are constraints on time and compute resources. I would also work in parallel in which I would make some change run a training job and then in a different environment make a different change and run another training job - this allowed me to validate changes pretty quickly of which path I wanted to go down killing jobs that I decided against without having to wait for it to finish - tmux was helpful for this.</p>
-<ul>
-<li>Comments to your last point: make more use of callbacks. <a target="_blank" rel="noopener" href="https://stable-baselines3.readthedocs.io/en/master/guide/callbacks.html">https://stable-baselines3.readthedocs.io/en/master/guide/callbacks.html</a> There are a lot of configured callbacks you can use to capture the best model, stop training on no improvement, regularly checkpoint… Lots of stuff. Be explicit about using Eval environment.</li>
-</ul>
-</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1434,7 +1438,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">153</span>
+          <span class="site-state-item-count">154</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
