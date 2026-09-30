@@ -267,10 +267,10 @@
       <span class="post-meta-item-icon">
         <i class="far fa-comment"></i>
       </span>
-      <span class="post-meta-item-text">Valine: </span>
+      <span class="post-meta-item-text">Comments: </span>
     
-    <a title="valine" href="/2025/01/25/2025-Survey-of-Netlist-Graph-Encoder/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2025/01/25/2025-Survey-of-Netlist-Graph-Encoder/" itemprop="commentCount"></span>
+    <a title="Comments" href="/2025/01/25/2025-Survey-of-Netlist-Graph-Encoder/#waline-comments" itemprop="discussionUrl">
+      <span class="post-comments-count waline-comment-count" data-path="/2025/01/25/2025-Survey-of-Netlist-Graph-Encoder/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -360,7 +360,7 @@
 
           </div>
           
-    <div class="comments" id="valine-comments"></div>
+    <div class="comments" id="waline-comments"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -629,34 +629,26 @@
     
 
   
+<link rel="stylesheet" href="https://unpkg.com/@waline/client@v3/dist/waline.css">
+<script type="module">
+  import { init, commentCount } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';
 
-
-<script>
-NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
-  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
-    var GUEST = ['nick', 'mail', 'link'];
-    var guest = 'nick,mail,link';
-    guest = guest.split(',').filter(item => {
-      return GUEST.includes(item);
+  const serverURL = "https://waline-server-green-sigma.vercel.app";
+  document.querySelectorAll('.waline-comment-count[data-path]').forEach(element => {
+    element.dataset.path = decodeURI(element.dataset.path);
+  });
+  const commentBox = document.querySelector('#waline-comments');
+  if (commentBox) {
+    init({
+      el: commentBox,
+      serverURL,
+      lang: "zh-CN",
+      path: decodeURI(location.pathname),
+      comment: true
     });
-    new Valine({
-      el         : '#valine-comments',
-      verify     : false,
-      notify     : true,
-      appId      : 'NmNqnbed4p8koRJWwGm6SdrW-gzGzoHsz',
-      appKey     : 'ECnYjjxnwouXPYlJjrjLJhv9',
-      placeholder: "Just go go",
-      avatar     : 'mm',
-      meta       : guest,
-      pageSize   : '10' || 10,
-      visitor    : false,
-      lang       : '' || 'zh-cn',
-      path       : location.pathname,
-      recordIP   : false,
-      serverURLs : ''
-    });
-  }, window.Valine);
-});
+  } else if (document.querySelector('.waline-comment-count')) {
+    commentCount({ serverURL });
+  }
 </script>
 
 </body>
