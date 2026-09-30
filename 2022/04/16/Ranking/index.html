@@ -580,8 +580,9 @@
   import { init, commentCount } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';
 
   const serverURL = "https://waline-server-green-sigma.vercel.app";
-  document.querySelectorAll('.waline-comment-count[data-path]').forEach(element => {
+  document.querySelectorAll('.waline-comment-count[data-path]').forEach((element, index) => {
     element.dataset.path = decodeURI(element.dataset.path);
+    element.classList.add(`waline-count-${index}`);
   });
   const commentBox = document.querySelector('#waline-comments');
   if (commentBox) {
@@ -593,7 +594,9 @@
       comment: true
     });
   } else if (document.querySelector('.waline-comment-count')) {
-    commentCount({ serverURL });
+    document.querySelectorAll('.waline-comment-count').forEach((element, index) => {
+      commentCount({ serverURL, selector: `.waline-count-${index}` });
+    });
   }
 </script>
 
