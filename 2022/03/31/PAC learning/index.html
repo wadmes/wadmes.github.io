@@ -4,13 +4,11 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 6.3.0">
+<meta name="generator" content="Hexo 8.1.2">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
   <link rel="mask-icon" href="/images/logo.svg" color="#222">
-  <meta http-equiv="Cache-Control" content="no-transform">
-  <meta http-equiv="Cache-Control" content="no-siteapp">
 
 <link rel="stylesheet" href="/css/main.css">
 
@@ -20,47 +18,47 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"wadmes.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"buttons","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"./public/search.xml"};
+    var CONFIG = {"hostname":"wadmes.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"buttons","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="PAC learning try to study the generalization ability for a learning model (given a set of training data, its ability to carry over to new test data) I recommend for reading this blog post (by the orig">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Probably Approximately Correct (PAC) Learning and VC bound">
-<meta property="og:url" content="http://wadmes.github.io/2022/03/31/PAC%20learning/index.html">
+<meta property="og:url" content="https://wadmes.github.io/2022/03/31/PAC%20learning/index.html">
 <meta property="og:site_name" content="NEWAY">
 <meta property="og:description" content="PAC learning try to study the generalization ability for a learning model (given a set of training data, its ability to carry over to new test data) I recommend for reading this blog post (by the orig">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://wadmes.github.io/figures/latex-20220401011725923.php">
-<meta property="og:image" content="http://wadmes.github.io/figures/latex-20220401011726016.php">
+<meta property="og:image" content="https://wadmes.github.io/figures/latex-20220401011725923.php">
+<meta property="og:image" content="https://wadmes.github.io/figures/latex-20220401011726016.php">
 <meta property="og:image" content="https://s0.wp.com/latex.php?latex=X&bg=ffffff&fg=36312d&s=0&c=20201002">
 <meta property="og:image" content="https://s0.wp.com/latex.php?latex=%5Cmathsf%7BC%7D&bg=ffffff&fg=36312d&s=0&c=20201002">
 <meta property="og:image" content="https://s0.wp.com/latex.php?latex=%5Cmathsf%7BC%7D&bg=ffffff&fg=36312d&s=0&c=20201002">
-<meta property="og:image" content="http://wadmes.github.io/figures/latex-20220401011726029.php">
-<meta property="og:image" content="http://wadmes.github.io/figures/latex-20220401011726010.php">
-<meta property="og:image" content="http://wadmes.github.io/figures/latex-20220401011915773.php">
-<meta property="og:image" content="http://wadmes.github.io/figures/latex-20220401011726036.php">
-<meta property="og:image" content="http://wadmes.github.io/figures/latex-20220401011726040.php">
+<meta property="og:image" content="https://wadmes.github.io/figures/latex-20220401011726029.php">
+<meta property="og:image" content="https://wadmes.github.io/figures/latex-20220401011726010.php">
+<meta property="og:image" content="https://wadmes.github.io/figures/latex-20220401011915773.php">
+<meta property="og:image" content="https://wadmes.github.io/figures/latex-20220401011726036.php">
+<meta property="og:image" content="https://wadmes.github.io/figures/latex-20220401011726040.php">
 <meta property="og:image" content="https://s0.wp.com/latex.php?latex=h&bg=ffffff&fg=36312d&s=0&c=20201002">
-<meta property="og:image" content="http://wadmes.github.io/figures/latex-20220401011726063.php">
-<meta property="og:image" content="http://wadmes.github.io/figures/latex-20220401011726071.php">
-<meta property="og:image" content="http://wadmes.github.io/figures/latex-20220401194537590.php">
-<meta property="og:image" content="http://wadmes.github.io/figures/latex-20220401194537809.php">
-<meta property="og:image" content="http://wadmes.github.io/figures/image-20220402131238691.png">
-<meta property="og:image" content="http://wadmes.github.io/figures/image-20220402131254790.png">
-<meta property="og:image" content="http://wadmes.github.io/figures/image-20220403000015185.png">
-<meta property="og:image" content="http://wadmes.github.io/figures/image-20220403011338282.png">
-<meta property="og:image" content="http://wadmes.github.io/figures/image-20220403011717814.png">
-<meta property="og:image" content="http://wadmes.github.io/figures/image-20220403011757356.png">
-<meta property="og:image" content="http://wadmes.github.io/figures/image-20220425114624651.png">
-<meta property="og:image" content="http://wadmes.github.io/figures/image-20220425162541501.png">
+<meta property="og:image" content="https://wadmes.github.io/figures/latex-20220401011726063.php">
+<meta property="og:image" content="https://wadmes.github.io/figures/latex-20220401011726071.php">
+<meta property="og:image" content="https://wadmes.github.io/figures/latex-20220401194537590.php">
+<meta property="og:image" content="https://wadmes.github.io/figures/latex-20220401194537809.php">
+<meta property="og:image" content="https://wadmes.github.io/figures/image-20220402131238691.png">
+<meta property="og:image" content="https://wadmes.github.io/figures/image-20220402131254790.png">
+<meta property="og:image" content="https://wadmes.github.io/figures/image-20220403000015185.png">
+<meta property="og:image" content="https://wadmes.github.io/figures/image-20220403011338282.png">
+<meta property="og:image" content="https://wadmes.github.io/figures/image-20220403011717814.png">
+<meta property="og:image" content="https://wadmes.github.io/figures/image-20220403011757356.png">
+<meta property="og:image" content="https://wadmes.github.io/figures/image-20220425114624651.png">
+<meta property="og:image" content="https://wadmes.github.io/figures/image-20220425162541501.png">
 <meta property="article:published_time" content="2022-03-31T05:03:57.000Z">
 <meta property="article:modified_time" content="2022-04-27T01:52:47.000Z">
 <meta property="article:author" content="Li Wei">
 <meta property="article:tag" content="ML">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://wadmes.github.io/figures/latex-20220401011725923.php">
+<meta name="twitter:image" content="https://wadmes.github.io/figures/latex-20220401011725923.php">
 
-<link rel="canonical" href="http://wadmes.github.io/2022/03/31/PAC%20learning/">
+<link rel="canonical" href="https://wadmes.github.io/2022/03/31/PAC%20learning/">
 
 
 <script id="page-configurations">
@@ -145,45 +143,45 @@
 
 
 <nav class="site-nav">
-  <ul id="menu" class="main-menu menu">
+  <ul id="menu" class="menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
-
-  </li>
-        <li class="menu-item menu-item-tags">
-
-    <a href="/tags" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
-
-  </li>
-        <li class="menu-item menu-item-categories">
-
-    <a href="/categories" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+    <a href="/archives" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags" rel="section"><i class="fa fa-fw fa-tags"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories" rel="section"><i class="fa fa-fw fa-th"></i>Categories</a>
 
   </li>
         <li class="menu-item menu-item-reading-notes">
 
-    <a href="/notes" rel="section"><i class="fas fa-book-reader fa-fw"></i>Reading notes</a>
+    <a href="/notes" rel="section"><i class="fa fa-fw fa-book-reader fas"></i>Reading notes</a>
 
   </li>
         <li class="menu-item menu-item-about-me">
 
-    <a href="/about" rel="section"><i class="fas fa-user fa-fw"></i>About me</a>
+    <a href="/about" rel="section"><i class="fa fa-fw fa-user fas"></i>About me</a>
 
   </li>
         <li class="menu-item menu-item-official-about-me">
 
-    <a href="/cv" rel="section"><i class="fas fa-user-secret fa-fw"></i>Official About me</a>
+    <a href="/cv" rel="section"><i class="fa fa-fw fa-user-secret fas"></i>Official About me</a>
 
   </li>
         <li class="menu-item menu-item-resume">
 
-    <a href="/cv/cv_liwei/cv.pdf" rel="section"><i class="fas fa-file fa-fw"></i>Resume</a>
+    <a href="/cv/cv_liwei/cv.pdf" rel="section"><i class="fa fa-fw fa-file fas"></i>Resume</a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -241,7 +239,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://wadmes.github.io/2022/03/31/PAC%20learning/">
+    <link itemprop="mainEntityOfPage" href="https://wadmes.github.io/2022/03/31/PAC%20learning/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/liwei3.jpg">
@@ -260,7 +258,7 @@
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
+                <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
@@ -268,14 +266,14 @@
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
+                  <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
                 <time title="Modified: 2022-04-27 09:52:47" itemprop="dateModified" datetime="2022-04-27T09:52:47+08:00">2022-04-27</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
+                <i class="fa fa-folder-o"></i>
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -284,20 +282,18 @@
             </span>
 
           
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Comments: </span>
-    
-    <a title="Comments" href="/2022/03/31/PAC%20learning/#waline-comments" itemprop="discussionUrl">
-      <span class="post-comments-count waline-comment-count" data-path="/2022/03/31/PAC%20learning/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
+            <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+    <span class="post-meta-item"><i class="far fa-comment"></i>
+      <a title="Comments" href="/2022/03/31/PAC%20learning/#waline-comments" itemprop="discussionUrl">
+        <span class="post-comments-count waline-comment-count" data-path="/2022/03/31/PAC%20learning/" itemprop="commentCount"></span>
+      </a>
+    </span>
 
         </div>
       </header>
@@ -324,14 +320,14 @@
 <ul>
 <li><p>More formal one: small error -&gt; error probablity &#x3D; $\epsilon \in [0,0.5]$; high probability -&gt; $1 - \delta$ : $\delta \in [0,0.5]$. Then, we limit the algorithm to run in time and space polynomial in $1&#x2F;\epsilon $ and $1&#x2F;\delta$</p>
 <blockquote>
-<p>Let <img src="/figures/latex-20220401011725923.php" alt="X"> be a set, and <img src="/figures/latex-20220401011726016.php" alt="\mathsf{C}"> be a concept class over <img src="https://s0.wp.com/latex.php?latex=X&bg=ffffff&fg=36312d&s=0&c=20201002" alt="X">. We say that <img src="https://s0.wp.com/latex.php?latex=%5Cmathsf%7BC%7D&bg=ffffff&fg=36312d&s=0&c=20201002" alt="\mathsf{C}"> is <em>PAC-learnable</em> if there is an algorithm $A(\varepsilon, \delta)$ with access to a query function for <img src="https://s0.wp.com/latex.php?latex=%5Cmathsf%7BC%7D&bg=ffffff&fg=36312d&s=0&c=20201002" alt="\mathsf{C}"> and runtime $O(\textup{poly}(\frac{1}{\varepsilon}, \frac{1}{\delta}))$, such that for all <img src="/figures/latex-20220401011726029.php" alt="c \in \mathsf{C}">, all distributions <img src="/figures/latex-20220401011726010.php" alt="D"> over <img src="/figures/latex-20220401011915773.php" alt="X">, and all inputs $\varepsilon, \delta$ between 0 and <img src="/figures/latex-20220401011726036.php" alt="1/2">, the probability that <img src="/figures/latex-20220401011726040.php" alt="A"> produces a hypothesis <img src="https://s0.wp.com/latex.php?latex=h&bg=ffffff&fg=36312d&s=0&c=20201002" alt="h"> with error at most <img src="/figures/latex-20220401011726063.php" alt="\varepsilon"> is at least <img src="/figures/latex-20220401011726071.php" alt="1- \delta">. In symbols:</p>
+<p>Let <img src="/figures/latex-20220401011725923.php" alt="X"> be a set, and <img src="/figures/latex-20220401011726016.php" alt="\mathsf{C}"> be a concept class over <img src="https://s0.wp.com/latex.php?latex=X&bg=ffffff&fg=36312d&s=0&c=20201002" alt="X">. We say that <img src="https://s0.wp.com/latex.php?latex=%5Cmathsf%7BC%7D&bg=ffffff&fg=36312d&s=0&c=20201002" alt="\mathsf{C}"> is <em>PAC-learnable</em> if there is an algorithm $A(\varepsilon, \delta)$ with access to a query function for <img src="https://s0.wp.com/latex.php?latex=%5Cmathsf%7BC%7D&bg=ffffff&fg=36312d&s=0&c=20201002" alt="\mathsf{C}"> and runtime $O(\textup{poly}(\frac{1}{\varepsilon}, \frac{1}{\delta}))$, such that for all <img src="/figures/latex-20220401011726029.php" alt="c \in \mathsf{C}">, all distributions <img src="/figures/latex-20220401011726010.php" alt="D"> over <img src="/figures/latex-20220401011915773.php" alt="X">, and all inputs $\varepsilon, \delta$ between 0 and <img src="/figures/latex-20220401011726036.php" alt="1&#x2F;2">, the probability that <img src="/figures/latex-20220401011726040.php" alt="A"> produces a hypothesis <img src="https://s0.wp.com/latex.php?latex=h&bg=ffffff&fg=36312d&s=0&c=20201002" alt="h"> with error at most <img src="/figures/latex-20220401011726063.php" alt="\varepsilon"> is at least <img src="/figures/latex-20220401011726071.php" alt="1- \delta">. In symbols:</p>
 <p>$\displaystyle \textup{P}<em>{D}(\textup{P}</em>{x \sim D}(h(x) \neq c(x)) \leq \varepsilon) \geq 1-\delta$</p>
 </blockquote>
 </li>
 </ul>
 </li>
 </ul>
-<h2 id="How-to-prove-a-problem-x2F-a-concept-class-is-PAC-learnable"><a href="#How-to-prove-a-problem-x2F-a-concept-class-is-PAC-learnable" class="headerlink" title="How to prove a problem&#x2F; a concept class is PAC learnable?"></a>How to prove a problem&#x2F; a concept class is PAC learnable?</h2><p>big idea:</p>
+<h2 id="How-to-prove-a-problem-a-concept-class-is-PAC-learnable"><a href="#How-to-prove-a-problem-a-concept-class-is-PAC-learnable" class="headerlink" title="How to prove a problem&#x2F; a concept class is PAC learnable?"></a>How to prove a problem&#x2F; a concept class is PAC learnable?</h2><p>big idea:</p>
 <ol>
 <li>Propose $A$ with time complexity $O(m)$</li>
 <li>Show that $A \propto 1&#x2F;\epsilon, 1&#x2F;\delta$  , easy right? :)</li>
@@ -345,7 +341,7 @@
 <p>if $a’ \geq a_1$, we already finish the proof.</p>
 <p>Othersiwe, the probability that the sample does not belong to $A$ (remeber that we are considering $\textup{P}<em>{x \sim D}(x \in A) \leq 2&#x2F;\epsilon$) is smaller than $1- 2&#x2F;\epsilon$, i.e., $\textup{P}</em>{x \sim D}(x \ not \in A) \leq 1 - 2&#x2F;\epsilon$</p>
 <p>then <strong>the probability that all $m$ samples does not locate in $A$</strong> Is: $\leq (1 - 2&#x2F;\epsilon)^m$ </p>
-<p>Note that this probability equals to <strong>the probability that the error ($h(x) \neq c(x)$) due to the $A$ region is larger than $2&#x2F;\epsilon$</strong> (the probability that our chosen <img src="/figures/latex-20220401194537590.php" alt="A"> contributes error greater than <img src="/figures/latex-20220401194537809.php" alt="\varepsilon / 2">)</p>
+<p>Note that this probability equals to <strong>the probability that the error ($h(x) \neq c(x)$) due to the $A$ region is larger than $2&#x2F;\epsilon$</strong> (the probability that our chosen <img src="/figures/latex-20220401194537590.php" alt="A"> contributes error greater than <img src="/figures/latex-20220401194537809.php" alt="\varepsilon &#x2F; 2">)</p>
 <p>Such a proof holds for B region. Since A and B are not intersected, we can conclude that </p>
 <p>The probabity that the error is larger than $\epsilon$ is less than $2((1 - 2&#x2F;\epsilon)^m)$</p>
 <p>it means, The probabity that the error is less or equal than $\epsilon$ is larger than $1 - 2((1 - 2&#x2F;\epsilon)^m)$</p>
@@ -353,7 +349,7 @@
 <p>$\displaystyle 2(1 - \varepsilon &#x2F; 2)^m \leq \delta$</p>
 <p>therefore, $m \geq (2 &#x2F; \varepsilon \log (2 &#x2F; \delta))$</p>
 <p>(which is polynomial in $1&#x2F;\epsilon, 1&#x2F;\delta$)Therefore, we finish the proof</p>
-<h3 id="Example-2-hypotheses-x2F-concepts-in-a-finite-hypothesis-space"><a href="#Example-2-hypotheses-x2F-concepts-in-a-finite-hypothesis-space" class="headerlink" title="Example 2 hypotheses&#x2F;concepts in a finite hypothesis space"></a>Example 2 hypotheses&#x2F;concepts in a finite hypothesis space</h3><p>The theorem is:</p>
+<h3 id="Example-2-hypotheses-concepts-in-a-finite-hypothesis-space"><a href="#Example-2-hypotheses-concepts-in-a-finite-hypothesis-space" class="headerlink" title="Example 2 hypotheses&#x2F;concepts in a finite hypothesis space"></a>Example 2 hypotheses&#x2F;concepts in a finite hypothesis space</h3><p>The theorem is:</p>
 <blockquote>
 <p>Let H be a finite hypothesis space. Let D be an arbitrary, fixed unknown probability distribution over X and let c ∗ be an arbitrary unknown target function. For any , δ &gt; 0, if we draw a sample from D of size ![Screen Shot 2022-04-01 at 10.36.58 PM](&#x2F;figures&#x2F;Screen Shot 2022-04-01 at 10.36.58 PM.png)</p>
 <p>then with probability at least 1 − δ, all hypotheses&#x2F;concepts in H with error ≥ $\epsilon$ are inconsistent with the sampled data </p>
@@ -495,7 +491,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Some-Definitions-informal-just-for-easier-understanding"><span class="nav-number">1.</span> <span class="nav-text">Some Definitions (informal, just for easier understanding)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#How-to-prove-a-problem-x2F-a-concept-class-is-PAC-learnable"><span class="nav-number">2.</span> <span class="nav-text">How to prove a problem&#x2F; a concept class is PAC learnable?</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Example-1-Interval-Problem"><span class="nav-number">2.1.</span> <span class="nav-text">Example 1 Interval Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Example-2-hypotheses-x2F-concepts-in-a-finite-hypothesis-space"><span class="nav-number">2.2.</span> <span class="nav-text">Example 2 hypotheses&#x2F;concepts in a finite hypothesis space</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Relationship-between-observed-error-rate-and-true-error-rate"><span class="nav-number">3.</span> <span class="nav-text">Relationship between observed error rate and true error rate</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Hoeffding-Bound"><span class="nav-number">3.1.</span> <span class="nav-text">Hoeffding Bound</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#The-relationship-result-by-hoeffding-bound"><span class="nav-number">3.2.</span> <span class="nav-text">The relationship result by hoeffding bound</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Infinite-hophothesis-set"><span class="nav-number">4.</span> <span class="nav-text">Infinite hophothesis set?</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Some-definitions"><span class="nav-number">4.1.</span> <span class="nav-text">Some definitions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#VC-bound-relationship-between-data-size-and-errors"><span class="nav-number">4.2.</span> <span class="nav-text">VC bound (relationship between data size and errors)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#VC-dimension-the-complexity-of-the-hyphothesis-set"><span class="nav-number">4.3.</span> <span class="nav-text">VC dimension (the complexity of the hyphothesis set)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Statistical-Learning-Style-bounds-fixed-data-size-relationships-between-the-true-error-and-the-data-error"><span class="nav-number">4.4.</span> <span class="nav-text">Statistical Learning Style bounds, (fixed data size,relationships between the true error and the data error)</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Some-Definitions-informal-just-for-easier-understanding"><span class="nav-number">1.</span> <span class="nav-text">Some Definitions (informal, just for easier understanding)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#How-to-prove-a-problem-a-concept-class-is-PAC-learnable"><span class="nav-number">2.</span> <span class="nav-text">How to prove a problem&#x2F; a concept class is PAC learnable?</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Example-1-Interval-Problem"><span class="nav-number">2.1.</span> <span class="nav-text">Example 1 Interval Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Example-2-hypotheses-concepts-in-a-finite-hypothesis-space"><span class="nav-number">2.2.</span> <span class="nav-text">Example 2 hypotheses&#x2F;concepts in a finite hypothesis space</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Relationship-between-observed-error-rate-and-true-error-rate"><span class="nav-number">3.</span> <span class="nav-text">Relationship between observed error rate and true error rate</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Hoeffding-Bound"><span class="nav-number">3.1.</span> <span class="nav-text">Hoeffding Bound</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#The-relationship-result-by-hoeffding-bound"><span class="nav-number">3.2.</span> <span class="nav-text">The relationship result by hoeffding bound</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Infinite-hophothesis-set"><span class="nav-number">4.</span> <span class="nav-text">Infinite hophothesis set?</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Some-definitions"><span class="nav-number">4.1.</span> <span class="nav-text">Some definitions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#VC-bound-relationship-between-data-size-and-errors"><span class="nav-number">4.2.</span> <span class="nav-text">VC bound (relationship between data size and errors)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#VC-dimension-the-complexity-of-the-hyphothesis-set"><span class="nav-number">4.3.</span> <span class="nav-text">VC dimension (the complexity of the hyphothesis set)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Statistical-Learning-Style-bounds-fixed-data-size-relationships-between-the-true-error-and-the-data-error"><span class="nav-number">4.4.</span> <span class="nav-text">Statistical Learning Style bounds, (fixed data size,relationships between the true error and the data error)</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -510,17 +506,20 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
+        
           <span class="site-state-item-count">154</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-            <a href="/categories/">
+            <a href="/categories">
+          
         <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-            <a href="/tags/">
+            <a href="/tags">
+          
         <span class="site-state-item-count">29</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
@@ -528,22 +527,23 @@
 </div>
   <div class="links-of-author motion-element">
       <span class="links-of-author-item">
-        <a href="https://github.com/wadmes" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;wadmes" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+        <a href="https://github.com/wadmes" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;wadmes" rel="noopener" target="_blank"><i class="fa fa-fw fa-github fab"></i>GitHub</a>
       </span>
       <span class="links-of-author-item">
-        <a href="mailto:werry715@gmail.com" title="E-Mail → mailto:werry715@gmail.com" rel="noopener" target="_blank"><i class="fas fa-envelope fa-fw"></i>E-Mail</a>
+        <a href="mailto:werry715@gmail.com" title="E-Mail → mailto:werry715@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope fas"></i>E-Mail</a>
       </span>
       <span class="links-of-author-item">
-        <a href="https://music.163.com/#/playlist?id=49000450" title="Music → https:&#x2F;&#x2F;music.163.com&#x2F;#&#x2F;playlist?id&#x3D;49000450" rel="noopener" target="_blank"><i class="fas fa-music fa-fw"></i>Music</a>
+        <a href="https://music.163.com/#/playlist?id=49000450" title="Music → https:&#x2F;&#x2F;music.163.com&#x2F;#&#x2F;playlist?id&#x3D;49000450" rel="noopener" target="_blank"><i class="fa fa-fw fa-music fas"></i>Music</a>
       </span>
       <span class="links-of-author-item">
-        <a href="https://steamcommunity.com/id/wadmes/" title="Steam → https:&#x2F;&#x2F;steamcommunity.com&#x2F;id&#x2F;wadmes&#x2F;" rel="noopener" target="_blank"><i class="fab fa-steam fa-fw"></i>Steam</a>
+        <a href="https://steamcommunity.com/id/wadmes/" title="Steam → https:&#x2F;&#x2F;steamcommunity.com&#x2F;id&#x2F;wadmes&#x2F;" rel="noopener" target="_blank"><i class="fa fa-fw fa-steam fab"></i>Steam</a>
       </span>
   </div>
 
 
   <div class="links-of-blogroll motion-element">
-    <div class="links-of-blogroll-title"><i class="link fa-fw"></i>
+    <div class="links-of-blogroll-title">
+      <i class="fa fa-fw fa-link"></i>
       Interesting links!
     </div>
     <ul class="links-of-blogroll-list">
@@ -577,7 +577,7 @@
   &copy; 
   <span itemprop="copyrightYear">2026</span>
   <span class="with-love">
-    <i class="user"></i>
+    <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Li Wei</span>
 </div>
@@ -589,7 +589,7 @@
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
     <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
       <span class="post-meta-item-icon">
-        <i class="user"></i>
+        <i class="fa fa-user"></i>
       </span>
       <span class="site-uv" title="Total Visitors">
         <span id="busuanzi_value_site_uv"></span>
@@ -598,7 +598,7 @@
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
       <span class="post-meta-item-icon">
-        <i class="eye"></i>
+        <i class="fa fa-eye"></i>
       </span>
       <span class="site-pv" title="Total Views">
         <span id="busuanzi_value_site_pv"></span>
@@ -741,6 +741,5 @@
     });
   }
 </script>
-
 </body>
 </html>
