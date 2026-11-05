@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 130" role="img" aria-label="A monolithic 3D stack of three layers next to a photonic ring resonator with light pulses travelling through it">
+<style>
+  text { font-family: Helvetica, Arial, sans-serif; font-size: 9.5px; fill: #7a879c; text-anchor: middle; }
+  .l1 .top { fill: #a9bfe2; } .l1 .left { fill: #8ea8d3; } .l1 .right { fill: #7d99c8; }
+  .l2 .top { fill: #7a9bd0; } .l2 .left { fill: #6385c0; } .l2 .right { fill: #5577b3; }
+  .l3 .top { fill: #527bbd; } .l3 .left { fill: #3f66a8; } .l3 .right { fill: #335a9a; }
+  .l2 { animation: lift2 4s ease-in-out infinite; }
+  .l3 { animation: lift3 4s ease-in-out infinite; }
+  .cell { fill: #ffffff; animation: blink 2s ease-in-out infinite; }
+  .c2 { animation-delay: .4s; } .c3 { animation-delay: .8s; }
+  .wg { fill: none; stroke: #d3dbe8; stroke-width: 7; stroke-linecap: round; }
+  .light { fill: none; stroke: #f2a03d; stroke-width: 3; stroke-linecap: round; filter: url(#glow); }
+  .bus { stroke-dasharray: 16 220; animation: bus 2.4s linear infinite; }
+  .ringlight { stroke-dasharray: 16 160; animation: ring 3s linear infinite; }
+  @keyframes lift2 { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+  @keyframes lift3 { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-11px); } }
+  @keyframes blink { 0%, 100% { opacity: .25; } 50% { opacity: 1; } }
+  @keyframes bus { from { stroke-dashoffset: 16; } to { stroke-dashoffset: -136; } }
+  @keyframes ring { from { stroke-dashoffset: 0; } to { stroke-dashoffset: -176; } }
+  @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+</style>
+<defs>
+  <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+    <feGaussianBlur stdDeviation="2" result="b"/>
+    <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+</defs>
+
+<!-- monolithic 3D stack (drawn bottom layer first) -->
+<g class="l1">
+  <polygon class="left" points="30,95 85,111 85,117 30,101"/>
+  <polygon class="right" points="85,111 140,95 140,101 85,117"/>
+  <polygon class="top" points="30,95 85,79 140,95 85,111"/>
+</g>
+<g class="l2">
+  <polygon class="left" points="30,74 85,90 85,96 30,80"/>
+  <polygon class="right" points="85,90 140,74 140,80 85,96"/>
+  <polygon class="top" points="30,74 85,58 140,74 85,90"/>
+</g>
+<g class="l3">
+  <polygon class="left" points="30,53 85,69 85,75 30,59"/>
+  <polygon class="right" points="85,69 140,53 140,59 85,75"/>
+  <polygon class="top" points="30,53 85,37 140,53 85,69"/>
+  <circle class="cell" cx="65" cy="53" r="2.6"/>
+  <circle class="cell c2" cx="85" cy="53" r="2.6"/>
+  <circle class="cell c3" cx="105" cy="53" r="2.6"/>
+</g>
+<text x="85" y="127">monolithic 3D</text>
+
+<!-- photonics: ring resonator + bus waveguide -->
+<circle class="wg" cx="237" cy="60" r="28"/>
+<path class="wg" d="M170 102H305"/>
+<circle class="light ringlight" cx="237" cy="60" r="28"/>
+<path class="light bus" d="M170 102H305"/>
+<text x="237" y="127">photonics</text>
+</svg>

@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 130" role="img" aria-label="One core on a chip silently flickers with errors until an in-field test sweep catches it">
+<style>
+  .pkg { fill: #eef2f8; stroke: #7a9bd0; stroke-width: 1.5; }
+  .pin { stroke: #9aa9c2; stroke-width: 2; }
+  .core { fill: #c9d6ea; }
+  .bad { animation: sdc 6s linear infinite; }
+  .scan { animation: sweep 6s ease-in-out infinite; }
+  .scan rect.glow { fill: #2e7d32; opacity: .15; }
+  .scan rect.bar { fill: #2e7d32; opacity: .8; }
+  .ring { fill: none; stroke: #c62828; stroke-width: 2; opacity: 0;
+          transform-box: fill-box; transform-origin: center; animation: ring 6s ease-out infinite; }
+  @keyframes sdc {
+    0%, 14% { fill: #c9d6ea; stroke: none; }
+    15% { fill: #e57373; } 17% { fill: #c9d6ea; }
+    19% { fill: #e57373; } 21% { fill: #c9d6ea; }
+    38% { fill: #c9d6ea; } 39% { fill: #e57373; } 41% { fill: #c9d6ea; }
+    59% { fill: #c9d6ea; stroke: none; }
+    61%, 92% { fill: #e57373; stroke: #c62828; stroke-width: 2; }
+    96%, 100% { fill: #c9d6ea; stroke: none; }
+  }
+  @keyframes sweep {
+    0%, 18% { transform: translateX(0); opacity: 0; }
+    20% { opacity: 1; }
+    80% { transform: translateX(196px); opacity: 1; }
+    84%, 100% { transform: translateX(196px); opacity: 0; }
+  }
+  @keyframes ring {
+    0%, 60% { transform: scale(.4); opacity: 0; }
+    62% { transform: scale(.6); opacity: 1; }
+    75%, 100% { transform: scale(1.6); opacity: 0; }
+  }
+  @media (prefers-reduced-motion: reduce) { * { animation: none !important; } .bad { fill: #e57373; } }
+</style>
+
+<g class="pins">
+  <line class="pin" x1="52" y1="30" x2="60" y2="30"/><line class="pin" x1="52" y1="44" x2="60" y2="44"/>
+  <line class="pin" x1="52" y1="58" x2="60" y2="58"/><line class="pin" x1="52" y1="72" x2="60" y2="72"/>
+  <line class="pin" x1="52" y1="86" x2="60" y2="86"/><line class="pin" x1="52" y1="100" x2="60" y2="100"/>
+  <line class="pin" x1="260" y1="30" x2="268" y2="30"/><line class="pin" x1="260" y1="44" x2="268" y2="44"/>
+  <line class="pin" x1="260" y1="58" x2="268" y2="58"/><line class="pin" x1="260" y1="72" x2="268" y2="72"/>
+  <line class="pin" x1="260" y1="86" x2="268" y2="86"/><line class="pin" x1="260" y1="100" x2="268" y2="100"/>
+  <line class="pin" x1="80" y1="7" x2="80" y2="15"/><line class="pin" x1="120" y1="7" x2="120" y2="15"/>
+  <line class="pin" x1="160" y1="7" x2="160" y2="15"/><line class="pin" x1="200" y1="7" x2="200" y2="15"/>
+  <line class="pin" x1="240" y1="7" x2="240" y2="15"/>
+  <line class="pin" x1="80" y1="115" x2="80" y2="123"/><line class="pin" x1="120" y1="115" x2="120" y2="123"/>
+  <line class="pin" x1="160" y1="115" x2="160" y2="123"/><line class="pin" x1="200" y1="115" x2="200" y2="123"/>
+  <line class="pin" x1="240" y1="115" x2="240" y2="123"/>
+</g>
+<rect class="pkg" x="60" y="15" width="200" height="100" rx="6"/>
+
+<g class="cores">
+  <rect class="core" x="74" y="27" width="18" height="16" rx="2"/><rect class="core" x="96" y="27" width="18" height="16" rx="2"/>
+  <rect class="core" x="118" y="27" width="18" height="16" rx="2"/><rect class="core" x="140" y="27" width="18" height="16" rx="2"/>
+  <rect class="core" x="162" y="27" width="18" height="16" rx="2"/><rect class="core" x="184" y="27" width="18" height="16" rx="2"/>
+  <rect class="core" x="206" y="27" width="18" height="16" rx="2"/><rect class="core" x="228" y="27" width="18" height="16" rx="2"/>
+
+  <rect class="core" x="74" y="47" width="18" height="16" rx="2"/><rect class="core" x="96" y="47" width="18" height="16" rx="2"/>
+  <rect class="core" x="118" y="47" width="18" height="16" rx="2"/><rect class="core" x="140" y="47" width="18" height="16" rx="2"/>
+  <rect class="core" x="162" y="47" width="18" height="16" rx="2"/><rect class="core bad" x="184" y="47" width="18" height="16" rx="2"/>
+  <rect class="core" x="206" y="47" width="18" height="16" rx="2"/><rect class="core" x="228" y="47" width="18" height="16" rx="2"/>
+
+  <rect class="core" x="74" y="67" width="18" height="16" rx="2"/><rect class="core" x="96" y="67" width="18" height="16" rx="2"/>
+  <rect class="core" x="118" y="67" width="18" height="16" rx="2"/><rect class="core" x="140" y="67" width="18" height="16" rx="2"/>
+  <rect class="core" x="162" y="67" width="18" height="16" rx="2"/><rect class="core" x="184" y="67" width="18" height="16" rx="2"/>
+  <rect class="core" x="206" y="67" width="18" height="16" rx="2"/><rect class="core" x="228" y="67" width="18" height="16" rx="2"/>
+
+  <rect class="core" x="74" y="87" width="18" height="16" rx="2"/><rect class="core" x="96" y="87" width="18" height="16" rx="2"/>
+  <rect class="core" x="118" y="87" width="18" height="16" rx="2"/><rect class="core" x="140" y="87" width="18" height="16" rx="2"/>
+  <rect class="core" x="162" y="87" width="18" height="16" rx="2"/><rect class="core" x="184" y="87" width="18" height="16" rx="2"/>
+  <rect class="core" x="206" y="87" width="18" height="16" rx="2"/><rect class="core" x="228" y="87" width="18" height="16" rx="2"/>
+</g>
+
+<circle class="ring" cx="193" cy="55" r="14"/>
+
+<g class="scan">
+  <rect class="glow" x="56" y="15" width="12" height="100"/>
+  <rect class="bar" x="60" y="15" width="4" height="100"/>
+</g>
+</svg>

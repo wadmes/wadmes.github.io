@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 130" role="img" aria-label="Several candidate routes fade while one optimized route is drawn between two pins">
+<style>
+  .grid { fill: none; stroke: #e1e7f0; stroke-width: 1; }
+  .cand { fill: none; stroke: #7a9bd0; stroke-width: 2.5; stroke-dasharray: 5 5; opacity: .25;
+          animation: fade 6s ease-in-out infinite; }
+  .cand.b { animation-delay: .25s; }
+  .cand.c { animation-delay: .5s; }
+  .route { fill: none; stroke: #2e7d32; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round;
+           stroke-dasharray: 330; stroke-dashoffset: 0; animation: draw 6s ease-in-out infinite; }
+  .pin { fill: #224b8d; }
+  @keyframes fade { 0%, 10% { opacity: .75; } 50%, 85% { opacity: .1; } 100% { opacity: .75; } }
+  @keyframes draw { 0%, 18% { stroke-dashoffset: 330; opacity: 1; }
+                    55%, 85% { stroke-dashoffset: 0; opacity: 1; }
+                    100% { stroke-dashoffset: 0; opacity: 0; } }
+  @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+</style>
+<defs>
+  <pattern id="g" width="20" height="20" patternUnits="userSpaceOnUse"><path class="grid" d="M20 0H0V20"/></pattern>
+</defs>
+<rect width="320" height="130" fill="url(#g)"/>
+<path class="cand a" d="M40 100H280V30"/>
+<path class="cand b" d="M40 100V30H280"/>
+<path class="cand c" d="M40 100H100V60H220V30H280"/>
+<path class="route" d="M40 100H160V30H280"/>
+<circle class="pin" cx="40" cy="100" r="6"/>
+<circle class="pin" cx="280" cy="30" r="6"/>
+</svg>

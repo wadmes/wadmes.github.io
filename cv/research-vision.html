@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content="jemdoc, see http://jemdoc.jaboc.net/" />
+<link rel="stylesheet" href="css/jemdoc.css" type="text/css" />
+<link rel="stylesheet" href="css/join.css" type="text/css" />
+<title>Wei Li @ NUS - Research Vision</title>
+</head>
+<body>
+<table summary="Table for page layout." id="tlayout">
+<tr valign="top">
+<td id="layout-menu">
+<div class="menu-category">Wei Li @ NUS</div>
+<div class="menu-item"><a href="index.html">About</a></div>
+<div class="menu-item"><a href="hiring-students.html" class="current">Join Us</a></div>
+<div class="menu-item"><a href="group.html">Group</a></div>
+<div class="menu-item"><a href="pub-chrono.html">Publications</a></div>
+<div class="menu-item"><a href="exp.html">Experience</a></div>
+<div class="menu-item"><a href="service.html">Service</a></div>
+<div class="menu-item"><a href="reward.html">Awards</a></div>
+<div class="menu-item"><a href="fun.html">Fun Facts</a></div>
+</td>
+<td id="layout-content">
+
+<div class="join-hero">
+  <h1>Research Vision</h1>
+  <p class="lead">Why chip design needs a new paradigm in the AI era, and the four directions my group is pursuing.</p>
+</div>
+
+<p>
+We are now in the era of AI. I am very excited about it. The demand for AI hardware is increasing rapidly, but hardware development is struggling
+to keep up with the speed of AI architecture evolution.
+</p>
+
+<div class="figure">
+  <img src="./img/crisis.jpg" alt="AI hardware demand crisis" />
+  <div class="caption">AI demand is accelerating, while chip development remains slow, expensive, and human-intensive. For your reference, USD 667B is roughly FOUR entire NBA leagues.</div>
+</div>
+
+<p>
+The pressure is no longer coming only from traditional semiconductor companies. Hyperscalers and frontier-model companies, the “new money” of AI, are increasingly
+moving down the stack and building custom silicon for their own workloads. For example, Meta has developed and deployed its
+<a href="https://engineering.fb.com/2025/09/29/data-infrastructure/metas-infrastructure-evolution-and-the-advent-of-ai/" target="_blank">MTIA accelerators</a>,
+while OpenAI and Broadcom have announced a collaboration to deploy
+<a href="https://openai.com/index/openai-and-broadcom-announce-strategic-collaboration/" target="_blank">OpenAI-designed AI accelerators</a>.
+At the scale of modern AI, hardware specialized for the actual workload can improve performance, energy efficiency, and total cost. Chip design is therefore becoming
+a core strategic capability for AI companies, not just something purchased from the traditional semiconductor supply chain.
+</p>
+
+<div class="figure">
+  <a href="./img/custom-chips-ai-frontier.png" target="_blank"><img src="./img/custom-chips-ai-frontier.png" alt="AI companies investing in custom chips" /></a>
+  <div class="caption">AI's next frontier is increasingly full-stack: companies building frontier models are also investing in chips optimized for their own workloads.</div>
+</div>
+
+<p>
+This makes faster and better chip design even more important. A custom accelerator is useful only if its design can keep pace with the models and systems it is meant
+to serve. If each new chip still takes years to develop, the hardware risks arriving for yesterday's AI. Faster solvers, more automated design flows, and tighter
+hardware-software co-design are becoming essential to making advanced AI scalable and affordable.
+</p>
+
+<div class="figure">
+  <img src="./img/apple.png" alt="Lag between AI architectures and Apple Neural Engine generations" />
+  <div class="caption">AI architectures move fast; hardware support often arrives years later. This lag is exactly the kind of gap I want my group to attack.</div>
+</div>
+
+<p>
+The basic reason is simple to say (and painful to live with): a modern chip can require years to move from an abstract specification to manufacturable silicon.
+The design problem is too complex to solve in one shot, so the industry divides it into many stages: architecture, RTL, verification, synthesis, floorplanning,
+placement, routing, timing closure, testing, diagnosis, and more. Divide-and-conquer is beautiful, but it also creates boundaries.
+</p>
+<p>
+Engineers often discover violations late, only to realize that the fix belongs to an earlier stage. Communication across teams and stages can be measured
+in days or weeks. For the most ambitious chips, the timeline can be around two years and involve more than one thousand engineers when the target is optimal
+performance, power, and area (PPA).
+</p>
+
+<div class="figure">
+  <a href="./img/twoyears.png" target="_blank"><img src="./img/twoyears.png" alt="Two-year chip design timeline" /></a>
+  <div class="caption">Imagine you design a brilliant architecture that is friendly to agentic AI today. In a conventional high-end chip flow, turning it into competitive silicon can still mean roughly two years, 1000+ engineers, and many rounds of painful iteration.</div>
+</div>
+
+<div class="note">
+  <p>
+    My view is that we need a new paradigm for chip design. I am especially excited about four fronts:
+  </p>
+  <ul>
+    <li><a href="#better-solvers"><b>EDA algorithms (optimization &amp; AI):</b></a> AI, algorithms, data structures, and optimization methods that improve core EDA tasks.</li>
+    <li><a href="#autonomous-eda"><b>Agentic EDA:</b></a> LLM-based systems that accelerate the whole design cycle from human-in-the-loop iteration to human-on-the-loop automation.</li>
+    <li><a href="#robust-ai-hardware"><b>Hardware testing:</b></a> testing, diagnosis, and runtime resilience when chips fail silently in large AI systems.</li>
+    <li><a href="#future-hardware"><b>Future hardware:</b></a> design automation and testing for photonics, monolithic 3D, compute-in-memory, and whatever computing paradigm wins next.</li>
+  </ul>
+</div>
+
+<p>
+The first two directions ask how to design chips faster. The third asks how to trust the chips after they enter real AI infrastructure. The fourth asks what happens
+when the substrate itself changes, from 2D silicon toward new computing fabrics.
+</p>
+<p>
+The timing is almost unreasonable: the problems are hard, the industry needs answers, and the next generation of students can still leave fingerprints on the field
+(yes, I mean this quite seriously). Let us try to build something that people will remember.
+</p>
+
+<h2 id="research-directions">Research Directions</h2>
+
+<div class="research-card" id="better-solvers">
+  <h3>1. EDA Algorithms: Optimization &amp; AI</h3>
+  <p class="direction-sub">Differentiable optimization, reinforcement learning, graph neural networks, ...</p>
+  <p>
+    This direction is a good fit if you are interested in an industrial research path, and if you like optimization, AI, algorithms, data structures, or CS theory.
+    Many EDA subproblems can be abstracted into beautiful mathematical problems. Generations of researchers have proposed elegant algorithms and data structures,
+    from classical heuristics and analytical methods to specialized data structures such as dancing links for
+    <a href="https://scholars.lib.ntu.edu.tw/entities/publication/8b6efef4-f5e5-4a83-8268-e2ab55d9e95b" target="_blank">multiple patterning layout decomposition</a>.
+    This is why I fell in love with research as an undergraduate: the elegant algorithms you learned from textbooks can quietly live inside almost every electronic
+    device you use every day (hard to imagine a more romantic job for an algorithm, right?).
+  </p>
+  <p>
+    A recurring challenge is the "impossible triangle" among quality, runtime, and generalizability. In recent years, new methods have become especially exciting:
+    reinforcement learning and graph learning for AI4EDA, and differentiable programming for optimization problems that can be integrated naturally into deep learning
+    toolkits and accelerated on AI hardware.
+  </p>
+  <div class="figure">
+    <img src="./img/nn.png" alt="Differentiable optimization and neural network training" />
+    <div class="caption">Differentiable optimization is just similar to training a neural network.</div>
+  </div>
+  <p>
+    A nice feedback loop appears here: AI hardware accelerates AI-friendly EDA algorithms, and these algorithms can help produce better AI hardware (cool, right?).
+    Related examples from my work include
+    <a href="./raw/DAC20.pdf" target="_blank">graph learning for layout decomposition</a>,
+    <a href="./raw/ASPDAC21-TreeNet.pdf" target="_blank">point-cloud learning for routing tree construction</a>, and
+    <a href="./raw/DAC24.pdf" target="_blank">differentiable global routing</a>.
+  </p>
+</div>
+
+<div class="research-card" id="autonomous-eda">
+  <h3>2. Agentic EDA</h3>
+  <p class="direction-sub">How do we bring AI agents into EDA?</p>
+  <p>
+    Advancing individual solvers is necessary, but not sufficient. Closing the gap between AI hardware demand and chip design capacity requires a paradigm shift in
+    how the entire flow operates. Today, design flows involve repeated failure, rollback, script writing, debugging, and human coordination. LLMs create a new chance
+    to automate script generation, RTL coding, verification assistance, design-space exploration, and flow management.
+  </p>
+  <p>
+    But chip design is not a normal software-agent playground. It is large-scale, multimodal, tool-heavy, and full of hard physical constraints. How can an LLM understand
+    RTL text, graphs, layouts, timing reports, waveforms, tool logs, and design intent without getting lost? How should it plan, call tools, verify progress, and know when
+    to ask humans for help?
+  </p>
+  <div class="figure">
+    <img src="./img/llm.jpg" alt="LLM-based autonomous EDA flow" />
+  </div>
+  <p>
+    I do not view LLMs only as an application to chip design. I view chip design as one of the best arenas for testing the real capability of LLM agents: the system is
+    among the most complex artifacts humans build, and improvement can affect industry immediately. My recent
+    <a href="./projects.html#T1-3" target="_blank">BRIDGES work</a> is one step in this direction: connecting graph-structured chip data with LLM reasoning.
+    The rise of companies such as
+    <a href="https://www.ricursive.com/" target="_blank">Ricursive Intelligence</a> and
+    <a href="https://agentrys.ai/" target="_blank">Agentry</a> also shows how hot this vision has become.
+  </p>
+</div>
+
+<div class="research-card" id="robust-ai-hardware">
+  <h3>3. Hardware Testing</h3>
+  <p class="direction-sub">Can we trust chips after fabrication?</p>
+  <p>
+    No product can be guaranteed flawless forever, and chips are no exception. With the explosive deployment of AI infrastructure, industry has observed a severe and
+    unexpected failure mode: chips can pass production tests, enter datacenters, and later produce wrong results without warning. This is known as silent data corruption
+    (SDC).
+  </p>
+  <p>
+    This problem has drawn major industrial attention; see, for example,
+    <a href="https://www.sigarch.org/silent-data-corruption-at-scale/" target="_blank">Silent Data Corruption at Scale</a> and
+    <a href="https://research.google/pubs/silent-data-corruption-by-10-test-escapes-threatens-reliable-computing-4/" target="_blank">Silent Data Corruption by 10x Test Escapes Threatens Reliable Computing</a>.
+    In my lab at CMU, we have been collaborating with multiple large technology companies and chip organizations on testing, diagnosis, and reliability.
+  </p>
+  <p>
+    Open questions include: if SDC is caused by escaped defects, why do those defects escape manufacturing test, and how can we detect more of them before shipping?
+    If defects arise or become visible after deployment, how can AI systems become robust to them? Can we design cheap, efficient, and scalable in-field tests for new
+    defects before they silently damage training or inference?
+  </p>
+  <div class="figure">
+    <img src="./img/ITC22.gif" alt="ITC 2022 fault model work" />
+    <div class="caption">My early work on SDC from a fault-model perspective: we worked with industry, collected thousands of failure cases, and observed that the traditional fault model used in industry matched only about 5% of them.</div>
+  </div>
+</div>
+
+<div class="research-card" id="future-hardware">
+  <h3>4. Future Hardware</h3>
+  <p class="direction-sub">Design automation for 3D ICs, memory systems, photonics, ...</p>
+  <p>
+    From my internships, reading, and many conversations across industry and academia, one message keeps returning: traditional two-dimensional silicon scaling is no
+    longer enough. If our ambitions include artificial general intelligence, world models, and embodied AI systems that act in the physical world, hardware may become
+    the limiting wall.
+  </p>
+  <p>
+    There are many promising directions: photonics, quantum computing, compute-in-memory, 3D integration, and other post-von-Neumann computing paradigms. As someone
+    trained in design automation and testing for silicon, I am excited by the chance to collaborate with researchers in these emerging areas and build new automation
+    and testing frameworks for future hardware. If you happen to be interested in these fields, I am very happy to connect you with scholars working on them, for example
+    <a href="https://profiles.stanford.edu/subhasish-mitra" target="_blank">Prof. Subhasish Mitra</a> at Stanford for monolithic 3D and
+    <a href="https://zhengqigao.github.io/" target="_blank">Zhengqi Gao</a> for photonics.
+  </p>
+  <p>
+    My vision is always the same: no matter which future computing paradigm wins, it will need a serious framework for design automation and testing.
+  </p>
+  <p>
+    NUS is also a wonderful place for this direction, with strong architecture and systems faculty and a unique position between Asia and the global semiconductor ecosystem.
+  </p>
+</div>
+
+<p class="more-links">
+  <a href="hiring-students.html">&larr; Back to Join Us</a>
+  Interested? Email <b><a href="mailto:weili3@nus.edu.sg">weili3<span>&#64;</span>nus.edu.sg</a></b>
+  (see <a href="hiring-students.html#how-to-apply">How to Apply</a>).
+</p>
+
+</td>
+</tr>
+</table>
+</body>
+</html>

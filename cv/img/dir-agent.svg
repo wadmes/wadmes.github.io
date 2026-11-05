@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 130" role="img" aria-label="An LLM agent drives the chip design flow from RTL to signoff, stage by stage">
+<style>
+  text { font-family: Helvetica, Arial, sans-serif; }
+  .agent { fill: #ffffff; stroke: #224b8d; stroke-width: 1.5; }
+  .atxt { font-size: 11px; font-weight: bold; fill: #224b8d; text-anchor: middle; }
+  .dot { fill: #224b8d; animation: blink 1.2s ease-in-out infinite; }
+  .d2 { animation-delay: .2s; }
+  .d3 { animation-delay: .4s; }
+  .wire { stroke: #7a9bd0; stroke-width: 1.2; stroke-dasharray: 3 3; animation: march 1s linear infinite; }
+  .stage rect { fill: #ffffff; stroke: #7a9bd0; stroke-width: 1.5; animation: done 6s ease-in-out infinite; }
+  .stage text { font-size: 10.5px; fill: #224b8d; text-anchor: middle; }
+  .s2 rect { animation-delay: 1s; }
+  .s3 rect { animation-delay: 2s; }
+  .s4 rect { animation-delay: 3s; }
+  .arrow { fill: none; stroke: #9aa9c2; stroke-width: 1.5; marker-end: url(#ah); }
+  .loop { fill: none; stroke: #c3cede; stroke-width: 1.2; stroke-dasharray: 4 3; marker-end: url(#ahl); }
+  @keyframes blink { 0%, 100% { opacity: .2; } 50% { opacity: 1; } }
+  @keyframes march { to { stroke-dashoffset: -12; } }
+  @keyframes done { 0%, 4% { fill: #ffffff; stroke: #7a9bd0; }
+                    12%, 60% { fill: #dff0df; stroke: #2e7d32; }
+                    72%, 100% { fill: #ffffff; stroke: #7a9bd0; } }
+  @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+</style>
+<defs>
+  <marker id="ah" viewBox="0 0 6 6" refX="5" refY="3" markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M0 0L6 3L0 6z" fill="#9aa9c2"/>
+  </marker>
+  <marker id="ahl" viewBox="0 0 6 6" refX="5" refY="3" markerWidth="5" markerHeight="5" orient="auto">
+    <path d="M0 0L6 3L0 6z" fill="#c3cede"/>
+  </marker>
+</defs>
+
+<line class="wire" x1="160" y1="40" x2="45" y2="86"/>
+<line class="wire" x1="160" y1="40" x2="121" y2="86"/>
+<line class="wire" x1="160" y1="40" x2="197" y2="86"/>
+<line class="wire" x1="160" y1="40" x2="273" y2="86"/>
+
+<rect class="agent" x="104" y="10" width="112" height="30" rx="15"/>
+<text class="atxt" x="148" y="29">LLM agent</text>
+<circle class="dot" cx="188" cy="25" r="2.2"/>
+<circle class="dot d2" cx="195" cy="25" r="2.2"/>
+<circle class="dot d3" cx="202" cy="25" r="2.2"/>
+
+<g class="stage s1"><rect x="16" y="88" width="58" height="26" rx="4"/><text x="45" y="105">RTL</text></g>
+<g class="stage s2"><rect x="92" y="88" width="58" height="26" rx="4"/><text x="121" y="105">Synth</text></g>
+<g class="stage s3"><rect x="168" y="88" width="58" height="26" rx="4"/><text x="197" y="105">P&amp;R</text></g>
+<g class="stage s4"><rect x="244" y="88" width="58" height="26" rx="4"/><text x="273" y="105">Signoff</text></g>
+
+<path class="arrow" d="M75 101H90"/>
+<path class="arrow" d="M151 101H166"/>
+<path class="arrow" d="M227 101H242"/>
+<path class="loop" d="M273 115V124H45V117"/>
+</svg>
